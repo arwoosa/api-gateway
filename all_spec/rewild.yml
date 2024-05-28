@@ -66,6 +66,23 @@ paths:
           description: Event invitation object
       tags: 
         - Authenticated User Menu
+  /me/friends:
+    get:
+      summary: Retrieve user's friends (following)
+      description: Retrieve user's friends (following)
+      security:
+        - Bearer: []
+      responses:
+        200:
+          description: Array of User Object
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/UserFriends'
+      tags: 
+        - Authenticated User Menu
   /me/preferences:
     get:
       summary: Retrieve user's preferences
@@ -78,6 +95,7 @@ paths:
           content:
             application/json:
               schema:
+                type: object
                 $ref: '#/components/schemas/User'
       tags: 
         - Authenticated User Menu
@@ -99,6 +117,7 @@ paths:
           content:
             application/json:
               schema:
+                type: object
                 $ref: '#/components/schemas/User'
       tags: 
         - Authenticated User Menu
@@ -1195,6 +1214,15 @@ components:
           users_created_at:
             type: string
             format: int32
+    UserFriends:
+      type: object
+      properties:
+          users_id:
+            type: string
+          users_name:
+            type: string
+          users_avatar:
+            type: string
     UserMilestones:
       type: object
       properties:

@@ -36,6 +36,11 @@ paths:
       responses:
         200:
           description: Login object
+          content:
+            application/json:
+              schema:
+                type: object
+                $ref: '#/components/schemas/UserLogin'
       tags: 
         - Authentication
   /auth/facebook:
@@ -45,15 +50,36 @@ paths:
       responses:
         200:
           description: Login object
+          content:
+            application/json:
+              schema:
+                type: object
+                $ref: '#/components/schemas/UserLogin'
       tags: 
         - Authentication
   /auth/line:
     get:
       summary: User login/register
+      parameters:
+        - in: query
+          name: code
+          schema:
+            type: string
+          description: Code passed to line
+        - in: query
+          name: state
+          schema:
+            type: string
+          description: State passed to line
       description: Use this endpoint to login/register using Line
       responses:
         200:
           description: Login object
+          content:
+            application/json:
+              schema:
+                type: object
+                $ref: '#/components/schemas/UserLogin'
       tags: 
         - Authentication
   /auth/apple:
@@ -63,6 +89,11 @@ paths:
       responses:
         200:
           description: Login object
+          content:
+            application/json:
+              schema:
+                type: object
+                $ref: '#/components/schemas/UserLogin'
       tags: 
         - Authentication
   /auth/email:
@@ -78,6 +109,11 @@ paths:
       responses:
         200:
           description: Login object
+          content:
+            application/json:
+              schema:
+                type: object
+                $ref: '#/components/schemas/UserLogin'
       tags: 
         - Authentication
   /register:
@@ -96,7 +132,15 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ResponseGeneralSuccess'
+                type: object
+                $ref: '#/components/schemas/UserLogin'
+        204:
+          description: If user exists
+          content:
+            application/json:
+              schema:
+                type: object
+                $ref: '#/components/schemas/ResponseGeneralError'
       tags: 
         - Authentication
   /user-following:
@@ -205,7 +249,13 @@ components:
           users_source:
             type: integer
             format: int32
+          users_source_id:
+            type: string
           users_name:
+            type: string
+          users_email:
+            type: string
+          users_password:
             type: string
           users_object:
             type: string
@@ -231,6 +281,14 @@ components:
           users_created_at:
             type: string
             format: int32
+    UserLogin:
+      type: object
+      properties:
+          user:
+            type: object
+            $ref: "#/components/schemas/User"
+          token:
+            type: string
     UserFollowings:
       type: object
       properties:
