@@ -22,6 +22,28 @@ paths:
                 $ref: '#/components/schemas/User'
       tags: 
         - Authentication
+    put:
+      summary: Update authenticated user detail
+      description: Update the authenticated user detail
+      requestBody:
+        description: Pass in only the necessary objects you want to update
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/RequestUsersUpdate'
+      security:
+        - Bearer: []
+      responses:
+        200:
+          description: User object
+          content:
+            application/json:
+              schema:
+                type: object
+                $ref: '#/components/schemas/User'
+      tags: 
+        - Authentication
   /auth/google:
     post:
       summary: User login/register
@@ -114,6 +136,53 @@ paths:
               schema:
                 type: object
                 $ref: '#/components/schemas/UserLogin'
+      tags: 
+        - Authentication
+  /auth/change-password:
+    put:
+      summary: Update authenticated user password
+      description: Update the authenticated user password
+      requestBody:
+        description: Pass in new password
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/RequestUsersUpdatePassword'
+      security:
+        - Bearer: []
+      responses:
+        200:
+          description: User object
+          content:
+            application/json:
+              schema:
+                type: object
+                $ref: '#/components/schemas/User'
+      tags: 
+        - Authentication
+  /auth/update-profile-picture:
+    post:
+      summary: User profile picture
+      description: Update profile picture
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                users_avatar:
+                  type: string
+                  format: binary
+      security:
+        - Bearer: []
+      responses:
+        200:
+          description: User Object
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/User'
       tags: 
         - Authentication
   /register:
@@ -253,6 +322,8 @@ components:
             type: string
           users_name:
             type: string
+          users_username:
+            type: string
           users_email:
             type: string
           users_password:
@@ -278,6 +349,8 @@ components:
           users_is_subscribed:
             type: integer
             format: int32
+          users_is_business:
+            type: boolean
           users_created_at:
             type: string
             format: int32
@@ -319,22 +392,46 @@ components:
       properties:
         email:
           type: string
+          default: user@arwork.tw
         password:
           type: string
+          default: 123
     RequestUserRegisterEmail:
       type: object
       properties:
         name:
           type: string
+          default: Test User
         email:
           type: string
+          default: user@arwork.tw
         password:
           type: string
+          default: 123
+        is_business:
+          type: boolean
+          default: false
     RequestUserFollowing:
       type: object
       properties:
         user_followings_following:
           type: string
+          default: 6613fae21977170d4fd608a6
+    RequestUsersUpdate:
+      type: object
+      properties:
+        users_username:
+          type: string
+          default: xiaolongbao
+    RequestUsersUpdatePassword:
+      type: object
+      properties:
+        password:
+          type: string
+          default: 123456
+        new_password:
+          type: string
+          default: 12345
     ResponseGeneralSuccess:
       type: object
       properties:

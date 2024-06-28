@@ -869,7 +869,7 @@ paths:
                   $ref: '#/components/schemas/Events'
       tags: 
         - User Event
-  /event-collaborate:
+  /collaborative-log:
     get:
       summary: Event Collaborate
       description: Retrieve events that has ended
@@ -886,7 +886,7 @@ paths:
                   $ref: '#/components/schemas/Events'
       tags: 
         - Event Collaborate
-  /event-collaborate/{eventId}:
+  /collaborative-log/{eventId}:
     get:
       summary: Event Collaborate
       description: Retrieve detail on event
@@ -908,7 +908,7 @@ paths:
                 $ref: '#/components/schemas/Events'
       tags: 
         - Event Collaborate
-  /event-collaborate/{eventId}/album-link:
+  /collaborative-log/{eventId}/album-link:
     get:
       summary: Event Collaborate
       description: Retrieve album link in event
@@ -958,7 +958,7 @@ paths:
                 $ref: '#/components/schemas/EventAlbumLink'
       tags: 
         - Event Collaborate
-  /event-collaborate/{eventId}/polaroid:
+  /collaborative-log/{eventId}/polaroid:
     get:
       summary: Event Polaroid
       description: Retrieve event polaroid
@@ -1010,6 +1010,33 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/EventAlbumLink'
+      tags: 
+        - Event Collaborate
+  /collaborative-log/{eventId}/questionnaire:
+    post:
+      summary: Event Polaroid
+      description: Create event polaroid (Uploaded file will be uploaded on Flickr). Read location data and save to database
+      parameters:
+        - name: eventId
+          in: path
+          description: String ID of the event
+          schema:
+            type: integer
+          required: true
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/RequestCollaborativeLogQuestionnaire'
+      security:
+        - Bearer: []
+      responses:
+        200:
+          description: Event Object
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Events'
       tags: 
         - Event Collaborate
   /rewilding:
@@ -1211,6 +1238,8 @@ components:
           users_is_subscribed:
             type: integer
             format: int32
+          users_is_business:
+            type: boolean
           users_created_at:
             type: string
             format: int32
@@ -1272,6 +1301,8 @@ components:
           type: string
         events_date:
           type: string
+        events_date_end:
+          type: string
         events_deadline:
           type: string
         events_name:
@@ -1284,15 +1315,23 @@ components:
           type: string
         events_invitation_message:
           type: string
+        events_participant_limit:
+          type: number
         events_payment_required:
           type: integer
         events_payment_fee:
           type: string
         events_requires_approval:
           type: integer
+        events_questionnaire_link:
+          type: string
         events_lat:
           type: number
         events_lng:
+          type: number
+        events_meeting_point_lat:
+          type: number
+        events_meeting_point_lng:
           type: number
         events_created_by:
           type: string
@@ -1575,36 +1614,63 @@ components:
       properties:
         pocket_lists_name:
           type: string
+          default: Want to visit
     RequestPocketListItem:
       type: object
       properties:
-        pocket_list_items_event:
+        pocket_list_items_place_id:
           type: string
-        pocket_list_items_rewilding:
+          default: ChIJJyIiioc21i0R-fNFWJonSxA
+        pocket_list_items_place_name:
           type: string
+          default: Bromo
     RequestEvent:
       type: object
       properties:
         events_date:
             type: string
+            default: 2024-06-01 09:00:00
+        events_date_end:
+            type: string
+            default: 2024-06-01 18:00:00
+        events_deadline:
+            type: string
+            default: 2024-05-26 00:00:00
         events_name:
             type: string
+            default: Hike to Bromo
         events_place:
             type: string
-        events_type:
+            default: ChIJk9cKlIwgbzQR2BE-g395glo
+        events_rewilding:
             type: string
+            default: 
         events_payment_required:
             type: integer
+            default: 0
             format: int32
         events_payment_fee:
             type: number
+            default: 450
+        events_participant_limit:
+            type: number
+            default: 4
         events_requires_approval:
             type: integer
+            default: 1
             format: int32
         events_lat:
             type: number
+            default: -7.9421532937069514
         events_lng:
             type: number
+            default: 112.95357004216902
+        events_meeting_point_lat:
+            type: number
+            default: -7.929088255289928
+        events_meeting_point_lng:
+            type: number
+            default: 112.9654222278174
     RequestEventInvitation:
       type: object
       properties:
@@ -1616,41 +1682,52 @@ components:
       properties:
         event_participants_user:
             type: string
+            default: 6613fae21977170d4fd608a6
     RequestEventMessageBoard:
       type: object
       properties:
         event_message_board_base_message:
             type: string
-        event_message_board_category:
-            type: string
+            default: Is there toilet there?
         event_message_board_announcement:
             type: string
+            default: Please arrive 30 minutes before event start time
     RequestEventAccounting:
       type: object
       properties:
         event_accounting_message:
             type: string
+            default: Entrance ticket
         event_accounting_amount:
             type: string
+            default: 20.50
     RequestEventSchedules:
       type: object
       properties:
         event_schedules_datetime:
-            type: string
+          type: string
+          default: 2024-03-31 15:20:00
+        event_schedules_description:
+          type: string
+          default: Gather#3
     RequestEventReferenceLinks:
       type: object
       properties:
         event_reference_links_link:
             type: string
+            default: https://google.com.sg
         event_reference_links_title:
             type: string
+            default: Google Singapore
     RequestEventAlbumLinks:
       type: object
       properties:
         event_album_link_album_url:
             type: string
+            default: https://photos.google.com
         event_album_link_visibility:
             type: string
+            default: 1
     RequestUserPreference:
       type: object
       properties:
@@ -1673,18 +1750,31 @@ components:
       properties:
         rewilding_type:
           type: string
+          default: 662696ebfc72a35c9b066f41
         rewilding_apply_official:
           type: boolean
+          default: true,
         rewilding_reference_information:
           type: string
+          default: www.google.com
         rewilding_pocket_list:
           type: string
+          default: 66005467624a973abd8787d7
         rewilding_name:
           type: string
+          default: TEST_REWILDING#2
         rewilding_lat:
           type: number
+          default: 7.9422379184033,
         rewilding_lng:
           type: number
+          default: 112.95275441058537
+    RequestCollaborativeLogQuestionnaire:
+      type: object
+      properties:
+        events_questionnaire_link:
+          type: string
+          default: https://surveycake.com/12
     ResponseGeneralSuccess:
       type: object
       properties:
