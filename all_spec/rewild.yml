@@ -371,6 +371,18 @@ paths:
                 $ref: '#/components/schemas/Events'
       tags: 
         - Event
+    options:
+      summary: Event
+      description: Event options
+      responses:
+        200:
+          description: New Event Object
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RewildingOptions'
+      tags: 
+        - Event
   /event/{eventId}:
     get:
       summary: Event
@@ -1087,9 +1099,7 @@ paths:
           content:
             application/json:
               schema:
-                type: array
-                items:
-                  $ref: '#/components/schemas/RefRewildingTypes'
+                $ref: '#/components/schemas/RewildingOptions'
       tags: 
         - Rewilding
   /rewilding/{rewildingId}:
@@ -1542,14 +1552,26 @@ components:
       properties:
         ref_rewilding_types_id:
           type: string
+          default: 662696ebfc72a35c9b066f41
         ref_rewilding_types_name:
           type: string
+          default: 登山
         ref_rewilding_types_name_en:
           type: string
+          default: Mountain Climbing
         ref_rewilding_types_google:
           type: string
+          default: national_park,hiking_area
         ref_rewilding_types_key:
           type: string
+          default: mountain_climbing
+    RewildingOptions:
+      type: object
+      properties:
+        rewilding_types:
+          type: array
+          items:
+            $ref: '#/components/schemas/RefRewildingTypes'
     Sharing:
       type: object
       properties:
