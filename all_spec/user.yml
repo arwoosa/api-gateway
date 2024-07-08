@@ -123,7 +123,7 @@ paths:
       summary: User login
       description: Use this endpoint to login using email
       requestBody:
-        description: Register emai object
+        description: Register email object
         content:
           application/json:
             schema:
@@ -190,7 +190,7 @@ paths:
       summary: User register
       description: Use this endpoint to register using email
       requestBody:
-        description: Register emai object
+        description: Register email object
         content:
           application/json:
             schema:
@@ -307,6 +307,29 @@ paths:
                 $ref: "#/components/schemas/UserFriends"
       tags:
         - User - Friends
+  
+  /contact-us:
+    post:
+      summary: Authentication
+      description: Retrieve the authenticated user detail
+      security:
+        - Bearer: []
+      requestBody:
+        description: Contact Us Object
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/RequestContactUs'
+      responses:
+        200:
+          description: User object
+          content:
+            application/json:
+              schema:
+                type: object
+                $ref: '#/components/schemas/ResponseGeneralSuccess'
+      tags: 
+        - Contact Us
 
 components:
   schemas:
@@ -382,6 +405,24 @@ components:
             type: string
           users_avatar:
             type: string
+    ContactUs:
+      type: object
+      properties:
+          contact_us_id:
+            type: string
+          contact_us_email:
+            type: string
+          contact_us_message:
+            type: string
+          contact_us_created_at:
+            type: string
+    RequestContactUs:
+      type: object
+      properties:
+          email:
+            type: string
+          message:
+            type: string
     RequestGoogleAuth:
       type: object
       properties:
@@ -423,6 +464,15 @@ components:
         users_username:
           type: string
           default: xiaolongbao
+        users_name:
+          type: string
+          default: Tommy
+        users_email:
+          type: string
+          default: tommy@oosa.ar.tw
+        users_setting_language:
+          type: string
+          default: en
     RequestUsersUpdatePassword:
       type: object
       properties:

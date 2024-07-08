@@ -371,7 +371,8 @@ paths:
                 $ref: '#/components/schemas/Events'
       tags: 
         - Event
-    options:
+  /event/references:
+    get:
       summary: Event
       description: Event options
       responses:
@@ -748,7 +749,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/RequestEventSchedules'
+              $ref: '#/components/schemas/RequestEventSchedulesBulk'
       responses:
         200:
           description: Array of EventReferenceLinks Object
@@ -1088,7 +1089,8 @@ paths:
                 $ref: '#/components/schemas/Rewilding'
       tags: 
         - Rewilding
-    options:
+  /rewilding/references:
+    get:
       summary: Retrieve all options on rewilding types
       description: Retrieve all options on rewilding types
       security:
@@ -1253,6 +1255,17 @@ components:
           users_created_at:
             type: string
             format: int32
+    UserAgg:
+      type: object
+      properties:
+          user_id:
+            type: string
+          user_name:
+            type: string
+          user_email:
+            type: string
+          user_avatar:
+            type: string
     UserFriends:
       type: object
       properties:
@@ -1366,6 +1379,8 @@ components:
           type: string
         event_accounting_updated_at:
           type: string
+        event_accounting_created_by_user:
+          $ref: '#/components/schemas/UserAgg'
     EventAlbumLink:
       type: object
       properties:
@@ -1402,6 +1417,8 @@ components:
           type: string
         event_message_board_is_pinned:
           type: integer
+        event_message_board_created_by_user:
+          $ref: '#/components/schemas/UserAgg'
     EventParticipants:
       type: object
       properties:
@@ -1427,6 +1444,8 @@ components:
           type: string
         event_participants_created_at:
           type: string
+        event_participants_user_detail:
+          $ref: '#/components/schemas/UserAgg'
     EventPolaroids:
       type: object
       properties:
@@ -1457,6 +1476,8 @@ components:
               type: string
           event_schedules_created_by:
               type: string
+          event_schedules_created_by_user:
+            $ref: '#/components/schemas/UserAgg'
     EventReferenceLinks:
       type: object
       properties:
@@ -1470,6 +1491,8 @@ components:
               type: string
           event_reference_links_created_by:
               type: string
+          event_reference_links_created_by_user:
+            $ref: '#/components/schemas/UserAgg'
     Rewilding:
       type: object
       properties:
@@ -1723,6 +1746,13 @@ components:
         event_accounting_amount:
             type: string
             default: 20.50
+    RequestEventSchedulesBulk:
+      type: object
+      properties:
+        schedule:
+          type: array
+          items:
+            $ref: '#/components/schemas/RequestEventSchedules'
     RequestEventSchedules:
       type: object
       properties:
