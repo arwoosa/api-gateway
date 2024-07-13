@@ -359,9 +359,9 @@ paths:
         - Bearer: []
       requestBody:
         content:
-          application/json:
+          multipart/form-data:
             schema:
-              $ref: '#/components/schemas/RequestEvent'
+              $ref: '#/components/schemas/RequestEventFormData'
       responses:
         200:
           description: New Event Object
@@ -859,6 +859,35 @@ paths:
                 $ref: '#/components/schemas/ResponseGeneralSuccess'
       tags: 
         - Event Accounting
+  /event/{eventId}/invitation:
+    put:
+      summary: Update Event Invitation Detail
+      description: Use this endpoint to update invitation message
+      parameters:
+        - name: eventId
+          in: path
+          description: String ID of the event
+          schema:
+            type: string
+          required: true
+      requestBody:
+        description: 1 - Accept, 0 Reject
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/RequestEventInvitationUpdate'
+      security:
+        - Bearer: []
+      responses:
+        200:
+          description: Event Object
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Events'
+      tags: 
+        - Event Invitation
   /my/event:
     get:
       summary: User Event
@@ -1075,7 +1104,7 @@ paths:
       requestBody:
         required: true
         content:
-          application/json:
+          multipart/form-data:
             schema:
               $ref: '#/components/schemas/RequestRewildingCreate'
       security:
@@ -1716,6 +1745,56 @@ components:
         events_meeting_point_lng:
             type: number
             default: 112.9654222278174
+    RequestEventFormData:
+      type: object
+      properties:
+        events_date:
+            type: string
+            default: 2024-06-01 09:00:00
+        events_date_end:
+            type: string
+            default: 2024-06-01 18:00:00
+        events_deadline:
+            type: string
+            default: 2024-05-26 00:00:00
+        events_name:
+            type: string
+            default: Hike to Bromo
+        events_place:
+            type: string
+            default: ChIJk9cKlIwgbzQR2BE-g395glo
+        events_rewilding:
+            type: string
+            default: 
+        events_payment_required:
+            type: integer
+            default: 0
+            format: int32
+        events_payment_fee:
+            type: number
+            default: 450
+        events_participant_limit:
+            type: number
+            default: 4
+        events_requires_approval:
+            type: integer
+            default: 1
+            format: int32
+        events_lat:
+            type: number
+            default: -7.9421532937069514
+        events_lng:
+            type: number
+            default: 112.95357004216902
+        events_meeting_point_lat:
+            type: number
+            default: -7.929088255289928
+        events_meeting_point_lng:
+            type: number
+            default: 112.9654222278174
+        events_photo:
+          type: string
+          format: binary
     RequestEventInvitation:
       type: object
       properties:
@@ -1780,6 +1859,12 @@ components:
         event_album_link_visibility:
             type: string
             default: 1
+    RequestEventInvitationUpdate:
+      type: object
+      properties:
+        events_invitation_message:
+            type: string
+            default: Hey! Join me in the next OOSA event
     RequestUserPreference:
       type: object
       properties:
@@ -1821,6 +1906,9 @@ components:
         rewilding_lng:
           type: number
           default: 112.95275441058537
+        rewilding_photo[]:
+          type: string
+          format: binary
     RequestCollaborativeLogQuestionnaire:
       type: object
       properties:
