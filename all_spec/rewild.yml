@@ -124,7 +124,8 @@ paths:
   /pocket-list:
     get:
       summary: Get pocket list 
-      description: Get pocket list 
+      description: > 
+        Get pocket list<br/>The following key may not show as it has no value: <br/>pocket_lists_deleted_at
       security:
         - Bearer: []
       responses:
@@ -161,7 +162,8 @@ paths:
   /pocket-list/{pocketListId}:
     get:
       summary: Get pocket list 
-      description: Get pocket list 
+      description: > 
+        Get pocket list<br/>The following key may not show as it has no value: <br/>pocket_lists_deleted_at
       parameters:
         - name: pocketListId
           in: path
@@ -231,7 +233,8 @@ paths:
   /pocket-list/{pocketListId}/items:
     get:
       summary: Get pocket list items by ID 
-      description: Get pocket list items by ID
+      description: > 
+        Get pocket list items by ID<br/><br/>The following key may not show as it has no value: <br/>pocket_list_items_deleted_at<br/>pocket_list_items_created_at
       parameters:
         - name: pocketListId
           in: path
@@ -1210,8 +1213,8 @@ paths:
         - Rewilding
   /rewilding-search:
     get:
-      summary: Search
-      description: Read a photo
+      summary: Search rewilding from Google
+      description: Search rewilding from Google
       parameters:
         - name: lat
           in: query
@@ -1241,11 +1244,57 @@ paths:
           content:
             application/json:
               schema:
-                type: array
-                items:
-                  $ref: "#/components/schemas/RewildingSearch"
+                $ref: "#/components/schemas/RewildingSearch"
       tags: 
-        - Rewilding Search   
+        - Rewilding Search
+  /rewilding-register:
+    get:
+      summary: Retrieve rewilding register
+      description: Retrieve rewilding register
+      security:
+        - Bearer: []
+      responses:
+        200:
+          description: Array of rewilding register objects
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Rewilding"
+      tags: 
+        - Rewilding Register
+    post:
+      summary: Create rewilding register
+      description: Create rewilding register
+      requestBody:
+        required: true
+        content:
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/RequestRewildingCreate'
+      security:
+        - Bearer: []
+      responses:
+        200:
+          description: Array of rewilding register objects
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Rewilding"
+      tags: 
+        - Rewilding Register
+  /rewilding-register/references:
+    get:
+      summary: Rewilding register
+      description: Rewilding register options
+      responses:
+        200:
+          description: Rewilding references object
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RewildingOptions'
+      tags: 
+        - Rewilding Register
 components:
   schemas:
     User:
@@ -1338,6 +1387,8 @@ components:
           type: string
         pocket_list_items_mst:
           type: string
+        pocket_list_items_name:
+          type: string
         pocket_list_items_event:
           type: string
         pocket_list_items_rewilding:
@@ -1363,6 +1414,8 @@ components:
           type: string
         events_place:
           type: string
+        events_city_id:
+          type: string
         events_type:
           type: string
         events_invitation_message:
@@ -1385,10 +1438,24 @@ components:
           type: number
         events_meeting_point_lng:
           type: number
+        events_statistic_time:
+          type: number
+        events_statistic_distance:
+          type: string
+        events_statistic_member_count:
+          type: number
+        events_photo:
+          type: string
         events_created_by:
           type: string
         events_created_at:
           type: string
+        events_updated_by:
+          type: string
+        events_updated_at:
+          type: string
+        events_created_by_user:
+          $ref: '#/components/schemas/UserAgg'
     EventAccounting:
       type: object
       properties:
@@ -1425,6 +1492,8 @@ components:
           type: string
         event_album_link_created_at:
           type: string
+        event_album_link_created_by_user:
+          $ref: '#/components/schemas/UserAgg'
     EventMessageBoard:
       type: object
       properties:
@@ -1492,6 +1561,8 @@ components:
           type: string
         event_polaroids_created_at:
           type: string
+        event_polaroids_created_by_user:
+          $ref: '#/components/schemas/UserAgg'
     EventSchedules:
       type: object
       properties:
@@ -1500,6 +1571,8 @@ components:
           event_schedules_event:
               type: string
           event_schedules_datetime:
+              type: string
+          event_schedules_description:
               type: string
           event_schedules_created_at:
               type: string
@@ -1529,6 +1602,8 @@ components:
           type: string
         rewilding_type:
           type: string
+        rewilding_type_data:
+          $ref: '#/components/schemas/RefRewildingTypes'
         rewilding_city:
           type: string
         rewilding_area:
@@ -1541,6 +1616,20 @@ components:
           type: number
         rewilding_lng:
           type: number
+        rewilding_place_id:
+          type: string
+        rewilding_elevation:
+          type: number
+        rewilding_photos:
+          type: array
+          items:
+            $ref: '#/components/schemas/RewildingPhotos'
+        rewilding_apply_official:
+          type: boolean
+        rewilding_created_by:
+          type: string
+        rewilding_created_at:
+          type: string
     RewildingApply:
       type: object
       properties:
@@ -1655,6 +1744,13 @@ components:
         collaborative_log_created_at:
           type: string
     RewildingSearch:
+      type: object
+      properties:
+        places:
+          type: array
+          items:
+            $ref: '#/components/schemas/RewildingSearchOne'
+    RewildingSearchOne:
       type: object
       properties:
         displayName:

@@ -9,7 +9,7 @@ paths:
   /auth:
     get:
       summary: Authentication
-      description: Retrieve the authenticated user detail
+      description: Retrieve the authenticated user detail. <br/>1. Google<br/>2. Line<br/>3. Email<br/>4. Facebook
       security:
         - Bearer: []
       responses:
@@ -158,10 +158,10 @@ paths:
             application/json:
               schema:
                 type: object
-                $ref: '#/components/schemas/User'
+                $ref: '#/components/schemas/ResponseGeneralSuccess'
       tags: 
         - Authentication
-  /auth/update-profile-picture:
+  /auth/profile-picture:
     post:
       summary: User profile picture
       description: Update profile picture
@@ -185,6 +185,90 @@ paths:
                 $ref: '#/components/schemas/User'
       tags: 
         - Authentication
+  /auth/avatar:
+    post:
+      summary: Update user avatar
+      description: Update user avatar
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/RequestAuthUpdateAvatar'
+      security:
+        - Bearer: []
+      responses:
+        200:
+          description: User object
+          content:
+            application/json:
+              schema:
+                type: object
+                $ref: '#/components/schemas/User'
+      tags: 
+        - Authentication
+  /auth/setting:
+    put:
+      summary: Update settings
+      description: Update settings<br/>1 - True (On)<br />0 - False (Off)
+      security:
+        - Bearer: []
+      requestBody:
+        description: Update settings object
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/RequestAuthUpdateSetting'
+      responses:
+        200:
+          description: User object
+          content:
+            application/json:
+              schema:
+                type: object
+                $ref: '#/components/schemas/User'
+      tags: 
+        - Authentication
+  /auth/badges:
+    get:
+      summary: User badges
+      description: Retrieve badges earned by user
+      parameters:
+        - name: single
+          in: query
+          description: Single acquire
+          schema:
+            type: boolean
+            default: true
+      security:
+        - Bearer: []
+      responses:
+        200:
+          description: User badges object
+          content:
+            application/json:
+              schema:
+                type: object
+                $ref: '#/components/schemas/UserBadges'
+      tags: 
+        - User Badges
+  /auth/notifications:
+    get:
+      summary: User notifications
+      description: Retrieve notifications
+      security:
+        - Bearer: []
+      responses:
+        200:
+          description: Notifications
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/UserNotifications'
+      tags: 
+        - User Notifications
   /register:
     post:
       summary: User register
@@ -310,8 +394,8 @@ paths:
   
   /contact-us:
     post:
-      summary: Authentication
-      description: Retrieve the authenticated user detail
+      summary: Contact Us
+      description: Create contact us record
       security:
         - Bearer: []
       requestBody:
@@ -330,6 +414,57 @@ paths:
                 $ref: '#/components/schemas/ResponseGeneralSuccess'
       tags: 
         - Contact Us
+  /forget-password:
+    post:
+      summary: Forget Password
+      description: Forget Password Request
+      security:
+        - Bearer: []
+      requestBody:
+        description: Forget Password Object
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/RequestForgetPassword'
+      responses:
+        200:
+          description: User object
+          content:
+            application/json:
+              schema:
+                type: object
+                $ref: '#/components/schemas/ResponseGeneralSuccess'
+      tags: 
+        - Forget Password
+  /forget-password/{token}:
+    post:
+      summary: Forget Password
+      description: Update password from forget password
+      security:
+        - Bearer: []
+      parameters:
+        - name: token
+          in: path
+          description: Token from password reset
+          schema:
+            type: integer
+          required: true
+      requestBody:
+        description: Reset Password Object
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/RequestForgetPasswordReset'
+      responses:
+        200:
+          description: User object
+          content:
+            application/json:
+              schema:
+                type: object
+                $ref: '#/components/schemas/ResponseGeneralSuccess'
+      tags: 
+        - Forget Password
 
 components:
   schemas:
@@ -357,23 +492,24 @@ components:
             type: string
           users_setting_language:
             type: string
-          users_vis_events:
+          users_setting_is_visible_friends:
             type: integer
             format: int32
-          users_setting_vis_achievement_journal:
+          users_setting_is_visible_statistics:
             type: integer
             format: int32
-          users_setting_vis_achievement_collab_log:
+          users_setting_visibility_activity_summary:
             type: integer
             format: int32
-          users_setting_vis_follow:
+          users_setting_friend_auto_add:
             type: integer
             format: int32
           users_is_subscribed:
-            type: integer
-            format: int32
+            type: boolean
+            default: false
           users_is_business:
             type: boolean
+            default: false
           users_created_at:
             type: string
             format: int32
@@ -397,14 +533,79 @@ components:
         user_followings_created_at:
           type: string
     UserFriends:
+      type: array
+      items:
+        oneOf:
+          - $ref: "#/components/schemas/UserFriendsOne"
+    UserFriendsOne:
       type: object
       properties:
           users_id:
             type: string
+            default: 6613fae21977170d4fd608a6
           users_name:
             type: string
+            default: Tommy
           users_avatar:
             type: string
+            default: AVATAR_1
+    UserBadges:
+      type: object
+      properties:
+          user_badges_id:
+            type: string
+            default: 669556094dc5739b71e173fe
+          user_badges_user:
+            type: string
+            default: 65f6861102948c60bcb3cb1d
+          user_badges_badge:
+            type: string
+            default: 6695534c1da4d6fee70fc3e4
+          user_badges_created_at:
+            type: string
+            default: 2024-07-15T17:02:01.037Z
+          user_badges_detail:
+            type: object
+            $ref: "#/components/schemas/UserBadgesDetail"
+    UserBadgesDetail:
+      type: object
+      properties:
+          badges_id:
+            type: string
+            default: 6695534c1da4d6fee70fc3e4
+          badges_code:
+            type: string
+            default: N1
+          badges_name:
+            type: string
+            default: 1st. Rewild
+    UserNotifications:
+      type: object
+      properties:
+        notifications_id:
+          type: string
+          default: 669560b1e7777ddfc76043c2
+        notifications_code:
+          type: string
+          default: Invitation
+        notifications_type:
+          type: string
+          default: New
+        notifications_user:
+          type: string
+          default: 65f6861102948c60bcb3cb1d
+        notifications_message:
+          type: string
+          default: TEST
+        notifications_identifier:
+          type: string
+          default: 66005b3ef4ca36269a55b468
+        notifications_created_at:
+          type: string
+          default: 2024-07-15T17:47:29.074Z
+        notifications_created_by:
+          type: string
+          default: 65f6861102948c60bcb3cb1d
     ContactUs:
       type: object
       properties:
@@ -473,6 +674,42 @@ components:
         users_setting_language:
           type: string
           default: en
+    RequestAuthUpdateSetting:
+      type: object
+      properties:
+        users_setting_is_visible_friends:
+          type: number
+          default: 1
+        users_setting_is_visible_statistics:
+          type: number
+          default: 1
+        users_setting_visibility_activity_summary:
+          type: number
+          default: 1
+        users_setting_friend_auto_add:
+          type: number
+          default: 0
+    RequestAuthUpdateAvatar:
+      type: object
+      properties:
+        users_avatar:
+          type: string
+          default: AVATAR_1
+    RequestForgetPassword:
+      type: object
+      properties:
+        email:
+          type: string
+          default: tommy@oosa.ar.tw
+    RequestForgetPasswordReset:
+      type: object
+      properties:
+        email:
+          type: string
+          default: tommy@oosa.ar.tw
+        password:
+          type: string
+          default: 123456
     RequestUsersUpdatePassword:
       type: object
       properties:
