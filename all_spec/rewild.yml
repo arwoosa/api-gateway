@@ -7,120 +7,6 @@ info:
 
 
 paths:
-  /me/event-invitation:
-     get:
-      summary: Event Invitation
-      description: Retrieve all invitation
-      security:
-        - Bearer: []
-      responses:
-        200:
-          description: Event invitation object
-          content:
-            application/json:
-              schema:
-                type: array
-                items:
-                  $ref: '#/components/schemas/Events'
-      tags: 
-        - Authenticated User Menu
-  /me/event-invitation/{eventInvitationId}:
-     get:
-      summary: Event Invitation
-      description: Retrieve event invitation by ID
-      parameters:
-        - name: eventInvitationId
-          in: path
-          description: String ID of the event
-          schema:
-            type: string
-          required: true
-      security:
-        - Bearer: []
-      responses:
-        200:
-          description: Event invitation object
-      tags: 
-        - Authenticated User Menu
-     put:
-      summary: Update Event Invitation
-      description: Update event invitation (approve or reject)
-      parameters:
-        - name: eventInvitationId
-          in: path
-          schema:
-            type: string
-          required: true
-          description: String ID of the event
-      requestBody:
-        description: 1 - Accept, 0 Reject
-        required: true
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/RequestEventInvitation'
-      security:
-        - Bearer: []
-      responses:
-        200:
-          description: Event invitation object
-      tags: 
-        - Authenticated User Menu
-  /me/friends:
-    get:
-      summary: Retrieve user's friends (following)
-      description: Retrieve user's friends (following)
-      security:
-        - Bearer: []
-      responses:
-        200:
-          description: Array of User Object
-          content:
-            application/json:
-              schema:
-                type: array
-                items:
-                  $ref: '#/components/schemas/UserFriends'
-      tags: 
-        - Authenticated User Menu
-  /me/preferences:
-    get:
-      summary: Retrieve user's preferences
-      description: Retrieve user preferences (language, avatar, preference)
-      security:
-        - Bearer: []
-      responses:
-        200:
-          description: Auth User Object
-          content:
-            application/json:
-              schema:
-                type: object
-                $ref: '#/components/schemas/User'
-      tags: 
-        - Authenticated User Menu
-    put:
-      summary: Update user preferences
-      description: Update user preferences (language, avatar, preference)
-      security:
-        - Bearer: []
-      requestBody:
-        description: Visibility 1 = true, 0 = false. Language used ISO3166
-        required: true
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/RequestUserPreference'
-      responses:
-        200:
-          description: Auth User Object
-          content:
-            application/json:
-              schema:
-                type: object
-                $ref: '#/components/schemas/User'
-      tags: 
-        - Authenticated User Menu
   /pocket-list:
     get:
       summary: Get pocket list 
@@ -137,8 +23,10 @@ paths:
                 type: array
                 items:
                   $ref: '#/components/schemas/PocketList'
+        204:
+          description: No pocket list found
       tags: 
-        - Pocket List
+        - ✅ Pocket List
     post:
       summary: Create new pocket list 
       description: Create pocket list 
@@ -158,7 +46,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/PocketList'
       tags: 
-        - Pocket List
+        - ✅ Pocket List
   /pocket-list/{pocketListId}:
     get:
       summary: Get pocket list 
@@ -180,8 +68,10 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/PocketList'
+        204:
+          description: No pocket list found
       tags: 
-        - Pocket List
+        - ✅ Pocket List
     put:
       summary: Update existing pocket list 
       description: Update existing pocket list 
@@ -207,8 +97,10 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/PocketList'
+        204:
+          description: No pocket list found
       tags: 
-        - Pocket List
+        - ✅ Pocket List
     delete:
       summary: Delete pocket list 
       description: Delete pocket list 
@@ -228,8 +120,10 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ResponseGeneralSuccess'
+        204:
+          description: No pocket list found
       tags: 
-        - Pocket List
+        - ✅ Pocket List
   /pocket-list/{pocketListId}/items:
     get:
       summary: Get pocket list items by ID 
@@ -253,8 +147,10 @@ paths:
                 type: array
                 items:
                   $ref: '#/components/schemas/PocketListItems'
+        204:
+          description: No pocket list found
       tags: 
-        - Pocket List
+        - ✅ Pocket List
     post:
       summary: Add to pocket list
       description: Add to pocket list
@@ -281,8 +177,10 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/PocketListItems'
+        204:
+          description: No pocket list found
       tags: 
-        - Pocket List
+        - ✅ Pocket List
   /pocket-list/{pocketListId}/items/{pocketListItemsId}:
     get:
       summary: Get pocket list item by ID 
@@ -309,8 +207,46 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/PocketListItems'
+        204:
+          description: No pocket list found
       tags: 
-        - Pocket List
+        - ✅ Pocket List
+    put:
+      summary: Move pocket list item to another list
+      description: Move pocket list item to another list
+      requestBody:
+        description: Pass either one of the two parameter
+        required: true
+        content: 
+          application/json:
+            schema:
+              $ref: '#/components/schemas/RequestPocketListUpdate'
+      parameters:
+        - name: pocketListId
+          in: path
+          description: String ID of the user to get pocket list
+          schema:
+            type: string
+          required: true
+        - name: pocketListItemsId
+          in: path
+          description: String ID of the user to get pocket list item
+          schema:
+            type: string
+          required: true
+      security:
+        - Bearer: []
+      responses:
+        200:
+          description: Success message
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ResponseGeneralSuccess'
+        204:
+          description: No pocket list found
+      tags: 
+        - ✅ Pocket List
     delete:
       summary: Delete pocket list item by ID 
       description: Delete pocket list item by ID
@@ -336,8 +272,10 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ResponseGeneralSuccess'
+        204:
+          description: No pocket list found
       tags: 
-        - Pocket List
+        - ✅ Pocket List
   /event:
     get:
       summary: Event
@@ -353,8 +291,10 @@ paths:
                 type: array
                 items:
                   $ref: '#/components/schemas/Events'
+        204:
+          description: No event found
       tags: 
-        - Event
+        - ✅ Event
     post:
       summary: Event
       description: Create new event
@@ -373,7 +313,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/Events'
       tags: 
-        - Event
+        - ✅ Event
   /event/references:
     get:
       summary: Event
@@ -386,7 +326,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/RewildingOptions'
       tags: 
-        - Event
+        - ✅ Event
   /event/{eventId}:
     get:
       summary: Event
@@ -407,8 +347,10 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Events'
+        204:
+          description: No event found
       tags: 
-        - Event
+        - ✅ Event
     put:
       summary: Event
       description: Update an event
@@ -433,8 +375,16 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Events'
+        204:
+          description: No event found
+        400:
+          description: Validation error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ResponseValidationError'
       tags: 
-        - Event
+        - ✅ Event
     delete:
       summary: Event
       description: Delete an event
@@ -453,9 +403,11 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ResponseGeneralSuccess'
+                $ref: '#/components/schemas/EventsDeleted'
+        204:
+          description: No event found
       tags: 
-        - Event
+        - ✅ Event
   /event/{eventId}/participants:
     get:
       summary: Event
@@ -478,8 +430,10 @@ paths:
                 type: array
                 items:
                   $ref: '#/components/schemas/EventParticipants'
+        204:
+          description: No event found
       tags: 
-        - Event Participants
+        - ✅ Event Participants
     post:
       summary: Invite a participant to event
       description: Invite a participant to event
@@ -503,14 +457,29 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/EventParticipants'
+                $ref: '#/components/schemas/EventParticipantsSimple'
+        204:
+          description: No event found
+        400:
+          description: Validation error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ResponseValidationError'
       tags: 
-        - Event Participants
+        - ✅ Event Participants
+  /event/{eventId}/participants/{participantId}:
     delete:
       summary: Event
       description: Remove a participant from an event
       parameters:
         - name: eventId
+          in: path
+          description: String ID of the event
+          schema:
+            type: string
+          required: true
+        - name: participantId
           in: path
           description: String ID of the event
           schema:
@@ -525,8 +494,10 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ResponseGeneralSuccess'
+        204:
+          description: No event/participant found
       tags: 
-        - Event Participants
+        - ✅ Event Participants
   /event/{eventId}/message-board:
     get:
       summary: Event Message Board
@@ -549,11 +520,14 @@ paths:
                 type: array
                 items:
                   $ref: '#/components/schemas/EventMessageBoard'
+        204:
+          description: No event message board found
       tags: 
-        - Event Message Board
+        - ✅ Event Message Board
     post:
       summary: Event Message Board
-      description: Create an entry on event's message board
+      description: > 
+        Create an entry on event's message board<br/>The following key may not show as it has no value: <br/>event_message_board_status<br/>event_message_board_category<br/> event_message_board_announcement
       parameters:
         - name: eventId
           in: path
@@ -576,8 +550,10 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/EventMessageBoard'
+        204:
+          description: No event message board found
       tags: 
-        - Event Message Board
+        - ✅ Event Message Board
   /event/{eventId}/message-board/{messageBoardId}:
     delete:
       summary: Delete message board entry
@@ -604,43 +580,10 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ResponseGeneralSuccess'
+        204:
+          description: No event message board found
       tags: 
-        - Event Message Board
-  /event/{eventId}/itinerary:
-    get:
-      summary: Event Itinerary
-      description: Retrieve an event's itinerary
-      parameters:
-        - name: eventId
-          in: path
-          description: String ID of the event
-          schema:
-            type: string
-          required: true
-      security:
-        - Bearer: []
-      responses:
-        200:
-          description: Event Object with itinerary
-      tags: 
-        - Event
-    put:
-      summary: Event Message Board
-      description: Itinerary co-edit
-      parameters:
-        - name: eventId
-          in: path
-          description: String ID of the event
-          schema:
-            type: string
-          required: true
-      security:
-        - Bearer: []
-      responses:
-        200:
-          description: Event Object with itinerary
-      tags: 
-        - Event
+        - ✅ Event Message Board
   /event/{eventId}/reference-links:
     get:
       summary: Event Reference Links
@@ -664,7 +607,7 @@ paths:
                 items:
                   $ref: '#/components/schemas/EventReferenceLinks'
       tags: 
-        - Event Reference Links
+        - ✅ Event Reference Links
     post:
       summary: Create Reference Links
       description: Create an event's reference links
@@ -688,9 +631,18 @@ paths:
           content:
             application/json:
               schema:
-                  $ref: '#/components/schemas/EventReferenceLinks'
+                  $ref: '#/components/schemas/EventReferenceLinksSimple'
+        204:
+          description: No reference link found
+        400:
+          description: Validation error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ResponseValidationError'
       tags: 
-        - Event Reference Links
+        - ✅ Event Reference Links
+  /event/{eventId}/reference-links/{referenceLinkId}:
     delete:
       summary: Event Reference Links
       description: Delete an event's reference links
@@ -698,6 +650,12 @@ paths:
         - name: eventId
           in: path
           description: String ID of the event
+          schema:
+            type: string
+          required: true
+        - name: referenceLinkId
+          in: path
+          description: String ID of the reference link
           schema:
             type: string
           required: true
@@ -710,8 +668,10 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ResponseGeneralSuccess'
+        204:
+          description: No reference link found
       tags: 
-        - Event Reference Links
+        - ✅ Event Reference Links
   /event/{eventId}/schedule:
     get:
       summary: Event Schedule
@@ -734,8 +694,10 @@ paths:
                 type: array
                 items:
                   $ref: '#/components/schemas/EventSchedules'
+        204:
+          description: No schedule or event found
       tags: 
-        - Event Schedule
+        - ✅ Event Schedule
     post:
       summary: Create Event Schedule
       description: Create an event's schedule
@@ -755,13 +717,17 @@ paths:
               $ref: '#/components/schemas/RequestEventSchedulesBulk'
       responses:
         200:
-          description: Array of EventReferenceLinks Object
+          description: Array of schedules
           content:
             application/json:
               schema:
+                type: array
+                items:
                   $ref: '#/components/schemas/EventSchedules'
+        204:
+          description: No event found
       tags: 
-        - Event Schedule
+        - ✅ Event Schedule
     delete:
       summary: Delete Event Schedule
       description: Delete an event's schedule
@@ -782,11 +748,12 @@ paths:
               schema:
                 $ref: '#/components/schemas/ResponseGeneralSuccess'
       tags: 
-        - Event Schedule
+        - ✅ Event Schedule
   /event/{eventId}/accounting:
     get:
       summary: Event Accounting
-      description: Retrieve an event's accounting
+      description: > 
+        Retrieve an event's accounting<br/>The following key may not show as it has no value: <br/>event_accounting_updated_at
       parameters:
         - name: eventId
           in: path
@@ -805,8 +772,10 @@ paths:
                 type: array
                 items:
                   $ref: '#/components/schemas/EventAccounting'
+        204:
+          description: No event accounting found
       tags: 
-        - Event Accounting
+        - ✅ Event Accounting
     post:
       summary: Create Event Accounting
       description: Create an entry on event's accounting
@@ -827,13 +796,21 @@ paths:
               $ref: '#/components/schemas/RequestEventAccounting'
       responses:
         200:
-          description: New EventMessageBoard Object
+          description: New event accounting Object
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/EventAccounting'
+                $ref: '#/components/schemas/EventAccountingSingle'
+        204:
+          description: No event accounting found
+        400:
+          description: Validation error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ResponseValidationError'
       tags: 
-        - Event Accounting
+        - ✅ Event Accounting
   /event/{eventId}/accounting/{accountingId}:
     delete:
       summary: Delete accounting entry
@@ -860,8 +837,16 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ResponseGeneralSuccess'
+        204:
+          description: No event accounting found
+        400:
+          description: Validation error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ResponseValidationError'
       tags: 
-        - Event Accounting
+        - ✅ Event Accounting
   /event/{eventId}/invitation:
     put:
       summary: Update Event Invitation Detail
@@ -874,12 +859,12 @@ paths:
             type: string
           required: true
       requestBody:
-        description: 1 - Accept, 0 Reject
+        description: Invitation message
         required: true
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/RequestEventInvitationUpdate'
+              $ref: '#/components/schemas/RequestEventInvitationMessageUpdate'
       security:
         - Bearer: []
       responses:
@@ -889,8 +874,89 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Events'
+        204:
+          description: No event found
+        400:
+          description: Validation error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ResponseValidationError'
       tags: 
-        - Event Invitation
+        - ✅ Event Invitation - Detail
+  /event-invitation:
+    get:
+      summary: Retrieve all event invitations
+      description: Retrieve all event invitations
+      security:
+        - Bearer: []
+      responses:
+        200:
+          description: Success message
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/EventParticipantsSimple'
+        204:
+          description: No event invitation found
+      tags: 
+        - ✅ Event Invitation
+  /event-invitation/{eventInvitationId}:
+    get:
+      summary: Read event invitations
+      description: Read event invitations
+      parameters:
+        - name: eventInvitationId
+          in: path
+          description: String ID of the event invitation
+          schema:
+            type: string
+          required: true
+      security:
+        - Bearer: []
+      responses:
+        200:
+          description: Success message
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EventParticipantsSimple'
+        204:
+          description: No event invitation found
+      tags: 
+        - ✅ Event Invitation
+    put:
+      summary: Change event invitation status
+      description: Change event invitation status
+      parameters:
+        - name: eventInvitationId
+          in: path
+          description: String ID of the event invitation
+          schema:
+            type: string
+          required: true
+      requestBody:
+        description: Invitation status<br>1 Accept<br>0 Reject
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/RequestEventInvitationUpdate'
+      security:
+        - Bearer: []
+      responses:
+        200:
+          description: Success message
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EventParticipantsSimple'
+        204:
+          description: No event invitation found
+      tags: 
+        - ✅ Event Invitation
   /my/event:
     get:
       summary: User Event
@@ -929,30 +995,10 @@ paths:
                 type: array
                 items:
                   $ref: '#/components/schemas/Events'
+        204:
+          description: No collaborative log found
       tags: 
-        - Event Collaborate
-  /collaborative-log/{eventId}:
-    get:
-      summary: Event Collaborate
-      description: Retrieve detail on event
-      parameters:
-        - name: eventId
-          in: path
-          description: String ID of the event
-          schema:
-            type: string
-          required: true
-      security:
-        - Bearer: []
-      responses:
-        200:
-          description: Event Object
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Events'
-      tags: 
-        - Event Collaborate
+        - ✅ Event Collaborate
   /collaborative-log/{eventId}/album-link:
     get:
       summary: Event Collaborate
@@ -975,8 +1021,10 @@ paths:
                 type: array
                 items:
                   $ref: '#/components/schemas/EventAlbumLink'
+        204:
+          description: No collaborative log found
       tags: 
-        - Event Collaborate
+        - ✅ Event Collaborate
     post:
       summary: Event Collaborate
       description: Retrieve album link in event
@@ -1000,9 +1048,17 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/EventAlbumLink'
+                $ref: '#/components/schemas/EventAlbumLinkSimple'
+        204:
+          description: No collaborative log found
+        400:
+          description: Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ResponseGeneralError'
       tags: 
-        - Event Collaborate
+        - ✅ Event Collaborate
   /collaborative-log/{eventId}/polaroid:
     get:
       summary: Event Polaroid
@@ -1025,11 +1081,13 @@ paths:
                 type: array
                 items:
                   $ref: '#/components/schemas/EventPolaroids'
+        204:
+          description: No collaborative log found
       tags: 
-        - Event Collaborate
+        - ✅ Event Collaborate
     post:
       summary: Event Polaroid
-      description: Create event polaroid (Uploaded file will be uploaded on Flickr). Read location data and save to database
+      description: Create event polaroid (Uploaded file will be uploaded on Cloudflare). Read location data and save to database
       parameters:
         - name: eventId
           in: path
@@ -1054,9 +1112,11 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/EventAlbumLink'
+                $ref: '#/components/schemas/EventPolaroidsSimple'
+        204:
+          description: No collaborative log found
       tags: 
-        - Event Collaborate
+        - ✅ Event Collaborate
   /collaborative-log/{eventId}/questionnaire:
     post:
       summary: Event Polaroid
@@ -1081,9 +1141,11 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Events'
+                $ref: '#/components/schemas/EventsSimple'
+        204:
+          description: No collaborative log found
       tags: 
-        - Event Collaborate
+        - ✅ Event Collaborate
   /rewilding:
     get:
       summary: Retrieve all rewilding spots
@@ -1100,7 +1162,7 @@ paths:
                 items:
                   $ref: '#/components/schemas/Rewilding'
       tags: 
-        - Rewilding
+        - ✅ Rewilding
     post:
       summary: Create rewilding spot
       description: Create rewilding spot by user
@@ -1119,8 +1181,14 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Rewilding'
+        400:
+          description: Validation error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ResponseValidationError'
       tags: 
-        - Rewilding
+        - ✅ Rewilding
   /rewilding/references:
     get:
       summary: Retrieve all options on rewilding types
@@ -1135,7 +1203,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/RewildingOptions'
       tags: 
-        - Rewilding
+        - ✅ Rewilding
   /rewilding/{rewildingId}:
     get:
       summary: Read a rewilding spot
@@ -1157,7 +1225,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/Rewilding'
       tags: 
-        - Rewilding
+        - ✅ Rewilding
   /rewilding/{rewildingId}/photos:
     get:
       summary: Retrieve all photos tied to a rewilding
@@ -1173,7 +1241,7 @@ paths:
         - Bearer: []
       responses:
         200:
-          description: Array of Rewilding Photo ID
+          description: Array of Rewilding Photo ID<br>If rewilding_photos_path is available use URL else access photo through /rewilding/{rewildingId}/photos/{photoId}
           content:
             application/json:
               schema:
@@ -1181,7 +1249,7 @@ paths:
                 items:
                   $ref: '#/components/schemas/RewildingPhotos'
       tags: 
-        - Rewilding
+        - ✅ Rewilding
   /rewilding/{rewildingId}/photos/{photoId}:
     get:
       summary: Read a photo
@@ -1210,7 +1278,7 @@ paths:
                 type: string
                 format: binary
       tags: 
-        - Rewilding
+        - ✅ Rewilding
   /rewilding-search:
     get:
       summary: Search rewilding from Google
@@ -1246,7 +1314,7 @@ paths:
               schema:
                 $ref: "#/components/schemas/RewildingSearch"
       tags: 
-        - Rewilding Search
+        - ✅ Rewilding Search
   /rewilding-register:
     get:
       summary: Retrieve rewilding register
@@ -1376,8 +1444,6 @@ components:
         pocket_lists_count:
           type: integer
           format: int32
-        pocket_lists_deleted_at:
-          type: string
         pocket_lists_created_at:
           type: string
     PocketListItems:
@@ -1392,8 +1458,6 @@ components:
         pocket_list_items_event:
           type: string
         pocket_list_items_rewilding:
-          type: string
-        pocket_list_items_deleted_at:
           type: string
         pocket_list_items_created_at:
           type: string
@@ -1415,8 +1479,6 @@ components:
         events_place:
           type: string
         events_city_id:
-          type: string
-        events_type:
           type: string
         events_invitation_message:
           type: string
@@ -1456,6 +1518,139 @@ components:
           type: string
         events_created_by_user:
           $ref: '#/components/schemas/UserAgg'
+    EventsSimple:
+      type: object
+      properties:
+        events_id:
+          type: string
+        events_date:
+          type: string
+        events_date_end:
+          type: string
+        events_deadline:
+          type: string
+        events_name:
+          type: string
+        events_rewilding:
+          type: string
+        events_place:
+          type: string
+        events_city_id:
+          type: string
+        events_invitation_message:
+          type: string
+        events_participant_limit:
+          type: number
+        events_payment_required:
+          type: integer
+        events_payment_fee:
+          type: string
+        events_requires_approval:
+          type: integer
+        events_questionnaire_link:
+          type: string
+        events_lat:
+          type: number
+        events_lng:
+          type: number
+        events_meeting_point_lat:
+          type: number
+        events_meeting_point_lng:
+          type: number
+        events_statistic_time:
+          type: number
+        events_statistic_distance:
+          type: string
+        events_statistic_member_count:
+          type: number
+        events_photo:
+          type: string
+        events_created_by:
+          type: string
+        events_created_at:
+          type: string
+        events_updated_by:
+          type: string
+        events_updated_at:
+          type: string
+    EventsDeleted:
+      type: object
+      properties:
+        events_id:
+          type: string
+        events_date:
+          type: string
+        events_date_end:
+          type: string
+        events_deadline:
+          type: string
+        events_name:
+          type: string
+        events_rewilding:
+          type: string
+        events_place:
+          type: string
+        events_city_id:
+          type: string
+        events_invitation_message:
+          type: string
+        events_participant_limit:
+          type: number
+        events_payment_required:
+          type: integer
+        events_payment_fee:
+          type: string
+        events_requires_approval:
+          type: integer
+        events_questionnaire_link:
+          type: string
+        events_lat:
+          type: number
+        events_lng:
+          type: number
+        events_meeting_point_lat:
+          type: number
+        events_meeting_point_lng:
+          type: number
+        events_statistic_time:
+          type: number
+        events_statistic_distance:
+          type: string
+        events_statistic_member_count:
+          type: number
+        events_photo:
+          type: string
+        events_deleted:
+          type: number
+        events_deleted_at:
+          type: string
+        events_created_by:
+          type: string
+        events_created_at:
+          type: string
+        events_updated_by:
+          type: string
+        events_updated_at:
+          type: string
+    EventAccountingSingle:
+      type: object
+      properties:
+        event_accounting_id:
+          type: string
+        event_accounting_event:
+          type: string
+        event_accounting_message:
+          type: string
+        event_accounting_amount:
+          type: number
+        event_accounting_created_by:
+          type: string
+        event_accounting_created_at:
+          type: string
+        event_accounting_updated_by:
+          type: string
+        event_accounting_updated_at:
+          type: string
     EventAccounting:
       type: object
       properties:
@@ -1494,6 +1689,21 @@ components:
           type: string
         event_album_link_created_by_user:
           $ref: '#/components/schemas/UserAgg'
+    EventAlbumLinkSimple:
+      type: object
+      properties:
+        event_album_link_id:
+          type: string
+        event_album_link_event:
+          type: string
+        event_album_link_album_url:
+          type: string
+        event_album_link_visibility:
+          type: integer
+        event_album_link_created_by:
+          type: string
+        event_album_link_created_at:
+          type: string
     EventMessageBoard:
       type: object
       properties:
@@ -1517,6 +1727,27 @@ components:
           type: integer
         event_message_board_created_by_user:
           $ref: '#/components/schemas/UserAgg'
+    EventMessageBoardSimple:
+      type: object
+      properties:
+        event_message_board_id:
+          type: string
+        event_message_board_event:
+          type: string
+        event_message_board_base_message:
+          type: string
+        event_message_board_status:
+          type: integer
+        event_message_board_category:
+          type: string
+        event_message_board_announcement:
+          type: string
+        event_message_board_created_by:
+          type: string
+        event_message_board_created_at:
+          type: string
+        event_message_board_is_pinned:
+          type: integer
     EventParticipants:
       type: object
       properties:
@@ -1544,6 +1775,31 @@ components:
           type: string
         event_participants_user_detail:
           $ref: '#/components/schemas/UserAgg'
+    EventParticipantsSimple:
+      type: object
+      properties:
+        event_participants_id:
+          type: string
+        event_participants_event:
+          type: string
+        event_participants_user:
+          type: string
+        event_participants_status:
+          type: string
+        event_participants_is_paid:
+          type: integer
+        event_participants_paid_amount:
+          type: number
+        event_participants_paid_at:
+          type: string
+        event_participants_payment_request:
+          type: string
+        event_participants_payment_response:
+          type: string
+        event_participants_created_by:
+          type: string
+        event_participants_created_at:
+          type: string
     EventPolaroids:
       type: object
       properties:
@@ -1563,6 +1819,23 @@ components:
           type: string
         event_polaroids_created_by_user:
           $ref: '#/components/schemas/UserAgg'
+    EventPolaroidsSimple:
+      type: object
+      properties:
+        event_polaroids_id:
+          type: string
+        event_polaroids_event:
+          type: string
+        event_polaroids_url:
+          type: string
+        event_polaroids_lat:
+          type: number
+        event_polaroids_lng:
+          type: number
+        event_polaroids_created_by:
+          type: string
+        event_polaroids_created_at:
+          type: string
     EventSchedules:
       type: object
       properties:
@@ -1589,12 +1862,29 @@ components:
               type: string
           event_reference_links_link:
               type: string
+          event_reference_links_title:
+              type: string
           event_reference_links_created_at:
               type: string
           event_reference_links_created_by:
               type: string
           event_reference_links_created_by_user:
             $ref: '#/components/schemas/UserAgg'
+    EventReferenceLinksSimple:
+      type: object
+      properties:
+          event_reference_links_id:
+              type: string
+          event_reference_links_event:
+              type: string
+          event_reference_links_link:
+              type: string
+          event_reference_links_title:
+              type: string
+          event_reference_links_created_at:
+              type: string
+          event_reference_links_created_by:
+              type: string
     Rewilding:
       type: object
       properties:
@@ -1666,6 +1956,8 @@ components:
       type: object
       properties:
         rewilding_photos_id:
+          type: string
+        rewilding_photos_path:
           type: string
     RewildingWiki:
       type: object
@@ -1785,6 +2077,11 @@ components:
         pocket_lists_name:
           type: string
           default: Want to visit
+    RequestPocketListUpdate:
+      type: object
+      properties:
+        pocket_list_items_mst:
+          type: string
     RequestPocketListItem:
       type: object
       properties:
@@ -1958,6 +2255,12 @@ components:
     RequestEventInvitationUpdate:
       type: object
       properties:
+        event_participants_status:
+            type: number
+            default: 0
+    RequestEventInvitationMessageUpdate:
+      type: object
+      properties:
         events_invitation_message:
             type: string
             default: Hey! Join me in the next OOSA event
@@ -2015,6 +2318,19 @@ components:
       type: object
       properties:
         message:
+          type: string
+    ResponseValidationError:
+      type: object
+      properties:
+        code:
+          type: string
+        message:
+          type: string
+        data:
+          type: array
+          items:
+            type: string
+        validation: 
           type: string
     ResponseGeneralError:
       type: object

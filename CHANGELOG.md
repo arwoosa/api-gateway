@@ -1,3 +1,11 @@
+# CHANGELOG 1.1.1
+## Changes
+Changes in API Specifications (checking)
+- Auth
+- Events
+- Rewilding
+- Collaborative Log
+
 # CHANGELOG 1.1.0
 ## Changes
 User 
