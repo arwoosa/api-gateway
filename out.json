@@ -1,0 +1,571 @@
+{
+  "group": [
+    {
+      "description": "Get pocket list items by ID",
+      "endpoint": "/pocket-list/{pocketListId}/items",
+      "method": "GET",
+      "backend": "/pocket-list/{pocketListId}/items",
+      "host": [
+        "http://oosa_rewild:6080"
+      ]
+    },
+    {
+      "description": "Add to pocket list",
+      "endpoint": "/pocket-list/{pocketListId}/items",
+      "method": "POST",
+      "backend": "/pocket-list/{pocketListId}/items",
+      "host": [
+        "http://oosa_rewild:6080"
+      ]
+    },
+    {
+      "description": "Read a photo",
+      "endpoint": "/rewilding/{rewildingId}/photos/{photoId}",
+      "method": "GET",
+      "backend": "/rewilding/{rewildingId}/photos/{photoId}",
+      "host": [
+        "http://oosa_rewild:6080"
+      ]
+    },
+    {
+      "description": "Use this endpoint to login/register using Facebook",
+      "endpoint": "/auth/facebook",
+      "method": "POST",
+      "backend": "/auth/facebook",
+      "host": [
+        "http://oosa_user:6080"
+      ]
+    },
+    {
+      "description": "Retrieve event polaroid",
+      "endpoint": "/event-collaborate/{eventId}/polaroid",
+      "method": "GET",
+      "backend": "/event-collaborate/{eventId}/polaroid",
+      "host": [
+        "http://oosa_rewild:6080"
+      ]
+    },
+    {
+      "description": "Create event polaroid (Uploaded file will be uploaded on Flickr). Read location data and save to database",
+      "endpoint": "/event-collaborate/{eventId}/polaroid",
+      "method": "POST",
+      "backend": "/event-collaborate/{eventId}/polaroid",
+      "host": [
+        "http://oosa_rewild:6080"
+      ]
+    },
+    {
+      "description": "Delete user following",
+      "endpoint": "/user-following/{userFollowingId}",
+      "method": "DELETE",
+      "backend": "/user-following/{userFollowingId}",
+      "host": [
+        "http://oosa_user:6080"
+      ]
+    },
+    {
+      "description": "Get user following",
+      "endpoint": "/user-following/{userFollowingId}",
+      "method": "GET",
+      "backend": "/user-following/{userFollowingId}",
+      "host": [
+        "http://oosa_user:6080"
+      ]
+    },
+    {
+      "description": "Retrieve album link in event",
+      "endpoint": "/event-collaborate/{eventId}/album-link",
+      "method": "GET",
+      "backend": "/event-collaborate/{eventId}/album-link",
+      "host": [
+        "http://oosa_rewild:6080"
+      ]
+    },
+    {
+      "description": "Retrieve album link in event",
+      "endpoint": "/event-collaborate/{eventId}/album-link",
+      "method": "POST",
+      "backend": "/event-collaborate/{eventId}/album-link",
+      "host": [
+        "http://oosa_rewild:6080"
+      ]
+    },
+    {
+      "description": "Retrieve an event's message board",
+      "endpoint": "/event/{eventId}/message-board",
+      "method": "GET",
+      "backend": "/event/{eventId}/message-board",
+      "host": [
+        "http://oosa_rewild:6080"
+      ]
+    },
+    {
+      "description": "Create an entry on event's message board",
+      "endpoint": "/event/{eventId}/message-board",
+      "method": "POST",
+      "backend": "/event/{eventId}/message-board",
+      "host": [
+        "http://oosa_rewild:6080"
+      ]
+    },
+    {
+      "description": "Read a rewilding spot in database",
+      "endpoint": "/rewilding/{rewildingId}",
+      "method": "GET",
+      "backend": "/rewilding/{rewildingId}",
+      "host": [
+        "http://oosa_rewild:6080"
+      ]
+    },
+    {
+      "description": "Retrieve detail on event",
+      "endpoint": "/event-collaborate/{eventId}",
+      "method": "GET",
+      "backend": "/event-collaborate/{eventId}",
+      "host": [
+        "http://oosa_rewild:6080"
+      ]
+    },
+    {
+      "description": "Use this endpoint to login using email",
+      "endpoint": "/auth/email",
+      "method": "POST",
+      "backend": "/auth/email",
+      "host": [
+        "http://oosa_user:6080"
+      ]
+    },
+    {
+      "description": "Retrieve an authenticated user events",
+      "endpoint": "/my/event",
+      "method": "GET",
+      "backend": "/my/event",
+      "host": [
+        "http://oosa_rewild:6080"
+      ]
+    },
+    {
+      "description": "Retrieve all invitation",
+      "endpoint": "/me/event-invitation",
+      "method": "GET",
+      "backend": "/me/event-invitation",
+      "host": [
+        "http://oosa_rewild:6080"
+      ]
+    },
+    {
+      "description": "Retrieve the authenticated user detail",
+      "endpoint": "/auth",
+      "method": "GET",
+      "backend": "/auth",
+      "host": [
+        "http://oosa_user:6080"
+      ]
+    },
+    {
+      "description": "Create pocket list",
+      "endpoint": "/pocket-list",
+      "method": "POST",
+      "backend": "/pocket-list",
+      "host": [
+        "http://oosa_rewild:6080"
+      ]
+    },
+    {
+      "description": "Get pocket list",
+      "endpoint": "/pocket-list",
+      "method": "GET",
+      "backend": "/pocket-list",
+      "host": [
+        "http://oosa_rewild:6080"
+      ]
+    },
+    {
+      "description": "Delete an entry on event's accounting",
+      "endpoint": "/event/{eventId}/accounting/{accountingId}",
+      "method": "DELETE",
+      "backend": "/event/{eventId}/accounting/{accountingId}",
+      "host": [
+        "http://oosa_rewild:6080"
+      ]
+    },
+    {
+      "description": "Delete an entry on event's message board",
+      "endpoint": "/event/{eventId}/message-board/{messageBoardId}",
+      "method": "DELETE",
+      "backend": "/event/{eventId}/message-board/{messageBoardId}",
+      "host": [
+        "http://oosa_rewild:6080"
+      ]
+    },
+    {
+      "description": "Retrieve user preferences (language, avatar, preference)",
+      "endpoint": "/me/preferences",
+      "method": "GET",
+      "backend": "/me/preferences",
+      "host": [
+        "http://oosa_rewild:6080"
+      ]
+    },
+    {
+      "description": "Update user preferences (language, avatar, preference)",
+      "endpoint": "/me/preferences",
+      "method": "PUT",
+      "backend": "/me/preferences",
+      "host": [
+        "http://oosa_rewild:6080"
+      ]
+    },
+    {
+      "description": "Delete pocket list item by ID",
+      "endpoint": "/pocket-list/{pocketListId}/items/{pocketListItemsId}",
+      "method": "DELETE",
+      "backend": "/pocket-list/{pocketListId}/items/{pocketListItemsId}",
+      "host": [
+        "http://oosa_rewild:6080"
+      ]
+    },
+    {
+      "description": "Get pocket list item by ID",
+      "endpoint": "/pocket-list/{pocketListId}/items/{pocketListItemsId}",
+      "method": "GET",
+      "backend": "/pocket-list/{pocketListId}/items/{pocketListItemsId}",
+      "host": [
+        "http://oosa_rewild:6080"
+      ]
+    },
+    {
+      "description": "Read a photo",
+      "endpoint": "/rewilding-search",
+      "method": "GET",
+      "backend": "/rewilding-search",
+      "host": [
+        "http://oosa_rewild:6080"
+      ]
+    },
+    {
+      "description": "Retrieve user's friends (following)",
+      "endpoint": "/me/friends",
+      "method": "GET",
+      "backend": "/me/friends",
+      "host": [
+        "http://oosa_rewild:6080"
+      ]
+    },
+    {
+      "description": "Retrieve rewilding spots in database",
+      "endpoint": "/rewilding",
+      "method": "GET",
+      "backend": "/rewilding",
+      "host": [
+        "http://oosa_rewild:6080"
+      ]
+    },
+    {
+      "description": "Retrieve all options on rewilding types",
+      "endpoint": "/rewilding",
+      "method": "OPTIONS",
+      "backend": "/rewilding",
+      "host": [
+        "http://oosa_rewild:6080"
+      ]
+    },
+    {
+      "description": "Create rewilding spot by user",
+      "endpoint": "/rewilding",
+      "method": "POST",
+      "backend": "/rewilding",
+      "host": [
+        "http://oosa_rewild:6080"
+      ]
+    },
+    {
+      "description": "Retrieve all photos tied to a rewildings",
+      "endpoint": "/rewilding/{rewildingId}/photos",
+      "method": "GET",
+      "backend": "/rewilding/{rewildingId}/photos",
+      "host": [
+        "http://oosa_rewild:6080"
+      ]
+    },
+    {
+      "description": "Retrieve an event's schedule",
+      "endpoint": "/event/{eventId}/schedule",
+      "method": "GET",
+      "backend": "/event/{eventId}/schedule",
+      "host": [
+        "http://oosa_rewild:6080"
+      ]
+    },
+    {
+      "description": "Create an event's schedule",
+      "endpoint": "/event/{eventId}/schedule",
+      "method": "POST",
+      "backend": "/event/{eventId}/schedule",
+      "host": [
+        "http://oosa_rewild:6080"
+      ]
+    },
+    {
+      "description": "Delete an event's schedule",
+      "endpoint": "/event/{eventId}/schedule",
+      "method": "DELETE",
+      "backend": "/event/{eventId}/schedule",
+      "host": [
+        "http://oosa_rewild:6080"
+      ]
+    },
+    {
+      "description": "Use this endpoint to login/register using Line",
+      "endpoint": "/auth/line",
+      "method": "GET",
+      "backend": "/auth/line",
+      "host": [
+        "http://oosa_user:6080"
+      ]
+    },
+    {
+      "description": "Use this endpoint to login/register using Apple",
+      "endpoint": "/auth/apple",
+      "method": "POST",
+      "backend": "/auth/apple",
+      "host": [
+        "http://oosa_user:6080"
+      ]
+    },
+    {
+      "description": "Retrieve an event's itinerary",
+      "endpoint": "/event/{eventId}/itinerary",
+      "method": "GET",
+      "backend": "/event/{eventId}/itinerary",
+      "host": [
+        "http://oosa_rewild:6080"
+      ]
+    },
+    {
+      "description": "Itinerary co-edit",
+      "endpoint": "/event/{eventId}/itinerary",
+      "method": "PUT",
+      "backend": "/event/{eventId}/itinerary",
+      "host": [
+        "http://oosa_rewild:6080"
+      ]
+    },
+    {
+      "description": "Retrieve event invitation by ID",
+      "endpoint": "/me/event-invitation/{eventInvitationId}",
+      "method": "GET",
+      "backend": "/me/event-invitation/{eventInvitationId}",
+      "host": [
+        "http://oosa_rewild:6080"
+      ]
+    },
+    {
+      "description": "Update event invitation (approve or reject)",
+      "endpoint": "/me/event-invitation/{eventInvitationId}",
+      "method": "PUT",
+      "backend": "/me/event-invitation/{eventInvitationId}",
+      "host": [
+        "http://oosa_rewild:6080"
+      ]
+    },
+    {
+      "description": "Retrieve all events",
+      "endpoint": "/event",
+      "method": "GET",
+      "backend": "/event",
+      "host": [
+        "http://oosa_rewild:6080"
+      ]
+    },
+    {
+      "description": "Create new event",
+      "endpoint": "/event",
+      "method": "POST",
+      "backend": "/event",
+      "host": [
+        "http://oosa_rewild:6080"
+      ]
+    },
+    {
+      "description": "Get user following",
+      "endpoint": "/user-following",
+      "method": "GET",
+      "backend": "/user-following",
+      "host": [
+        "http://oosa_user:6080"
+      ]
+    },
+    {
+      "description": "Create user following",
+      "endpoint": "/user-following",
+      "method": "POST",
+      "backend": "/user-following",
+      "host": [
+        "http://oosa_user:6080"
+      ]
+    },
+    {
+      "description": "Retrieve an event's reference links",
+      "endpoint": "/event/{eventId}/reference-links",
+      "method": "GET",
+      "backend": "/event/{eventId}/reference-links",
+      "host": [
+        "http://oosa_rewild:6080"
+      ]
+    },
+    {
+      "description": "Create an event's reference links",
+      "endpoint": "/event/{eventId}/reference-links",
+      "method": "POST",
+      "backend": "/event/{eventId}/reference-links",
+      "host": [
+        "http://oosa_rewild:6080"
+      ]
+    },
+    {
+      "description": "Delete an event's reference links",
+      "endpoint": "/event/{eventId}/reference-links",
+      "method": "DELETE",
+      "backend": "/event/{eventId}/reference-links",
+      "host": [
+        "http://oosa_rewild:6080"
+      ]
+    },
+    {
+      "description": "Delete pocket list",
+      "endpoint": "/pocket-list/{pocketListId}",
+      "method": "DELETE",
+      "backend": "/pocket-list/{pocketListId}",
+      "host": [
+        "http://oosa_rewild:6080"
+      ]
+    },
+    {
+      "description": "Get pocket list",
+      "endpoint": "/pocket-list/{pocketListId}",
+      "method": "GET",
+      "backend": "/pocket-list/{pocketListId}",
+      "host": [
+        "http://oosa_rewild:6080"
+      ]
+    },
+    {
+      "description": "Update existing pocket list",
+      "endpoint": "/pocket-list/{pocketListId}",
+      "method": "PUT",
+      "backend": "/pocket-list/{pocketListId}",
+      "host": [
+        "http://oosa_rewild:6080"
+      ]
+    },
+    {
+      "description": "Invite a participant to event",
+      "endpoint": "/event/{eventId}/participants",
+      "method": "POST",
+      "backend": "/event/{eventId}/participants",
+      "host": [
+        "http://oosa_rewild:6080"
+      ]
+    },
+    {
+      "description": "Remove a participant from an event",
+      "endpoint": "/event/{eventId}/participants",
+      "method": "DELETE",
+      "backend": "/event/{eventId}/participants",
+      "host": [
+        "http://oosa_rewild:6080"
+      ]
+    },
+    {
+      "description": "Retrieve an event's participants",
+      "endpoint": "/event/{eventId}/participants",
+      "method": "GET",
+      "backend": "/event/{eventId}/participants",
+      "host": [
+        "http://oosa_rewild:6080"
+      ]
+    },
+    {
+      "description": "Retrieve events that has ended",
+      "endpoint": "/event-collaborate",
+      "method": "GET",
+      "backend": "/event-collaborate",
+      "host": [
+        "http://oosa_rewild:6080"
+      ]
+    },
+    {
+      "description": "Get user friends",
+      "endpoint": "/user/friends",
+      "method": "GET",
+      "backend": "/user/friends",
+      "host": [
+        "http://oosa_user:6080"
+      ]
+    },
+    {
+      "description": "Use this endpoint to login/register using google",
+      "endpoint": "/auth/google",
+      "method": "POST",
+      "backend": "/auth/google",
+      "host": [
+        "http://oosa_user:6080"
+      ]
+    },
+    {
+      "description": "Retrieve an event's accounting",
+      "endpoint": "/event/{eventId}/accounting",
+      "method": "GET",
+      "backend": "/event/{eventId}/accounting",
+      "host": [
+        "http://oosa_rewild:6080"
+      ]
+    },
+    {
+      "description": "Create an entry on event's accounting",
+      "endpoint": "/event/{eventId}/accounting",
+      "method": "POST",
+      "backend": "/event/{eventId}/accounting",
+      "host": [
+        "http://oosa_rewild:6080"
+      ]
+    },
+    {
+      "description": "Use this endpoint to register using email",
+      "endpoint": "/register",
+      "method": "POST",
+      "backend": "/register",
+      "host": [
+        "http://oosa_user:6080"
+      ]
+    },
+    {
+      "description": "Delete an event",
+      "endpoint": "/event/{eventId}",
+      "method": "DELETE",
+      "backend": "/event/{eventId}",
+      "host": [
+        "http://oosa_rewild:6080"
+      ]
+    },
+    {
+      "description": "Retrieve an event",
+      "endpoint": "/event/{eventId}",
+      "method": "GET",
+      "backend": "/event/{eventId}",
+      "host": [
+        "http://oosa_rewild:6080"
+      ]
+    },
+    {
+      "description": "Update an event",
+      "endpoint": "/event/{eventId}",
+      "method": "PUT",
+      "backend": "/event/{eventId}",
+      "host": [
+        "http://oosa_rewild:6080"
+      ]
+    }
+  ]
+}

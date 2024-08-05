@@ -1,0 +1,2049 @@
+openapi: 3.0.3
+info:
+  title: OOSA API
+  description: This is OOSA's API
+  version: 1.0.0
+servers:
+- url: https://api-dev.oosa.life
+  description: OOSA's Dev API
+- url: http://oosa_user:6080
+  description: OOSA_USER_SERVICE
+- url: http://oosa_rewild:6080
+  description: OOSA_REWILD_SERVICE
+tags:
+- name: OOSA_REWILD_SERVICE
+  description: This is OOSA's Rewild API
+- name: OOSA_USER_SERVICE
+  description: This is OOSA's User API
+paths:
+  /auth:
+    get:
+      tags:
+      - OOSA_USER_SERVICE
+      - Authentication
+      summary: Authentication
+      description: Retrieve the authenticated user detail
+      responses:
+        "200":
+          description: User object
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/User'
+      security:
+      - Bearer: []
+  /auth/apple:
+    post:
+      tags:
+      - OOSA_USER_SERVICE
+      - Authentication
+      summary: User login/register
+      description: Use this endpoint to login/register using Apple
+      responses:
+        "200":
+          description: Login object
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UserLogin'
+  /auth/email:
+    post:
+      tags:
+      - OOSA_USER_SERVICE
+      - Authentication
+      summary: User login
+      description: Use this endpoint to login using email
+      requestBody:
+        description: Register emai object
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/RequestUserLoginEmail'
+      responses:
+        "200":
+          description: Login object
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UserLogin'
+  /auth/facebook:
+    post:
+      tags:
+      - OOSA_USER_SERVICE
+      - Authentication
+      summary: User login/register
+      description: Use this endpoint to login/register using Facebook
+      responses:
+        "200":
+          description: Login object
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UserLogin'
+  /auth/google:
+    post:
+      tags:
+      - OOSA_USER_SERVICE
+      - Authentication
+      summary: User login/register
+      description: Use this endpoint to login/register using google
+      requestBody:
+        description: Pass in the value from Google's Login (We will use this value
+          to get the user credentials)
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/RequestGoogleAuth'
+      responses:
+        "200":
+          description: Login object
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UserLogin'
+  /auth/line:
+    get:
+      tags:
+      - OOSA_USER_SERVICE
+      - Authentication
+      summary: User login/register
+      description: Use this endpoint to login/register using Line
+      parameters:
+      - name: code
+        in: query
+        description: Code passed to line
+        schema:
+          type: string
+      - name: state
+        in: query
+        description: State passed to line
+        schema:
+          type: string
+      responses:
+        "200":
+          description: Login object
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UserLogin'
+  /event:
+    get:
+      tags:
+      - OOSA_REWILD_SERVICE
+      - Event
+      summary: Event
+      description: Retrieve all events
+      responses:
+        "200":
+          description: Event Object
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Events'
+      security:
+      - Bearer: []
+    post:
+      tags:
+      - OOSA_REWILD_SERVICE
+      - Event
+      summary: Event
+      description: Create new event
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/RequestEvent'
+      responses:
+        "200":
+          description: New Event Object
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Events'
+      security:
+      - Bearer: []
+  /event-collaborate:
+    get:
+      tags:
+      - OOSA_REWILD_SERVICE
+      - Event Collaborate
+      summary: Event Collaborate
+      description: Retrieve events that has ended
+      responses:
+        "200":
+          description: Event Object
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Events'
+      security:
+      - Bearer: []
+  /event-collaborate/{eventId}:
+    get:
+      tags:
+      - OOSA_REWILD_SERVICE
+      - Event Collaborate
+      summary: Event Collaborate
+      description: Retrieve detail on event
+      parameters:
+      - name: eventId
+        in: path
+        description: String ID of the event
+        required: true
+        schema:
+          type: integer
+      responses:
+        "200":
+          description: Event Object
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Events'
+      security:
+      - Bearer: []
+  /event-collaborate/{eventId}/album-link:
+    get:
+      tags:
+      - OOSA_REWILD_SERVICE
+      - Event Collaborate
+      summary: Event Collaborate
+      description: Retrieve album link in event
+      parameters:
+      - name: eventId
+        in: path
+        description: String ID of the event
+        required: true
+        schema:
+          type: integer
+      responses:
+        "200":
+          description: Event Object
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/EventAlbumLink'
+      security:
+      - Bearer: []
+    post:
+      tags:
+      - OOSA_REWILD_SERVICE
+      - Event Collaborate
+      summary: Event Collaborate
+      description: Retrieve album link in event
+      parameters:
+      - name: eventId
+        in: path
+        description: String ID of the event
+        required: true
+        schema:
+          type: integer
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/RequestEventAlbumLinks'
+      responses:
+        "200":
+          description: Event Object
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EventAlbumLink'
+      security:
+      - Bearer: []
+  /event-collaborate/{eventId}/polaroid:
+    get:
+      tags:
+      - OOSA_REWILD_SERVICE
+      - Event Collaborate
+      summary: Event Polaroid
+      description: Retrieve event polaroid
+      parameters:
+      - name: eventId
+        in: path
+        description: String ID of the event
+        required: true
+        schema:
+          type: integer
+      responses:
+        "200":
+          description: Event Object
+          content:
+            form-data:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/EventPolaroids'
+      security:
+      - Bearer: []
+    post:
+      tags:
+      - OOSA_REWILD_SERVICE
+      - Event Collaborate
+      summary: Event Polaroid
+      description: Create event polaroid (Uploaded file will be uploaded on Flickr).
+        Read location data and save to database
+      parameters:
+      - name: eventId
+        in: path
+        description: String ID of the event
+        required: true
+        schema:
+          type: integer
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                event_polaroid_file:
+                  type: string
+                  format: binary
+      responses:
+        "200":
+          description: Event Object
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EventAlbumLink'
+      security:
+      - Bearer: []
+  /event/{eventId}:
+    delete:
+      tags:
+      - OOSA_REWILD_SERVICE
+      - Event
+      summary: Event
+      description: Delete an event
+      parameters:
+      - name: eventId
+        in: path
+        description: String ID of the event
+        required: true
+        schema:
+          type: integer
+      responses:
+        "200":
+          description: Delete response (message)
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ResponseGeneralSuccess'
+      security:
+      - Bearer: []
+    get:
+      tags:
+      - OOSA_REWILD_SERVICE
+      - Event
+      summary: Event
+      description: Retrieve an event
+      parameters:
+      - name: eventId
+        in: path
+        description: String ID of the event
+        required: true
+        schema:
+          type: integer
+      responses:
+        "200":
+          description: Event Object
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Events'
+      security:
+      - Bearer: []
+    put:
+      tags:
+      - OOSA_REWILD_SERVICE
+      - Event
+      summary: Event
+      description: Update an event
+      parameters:
+      - name: eventId
+        in: path
+        description: String ID of the event
+        required: true
+        schema:
+          type: integer
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/RequestEvent'
+      responses:
+        "200":
+          description: Updated Event Object
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Events'
+      security:
+      - Bearer: []
+  /event/{eventId}/accounting:
+    get:
+      tags:
+      - OOSA_REWILD_SERVICE
+      - Event Accounting
+      summary: Event Accounting
+      description: Retrieve an event's accounting
+      parameters:
+      - name: eventId
+        in: path
+        description: String ID of the event
+        required: true
+        schema:
+          type: integer
+      responses:
+        "200":
+          description: Array of EventAccounting Object
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/EventAccounting'
+      security:
+      - Bearer: []
+    post:
+      tags:
+      - OOSA_REWILD_SERVICE
+      - Event Accounting
+      summary: Create Event Accounting
+      description: Create an entry on event's accounting
+      parameters:
+      - name: eventId
+        in: path
+        description: String ID of the event
+        required: true
+        schema:
+          type: integer
+      requestBody:
+        description: Accounting object
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/RequestEventAccounting'
+      responses:
+        "200":
+          description: New EventMessageBoard Object
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EventAccounting'
+      security:
+      - Bearer: []
+  /event/{eventId}/accounting/{accountingId}:
+    delete:
+      tags:
+      - OOSA_REWILD_SERVICE
+      - Event Accounting
+      summary: Delete accounting entry
+      description: Delete an entry on event's accounting
+      parameters:
+      - name: eventId
+        in: path
+        description: String ID of the event
+        required: true
+        schema:
+          type: integer
+      - name: accountingId
+        in: path
+        description: String ID of the accounting record
+        required: true
+        schema:
+          type: integer
+      responses:
+        "200":
+          description: Success message
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ResponseGeneralSuccess'
+      security:
+      - Bearer: []
+  /event/{eventId}/itinerary:
+    get:
+      tags:
+      - OOSA_REWILD_SERVICE
+      - Event
+      summary: Event Itinerary
+      description: Retrieve an event's itinerary
+      parameters:
+      - name: eventId
+        in: path
+        description: String ID of the event
+        required: true
+        schema:
+          type: integer
+      responses:
+        "200":
+          description: Event Object with itinerary
+      security:
+      - Bearer: []
+    put:
+      tags:
+      - OOSA_REWILD_SERVICE
+      - Event
+      summary: Event Message Board
+      description: Itinerary co-edit
+      parameters:
+      - name: eventId
+        in: path
+        description: String ID of the event
+        required: true
+        schema:
+          type: integer
+      responses:
+        "200":
+          description: Event Object with itinerary
+      security:
+      - Bearer: []
+  /event/{eventId}/message-board:
+    get:
+      tags:
+      - OOSA_REWILD_SERVICE
+      - Event Message Board
+      summary: Event Message Board
+      description: Retrieve an event's message board
+      parameters:
+      - name: eventId
+        in: path
+        description: String ID of the event
+        required: true
+        schema:
+          type: integer
+      responses:
+        "200":
+          description: Array of EventMessageBoard Object
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/EventMessageBoard'
+      security:
+      - Bearer: []
+    post:
+      tags:
+      - OOSA_REWILD_SERVICE
+      - Event Message Board
+      summary: Event Message Board
+      description: Create an entry on event's message board
+      parameters:
+      - name: eventId
+        in: path
+        description: String ID of the event
+        required: true
+        schema:
+          type: integer
+      requestBody:
+        description: Send either event_message_board_base_message or event_message_board_announcement
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/RequestEventMessageBoard'
+      responses:
+        "200":
+          description: New EventMessageBoard Object
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EventMessageBoard'
+      security:
+      - Bearer: []
+  /event/{eventId}/message-board/{messageBoardId}:
+    delete:
+      tags:
+      - OOSA_REWILD_SERVICE
+      - Event Message Board
+      summary: Delete message board entry
+      description: Delete an entry on event's message board
+      parameters:
+      - name: eventId
+        in: path
+        description: String ID of the event
+        required: true
+        schema:
+          type: integer
+      - name: messageBoardId
+        in: path
+        description: String ID of the message
+        required: true
+        schema:
+          type: integer
+      responses:
+        "200":
+          description: Success message
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ResponseGeneralSuccess'
+      security:
+      - Bearer: []
+  /event/{eventId}/participants:
+    delete:
+      tags:
+      - OOSA_REWILD_SERVICE
+      - Event Participants
+      summary: Event
+      description: Remove a participant from an event
+      parameters:
+      - name: eventId
+        in: path
+        description: String ID of the event
+        required: true
+        schema:
+          type: integer
+      responses:
+        "200":
+          description: Response message (success)
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ResponseGeneralSuccess'
+      security:
+      - Bearer: []
+    get:
+      tags:
+      - OOSA_REWILD_SERVICE
+      - Event Participants
+      summary: Event
+      description: Retrieve an event's participants
+      parameters:
+      - name: eventId
+        in: path
+        description: String ID of the event
+        required: true
+        schema:
+          type: integer
+      responses:
+        "200":
+          description: EventParticipant Object
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/EventParticipants'
+      security:
+      - Bearer: []
+    post:
+      tags:
+      - OOSA_REWILD_SERVICE
+      - Event Participants
+      summary: Invite a participant to event
+      description: Invite a participant to event
+      parameters:
+      - name: eventId
+        in: path
+        description: String ID of the event
+        required: true
+        schema:
+          type: integer
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/RequestEventParticipant'
+      responses:
+        "200":
+          description: New EventParticipant Object
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EventParticipants'
+      security:
+      - Bearer: []
+  /event/{eventId}/reference-links:
+    delete:
+      tags:
+      - OOSA_REWILD_SERVICE
+      - Event Reference Links
+      summary: Event Reference Links
+      description: Delete an event's reference links
+      parameters:
+      - name: eventId
+        in: path
+        description: String ID of the event
+        required: true
+        schema:
+          type: integer
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ResponseGeneralSuccess'
+      security:
+      - Bearer: []
+    get:
+      tags:
+      - OOSA_REWILD_SERVICE
+      - Event Reference Links
+      summary: Event Reference Links
+      description: Retrieve an event's reference links
+      parameters:
+      - name: eventId
+        in: path
+        description: String ID of the event
+        required: true
+        schema:
+          type: integer
+      responses:
+        "200":
+          description: Array of EventReferenceLinks Object
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/EventReferenceLinks'
+      security:
+      - Bearer: []
+    post:
+      tags:
+      - OOSA_REWILD_SERVICE
+      - Event Reference Links
+      summary: Create Reference Links
+      description: Create an event's reference links
+      parameters:
+      - name: eventId
+        in: path
+        description: String ID of the event
+        required: true
+        schema:
+          type: integer
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/RequestEventReferenceLinks'
+      responses:
+        "200":
+          description: Array of EventReferenceLinks Object
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EventReferenceLinks'
+      security:
+      - Bearer: []
+  /event/{eventId}/schedule:
+    delete:
+      tags:
+      - OOSA_REWILD_SERVICE
+      - Event Schedule
+      summary: Delete Event Schedule
+      description: Delete an event's schedule
+      parameters:
+      - name: eventId
+        in: path
+        description: String ID of the event
+        required: true
+        schema:
+          type: integer
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ResponseGeneralSuccess'
+      security:
+      - Bearer: []
+    get:
+      tags:
+      - OOSA_REWILD_SERVICE
+      - Event Schedule
+      summary: Event Schedule
+      description: Retrieve an event's schedule
+      parameters:
+      - name: eventId
+        in: path
+        description: String ID of the event
+        required: true
+        schema:
+          type: integer
+      responses:
+        "200":
+          description: Array of EventReferenceLinks Object
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/EventSchedules'
+      security:
+      - Bearer: []
+    post:
+      tags:
+      - OOSA_REWILD_SERVICE
+      - Event Schedule
+      summary: Create Event Schedule
+      description: Create an event's schedule
+      parameters:
+      - name: eventId
+        in: path
+        description: String ID of the event
+        required: true
+        schema:
+          type: integer
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/RequestEventSchedules'
+      responses:
+        "200":
+          description: Array of EventReferenceLinks Object
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EventSchedules'
+      security:
+      - Bearer: []
+  /me/event-invitation:
+    get:
+      tags:
+      - OOSA_REWILD_SERVICE
+      - Authenticated User Menu
+      summary: Event Invitation
+      description: Retrieve all invitation
+      responses:
+        "200":
+          description: Event invitation object
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Events'
+      security:
+      - Bearer: []
+  /me/event-invitation/{eventInvitationId}:
+    get:
+      tags:
+      - OOSA_REWILD_SERVICE
+      - Authenticated User Menu
+      summary: Event Invitation
+      description: Retrieve event invitation by ID
+      parameters:
+      - name: eventInvitationId
+        in: path
+        description: String ID of the event
+        required: true
+        schema:
+          type: integer
+      responses:
+        "200":
+          description: Event invitation object
+      security:
+      - Bearer: []
+    put:
+      tags:
+      - OOSA_REWILD_SERVICE
+      - Authenticated User Menu
+      summary: Update Event Invitation
+      description: Update event invitation (approve or reject)
+      parameters:
+      - name: eventInvitationId
+        in: path
+        description: String ID of the event
+        required: true
+        schema:
+          type: integer
+      requestBody:
+        description: 1 - Accept, 0 Reject
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/RequestEventInvitation'
+      responses:
+        "200":
+          description: Event invitation object
+      security:
+      - Bearer: []
+  /me/friends:
+    get:
+      tags:
+      - OOSA_REWILD_SERVICE
+      - Authenticated User Menu
+      summary: Retrieve user's friends (following)
+      description: Retrieve user's friends (following)
+      responses:
+        "200":
+          description: Array of User Object
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/UserFriends'
+      security:
+      - Bearer: []
+  /me/preferences:
+    get:
+      tags:
+      - OOSA_REWILD_SERVICE
+      - Authenticated User Menu
+      summary: Retrieve user's preferences
+      description: Retrieve user preferences (language, avatar, preference)
+      responses:
+        "200":
+          description: Auth User Object
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/User'
+      security:
+      - Bearer: []
+    put:
+      tags:
+      - OOSA_REWILD_SERVICE
+      - Authenticated User Menu
+      summary: Update user preferences
+      description: Update user preferences (language, avatar, preference)
+      requestBody:
+        description: Visibility 1 = true, 0 = false. Language used ISO3166
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/RequestUserPreference'
+      responses:
+        "200":
+          description: Auth User Object
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/User'
+      security:
+      - Bearer: []
+  /my/event:
+    get:
+      tags:
+      - OOSA_REWILD_SERVICE
+      - User Event
+      summary: User Event
+      description: Retrieve an authenticated user events
+      parameters:
+      - name: past
+        in: query
+        description: Pass true to retrieve past events by user. Otherwise omit this
+          query parameter
+        schema:
+          type: boolean
+      responses:
+        "200":
+          description: Array of EventReferenceLinks Object
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Events'
+      security:
+      - Bearer: []
+  /pocket-list:
+    get:
+      tags:
+      - OOSA_REWILD_SERVICE
+      - Pocket List
+      summary: Get pocket list
+      description: Get pocket list
+      responses:
+        "200":
+          description: Array of PocketList objects
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/PocketList'
+      security:
+      - Bearer: []
+    post:
+      tags:
+      - OOSA_REWILD_SERVICE
+      - Pocket List
+      summary: Create new pocket list
+      description: Create pocket list
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/RequestPocketList'
+      responses:
+        "200":
+          description: New PocketList objects
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PocketList'
+      security:
+      - Bearer: []
+  /pocket-list/{pocketListId}:
+    delete:
+      tags:
+      - OOSA_REWILD_SERVICE
+      - Pocket List
+      summary: Delete pocket list
+      description: Delete pocket list
+      parameters:
+      - name: pocketListId
+        in: path
+        description: String ID of the user to get pocket list
+        required: true
+        schema:
+          type: integer
+      responses:
+        "200":
+          description: Message
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ResponseGeneralSuccess'
+      security:
+      - Bearer: []
+    get:
+      tags:
+      - OOSA_REWILD_SERVICE
+      - Pocket List
+      summary: Get pocket list
+      description: Get pocket list
+      parameters:
+      - name: pocketListId
+        in: path
+        description: String ID of the user to get pocket list
+        required: true
+        schema:
+          type: integer
+      responses:
+        "200":
+          description: Array of PocketList objects
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PocketList'
+      security:
+      - Bearer: []
+    put:
+      tags:
+      - OOSA_REWILD_SERVICE
+      - Pocket List
+      summary: Update existing pocket list
+      description: Update existing pocket list
+      parameters:
+      - name: pocketListId
+        in: path
+        description: String ID of the user to get pocket list
+        required: true
+        schema:
+          type: integer
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/RequestPocketList'
+      responses:
+        "200":
+          description: Updated pocket list
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PocketList'
+      security:
+      - Bearer: []
+  /pocket-list/{pocketListId}/items:
+    get:
+      tags:
+      - OOSA_REWILD_SERVICE
+      - Pocket List
+      summary: Get pocket list items by ID
+      description: Get pocket list items by ID
+      parameters:
+      - name: pocketListId
+        in: path
+        description: String ID of the user to get pocket list
+        required: true
+        schema:
+          type: integer
+      responses:
+        "200":
+          description: Array of PocketList objects
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/PocketListItems'
+      security:
+      - Bearer: []
+    post:
+      tags:
+      - OOSA_REWILD_SERVICE
+      - Pocket List
+      summary: Add to pocket list
+      description: Add to pocket list
+      parameters:
+      - name: pocketListId
+        in: path
+        description: String ID of the user to get pocket list
+        required: true
+        schema:
+          type: integer
+      requestBody:
+        description: Pass either one of the two parameter
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/RequestPocketListItem'
+      responses:
+        "200":
+          description: Array of PocketList objects
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PocketListItems'
+      security:
+      - Bearer: []
+  /pocket-list/{pocketListId}/items/{pocketListItemsId}:
+    delete:
+      tags:
+      - OOSA_REWILD_SERVICE
+      - Pocket List
+      summary: Delete pocket list item by ID
+      description: Delete pocket list item by ID
+      parameters:
+      - name: pocketListId
+        in: path
+        description: String ID of the user to get pocket list
+        required: true
+        schema:
+          type: integer
+      - name: pocketListItemsId
+        in: path
+        description: String ID of the user to get pocket list item
+        required: true
+        schema:
+          type: integer
+      responses:
+        "200":
+          description: Array of PocketListItems
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ResponseGeneralSuccess'
+      security:
+      - Bearer: []
+    get:
+      tags:
+      - OOSA_REWILD_SERVICE
+      - Pocket List
+      summary: Get pocket list item by ID
+      description: Get pocket list item by ID
+      parameters:
+      - name: pocketListId
+        in: path
+        description: String ID of the user to get pocket list
+        required: true
+        schema:
+          type: integer
+      - name: pocketListItemsId
+        in: path
+        description: String ID of the user to get pocket list item
+        required: true
+        schema:
+          type: integer
+      responses:
+        "200":
+          description: Array of PocketListItems
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PocketListItems'
+      security:
+      - Bearer: []
+  /register:
+    post:
+      tags:
+      - OOSA_USER_SERVICE
+      - Authentication
+      summary: User register
+      description: Use this endpoint to register using email
+      requestBody:
+        description: Register emai object
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/RequestUserRegisterEmail'
+      responses:
+        "200":
+          description: Login object
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UserLogin'
+        "204":
+          description: If user exists
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ResponseGeneralError'
+  /rewilding:
+    get:
+      tags:
+      - OOSA_REWILD_SERVICE
+      - Rewilding
+      summary: Retrieve all rewilding spots
+      description: Retrieve rewilding spots in database
+      responses:
+        "200":
+          description: Array of Rewilding
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Rewilding'
+      security:
+      - Bearer: []
+    options:
+      tags:
+      - OOSA_REWILD_SERVICE
+      - Rewilding
+      summary: Retrieve all options on rewilding types
+      description: Retrieve all options on rewilding types
+      responses:
+        "200":
+          description: Array of Rewilding Types
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/RefRewildingTypes'
+      security:
+      - Bearer: []
+    post:
+      tags:
+      - OOSA_REWILD_SERVICE
+      - Rewilding
+      summary: Create rewilding spot
+      description: Create rewilding spot by user
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/RequestRewildingCreate'
+      responses:
+        "200":
+          description: Event Object
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Rewilding'
+      security:
+      - Bearer: []
+  /rewilding-search:
+    get:
+      tags:
+      - OOSA_REWILD_SERVICE
+      - Rewilding Search
+      summary: Search
+      description: Read a photo
+      parameters:
+      - name: lat
+        in: query
+        description: Latitude
+        schema:
+          type: string
+      - name: lng
+        in: query
+        description: Longitude
+        schema:
+          type: string
+      - name: type
+        in: query
+        description: Activity type
+        schema:
+          type: string
+      - name: search
+        in: query
+        description: Search by Text
+        schema:
+          type: string
+      responses:
+        "200":
+          description: Array of Rewilding Result from Google
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/RewildingSearch'
+      security:
+      - Bearer: []
+  /rewilding/{rewildingId}:
+    get:
+      tags:
+      - OOSA_REWILD_SERVICE
+      - Rewilding
+      summary: Read a rewilding spot
+      description: Read a rewilding spot in database
+      parameters:
+      - name: rewildingId
+        in: path
+        description: String ID of rewilding
+        required: true
+        schema:
+          type: integer
+      responses:
+        "200":
+          description: Rewilding detail
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Rewilding'
+      security:
+      - Bearer: []
+  /rewilding/{rewildingId}/photos:
+    get:
+      tags:
+      - OOSA_REWILD_SERVICE
+      - Rewilding
+      summary: Retrieve all photos tied to a rewilding
+      description: Retrieve all photos tied to a rewildings
+      parameters:
+      - name: rewildingId
+        in: path
+        description: String ID of rewilding
+        required: true
+        schema:
+          type: integer
+      responses:
+        "200":
+          description: Array of Rewilding Photo ID
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/RewildingPhotos'
+      security:
+      - Bearer: []
+  /rewilding/{rewildingId}/photos/{photoId}:
+    get:
+      tags:
+      - OOSA_REWILD_SERVICE
+      - Rewilding
+      summary: Read a photo
+      description: Read a photo
+      parameters:
+      - name: rewildingId
+        in: path
+        description: String ID of rewilding
+        required: true
+        schema:
+          type: integer
+      - name: photoId
+        in: path
+        description: String ID of photo
+        required: true
+        schema:
+          type: integer
+      responses:
+        "200":
+          description: Array of Rewilding Photo ID
+          content:
+            image/*:
+              schema:
+                type: string
+                format: binary
+      security:
+      - Bearer: []
+  /user-following:
+    get:
+      tags:
+      - OOSA_USER_SERVICE
+      - User Following
+      summary: Get user following
+      description: Get user following
+      responses:
+        "200":
+          description: User following
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/UserFollowings'
+      security:
+      - Bearer: []
+    post:
+      tags:
+      - OOSA_USER_SERVICE
+      - User Following
+      summary: Create user following
+      description: Create user following
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/RequestUserFollowing'
+      responses:
+        "200":
+          description: User following
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UserFollowings'
+      security:
+      - Bearer: []
+  /user-following/{userFollowingId}:
+    delete:
+      tags:
+      - OOSA_USER_SERVICE
+      - User Following
+      summary: Delete user following
+      description: Delete user following
+      parameters:
+      - name: userFollowingId
+        in: path
+        description: String ID of the user following
+        required: true
+        schema:
+          type: integer
+      responses:
+        "200":
+          description: Message
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ResponseGeneralSuccess'
+      security:
+      - Bearer: []
+    get:
+      tags:
+      - OOSA_USER_SERVICE
+      - User Following
+      summary: Get user following
+      description: Get user following
+      parameters:
+      - name: userFollowingId
+        in: path
+        description: String ID of the user following
+        required: true
+        schema:
+          type: integer
+      responses:
+        "200":
+          description: User following
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UserFollowings'
+      security:
+      - Bearer: []
+  /user/friends:
+    get:
+      tags:
+      - OOSA_USER_SERVICE
+      - User - Friends
+      summary: Get user friends
+      description: Get user friends
+      responses:
+        "200":
+          description: User friends
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UserFriends'
+      security:
+      - Bearer: []
+components:
+  schemas:
+    CollaborativeLog:
+      type: object
+      properties:
+        collaborative_log_album_url:
+          type: string
+        collaborative_log_created_at:
+          type: string
+        collaborative_log_created_by:
+          type: string
+        collaborative_log_event:
+          type: string
+        collaborative_log_id:
+          type: string
+        collaborative_log_visibility:
+          type: integer
+    EventAccounting:
+      type: object
+      properties:
+        event_accounting_amount:
+          type: number
+        event_accounting_created_at:
+          type: string
+        event_accounting_created_by:
+          type: string
+        event_accounting_event:
+          type: string
+        event_accounting_id:
+          type: string
+        event_accounting_message:
+          type: string
+        event_accounting_updated_at:
+          type: string
+        event_accounting_updated_by:
+          type: string
+    EventAlbumLink:
+      type: object
+      properties:
+        event_album_link_album_url:
+          type: string
+        event_album_link_created_at:
+          type: string
+        event_album_link_created_by:
+          type: string
+        event_album_link_event:
+          type: string
+        event_album_link_id:
+          type: string
+        event_album_link_visibility:
+          type: integer
+    EventMessageBoard:
+      type: object
+      properties:
+        event_message_board_announcement:
+          type: string
+        event_message_board_base_message:
+          type: string
+        event_message_board_category:
+          type: string
+        event_message_board_created_at:
+          type: string
+        event_message_board_created_by:
+          type: string
+        event_message_board_event:
+          type: string
+        event_message_board_id:
+          type: string
+        event_message_board_is_pinned:
+          type: integer
+        event_message_board_status:
+          type: integer
+    EventParticipants:
+      type: object
+      properties:
+        event_participants_created_at:
+          type: string
+        event_participants_created_by:
+          type: string
+        event_participants_event:
+          type: string
+        event_participants_id:
+          type: string
+        event_participants_is_paid:
+          type: integer
+        event_participants_paid_amount:
+          type: number
+        event_participants_paid_at:
+          type: string
+        event_participants_payment_request:
+          type: string
+        event_participants_payment_response:
+          type: string
+        event_participants_status:
+          type: string
+        event_participants_user:
+          type: string
+    EventPolaroids:
+      type: object
+      properties:
+        event_polaroids_created_at:
+          type: string
+        event_polaroids_created_by:
+          type: string
+        event_polaroids_event:
+          type: string
+        event_polaroids_id:
+          type: string
+        event_polaroids_lat:
+          type: number
+        event_polaroids_lng:
+          type: number
+        event_polaroids_url:
+          type: string
+    EventReferenceLinks:
+      type: object
+      properties:
+        event_reference_links_created_at:
+          type: string
+        event_reference_links_created_by:
+          type: string
+        event_reference_links_event:
+          type: string
+        event_reference_links_id:
+          type: string
+        event_reference_links_link:
+          type: string
+    EventSchedules:
+      type: object
+      properties:
+        event_schedules_created_at:
+          type: string
+        event_schedules_created_by:
+          type: string
+        event_schedules_datetime:
+          type: string
+        event_schedules_event:
+          type: string
+        event_schedules_id:
+          type: string
+    Events:
+      type: object
+      properties:
+        events_created_at:
+          type: string
+        events_created_by:
+          type: string
+        events_date:
+          type: string
+        events_deadline:
+          type: string
+        events_id:
+          type: string
+        events_invitation_message:
+          type: string
+        events_lat:
+          type: number
+        events_lng:
+          type: number
+        events_name:
+          type: string
+        events_payment_fee:
+          type: string
+        events_payment_required:
+          type: integer
+        events_place:
+          type: string
+        events_requires_approval:
+          type: integer
+        events_rewilding:
+          type: string
+        events_type:
+          type: string
+    PocketList:
+      type: object
+      properties:
+        pocket_lists_count:
+          type: integer
+          format: int32
+        pocket_lists_created_at:
+          type: string
+        pocket_lists_deleted_at:
+          type: string
+        pocket_lists_id:
+          type: string
+        pocket_lists_name:
+          type: string
+        pocket_lists_user:
+          type: string
+    PocketListItems:
+      type: object
+      properties:
+        pocket_list_items_created_at:
+          type: string
+        pocket_list_items_deleted_at:
+          type: string
+        pocket_list_items_event:
+          type: string
+        pocket_list_items_id:
+          type: string
+        pocket_list_items_mst:
+          type: string
+        pocket_list_items_rewilding:
+          type: string
+    RefRewildingTypes:
+      type: object
+      properties:
+        ref_rewilding_types_google:
+          type: string
+        ref_rewilding_types_id:
+          type: string
+        ref_rewilding_types_key:
+          type: string
+        ref_rewilding_types_name:
+          type: string
+        ref_rewilding_types_name_en:
+          type: string
+    RequestEvent:
+      type: object
+      properties:
+        events_date:
+          type: string
+        events_lat:
+          type: number
+        events_lng:
+          type: number
+        events_name:
+          type: string
+        events_payment_fee:
+          type: number
+        events_payment_required:
+          type: integer
+          format: int32
+        events_place:
+          type: string
+        events_requires_approval:
+          type: integer
+          format: int32
+        events_type:
+          type: string
+    RequestEventAccounting:
+      type: object
+      properties:
+        event_accounting_amount:
+          type: string
+        event_accounting_message:
+          type: string
+    RequestEventAlbumLinks:
+      type: object
+      properties:
+        event_album_link_album_url:
+          type: string
+        event_album_link_visibility:
+          type: string
+    RequestEventInvitation:
+      type: object
+      properties:
+        events_invitation_is_accept:
+          type: integer
+          format: int32
+    RequestEventMessageBoard:
+      type: object
+      properties:
+        event_message_board_announcement:
+          type: string
+        event_message_board_base_message:
+          type: string
+        event_message_board_category:
+          type: string
+    RequestEventParticipant:
+      type: object
+      properties:
+        event_participants_user:
+          type: string
+    RequestEventReferenceLinks:
+      type: object
+      properties:
+        event_reference_links_link:
+          type: string
+        event_reference_links_title:
+          type: string
+    RequestEventSchedules:
+      type: object
+      properties:
+        event_schedules_datetime:
+          type: string
+    RequestGoogleAuth:
+      type: object
+      properties:
+        credential:
+          type: string
+    RequestPocketList:
+      type: object
+      properties:
+        pocket_lists_name:
+          type: string
+    RequestPocketListItem:
+      type: object
+      properties:
+        pocket_list_items_event:
+          type: string
+        pocket_list_items_rewilding:
+          type: string
+    RequestRewildingCreate:
+      type: object
+      properties:
+        rewilding_apply_official:
+          type: boolean
+        rewilding_lat:
+          type: number
+        rewilding_lng:
+          type: number
+        rewilding_name:
+          type: string
+        rewilding_pocket_list:
+          type: string
+        rewilding_reference_information:
+          type: string
+        rewilding_type:
+          type: string
+    RequestUserFollowing:
+      type: object
+      properties:
+        user_followings_following:
+          type: string
+    RequestUserLoginEmail:
+      type: object
+      properties:
+        email:
+          type: string
+        password:
+          type: string
+    RequestUserPreference:
+      type: object
+      properties:
+        users_setting_language:
+          type: string
+        users_setting_vis_achievement_collab_log:
+          type: integer
+          format: int32
+        users_setting_vis_achievement_journal:
+          type: integer
+          format: int32
+        users_setting_vis_follow:
+          type: integer
+          format: int32
+        users_vis_events:
+          type: integer
+          format: int32
+    RequestUserRegisterEmail:
+      type: object
+      properties:
+        email:
+          type: string
+        name:
+          type: string
+        password:
+          type: string
+    ResponseGeneralError:
+      type: object
+      properties:
+        message:
+          type: string
+    ResponseGeneralSuccess:
+      type: object
+      properties:
+        message:
+          type: string
+    Rewilding:
+      type: object
+      properties:
+        rewilding_area:
+          type: string
+        rewilding_city:
+          type: string
+        rewilding_id:
+          type: string
+        rewilding_lat:
+          type: number
+        rewilding_lng:
+          type: number
+        rewilding_name:
+          type: string
+        rewilding_rating:
+          type: number
+        rewilding_type:
+          type: string
+    RewildingApply:
+      type: object
+      properties:
+        rewilding_apply_area:
+          type: string
+        rewilding_apply_city:
+          type: string
+        rewilding_apply_created_at:
+          type: string
+        rewilding_apply_created_by:
+          type: string
+        rewilding_apply_id:
+          type: string
+        rewilding_apply_lat:
+          type: number
+        rewilding_apply_lng:
+          type: number
+        rewilding_apply_name:
+          type: string
+        rewilding_apply_rating:
+          type: number
+        rewilding_apply_type:
+          type: string
+    RewildingApplyPhotos:
+      type: object
+      properties:
+        rewilding_apply_photos_id:
+          type: string
+        rewilding_apply_photos_path:
+          type: string
+        rewilding_apply_photos_rewilding_apply:
+          type: string
+    RewildingPhotos:
+      type: object
+      properties:
+        rewilding_photos_id:
+          type: string
+    RewildingSearch:
+      type: object
+      properties:
+        displayName:
+          type: object
+          properties:
+            languageCode:
+              type: string
+            text:
+              type: string
+        formattedAddress:
+          type: string
+        id:
+          type: string
+        location:
+          type: object
+          properties:
+            latitude:
+              type: number
+            longitude:
+              type: number
+        rating:
+          type: number
+        types:
+          type: array
+          items:
+            type: string
+        userRatingCount:
+          type: number
+    RewildingWiki:
+      type: object
+      properties:
+        rewilding_wiki_comments:
+          type: string
+        rewilding_wiki_created_at:
+          type: string
+        rewilding_wiki_created_by:
+          type: string
+        rewilding_wiki_event:
+          type: string
+        rewilding_wiki_feelings:
+          type: string
+        rewilding_wiki_id:
+          type: string
+        rewilding_wiki_photo:
+          type: string
+        rewilding_wiki_rewilding:
+          type: string
+        rewilding_wiki_type:
+          type: string
+    Sharing:
+      type: object
+      properties:
+        sharing_created_at:
+          type: string
+        sharing_created_by:
+          type: string
+        sharing_event:
+          type: string
+        sharing_event_album_link:
+          type: string
+        sharing_id:
+          type: string
+        sharing_platform:
+          type: string
+    User:
+      type: object
+      properties:
+        users_avatar:
+          type: string
+        users_created_at:
+          type: string
+          format: int32
+        users_email:
+          type: string
+        users_id:
+          type: string
+        users_is_subscribed:
+          type: integer
+          format: int32
+        users_name:
+          type: string
+        users_object:
+          type: string
+        users_password:
+          type: string
+        users_setting_language:
+          type: string
+        users_setting_vis_achievement_collab_log:
+          type: integer
+          format: int32
+        users_setting_vis_achievement_journal:
+          type: integer
+          format: int32
+        users_setting_vis_follow:
+          type: integer
+          format: int32
+        users_source:
+          type: integer
+          format: int32
+        users_source_id:
+          type: string
+        users_vis_events:
+          type: integer
+          format: int32
+    UserFollowings:
+      type: object
+      properties:
+        user_followings_created_at:
+          type: string
+        user_followings_following:
+          type: string
+        user_followings_id:
+          type: string
+        user_followings_user:
+          type: string
+    UserFriends:
+      type: object
+      properties:
+        users_avatar:
+          type: string
+        users_id:
+          type: string
+        users_name:
+          type: string
+    UserLogin:
+      type: object
+      properties:
+        token:
+          type: string
+        user:
+          $ref: '#/components/schemas/User'
+    UserMilestones:
+      type: object
+      properties:
+        user_milestones_created_at:
+          type: string
+        user_milestones_created_by:
+          type: string
+        user_milestones_id:
+          type: string
+        user_milestones_milestone:
+          type: string
+  securitySchemes:
+    Bearer:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
