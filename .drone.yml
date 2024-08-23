@@ -10,7 +10,7 @@ platform:
 steps:
 - name: merge api spec
   commands:
-  - docker run -v $PWD:/workdir 94peter/openapi-cli:v1.5 /main ms -main /workdir/main_spec.yml -mergeDir /workdir/allspec/ -output /workdir/doc/oosa.yml
+  - docker run -v $PWD:/workdir 94peter/openapi-cli:v1.5 /main ms -main /workdir/main_spec.yml -mergeDir /workdir/all_spec/ -output /workdir/doc/oosa.yml
 - name: generate setting endpoint
   commands:
   - docker run -v $PWD:/workdir 94peter/openapi-cli:v1.5 /main togs -spec /workdir/doc/oosa.yml -output /workdir/settings/endpoint.json
