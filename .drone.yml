@@ -8,13 +8,20 @@ platform:
   arch: amd64
 
 steps:
-- name: dev-build-docker-image
+- name: merge api spec
   commands:
-  - openapi-cli ms --main main_spec.yml --mergeDir all_spec/ --output doc/oosa.yml
-  - openapi-cli togs --spec doc/oosa.yml --output settings/endpoint.json
+  - docker run -it -v $$PWD:/workdir 94peter/openapi-cli:v1.5 /main ms -main /workdir/main_spec.yml -mergeDir /workdir/allspec/ -output /workdir/doc/oosa.yml
+- name: generate setting endpoint
+  commands:
+  - docker run -it -v $$PWD:/workdir 94peter/openapi-cli:v1.5 /main togs -spec /workdir/doc/oosa.yml -output /workdir/settings/endpoint.json
+- name: build image
+  commands:
   - docker build --platform linux/amd64 -t oosa-gw:dev .
+- name: restart service
+  commands:
   - restart_arwoosa.sh
-  when:
-    branch:
-    - dev
+
+trigger:
+  branch:
+  - dev
 ...

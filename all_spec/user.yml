@@ -1,170 +1,528 @@
-openapi: 3.0.3
+openapi: 3.1.0
 info:
-  title: OOSA_USER_SERVICE
-  description: This is OOSA's User API
-  version: "1.0.0"
-
-
+  title: OOSA
+  description: ''
+  version: 1.0.0
+tags:
+  - name: OOSA_USER_SERVICE
+  - name: Authentication
+  - name: User Badges
+  - name: _註冊與登入 Register and Sign in
+  - name: Contact Us
+  - name: Forget Password
+  - name: User Following
+  - name: User - Friends
+  - name: User Notifications
 paths:
-  /auth:
-    get:
-      summary: Authentication
-      description: Retrieve the authenticated user detail. <br/>1. Google<br/>2. Line<br/>3. Email<br/>4. Facebook
-      security:
-        - Bearer: []
-      responses:
-        200:
-          description: User object
-          content:
-            application/json:
-              schema:
-                type: object
-                $ref: '#/components/schemas/User'
-      tags: 
-        - Authentication
-    put:
-      summary: Update authenticated user detail
-      description: Update the authenticated user detail
-      requestBody:
-        description: Pass in only the necessary objects you want to update
-        required: true
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/RequestUsersUpdate'
-      security:
-        - Bearer: []
-      responses:
-        200:
-          description: User object
-          content:
-            application/json:
-              schema:
-                type: object
-                $ref: '#/components/schemas/User'
-      tags: 
-        - Authentication
-  /auth/google:
-    post:
-      summary: User login/register
-      description: Use this endpoint to login/register using google
-      requestBody:
-        description: Pass in the value from Google's Login (We will use this value to get the user credentials)
-        required: true
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/RequestGoogleAuth'
-      responses:
-        200:
-          description: Login object
-          content:
-            application/json:
-              schema:
-                type: object
-                $ref: '#/components/schemas/UserLogin'
-      tags: 
-        - Authentication
-  /auth/facebook:
-    post:
-      summary: User login/register
-      description: Use this endpoint to login/register using Facebook
-      responses:
-        200:
-          description: Login object
-          content:
-            application/json:
-              schema:
-                type: object
-                $ref: '#/components/schemas/UserLogin'
-      tags: 
-        - Authentication
-  /auth/line:
-    get:
-      summary: User login/register
-      parameters:
-        - in: query
-          name: code
-          schema:
-            type: string
-          description: Code passed to line
-        - in: query
-          name: state
-          schema:
-            type: string
-          description: State passed to line
-      description: Use this endpoint to login/register using Line
-      responses:
-        200:
-          description: Login object
-          content:
-            application/json:
-              schema:
-                type: object
-                $ref: '#/components/schemas/UserLogin'
-      tags: 
-        - Authentication
   /auth/apple:
     post:
-      summary: User login/register
+      summary: Auth Apple
+      deprecated: false
       description: Use this endpoint to login/register using Apple
+      tags:
+        - OOSA_USER_SERVICE
+        - Authentication
+      parameters: []
       responses:
-        200:
+        '200':
           description: Login object
           content:
             application/json:
-              schema:
-                type: object
+              schema: &ref_0
                 $ref: '#/components/schemas/UserLogin'
-      tags: 
-        - Authentication
-  /auth/email:
+      security:
+        - bearer: []
+  /auth/avatar:
     post:
-      summary: User login
-      description: Use this endpoint to login using email
+      summary: Update User Avatar
+      deprecated: false
+      description: Update user avatar
+      tags:
+        - OOSA_USER_SERVICE
+        - Authentication
+      parameters: []
       requestBody:
-        description: Register email object
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/RequestUserLoginEmail'
+              $ref: '#/components/schemas/RequestAuthUpdateAvatar'
+            example: ''
       responses:
-        200:
-          description: Login object
+        '200':
+          description: User object
+          content:
+            application/json:
+              schema: &ref_1
+                $ref: '#/components/schemas/User'
+      security:
+        - bearer: []
+  /auth/badges:
+    get:
+      summary: Retrieve Badge
+      deprecated: false
+      description: Retrieve badges earned by user
+      tags:
+        - OOSA_USER_SERVICE
+        - User Badges
+      parameters:
+        - name: single
+          in: query
+          description: Single acquire
+          required: false
+          schema:
+            type: boolean
+            default: true
+      responses:
+        '200':
+          description: User badges object
           content:
             application/json:
               schema:
-                type: object
-                $ref: '#/components/schemas/UserLogin'
-      tags: 
-        - Authentication
+                $ref: '#/components/schemas/UserBadges'
+      security:
+        - bearer: []
   /auth/change-password:
     put:
-      summary: Update authenticated user password
+      summary: Update Password
+      deprecated: false
       description: Update the authenticated user password
+      tags:
+        - OOSA_USER_SERVICE
+        - Authentication
+      parameters: []
       requestBody:
-        description: Pass in new password
-        required: true
         content:
           application/json:
             schema:
               $ref: '#/components/schemas/RequestUsersUpdatePassword'
-      security:
-        - Bearer: []
+            example: ''
       responses:
-        200:
+        '200':
           description: User object
           content:
             application/json:
-              schema:
-                type: object
+              schema: &ref_2
                 $ref: '#/components/schemas/ResponseGeneralSuccess'
-      tags: 
+      security:
+        - bearer: []
+  /auth/email:
+    post:
+      summary: Auth Email
+      deprecated: false
+      description: Use this endpoint to login using email
+      tags:
+        - OOSA_USER_SERVICE
         - Authentication
+        - _註冊與登入 Register and Sign in
+      parameters: []
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/RequestUserLoginEmail'
+            example: ''
+      responses:
+        '200':
+          description: Login object
+          content:
+            application/json:
+              schema: *ref_0
+      security: []
+  /auth/facebook:
+    post:
+      summary: Auth Facebook
+      deprecated: false
+      description: Use this endpoint to login/register using Facebook
+      tags:
+        - OOSA_USER_SERVICE
+        - Authentication
+      parameters: []
+      responses:
+        '200':
+          description: Login object
+          content:
+            application/json:
+              schema: *ref_0
+      security: []
+  /auth/google:
+    post:
+      summary: Auth Google
+      deprecated: false
+      description: Use this endpoint to login/register using google
+      tags:
+        - OOSA_USER_SERVICE
+        - Authentication
+        - _註冊與登入 Register and Sign in
+      parameters: []
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/RequestGoogleAuth'
+            example: ''
+      responses:
+        '200':
+          description: Login object
+          content:
+            application/json:
+              schema: *ref_0
+      security: []
+  /auth/line:
+    get:
+      summary: Auth Line
+      deprecated: false
+      description: Use this endpoint to login/register using Line
+      tags:
+        - OOSA_USER_SERVICE
+        - Authentication
+        - _註冊與登入 Register and Sign in
+      parameters:
+        - name: code
+          in: query
+          description: Code passed to line
+          required: false
+          schema:
+            type: string
+        - name: state
+          in: query
+          description: State passed to line
+          required: false
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Login object
+          content:
+            application/json:
+              schema: *ref_0
+        '400':
+          description: Validation Error
+          content:
+            application/json:
+              schema: &ref_3
+                $ref: '#/components/schemas/ResponseValidationError'
+      security: []
+  /auth/setting:
+    put:
+      summary: Update User Setting
+      deprecated: false
+      description: Update settings<br/>1 - True (On)<br />0 - False (Off)
+      tags:
+        - OOSA_USER_SERVICE
+        - Authentication
+      parameters: []
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/RequestAuthUpdateSetting'
+            example: ''
+      responses:
+        '200':
+          description: User object
+          content:
+            application/json:
+              schema: *ref_1
+      security:
+        - bearer: []
+  /contact-us:
+    post:
+      summary: Create Contact Us
+      deprecated: false
+      description: Create contact us record
+      tags:
+        - OOSA_USER_SERVICE
+        - Contact Us
+      parameters: []
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/RequestContactUs'
+            example: ''
+      responses:
+        '200':
+          description: User object
+          content:
+            application/json:
+              schema: *ref_2
+        '400':
+          description: Validation Error
+          content:
+            application/json:
+              schema: *ref_3
+      security:
+        - bearer: []
+  /forget-password:
+    post:
+      summary: Forget Password
+      deprecated: false
+      description: Forget Password Request
+      tags:
+        - OOSA_USER_SERVICE
+        - Forget Password
+      parameters: []
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/RequestForgetPassword'
+            example: ''
+      responses:
+        '200':
+          description: User object
+          content:
+            application/json:
+              schema: *ref_2
+      security:
+        - bearer: []
+  /register:
+    post:
+      summary: Email - Register
+      deprecated: false
+      description: Use this endpoint to register using email
+      tags:
+        - OOSA_USER_SERVICE
+        - Authentication
+        - _註冊與登入 Register and Sign in
+      parameters: []
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/RequestUserRegisterEmail'
+            example: ''
+      responses:
+        '200':
+          description: Login object
+          content:
+            application/json:
+              schema: *ref_0
+        '204':
+          description: If user exists
+          content:
+            application/json:
+              schema: &ref_4
+                $ref: '#/components/schemas/ResponseGeneralError'
+      security:
+        - bearer: []
+  /user-following/{userFollowingId}:
+    delete:
+      summary: Delete User Following
+      deprecated: false
+      description: Delete user following
+      tags:
+        - OOSA_USER_SERVICE
+        - User Following
+      parameters:
+        - name: userFollowingId
+          in: path
+          description: String ID of the user following
+          required: true
+          example: ''
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: Message
+          content:
+            application/json:
+              schema: *ref_2
+      security:
+        - bearer: []
+    get:
+      summary: Read User Following
+      deprecated: false
+      description: Get user following
+      tags:
+        - OOSA_USER_SERVICE
+        - User Following
+      parameters:
+        - name: userFollowingId
+          in: path
+          description: String ID of the user following
+          required: true
+          example: ''
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: User following
+          content:
+            application/json:
+              schema: &ref_5
+                $ref: '#/components/schemas/UserFollowings'
+      security:
+        - bearer: []
+  /auth:
+    put:
+      summary: Update User
+      deprecated: false
+      description: Update the authenticated user detail
+      tags:
+        - OOSA_USER_SERVICE
+        - Authentication
+      parameters: []
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/RequestUsersUpdate'
+            example: ''
+      responses:
+        '200':
+          description: User object
+          content:
+            application/json:
+              schema: *ref_1
+      security:
+        - bearer: []
+    get:
+      summary: Read Authentication
+      deprecated: false
+      description: >-
+        Retrieve the authenticated user detail. <br/>1. Google<br/>2.
+        Line<br/>3. Email<br/>4. Facebook
+      tags:
+        - OOSA_USER_SERVICE
+        - Authentication
+      parameters: []
+      responses:
+        '200':
+          description: User object
+          content:
+            application/json:
+              schema: *ref_1
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema: *ref_4
+        '401':
+          description: Unauthorised
+          content:
+            application/json:
+              schema: *ref_4
+      security:
+        - bearer: []
+  /forget-password/{token}:
+    post:
+      summary: Forget Password - Updated
+      deprecated: false
+      description: Update password from forget password
+      tags:
+        - OOSA_USER_SERVICE
+        - Forget Password
+      parameters:
+        - name: token
+          in: path
+          description: Token from password reset
+          required: true
+          example: ''
+          schema:
+            type: integer
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/RequestForgetPasswordReset'
+            example: ''
+      responses:
+        '200':
+          description: User object
+          content:
+            application/json:
+              schema: *ref_2
+      security:
+        - bearer: []
+  /user/friends:
+    get:
+      summary: Retrieve User Friends
+      deprecated: false
+      description: Get user friends
+      tags:
+        - OOSA_USER_SERVICE
+        - User - Friends
+      parameters: []
+      responses:
+        '200':
+          description: User friends
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UserFriends'
+      security:
+        - bearer: []
+  /auth/notifications:
+    get:
+      summary: Retrieve User Notifications
+      deprecated: false
+      description: Retrieve notifications
+      tags:
+        - OOSA_USER_SERVICE
+        - User Notifications
+      parameters: []
+      responses:
+        '200':
+          description: Notifications
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/UserNotifications'
+      security:
+        - bearer: []
+  /user-following:
+    post:
+      summary: Create User Following
+      deprecated: false
+      description: Create user following
+      tags:
+        - OOSA_USER_SERVICE
+        - User Following
+      parameters: []
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/RequestUserFollowing'
+            example: ''
+      responses:
+        '200':
+          description: User following
+          content:
+            application/json:
+              schema: *ref_5
+      security:
+        - bearer: []
+    get:
+      summary: Retrieve User Following
+      deprecated: false
+      description: Get user following
+      tags:
+        - OOSA_USER_SERVICE
+        - User Following
+      parameters: []
+      responses:
+        '200':
+          description: User following
+          content:
+            application/json:
+              schema:
+                type: array
+                items: *ref_5
+      security:
+        - bearer: []
   /auth/profile-picture:
     post:
-      summary: User profile picture
+      summary: Update User Profile Picture
+      deprecated: false
       description: Update profile picture
+      tags:
+        - OOSA_USER_SERVICE
+        - Authentication
+      parameters: []
       requestBody:
         content:
           multipart/form-data:
@@ -174,456 +532,178 @@ paths:
                 users_avatar:
                   type: string
                   format: binary
-      security:
-        - Bearer: []
       responses:
-        200:
+        '200':
           description: User Object
           content:
             application/json:
-              schema:
-                $ref: '#/components/schemas/User'
-      tags: 
-        - Authentication
-  /auth/avatar:
+              schema: *ref_1
+      security:
+        - bearer: []
+  /oosa-daily:
     post:
-      summary: Update user avatar
-      description: Update user avatar
-      requestBody:
-        required: true
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/RequestAuthUpdateAvatar'
-      security:
-        - Bearer: []
-      responses:
-        200:
-          description: User object
-          content:
-            application/json:
-              schema:
-                type: object
-                $ref: '#/components/schemas/User'
-      tags: 
-        - Authentication
-  /auth/setting:
-    put:
-      summary: Update settings
-      description: Update settings<br/>1 - True (On)<br />0 - False (Off)
-      security:
-        - Bearer: []
-      requestBody:
-        description: Update settings object
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/RequestAuthUpdateSetting'
-      responses:
-        200:
-          description: User object
-          content:
-            application/json:
-              schema:
-                type: object
-                $ref: '#/components/schemas/User'
-      tags: 
-        - Authentication
-  /auth/badges:
-    get:
-      summary: User badges
-      description: Retrieve badges earned by user
-      parameters:
-        - name: single
-          in: query
-          description: Single acquire
-          schema:
-            type: boolean
-            default: true
-      security:
-        - Bearer: []
-      responses:
-        200:
-          description: User badges object
-          content:
-            application/json:
-              schema:
-                type: object
-                $ref: '#/components/schemas/UserBadges'
-      tags: 
-        - User Badges
-  /auth/notifications:
-    get:
-      summary: User notifications
-      description: Retrieve notifications
-      security:
-        - Bearer: []
-      responses:
-        200:
-          description: Notifications
-          content:
-            application/json:
-              schema:
-                type: array
-                items:
-                  $ref: '#/components/schemas/UserNotifications'
-      tags: 
-        - User Notifications
-  /register:
-    post:
-      summary: User register
-      description: Use this endpoint to register using email
-      requestBody:
-        description: Register email object
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/RequestUserRegisterEmail'
-      responses:
-        200:
-          description: Login object
-          content:
-            application/json:
-              schema:
-                type: object
-                $ref: '#/components/schemas/UserLogin'
-        204:
-          description: If user exists
-          content:
-            application/json:
-              schema:
-                type: object
-                $ref: '#/components/schemas/ResponseGeneralError'
-      tags: 
-        - Authentication
-  /user-following:
-    get:
-      summary: Get user following
-      description: Get user following
-      security:
-        - Bearer: []
-      responses:  
-        200:
-          description: User following
-          content:
-            application/json:
-              schema:
-                type: array
-                items:
-                  $ref: "#/components/schemas/UserFollowings"
+      summary: Read Authentication Copy
+      deprecated: false
+      description: >-
+        Retrieve the authenticated user detail. <br/>1. Google<br/>2.
+        Line<br/>3. Email<br/>4. Facebook
       tags:
-        - User Following
-    post:
-      summary: Create user following
-      description: Create user following
-      security:
-        - Bearer: []
-      requestBody:
-        required: true
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/RequestUserFollowing'
-      responses:  
-        200:
-          description: User following
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/UserFollowings"
-      tags:
-        - User Following
-  /user-following/{userFollowingId}:
-    get:
-      summary: Get user following
-      description: Get user following
-      parameters:
-        - name: userFollowingId
-          in: path
-          description: String ID of the user following
-          schema:
-            type: integer
-          required: true
-      security:
-        - Bearer: []
-      responses:  
-        200:
-          description: User following
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/UserFollowings"
-      tags:
-        - User Following
-    delete:
-      summary: Delete user following
-      description: Delete user following
-      parameters:
-        - name: userFollowingId
-          in: path
-          description: String ID of the user following
-          schema:
-            type: integer
-          required: true
-      security:
-        - Bearer: []
+        - OOSA_USER_SERVICE
+        - Authentication
+      parameters: []
       responses:
-        200:
-          description: Message
+        '200':
+          description: OK
           content:
             application/json:
-              schema:
-                $ref: '#/components/schemas/ResponseGeneralSuccess'
-      tags: 
-        - User Following
-  /user/friends:
-    get:
-      summary: Get user friends
-      description: Get user friends
+              schema: *ref_2
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema: *ref_4
+        '401':
+          description: Unauthorised
+          content:
+            application/json:
+              schema: *ref_4
       security:
-        - Bearer: []
-      responses:  
-        200:
-          description: User friends
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/UserFriends"
-      tags:
-        - User - Friends
-  
-  /contact-us:
-    post:
-      summary: Contact Us
-      description: Create contact us record
-      security:
-        - Bearer: []
-      requestBody:
-        description: Contact Us Object
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/RequestContactUs'
-      responses:
-        200:
-          description: User object
-          content:
-            application/json:
-              schema:
-                type: object
-                $ref: '#/components/schemas/ResponseGeneralSuccess'
-      tags: 
-        - Contact Us
-  /forget-password:
-    post:
-      summary: Forget Password
-      description: Forget Password Request
-      security:
-        - Bearer: []
-      requestBody:
-        description: Forget Password Object
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/RequestForgetPassword'
-      responses:
-        200:
-          description: User object
-          content:
-            application/json:
-              schema:
-                type: object
-                $ref: '#/components/schemas/ResponseGeneralSuccess'
-      tags: 
-        - Forget Password
-  /forget-password/{token}:
-    post:
-      summary: Forget Password
-      description: Update password from forget password
-      security:
-        - Bearer: []
-      parameters:
-        - name: token
-          in: path
-          description: Token from password reset
-          schema:
-            type: integer
-          required: true
-      requestBody:
-        description: Reset Password Object
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/RequestForgetPasswordReset'
-      responses:
-        200:
-          description: User object
-          content:
-            application/json:
-              schema:
-                type: object
-                $ref: '#/components/schemas/ResponseGeneralSuccess'
-      tags: 
-        - Forget Password
-
+        - bearer: []
 components:
   schemas:
-    User:
+    RequestUserFollowing:
       type: object
       properties:
-          users_id:
-            type: string
-          users_source:
-            type: integer
-            format: int32
-          users_source_id:
-            type: string
-          users_name:
-            type: string
-          users_username:
-            type: string
-          users_email:
-            type: string
-          users_password:
-            type: string
-          users_object:
-            type: string
-          users_avatar:
-            type: string
-          users_setting_language:
-            type: string
-          users_setting_is_visible_friends:
-            type: integer
-            format: int32
-          users_setting_is_visible_statistics:
-            type: integer
-            format: int32
-          users_setting_visibility_activity_summary:
-            type: integer
-            format: int32
-          users_setting_friend_auto_add:
-            type: integer
-            format: int32
-          users_is_subscribed:
-            type: boolean
-            default: false
-          users_is_business:
-            type: boolean
-            default: false
-          users_created_at:
-            type: string
-            format: int32
-    UserLogin:
-      type: object
-      properties:
-          user:
-            type: object
-            $ref: "#/components/schemas/User"
-          token:
-            type: string
-    UserFollowings:
-      type: object
-      properties:
-        user_followings_id:
-          type: string
-        user_followings_user:
-          type: string
         user_followings_following:
           type: string
-        user_followings_created_at:
-          type: string
-    UserFriends:
-      type: array
-      items:
-        oneOf:
-          - $ref: "#/components/schemas/UserFriendsOne"
-    UserFriendsOne:
-      type: object
-      properties:
-          users_id:
-            type: string
-            default: 6613fae21977170d4fd608a6
-          users_name:
-            type: string
-            default: Tommy
-          users_avatar:
-            type: string
-            default: AVATAR_1
-    UserBadges:
-      type: object
-      properties:
-          user_badges_id:
-            type: string
-            default: 669556094dc5739b71e173fe
-          user_badges_user:
-            type: string
-            default: 65f6861102948c60bcb3cb1d
-          user_badges_badge:
-            type: string
-            default: 6695534c1da4d6fee70fc3e4
-          user_badges_created_at:
-            type: string
-            default: 2024-07-15T17:02:01.037Z
-          user_badges_detail:
-            type: object
-            $ref: "#/components/schemas/UserBadgesDetail"
-    UserBadgesDetail:
-      type: object
-      properties:
-          badges_id:
-            type: string
-            default: 6695534c1da4d6fee70fc3e4
-          badges_code:
-            type: string
-            default: N1
-          badges_name:
-            type: string
-            default: 1st. Rewild
+          default: 6613fae21977170d4fd608a6
     UserNotifications:
       type: object
       properties:
-        notifications_id:
-          type: string
-          default: 669560b1e7777ddfc76043c2
         notifications_code:
           type: string
           default: Invitation
+        notifications_created_at:
+          type: string
+          default: '2024-07-15T17:47:29.074Z'
+        notifications_created_by:
+          type: string
+          default: 65f6861102948c60bcb3cb1d
+        notifications_id:
+          type: string
+          default: 669560b1e7777ddfc76043c2
+        notifications_identifier:
+          type: string
+          default: 66005b3ef4ca36269a55b468
+        notifications_message:
+          type: string
+          default: TEST
         notifications_type:
           type: string
           default: New
         notifications_user:
           type: string
           default: 65f6861102948c60bcb3cb1d
-        notifications_message:
-          type: string
-          default: TEST
-        notifications_identifier:
-          type: string
-          default: 66005b3ef4ca36269a55b468
-        notifications_created_at:
-          type: string
-          default: 2024-07-15T17:47:29.074Z
-        notifications_created_by:
-          type: string
-          default: 65f6861102948c60bcb3cb1d
-    ContactUs:
+    UserFriends:
+      type: array
+      items:
+        oneOf:
+          - $ref: '#/components/schemas/UserFriendsOne'
+    UserFriendsOne:
       type: object
       properties:
-          contact_us_id:
-            type: string
-          contact_us_email:
-            type: string
-          contact_us_message:
-            type: string
-          contact_us_created_at:
-            type: string
+        users_avatar:
+          type: string
+          default: AVATAR_1
+        users_id:
+          type: string
+          default: 6613fae21977170d4fd608a6
+        users_name:
+          type: string
+          default: Tommy
+    RequestForgetPasswordReset:
+      type: object
+      properties:
+        email:
+          type: string
+          default: tommy@oosa.ar.tw
+        password:
+          type: string
+          default: 123456
+    RequestUsersUpdate:
+      type: object
+      properties:
+        users_email:
+          type: string
+          default: tommy@oosa.ar.tw
+        users_name:
+          type: string
+          default: Tommy
+        users_setting_language:
+          type: string
+          default: en
+        users_username:
+          type: string
+          default: xiaolongbao
+    UserFollowings:
+      type: object
+      properties:
+        user_followings_created_at:
+          type: string
+        user_followings_following:
+          type: string
+        user_followings_id:
+          type: string
+        user_followings_user:
+          type: string
+    ResponseGeneralError:
+      type: object
+      properties:
+        message:
+          type: string
+    RequestUserRegisterEmail:
+      type: object
+      properties:
+        email:
+          type: string
+          default: user@arwork.tw
+        is_business:
+          type: boolean
+          default: false
+        name:
+          type: string
+          default: Test User
+        password:
+          type: string
+          default: 123
+    RequestForgetPassword:
+      type: object
+      properties:
+        email:
+          type: string
+          default: tommy@oosa.ar.tw
     RequestContactUs:
       type: object
       properties:
-          email:
-            type: string
-          message:
-            type: string
+        email:
+          type: string
+        message:
+          type: string
+    RequestAuthUpdateSetting:
+      type: object
+      properties:
+        users_setting_friend_auto_add:
+          type: number
+          default: 0
+        users_setting_is_visible_friends:
+          type: number
+          default: 1
+        users_setting_is_visible_statistics:
+          type: number
+          default: 1
+        users_setting_visibility_activity_summary:
+          type: number
+          default: 1
     RequestGoogleAuth:
       type: object
       properties:
@@ -638,99 +718,149 @@ components:
         password:
           type: string
           default: 123
-    RequestUserRegisterEmail:
+      required:
+        - email
+        - password
+    ResponseGeneralSuccess:
       type: object
       properties:
-        name:
+        message:
           type: string
-          default: Test User
-        email:
+      required:
+        - message
+    RequestUsersUpdatePassword:
+      type: object
+      properties:
+        new_password:
           type: string
-          default: user@arwork.tw
+          default: 12345
         password:
           type: string
-          default: 123
-        is_business:
-          type: boolean
-          default: false
-    RequestUserFollowing:
+          default: 123456
+    UserBadges:
       type: object
       properties:
-        user_followings_following:
+        user_badges_detail:
+          $ref: '#/components/schemas/UserBadgesDetail'
+        user_badges_badge:
           type: string
-          default: 6613fae21977170d4fd608a6
-    RequestUsersUpdate:
+          default: 6695534c1da4d6fee70fc3e4
+        user_badges_created_at:
+          type: string
+          default: '2024-07-15T17:02:01.037Z'
+        user_badges_id:
+          type: string
+          default: 669556094dc5739b71e173fe
+        user_badges_user:
+          type: string
+          default: 65f6861102948c60bcb3cb1d
+    UserBadgesDetail:
       type: object
       properties:
-        users_username:
+        badges_code:
           type: string
-          default: xiaolongbao
-        users_name:
+          default: N1
+        badges_id:
           type: string
-          default: Tommy
+          default: 6695534c1da4d6fee70fc3e4
+        badges_name:
+          type: string
+          default: 1st. Rewild
+    User:
+      type: object
+      properties:
+        users_avatar:
+          type: string
+        users_created_at:
+          type: string
+          format: int32
         users_email:
           type: string
-          default: tommy@oosa.ar.tw
+        users_id:
+          type: string
+        users_is_business:
+          type: boolean
+          default: false
+        users_is_subscribed:
+          type: boolean
+          default: false
+        users_name:
+          type: string
+        users_object:
+          type: string
+        users_password:
+          type: string
+        users_setting_friend_auto_add:
+          type: integer
+          format: int32
+        users_setting_is_visible_friends:
+          type: integer
+          format: int32
+        users_setting_is_visible_statistics:
+          type: integer
+          format: int32
         users_setting_language:
           type: string
-          default: en
-    RequestAuthUpdateSetting:
-      type: object
-      properties:
-        users_setting_is_visible_friends:
-          type: number
-          default: 1
-        users_setting_is_visible_statistics:
-          type: number
-          default: 1
         users_setting_visibility_activity_summary:
-          type: number
-          default: 1
-        users_setting_friend_auto_add:
-          type: number
-          default: 0
+          type: integer
+          format: int32
+        users_source:
+          type: integer
+          format: int32
+        users_source_id:
+          type: string
+        users_username:
+          type: string
+        users_breathing_points:
+          type: integer
+      required:
+        - users_avatar
+        - users_created_at
+        - users_email
+        - users_id
+        - users_is_business
+        - users_is_subscribed
+        - users_name
+        - users_object
+        - users_setting_friend_auto_add
+        - users_setting_is_visible_friends
+        - users_setting_is_visible_statistics
+        - users_setting_language
+        - users_setting_visibility_activity_summary
+        - users_source
+        - users_source_id
+        - users_username
     RequestAuthUpdateAvatar:
       type: object
       properties:
         users_avatar:
           type: string
           default: AVATAR_1
-    RequestForgetPassword:
+    UserLogin:
       type: object
       properties:
-        email:
+        user: *ref_1
+        token:
           type: string
-          default: tommy@oosa.ar.tw
-    RequestForgetPasswordReset:
+      required:
+        - token
+    ResponseValidationError:
       type: object
       properties:
-        email:
-          type: string
-          default: tommy@oosa.ar.tw
-        password:
-          type: string
-          default: 123456
-    RequestUsersUpdatePassword:
-      type: object
-      properties:
-        password:
-          type: string
-          default: 123456
-        new_password:
-          type: string
-          default: 12345
-    ResponseGeneralSuccess:
-      type: object
-      properties:
+        code:
+          type: integer
         message:
           type: string
-    ResponseGeneralError:
-      type: object
-      properties:
-        message:
+        validation:
           type: string
+        data:
+          type: array
+          items:
+            type: string
   securitySchemes:
-    Bearer:
-      type: apiKey
-      in: header
-      name: Bearer
+    bearer:
+      type: http
+      scheme: bearer
+servers:
+- url: http://oosa_user:6080
+  description: OOSA_USER_SERVICE

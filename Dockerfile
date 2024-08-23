@@ -9,7 +9,7 @@ RUN FC_ENABLE=1 \
     FC_SETTINGS="/krakend/config/settings" \
     krakend check -d -t -c /krakend/config/krakend.tmpl
 
-FROM stedolan/jq:latest as minifier
+FROM isaackuang/tools:latest as minifier
 WORKDIR /krakend/config
 COPY --from=builder --chown=1000 /krakend/config .
 RUN jq --compact-output <krakend_pretty.json '.' > krakend.json
