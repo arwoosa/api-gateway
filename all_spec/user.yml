@@ -12,7 +12,10 @@ tags:
   - name: Forget Password
   - name: User Following
   - name: User - Friends
+  - name: _E 活動 Event
   - name: User Notifications
+  - name: OOSA_REWILD_SERVICE
+  - name: User Event
 paths:
   /auth/apple:
     post:
@@ -52,7 +55,7 @@ paths:
           description: User object
           content:
             application/json:
-              schema: &ref_1
+              schema: &ref_2
                 $ref: '#/components/schemas/User'
       security:
         - bearer: []
@@ -101,7 +104,7 @@ paths:
           description: User object
           content:
             application/json:
-              schema: &ref_2
+              schema: &ref_3
                 $ref: '#/components/schemas/ResponseGeneralSuccess'
       security:
         - bearer: []
@@ -127,6 +130,25 @@ paths:
           content:
             application/json:
               schema: *ref_0
+        '400':
+          description: Validation Error
+          content:
+            application/json:
+              schema: &ref_1
+                $ref: '#/components/schemas/ResponseValidationError'
+        '404':
+          description: Record not found
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    title: ''
+                    description: message
+                required:
+                  - message
       security: []
   /auth/facebook:
     post:
@@ -199,8 +221,7 @@ paths:
           description: Validation Error
           content:
             application/json:
-              schema: &ref_3
-                $ref: '#/components/schemas/ResponseValidationError'
+              schema: *ref_1
       security: []
   /auth/setting:
     put:
@@ -222,7 +243,7 @@ paths:
           description: User object
           content:
             application/json:
-              schema: *ref_1
+              schema: *ref_2
       security:
         - bearer: []
   /contact-us:
@@ -245,12 +266,12 @@ paths:
           description: User object
           content:
             application/json:
-              schema: *ref_2
+              schema: *ref_3
         '400':
           description: Validation Error
           content:
             application/json:
-              schema: *ref_3
+              schema: *ref_1
       security:
         - bearer: []
   /forget-password:
@@ -273,7 +294,7 @@ paths:
           description: User object
           content:
             application/json:
-              schema: *ref_2
+              schema: *ref_3
       security:
         - bearer: []
   /register:
@@ -327,7 +348,7 @@ paths:
           description: Message
           content:
             application/json:
-              schema: *ref_2
+              schema: *ref_3
       security:
         - bearer: []
     get:
@@ -374,7 +395,7 @@ paths:
           description: User object
           content:
             application/json:
-              schema: *ref_1
+              schema: *ref_2
       security:
         - bearer: []
     get:
@@ -392,7 +413,7 @@ paths:
           description: User object
           content:
             application/json:
-              schema: *ref_1
+              schema: *ref_2
         '400':
           description: Bad Request
           content:
@@ -432,7 +453,7 @@ paths:
           description: User object
           content:
             application/json:
-              schema: *ref_2
+              schema: *ref_3
       security:
         - bearer: []
   /user/friends:
@@ -443,13 +464,20 @@ paths:
       tags:
         - OOSA_USER_SERVICE
         - User - Friends
-      parameters: []
+        - _E 活動 Event
+      parameters:
+        - name: name
+          in: query
+          description: name
+          required: false
+          schema:
+            type: string
       responses:
         '200':
           description: User friends
           content:
             application/json:
-              schema:
+              schema: &ref_6
                 $ref: '#/components/schemas/UserFriends'
       security:
         - bearer: []
@@ -537,7 +565,7 @@ paths:
           description: User Object
           content:
             application/json:
-              schema: *ref_1
+              schema: *ref_2
       security:
         - bearer: []
   /oosa-daily:
@@ -556,7 +584,7 @@ paths:
           description: OK
           content:
             application/json:
-              schema: *ref_2
+              schema: *ref_3
         '400':
           description: Bad Request
           content:
@@ -569,8 +597,302 @@ paths:
               schema: *ref_4
       security:
         - bearer: []
+  /user:
+    get:
+      summary: Retrieve User
+      deprecated: false
+      description: Get user friends
+      tags:
+        - OOSA_USER_SERVICE
+        - User - Friends
+      parameters:
+        - name: name
+          in: query
+          description: ''
+          required: false
+          schema:
+            type: string
+      responses:
+        '200':
+          description: User friends
+          content:
+            application/json:
+              schema: *ref_6
+      security:
+        - bearer: []
+  /user/{userId}:
+    get:
+      summary: User
+      deprecated: false
+      description: Retrieve an authenticated user events
+      operationId: get-my-events
+      tags:
+        - OOSA_REWILD_SERVICE
+        - User Event
+      parameters:
+        - name: userId
+          in: path
+          description: ''
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Array of EventReferenceLinks Object
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UserOther'
+        '204':
+          description: No Content
+          content:
+            '*/*':
+              schema:
+                type: object
+                properties: {}
+      security:
+        - bearer: []
+  /user/{userId}/badges:
+    get:
+      summary: User Badges
+      deprecated: false
+      description: Retrieve an authenticated user events
+      operationId: get-my-events
+      tags:
+        - OOSA_REWILD_SERVICE
+        - User Event
+      parameters:
+        - name: userId
+          in: path
+          description: ''
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Array of EventReferenceLinks Object
+          content:
+            application/json:
+              schema: *ref_2
+        '204':
+          description: No Content
+          content:
+            '*/*':
+              schema:
+                type: object
+                properties: {}
+      security:
+        - bearer: []
+  /user/statistics:
+    get:
+      summary: Statistics
+      deprecated: false
+      description: Retrieve an authenticated user events
+      operationId: get-my-events
+      tags:
+        - OOSA_REWILD_SERVICE
+        - User Event
+      parameters: []
+      responses:
+        '200':
+          description: Array of EventReferenceLinks Object
+          content:
+            application/json:
+              schema: *ref_2
+        '204':
+          description: No Content
+          content:
+            '*/*':
+              schema:
+                type: object
+                properties: {}
+      security:
+        - bearer: []
+  /world/statistics:
+    get:
+      summary: Statistics
+      deprecated: false
+      description: Retrieve an authenticated user events
+      operationId: get-my-events
+      tags:
+        - OOSA_REWILD_SERVICE
+        - User Event
+      parameters: []
+      responses:
+        '200':
+          description: Array of EventReferenceLinks Object
+          content:
+            application/json:
+              schema: *ref_2
+        '204':
+          description: No Content
+          content:
+            '*/*':
+              schema:
+                type: object
+                properties: {}
+      security:
+        - bearer: []
+  /world/ranking-feelings:
+    get:
+      summary: Ranking Feelings
+      deprecated: false
+      description: Retrieve an authenticated user events
+      operationId: get-my-events
+      tags:
+        - OOSA_REWILD_SERVICE
+        - User Event
+      parameters:
+        - name: feelings
+          in: query
+          description: ''
+          required: false
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Array of EventReferenceLinks Object
+          content:
+            application/json:
+              schema:
+                type: array
+                items: &ref_7
+                  $ref: '#/components/schemas/RankingRewilding'
+        '204':
+          description: No Content
+          content:
+            '*/*':
+              schema:
+                type: object
+                properties: {}
+      security:
+        - bearer: []
+  /world/ranking-rewilding:
+    get:
+      summary: Ranking Rewilding
+      deprecated: false
+      description: Retrieve an authenticated user events
+      operationId: get-my-events
+      tags:
+        - OOSA_REWILD_SERVICE
+        - User Event
+      parameters: []
+      responses:
+        '200':
+          description: Array of EventReferenceLinks Object
+          content:
+            application/json:
+              schema:
+                type: array
+                items: *ref_7
+        '204':
+          description: No Content
+          content:
+            '*/*':
+              schema:
+                type: object
+                properties: {}
+      security:
+        - bearer: []
 components:
   schemas:
+    RankingRewilding:
+      type: object
+      properties:
+        rewilding_id:
+          type: string
+        rewilding_name:
+          type: string
+        rewilding_type_list:
+          type: array
+          items:
+            type: string
+        rewilding_participants_experience_count:
+          type:
+            - integer
+            - 'null'
+      required:
+        - rewilding_id
+        - rewilding_name
+        - rewilding_type_list
+        - rewilding_participants_experience_count
+    UserOther:
+      type: object
+      properties:
+        users_avatar:
+          type: string
+        users_created_at:
+          type: string
+          format: int32
+        users_email:
+          type: string
+        users_id:
+          type: string
+        users_is_business:
+          type: boolean
+          default: false
+        users_is_subscribed:
+          type: boolean
+          default: false
+        users_name:
+          type: string
+        users_object:
+          type: string
+        users_password:
+          type: string
+        users_setting_friend_auto_add:
+          type: integer
+          format: int32
+        users_setting_is_visible_friends:
+          type: integer
+          format: int32
+        users_setting_is_visible_statistics:
+          type: integer
+          format: int32
+        users_setting_language:
+          type: string
+        users_setting_visibility_activity_summary:
+          type: integer
+          format: int32
+        users_source:
+          type: integer
+          format: int32
+        users_source_id:
+          type: string
+        users_username:
+          type: string
+        users_breathing_points:
+          type: integer
+        users_followings: *ref_5
+      required:
+        - users_avatar
+        - users_created_at
+        - users_email
+        - users_id
+        - users_is_business
+        - users_is_subscribed
+        - users_name
+        - users_object
+        - users_setting_friend_auto_add
+        - users_setting_is_visible_friends
+        - users_setting_is_visible_statistics
+        - users_setting_language
+        - users_setting_visibility_activity_summary
+        - users_source
+        - users_source_id
+        - users_username
+        - users_followings
+    UserFollowings:
+      type: object
+      properties:
+        user_followings_created_at:
+          type: string
+        user_followings_following:
+          type: string
+        user_followings_id:
+          type: string
+        user_followings_user:
+          type: string
     RequestUserFollowing:
       type: object
       properties:
@@ -645,17 +967,78 @@ components:
         users_username:
           type: string
           default: xiaolongbao
-    UserFollowings:
+    UserLogin:
       type: object
       properties:
-        user_followings_created_at:
+        user: *ref_2
+        token:
           type: string
-        user_followings_following:
+      required:
+        - token
+    User:
+      type: object
+      properties:
+        users_avatar:
           type: string
-        user_followings_id:
+        users_created_at:
           type: string
-        user_followings_user:
+          format: int32
+        users_email:
           type: string
+        users_id:
+          type: string
+        users_is_business:
+          type: boolean
+          default: false
+        users_is_subscribed:
+          type: boolean
+          default: false
+        users_name:
+          type: string
+        users_object:
+          type: string
+        users_password:
+          type: string
+        users_setting_friend_auto_add:
+          type: integer
+          format: int32
+        users_setting_is_visible_friends:
+          type: integer
+          format: int32
+        users_setting_is_visible_statistics:
+          type: integer
+          format: int32
+        users_setting_language:
+          type: string
+        users_setting_visibility_activity_summary:
+          type: integer
+          format: int32
+        users_source:
+          type: integer
+          format: int32
+        users_source_id:
+          type: string
+        users_username:
+          type: string
+        users_breathing_points:
+          type: integer
+      required:
+        - users_avatar
+        - users_created_at
+        - users_email
+        - users_id
+        - users_is_business
+        - users_is_subscribed
+        - users_name
+        - users_object
+        - users_setting_friend_auto_add
+        - users_setting_is_visible_friends
+        - users_setting_is_visible_statistics
+        - users_setting_language
+        - users_setting_visibility_activity_summary
+        - users_source
+        - users_source_id
+        - users_username
     ResponseGeneralError:
       type: object
       properties:
@@ -766,97 +1149,17 @@ components:
         badges_name:
           type: string
           default: 1st. Rewild
-    User:
-      type: object
-      properties:
-        users_avatar:
-          type: string
-        users_created_at:
-          type: string
-          format: int32
-        users_email:
-          type: string
-        users_id:
-          type: string
-        users_is_business:
-          type: boolean
-          default: false
-        users_is_subscribed:
-          type: boolean
-          default: false
-        users_name:
-          type: string
-        users_object:
-          type: string
-        users_password:
-          type: string
-        users_setting_friend_auto_add:
-          type: integer
-          format: int32
-        users_setting_is_visible_friends:
-          type: integer
-          format: int32
-        users_setting_is_visible_statistics:
-          type: integer
-          format: int32
-        users_setting_language:
-          type: string
-        users_setting_visibility_activity_summary:
-          type: integer
-          format: int32
-        users_source:
-          type: integer
-          format: int32
-        users_source_id:
-          type: string
-        users_username:
-          type: string
-        users_breathing_points:
-          type: integer
-      required:
-        - users_avatar
-        - users_created_at
-        - users_email
-        - users_id
-        - users_is_business
-        - users_is_subscribed
-        - users_name
-        - users_object
-        - users_setting_friend_auto_add
-        - users_setting_is_visible_friends
-        - users_setting_is_visible_statistics
-        - users_setting_language
-        - users_setting_visibility_activity_summary
-        - users_source
-        - users_source_id
-        - users_username
     RequestAuthUpdateAvatar:
       type: object
       properties:
         users_avatar:
           type: string
           default: AVATAR_1
-    UserLogin:
-      type: object
-      properties:
-        user: *ref_1
-        token:
-          type: string
-      required:
-        - token
     ResponseValidationError:
       type: object
       properties:
-        code:
-          type: integer
         message:
           type: string
-        validation:
-          type: string
-        data:
-          type: array
-          items:
-            type: string
   securitySchemes:
     bearer:
       type: http
