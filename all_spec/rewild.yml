@@ -2958,7 +2958,7 @@ paths:
                 items: *ref_7
       security:
         - bearer: []
-  /rewilding:searchNearby:
+  /rewilding/searchNearby:
     get:
       summary: 附近的野放點
       deprecated: false
@@ -3022,7 +3022,7 @@ paths:
                 items: *ref_7
       security:
         - bearer: []
-  /rewilding:autocomplete:
+  /rewilding/autocomplete:
     get:
       summary: 野放點自動完成
       deprecated: false
