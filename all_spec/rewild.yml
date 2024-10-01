@@ -2905,7 +2905,7 @@ paths:
               schema: *ref_11
       security:
         - bearer: []
-  /rewilding:searchText:
+  /rewilding/searchText:
     get:
       summary: Untitled Endpoint
       deprecated: false
