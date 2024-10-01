@@ -22,6 +22,7 @@ tags:
   - name: Event
   - name: _E 活動 Event
   - name: Event Invitation - Detail
+  - name: Event Reference Links
   - name: User Event
   - name: Rewilding
   - name: Event Schedule
@@ -302,7 +303,7 @@ paths:
           description: Rewilding references object
           content:
             application/json:
-              schema: &ref_16
+              schema: &ref_15
                 $ref: '#/components/schemas/RewildingOptions'
       security:
         - bearer: []
@@ -453,7 +454,7 @@ paths:
           description: Event Object
           content:
             application/json:
-              schema: &ref_17
+              schema: &ref_16
                 $ref: '#/components/schemas/EventsSimple'
         '204':
           description: No collaborative log found
@@ -752,7 +753,7 @@ paths:
       requestBody:
         content:
           application/json:
-            schema: &ref_15
+            schema: &ref_14
               $ref: '#/components/schemas/RequestPocketList'
             example: ''
       responses:
@@ -854,7 +855,7 @@ paths:
           description: Array of PocketListItems
           content:
             application/json:
-              schema: &ref_11
+              schema: &ref_10
                 $ref: '#/components/schemas/PocketListItems'
         '404':
           description: Record Not Found
@@ -1073,7 +1074,7 @@ paths:
           description: Error
           content:
             application/json:
-              schema: &ref_12
+              schema: &ref_11
                 $ref: '#/components/schemas/ResponseGeneralError'
       security:
         - bearer: []
@@ -1148,8 +1149,8 @@ paths:
       description: Update an event
       tags:
         - OOSA_REWILD_SERVICE
-        - Event
         - _E 活動 Event
+        - Event
       parameters:
         - name: eventId
           in: path
@@ -1182,6 +1183,20 @@ paths:
           content:
             application/json:
               schema: *ref_3
+        '500':
+          description: Server Error
+          content:
+            application/json:
+              schema:
+                title: ''
+                type: object
+                properties:
+                  message:
+                    type: string
+                    title: ''
+                    description: message
+                required:
+                  - message
       security:
         - bearer: []
   /event/{eventId}/accounting:
@@ -1194,6 +1209,7 @@ paths:
       tags:
         - OOSA_REWILD_SERVICE
         - Event Accounting
+        - _E 活動 Event
       parameters:
         - name: eventId
           in: path
@@ -1214,7 +1230,7 @@ paths:
         '204':
           description: No event accounting found
           content:
-            application/json:
+            '*/*':
               schema:
                 type: object
                 properties: {}
@@ -1227,6 +1243,7 @@ paths:
       tags:
         - OOSA_REWILD_SERVICE
         - Event Accounting
+        - _E 活動 Event
       parameters:
         - name: eventId
           in: path
@@ -1268,6 +1285,7 @@ paths:
       tags:
         - OOSA_REWILD_SERVICE
         - Event Invitation - Detail
+        - _E 活動 Event
       parameters:
         - name: eventId
           in: path
@@ -1314,6 +1332,7 @@ paths:
       tags:
         - OOSA_REWILD_SERVICE
         - Event Message Board
+        - _E 活動 Event
       parameters:
         - name: eventId
           in: path
@@ -1355,6 +1374,7 @@ paths:
       tags:
         - OOSA_REWILD_SERVICE
         - Event Message Board
+        - _E 活動 Event
       parameters:
         - name: eventId
           in: path
@@ -1388,6 +1408,7 @@ paths:
       tags:
         - OOSA_REWILD_SERVICE
         - Event Participants
+        - _E 活動 Event
       parameters:
         - name: eventId
           in: path
@@ -1403,7 +1424,7 @@ paths:
             application/json:
               schema:
                 type: array
-                items: &ref_10
+                items:
                   $ref: '#/components/schemas/EventParticipants'
         '204':
           description: No event found
@@ -1421,6 +1442,7 @@ paths:
       tags:
         - OOSA_REWILD_SERVICE
         - Event Participants
+        - _E 活動 Event
       parameters:
         - name: eventId
           in: path
@@ -1437,10 +1459,63 @@ paths:
             example: ''
       responses:
         '200':
-          description: New EventParticipant Object
+          description: OK
           content:
             application/json:
-              schema: *ref_10
+              schema:
+                type: object
+                properties:
+                  event_participants_id:
+                    type: string
+                  event_participants_event:
+                    type: string
+                  event_participants_user:
+                    type: string
+                  event_participants_status:
+                    type: integer
+                  event_participants_is_paid:
+                    type: integer
+                  event_participants_paid_amount:
+                    type: integer
+                  event_participants_paid_at:
+                    type: string
+                  event_participants_payment_request:
+                    type: string
+                  event_participants_payment_response:
+                    type: string
+                  event_participants_experience:
+                    type: string
+                  event_participants_request_message:
+                    type: string
+                  event_participants_created_by:
+                    type: string
+                  event_participants_created_at:
+                    type: string
+                  event_participant_invitation:
+                    type: object
+                    properties:
+                      invitation_message:
+                        type: string
+                      invitation_template:
+                        type: string
+                    required:
+                      - invitation_message
+                      - invitation_template
+                required:
+                  - event_participants_id
+                  - event_participants_event
+                  - event_participants_user
+                  - event_participants_status
+                  - event_participants_is_paid
+                  - event_participants_paid_amount
+                  - event_participants_paid_at
+                  - event_participants_payment_request
+                  - event_participants_payment_response
+                  - event_participants_experience
+                  - event_participants_request_message
+                  - event_participants_created_by
+                  - event_participants_created_at
+                  - event_participant_invitation
         '204':
           description: No event found
           content:
@@ -1467,6 +1542,7 @@ paths:
       description: Retrieve an event's reference links
       tags:
         - OOSA_REWILD_SERVICE
+        - _E 活動 Event
         - Event Reference Links
       parameters:
         - name: eventId
@@ -1484,6 +1560,13 @@ paths:
               schema:
                 type: array
                 items: *ref_2
+        '204':
+          description: No Content
+          content:
+            '*/*':
+              schema:
+                type: object
+                properties: {}
       security:
         - bearer: []
     post:
@@ -1492,6 +1575,7 @@ paths:
       description: Create an event's reference links
       tags:
         - OOSA_REWILD_SERVICE
+        - _E 活動 Event
         - Event Reference Links
       parameters:
         - name: eventId
@@ -1599,7 +1683,7 @@ paths:
           description: Array of PocketList objects
           content:
             application/json:
-              schema: *ref_11
+              schema: *ref_10
         '400':
           description: Validation Error
           content:
@@ -1647,7 +1731,7 @@ paths:
             application/json:
               schema:
                 type: array
-                items: *ref_11
+                items: *ref_10
         '204':
           description: No Content
           content:
@@ -1696,7 +1780,7 @@ paths:
             application/json:
               schema:
                 type: array
-                items: &ref_21
+                items: &ref_20
                   $ref: '#/components/schemas/RewildingPhotos'
       security:
         - bearer: []
@@ -1757,8 +1841,7 @@ paths:
               schema:
                 type: object
                 properties: {}
-      security:
-        - bearer: []
+      security: []
   /event:
     post:
       summary: Create Event
@@ -1878,7 +1961,14 @@ paths:
           description: Unauthorised
           content:
             application/json:
-              schema: *ref_12
+              schema: *ref_11
+        '500':
+          description: Server Error
+          content:
+            application/json:
+              schema:
+                type: object
+                properties: {}
       security:
         - bearer: []
     get:
@@ -1918,8 +2008,7 @@ paths:
               schema:
                 type: object
                 properties: {}
-      security:
-        - bearer: []
+      security: []
   /event-invitations:
     get:
       summary: Retrieve all event invitations
@@ -2009,7 +2098,7 @@ paths:
           description: Success
           content:
             application/json:
-              schema: &ref_13
+              schema: &ref_12
                 $ref: '#/components/schemas/EventSchedules'
       security:
         - bearer: []
@@ -2039,7 +2128,7 @@ paths:
           description: Success
           content:
             application/json:
-              schema: *ref_13
+              schema: *ref_12
         '400':
           description: Validation Error
           content:
@@ -2074,7 +2163,7 @@ paths:
                 type: array
                 items:
                   type: array
-                  items: &ref_14
+                  items: &ref_13
                     $ref: '#/components/schemas/EventScheduleBulkItemTime'
               examples:
                 '1':
@@ -2102,6 +2191,7 @@ paths:
       tags:
         - OOSA_REWILD_SERVICE
         - Event Schedule
+        - _E 活動 Event
       parameters:
         - name: eventId
           in: path
@@ -2141,7 +2231,7 @@ paths:
                 type: array
                 items:
                   type: array
-                  items: *ref_14
+                  items: *ref_13
               examples:
                 '1':
                   summary: Success
@@ -2199,7 +2289,7 @@ paths:
       requestBody:
         content:
           application/json:
-            schema: *ref_15
+            schema: *ref_14
             example: ''
       responses:
         '200':
@@ -2348,8 +2438,7 @@ paths:
               schema:
                 type: object
                 properties: {}
-      security:
-        - bearer: []
+      security: []
   /collaborative-log/{eventId}/polaroid:
     get:
       summary: Retrieve Polaroid
@@ -2443,7 +2532,7 @@ paths:
           description: Success
           content:
             application/json:
-              schema: *ref_16
+              schema: *ref_15
       security:
         - bearer: []
   /link-query:
@@ -2498,7 +2587,7 @@ paths:
           description: Event Object
           content:
             application/json:
-              schema: *ref_17
+              schema: *ref_16
         '204':
           description: No collaborative log found
           content:
@@ -2516,6 +2605,7 @@ paths:
       tags:
         - OOSA_REWILD_SERVICE
         - Event Invitation - Detail
+        - _E 活動 Event
       parameters:
         - name: eventId
           in: path
@@ -2671,7 +2761,7 @@ paths:
       requestBody:
         content:
           application/json:
-            schema: &ref_19
+            schema: &ref_18
               $ref: '#/components/schemas/RequestNews'
       responses:
         '200':
@@ -2683,7 +2773,7 @@ paths:
           description: Unauthorised
           content:
             application/json:
-              schema: *ref_12
+              schema: *ref_11
       security:
         - bearer: []
     get:
@@ -2708,13 +2798,13 @@ paths:
             application/json:
               schema:
                 type: array
-                items: &ref_18
+                items: &ref_17
                   $ref: '#/components/schemas/News'
         '401':
           description: Unauthorised
           content:
             application/json:
-              schema: *ref_12
+              schema: *ref_11
       security:
         - bearer: []
   /news/{id}:
@@ -2743,12 +2833,12 @@ paths:
           description: New Event Object
           content:
             application/json:
-              schema: *ref_18
+              schema: *ref_17
         '401':
           description: Unauthorised
           content:
             application/json:
-              schema: *ref_12
+              schema: *ref_11
       security:
         - bearer: []
     delete:
@@ -2781,7 +2871,7 @@ paths:
           description: Unauthorised
           content:
             application/json:
-              schema: *ref_12
+              schema: *ref_11
       security:
         - bearer: []
     put:
@@ -2801,18 +2891,202 @@ paths:
       requestBody:
         content:
           application/json:
-            schema: *ref_19
+            schema: *ref_18
       responses:
         '200':
           description: New Event Object
           content:
             application/json:
-              schema: *ref_18
+              schema: *ref_17
         '401':
           description: Unauthorised
           content:
             application/json:
-              schema: *ref_12
+              schema: *ref_11
+      security:
+        - bearer: []
+  /rewilding:searchText:
+    get:
+      summary: Untitled Endpoint
+      deprecated: false
+      description: ''
+      tags: []
+      parameters:
+        - name: keyword
+          in: query
+          description: ''
+          required: false
+          schema:
+            type: string
+        - name: rectangle_low_lat
+          in: query
+          description: ''
+          required: false
+          schema:
+            type: string
+        - name: rectangle_low_lng
+          in: query
+          description: ''
+          required: false
+          schema:
+            type: string
+        - name: rectangle_hight_lat
+          in: query
+          description: ''
+          required: false
+          schema:
+            type: number
+        - name: rectangle_hight_lng
+          in: query
+          description: ''
+          required: false
+          schema:
+            type: number
+        - name: language
+          in: query
+          description: ''
+          required: false
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: array
+                items: *ref_7
+      security:
+        - bearer: []
+  /rewilding:searchNearby:
+    get:
+      summary: 附近的野放點
+      deprecated: false
+      description: ''
+      tags: []
+      parameters:
+        - name: type
+          in: query
+          description: ''
+          required: false
+          schema:
+            type: string
+            enum:
+              - mountain_climbing
+              - hiking_area
+              - ecol_landscape
+              - camping
+              - picnic
+              - water_related
+            x-apidog:
+              enumDescriptions:
+                mountain_climbing: 登山
+                hiking_area: 健行
+                ecol_landscape: ''
+                camping: 露營
+                picnic: 野餐
+                water_related: 親水
+        - name: lat
+          in: query
+          description: ''
+          required: false
+          schema:
+            type: number
+        - name: lng
+          in: query
+          description: ''
+          required: false
+          schema:
+            type: number
+        - name: radius
+          in: query
+          description: 半徑
+          required: false
+          schema:
+            type: number
+            minimum: 0
+            maximum: 50000
+        - name: language
+          in: query
+          description: ''
+          required: false
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: array
+                items: *ref_7
+      security:
+        - bearer: []
+  /rewilding:autocomplete:
+    get:
+      summary: 野放點自動完成
+      deprecated: false
+      description: ''
+      tags: []
+      parameters:
+        - name: input
+          in: query
+          description: 關鍵字
+          required: false
+          schema:
+            type: string
+        - name: language
+          in: query
+          description: 語言
+          required: false
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    place_id:
+                      type: string
+                    name:
+                      type: string
+                    location:
+                      type: string
+                    type:
+                      type: array
+                      items:
+                        type: string
+                  required:
+                    - place_id
+                    - name
+                    - location
+                    - type
+      security:
+        - bearer: []
+  /rewilding/places/{place_id}:
+    get:
+      summary: 從google detail取得野放點資訊
+      deprecated: false
+      description: 將google place的資料轉成rewilding的格式，reference_links從google search取得前三個連結資料
+      tags: []
+      parameters:
+        - name: place_id
+          in: path
+          description: ''
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema: *ref_7
       security:
         - bearer: []
 components:
@@ -2904,7 +3178,7 @@ components:
     EventSchedules:
       type: object
       properties:
-        event_schedules_created_by_user: &ref_20
+        event_schedules_created_by_user: &ref_19
           $ref: '#/components/schemas/UserAgg'
         event_schedules_created_at:
           type: string
@@ -2961,7 +3235,7 @@ components:
         - event_polaroids_created_at
     EventScheduleBulk:
       type: array
-      items: *ref_14
+      items: *ref_13
     EventScheduleBulkItemTime:
       type: object
       properties:
@@ -3032,7 +3306,7 @@ components:
     EventReferenceLinks:
       type: object
       properties:
-        event_reference_links_created_by_user: *ref_20
+        event_reference_links_created_by_user: *ref_19
         event_reference_links_created_at:
           type: string
         event_reference_links_created_by:
@@ -3054,7 +3328,7 @@ components:
     EventParticipants:
       type: object
       properties:
-        event_participants_user_detail: *ref_20
+        event_participants_user_detail: *ref_19
         event_participants_created_at:
           type: string
         event_participants_created_by:
@@ -3080,7 +3354,7 @@ components:
     EventMessageBoard:
       type: object
       properties:
-        event_message_board_created_by_user: *ref_20
+        event_message_board_created_by_user: *ref_19
         event_message_board_announcement:
           type: string
         event_message_board_base_message:
@@ -3154,7 +3428,7 @@ components:
     EventAccounting:
       type: object
       properties:
-        event_accounting_created_by_user: *ref_20
+        event_accounting_created_by_user: *ref_19
         event_accounting_amount:
           type: number
         event_accounting_created_at:
@@ -3253,7 +3527,7 @@ components:
     Events:
       type: object
       properties:
-        events_created_by_user: *ref_20
+        events_created_by_user: *ref_19
         events_city_id:
           type: integer
         events_created_at:
@@ -3315,7 +3589,7 @@ components:
               type:
                 - array
                 - 'null'
-              items: *ref_20
+              items: *ref_19
               description: 最近參加的三個人
             remain_number:
               type: integer
@@ -3445,7 +3719,7 @@ components:
     EventAlbumLink:
       type: object
       properties:
-        event_album_link_created_by_user: *ref_20
+        event_album_link_created_by_user: *ref_19
         event_album_link_album_url:
           type: string
         event_album_link_created_at:
@@ -3520,7 +3794,7 @@ components:
           type:
             - array
             - 'null'
-          items: *ref_21
+          items: *ref_20
         rewilding_place_id:
           type: string
         rewilding_rating:
