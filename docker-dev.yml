@@ -13,7 +13,7 @@ services:
     image: oosa-gw:dev
     platform: linux/amd64
     container_name: oosa_gateway
-    restart: on-failure
+    restart: always
     labels:
       - traefik.http.routers.gateway.entrypoints=web
       - traefik.http.routers.gateway.rule= (Host(`localhost`) || Host(`dev.oosa.life`)) && PathPrefix(`/api`)
