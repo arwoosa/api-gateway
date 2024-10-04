@@ -19,7 +19,10 @@ steps:
   - docker build --platform linux/amd64 -t oosa-gw:dev .
 - name: restart service
   commands:
-  - restart_arwoosa.sh
+  - docker-compose -f dev.yml down
+  - docker container prune -f
+  - docker rmi $(docker images --filter "dangling=true" -q --no-trunc)
+  - docker-compose -f dev.yml up -d
 
 trigger:
   branch:
