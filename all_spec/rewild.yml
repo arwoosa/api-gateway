@@ -2439,7 +2439,7 @@ paths:
                 type: object
                 properties: {}
       security: []
-  /collaborative-log/{eventId}/polaroid:
+  /collaborative-log/{eventId}/polaroids:
     get:
       summary: Retrieve Polaroid
       deprecated: false
