@@ -16,12 +16,11 @@ steps:
   - docker run -v $PWD:/workdir 94peter/openapi-cli:v1.5 /main togs -spec /workdir/doc/oosa.yml -output /workdir/settings/endpoint.json
 - name: build image
   commands:
-  - docker build --platform linux/amd64 -t oosa-gw:dev .
+  - docker build -t oosa-gw:dev .
 - name: restart service
   commands:
   - docker-compose -f docker-dev.yml down
   - docker container prune -f
-  - docker rmi $(docker images --filter "dangling=true" -q --no-trunc)
   - docker-compose -f docker-dev.yml up -d
 
 trigger:

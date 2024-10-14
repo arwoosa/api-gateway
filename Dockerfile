@@ -1,4 +1,4 @@
-FROM devopsfaith/krakend:2.1.4 as builder
+FROM devopsfaith/krakend:2.7.2 as builder
 
 WORKDIR /krakend/config
 COPY . .
@@ -15,8 +15,7 @@ COPY --from=builder --chown=1000 /krakend/config .
 RUN jq --compact-output <krakend_pretty.json '.' > krakend.json
 
 
-FROM devopsfaith/krakend:2.1.4
+FROM devopsfaith/krakend:2.7.2
 COPY --from=minifier --chown=1000 /krakend/config/krakend.json .
 COPY --from=minifier --chown=1000 /krakend/config/doc/ ./doc/
-COPY --from=minifier --chown=1000 /krakend/config/plugin/ ./plugin/
 # COPY --from=minifier --chown=1000 /krakend/config/script/ ./script/
