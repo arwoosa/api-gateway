@@ -4,10 +4,10 @@ LDFLAGS=-ldflags "-X main.Version=$(V) -X main.BuildTime=${BUILD_TIME}"
 NAME=oosa-gw
 
 run: gen-conf
-	docker run -p "8080:8080" -v $$PWD:/etc/krakend/ --platform linux/amd64 devopsfaith/krakend:2.1.4 run -c krakend_pretty.json
+	docker run -p "8080:8080" -v $$PWD:/etc/krakend/ devopsfaith/krakend:2.7.2 run -c krakend_pretty.json
 
 build-docker-img:
-	docker build --platform linux/amd64 -t ${NAME}:dev .
+	docker build -t ${NAME}:dev .
 	docker rmi -f $$(docker images --filter "dangling=true" -q --no-trunc)
 
 push-docker:
@@ -18,7 +18,31 @@ gen-conf:
 	docker run -it \
 	-e FC_ENABLE=1 -e FC_PARTIALS="./partials" \
 	-e FC_SETTINGS="./settings" -e FC_OUT=krakend_pretty.json \
-	-v $$PWD:/etc/krakend/ devopsfaith/krakend:2.1.4 check -d -t -c ./krakend.tmpl
-	docker run -i stedolan/jq --compact-output <krakend_pretty.json '.' > krakend.json
+	-v $$PWD:/etc/krakend/ devopsfaith/krakend:2.7.2 check -d -t -c ./krakend.tmpl
+	docker run -i isaackuang/tools jq --compact-output <krakend_pretty.json '.' > krakend.json
 
 
+merge-spec:
+	docker run -it \
+	-v $$PWD:/workdir 94peter/openapi-cli:v1.6 /main ms \
+	-main /workdir/main_spec.yml \
+	-mergeDir /workdir/all_spec/ \
+	-output /workdir/doc/oosa.yml \
+
+gen-setting-json:
+	docker run -it \
+	-v $$PWD:/workdir 94peter/openapi-cli:v1.6 /main ms \
+	-main /workdir/main_spec.yml \
+	-mergeDir /workdir/all_spec/ \
+	-output /workdir/doc/temp_web_api.yml
+	docker run -it \
+	-v $$PWD:/workdir 94peter/openapi-cli:v1.6 /main togs \
+	-spec /workdir/doc/temp_web_api.yml \
+	-output /workdir/settings/endpoint_new.json
+	rm ./doc/temp_web_api.yml
+
+gen-oath-rule: merge-spec
+	docker run -it \
+	-v $$PWD:/workdir 94peter/openapi-cli:v1.6 /main tar \
+	-spec /workdir/doc/oosa.yml \
+	-output /workdir/doc/rules.json

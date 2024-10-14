@@ -50,3 +50,6 @@ Thumbs.db
 
 krakend_pretty.json
 krakend.json
+
+doc/*
+settings/*
