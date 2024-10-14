@@ -18,6 +18,6 @@ services:
       - traefik.http.routers.gateway.rule= (Host(`localhost`) || Host(`dev.oosa.life`)) && PathPrefix(`/api`)
       - traefik.http.routers.gateway.middlewares=api
     ports:
-      - 6080:8080
+      - 6080:8000
     networks:
       - oosa-network
