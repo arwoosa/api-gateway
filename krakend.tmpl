@@ -49,6 +49,10 @@
         "Authorization",
         "Content-Type",
         "X-User",
+        "X-Userid",
+        "X-Email",
+        "X-Name",
+        "X-Language",
         "X-Extra"
     ],
     {{if $endpoint.input_querys}}"input_query_strings": {{ marshal $endpoint.input_querys }},{{end}}
