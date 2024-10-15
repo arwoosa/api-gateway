@@ -10,7 +10,7 @@ servers:
   description: OOSA_AUTH_TEST_SERVICE
 
 paths:
-  /auth:
+  /test-auth:
     get:
       summary: Read Event Message Board
       deprecated: false
@@ -23,7 +23,7 @@ paths:
           description: No event message board found
       security:
         - bearer: []
-  /no-auth:
+  /test-no-auth:
     get:
       summary: Read Event Message Board
       deprecated: false
