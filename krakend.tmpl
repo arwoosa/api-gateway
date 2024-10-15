@@ -48,7 +48,8 @@
         "User-Agent",
         "Authorization",
         "Content-Type",
-        "X-Channel"
+        "X-User",
+        "X-Extra"
     ],
     {{if $endpoint.input_querys}}"input_query_strings": {{ marshal $endpoint.input_querys }},{{end}}
     "output_encoding": "no-op",
