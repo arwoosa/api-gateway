@@ -48,12 +48,13 @@
         "User-Agent",
         "Authorization",
         "Content-Type",
+        "Host",
+        "Connection",
         "X-User",
         "X-Userid",
         "X-Email",
         "X-Name",
-        "X-Language",
-        "X-Extra"
+        "X-Language"
     ],
     {{if $endpoint.input_querys}}"input_query_strings": {{ marshal $endpoint.input_querys }},{{end}}
     "output_encoding": "no-op",
