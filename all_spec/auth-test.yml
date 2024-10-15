@@ -15,6 +15,7 @@ paths:
       summary: Read Event Message Board
       deprecated: false
       description: Retrieve an event's message board
+      operationId: getAuthHeader
       responses:
         '200':
           description: Array of EventMessageBoard Object
@@ -27,6 +28,7 @@ paths:
       summary: Read Event Message Board
       deprecated: false
       description: Retrieve an event's message board
+      operationId: getNoAuthHeader
       responses:
         '200':
           description: Array of EventMessageBoard Object
