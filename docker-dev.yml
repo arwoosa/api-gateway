@@ -21,3 +21,14 @@ services:
       - 6080:8000
     networks:
       - oosa-network
+  oosa_gateway_auth:
+    image: oosa-gw:dev
+    container_name: oosa_gateway_auth
+    restart: always
+    labels:
+      - traefik.http.routers.gateway-auth.entrypoints=web
+      - traefik.http.routers.gateway-auth.rule= (Host(`oosa.docker.localhost`)) && PathPrefix(`/api`)
+      - traefik.http.routers.gateway-auth.middlewares=oathkeeper
+      - traefik.http.routers.gateway-auth.middlewares=api
+    networks:
+      - oosa-network
