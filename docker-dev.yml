@@ -28,7 +28,6 @@ services:
     labels:
       - traefik.http.routers.gateway-auth.entrypoints=web
       - traefik.http.routers.gateway-auth.rule= (Host(`oosa.docker.localhost`)) && PathPrefix(`/api`)
-      - traefik.http.routers.gateway-auth.middlewares=oathkeeper
-      - traefik.http.routers.gateway-auth.middlewares=api
+      - traefik.http.routers.gateway-auth.middlewares=oathkeeper, api
     networks:
       - oosa-network
