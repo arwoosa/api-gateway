@@ -6,6 +6,7 @@ info:
 tags:
   - name: OOSA_USER_SERVICE
   - name: Authentication
+  - name: T5 個人 My
   - name: User Badges
   - name: _註冊與登入 Register and Sign in
   - name: Contact Us
@@ -13,7 +14,9 @@ tags:
   - name: User Following
   - name: User - Friends
   - name: _E 活動 Event
+  - name: T3 野放成就 Achievement
   - name: User Notifications
+  - name: T4 世界 World
   - name: OOSA_REWILD_SERVICE
   - name: User Event
 paths:
@@ -22,6 +25,7 @@ paths:
       summary: Auth Apple
       deprecated: false
       description: Use this endpoint to login/register using Apple
+      operationId: authByApple
       tags:
         - OOSA_USER_SERVICE
         - Authentication
@@ -43,6 +47,7 @@ paths:
       tags:
         - OOSA_USER_SERVICE
         - Authentication
+        - T5 個人 My
       parameters: []
       requestBody:
         content:
@@ -67,6 +72,7 @@ paths:
       tags:
         - OOSA_USER_SERVICE
         - User Badges
+        - T5 個人 My
       parameters:
         - name: single
           in: query
@@ -92,6 +98,7 @@ paths:
       tags:
         - OOSA_USER_SERVICE
         - Authentication
+        - T5 個人 My
       parameters: []
       requestBody:
         content:
@@ -155,6 +162,7 @@ paths:
       summary: Auth Facebook
       deprecated: false
       description: Use this endpoint to login/register using Facebook
+      operationId: authByFacebook
       tags:
         - OOSA_USER_SERVICE
         - Authentication
@@ -171,6 +179,7 @@ paths:
       summary: Auth Google
       deprecated: false
       description: Use this endpoint to login/register using google
+      operationId: authByGoogle
       tags:
         - OOSA_USER_SERVICE
         - Authentication
@@ -194,6 +203,7 @@ paths:
       summary: Auth Line
       deprecated: false
       description: Use this endpoint to login/register using Line
+      operationId: getAuthByLine
       tags:
         - OOSA_USER_SERVICE
         - Authentication
@@ -231,6 +241,7 @@ paths:
       tags:
         - OOSA_USER_SERVICE
         - Authentication
+        - T5 個人 My
       parameters: []
       requestBody:
         content:
@@ -254,6 +265,7 @@ paths:
       tags:
         - OOSA_USER_SERVICE
         - Contact Us
+        - T5 個人 My
       parameters: []
       requestBody:
         content:
@@ -282,6 +294,7 @@ paths:
       tags:
         - OOSA_USER_SERVICE
         - Forget Password
+        - T5 個人 My
       parameters: []
       requestBody:
         content:
@@ -383,6 +396,7 @@ paths:
       tags:
         - OOSA_USER_SERVICE
         - Authentication
+        - T5 個人 My
       parameters: []
       requestBody:
         content:
@@ -404,9 +418,11 @@ paths:
       description: >-
         Retrieve the authenticated user detail. <br/>1. Google<br/>2.
         Line<br/>3. Email<br/>4. Facebook
+      operationId: getAuthInfo
       tags:
         - OOSA_USER_SERVICE
         - Authentication
+        - T5 個人 My
       parameters: []
       responses:
         '200':
@@ -434,6 +450,7 @@ paths:
       tags:
         - OOSA_USER_SERVICE
         - Forget Password
+        - T5 個人 My
       parameters:
         - name: token
           in: path
@@ -461,10 +478,13 @@ paths:
       summary: Retrieve User Friends
       deprecated: false
       description: Get user friends
+      operationId: getFriends
       tags:
         - OOSA_USER_SERVICE
         - User - Friends
         - _E 活動 Event
+        - T3 野放成就 Achievement
+        - T5 個人 My
       parameters:
         - name: name
           in: query
@@ -489,6 +509,7 @@ paths:
       tags:
         - OOSA_USER_SERVICE
         - User Notifications
+        - T5 個人 My
       parameters: []
       responses:
         '200':
@@ -509,6 +530,7 @@ paths:
       tags:
         - OOSA_USER_SERVICE
         - User Following
+        - T4 世界 World
       parameters: []
       requestBody:
         content:
@@ -531,6 +553,7 @@ paths:
       tags:
         - OOSA_USER_SERVICE
         - User Following
+        - T4 世界 World
       parameters: []
       responses:
         '200':
@@ -550,6 +573,7 @@ paths:
       tags:
         - OOSA_USER_SERVICE
         - Authentication
+        - T5 個人 My
       parameters: []
       requestBody:
         content:
@@ -602,9 +626,12 @@ paths:
       summary: Retrieve User
       deprecated: false
       description: Get user friends
+      operationId: getUserInfo
       tags:
         - OOSA_USER_SERVICE
         - User - Friends
+        - T3 野放成就 Achievement
+        - T4 世界 World
       parameters:
         - name: name
           in: query
@@ -717,6 +744,7 @@ paths:
       tags:
         - OOSA_REWILD_SERVICE
         - User Event
+        - T4 世界 World
       parameters: []
       responses:
         '200':
@@ -742,6 +770,7 @@ paths:
       tags:
         - OOSA_REWILD_SERVICE
         - User Event
+        - T4 世界 World
       parameters:
         - name: feelings
           in: query
@@ -776,6 +805,7 @@ paths:
       tags:
         - OOSA_REWILD_SERVICE
         - User Event
+        - T4 世界 World
       parameters: []
       responses:
         '200':

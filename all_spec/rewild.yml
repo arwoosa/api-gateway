@@ -1,4 +1,4 @@
-openapi: 3.0.1
+openapi: 3.1.0
 info:
   title: OOSA
   description: ''
@@ -1012,6 +1012,7 @@ paths:
       summary: Retrieve Collaborative Log - Album Link
       deprecated: false
       description: Retrieve album link in event
+      operationId: getCollaborativeAlbumLinks
       tags:
         - OOSA_REWILD_SERVICE
         - Event Collaborate
@@ -1046,6 +1047,7 @@ paths:
       summary: Create Collaborative Log - Album Link
       deprecated: false
       description: Retrieve album link in event
+      operationId: createCollaborativeAlbumLink
       tags:
         - OOSA_REWILD_SERVICE
         - Event Collaborate
@@ -1885,6 +1887,7 @@ paths:
       summary: Event Collaborate
       deprecated: false
       description: Retrieve events that has ended
+      operationId: getCollaborativeLogs
       tags:
         - OOSA_REWILD_SERVICE
         - Event Collaborate
@@ -2006,6 +2009,8 @@ paths:
                   type: array
                   items:
                     type: string
+                events_photo_cover:
+                  type: string
               required:
                 - events_date
                 - events_date_end
@@ -2603,6 +2608,7 @@ paths:
       summary: Retrieve
       deprecated: false
       description: ''
+      operationId: getReferences
       tags:
         - T2 揪團基地 Basecamp
         - OOSA_REWILD_SERVICE
@@ -2620,6 +2626,7 @@ paths:
       summary: Link Query
       deprecated: false
       description: ''
+      operationId: getUrlInfo
       tags:
         - _E 活動 Event
         - OOSA_REWILD_SERVICE
@@ -3548,7 +3555,7 @@ components:
       properties:
         time:
           type: string
-          example:
+          examples:
             - '08:00'
           pattern: ^(0[0-9]|1[0-9]|2[0-3]):[0-5][0-9]$
         description:
@@ -3898,10 +3905,11 @@ components:
           type: object
           properties:
             latest_tree_user:
-              type: array
+              type:
+                - array
+                - 'null'
               items: *ref_19
               description: 最近參加的三個人
-              nullable: true
             remain_number:
               type: integer
               description: 總人數-3
@@ -4119,9 +4127,10 @@ components:
         rewilding_name:
           type: string
         rewilding_photos:
-          type: array
+          type:
+            - array
+            - 'null'
           items: *ref_20
-          nullable: true
         rewilding_place_id:
           type: string
         rewilding_rating:
@@ -4133,10 +4142,11 @@ components:
           items:
             type: string
         rewilding_reference_links:
-          type: array
+          type:
+            - array
+            - 'null'
           items:
             $ref: '#/components/schemas/RewildingReferenceLinks'
-          nullable: true
       required:
         - rewilding_apply_official
         - rewilding_area
