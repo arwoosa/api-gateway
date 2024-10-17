@@ -1819,6 +1819,105 @@ paths:
                   - message
       security:
         - bearer: []
+    delete:
+      summary: Delete pocket list item (BULK)
+      deprecated: false
+      description: Delete pocket list item by ID
+      operationId: delete-picket-list-item
+      tags:
+        - OOSA_REWILD_SERVICE
+        - Pocket List
+        - T1 探索 Discover
+      parameters:
+        - name: pocketListId
+          in: path
+          description: String ID of the user to get pocket list
+          required: true
+          example: ''
+          schema:
+            type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                pocket_list_items_id:
+                  type: array
+                  items:
+                    type: string
+              required:
+                - pocket_list_items_id
+      responses:
+        '200':
+          description: Array of PocketListItems
+          content:
+            application/json:
+              schema: *ref_1
+        '404':
+          description: Record Not Found
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    title: ''
+                    description: message
+                required:
+                  - message
+      security:
+        - bearer: []
+    put:
+      summary: Move pocket list item to another list (BULK)
+      deprecated: false
+      description: Move pocket list item to another list
+      operationId: update-pocket-list-item
+      tags:
+        - OOSA_REWILD_SERVICE
+        - Pocket List
+        - T1 探索 Discover
+      parameters:
+        - name: pocketListId
+          in: path
+          description: String ID of the user to get pocket list
+          required: true
+          example: ''
+          schema:
+            type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/RequestPocketListUpdateBulk'
+            example: ''
+      responses:
+        '200':
+          description: Success message
+          content:
+            application/json:
+              schema: *ref_1
+        '400':
+          description: Validation Error
+          content:
+            application/json:
+              schema: *ref_3
+        '404':
+          description: Record Not Found
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    title: ''
+                    description: message
+                required:
+                  - message
+      security:
+        - bearer: []
   /rewilding/{rewildingId}/photos:
     get:
       summary: Retrieve all photos tied to a rewilding
@@ -2010,6 +2109,7 @@ paths:
                   items:
                     type: string
                 events_photo_cover:
+                  description: DEFAULT_0 (SKY), DEFAULT_1 (REWILDMODE_DEFAULT)
                   type: string
               required:
                 - events_date
@@ -3362,8 +3462,150 @@ paths:
               schema: *ref_3
       security:
         - bearer: []
+  /event/cover/{imagename}.png:
+    get:
+      summary: Retrieve Cover Image
+      deprecated: false
+      description: ''
+      tags:
+        - OOSA_REWILD_SERVICE
+        - Event
+        - T2 揪團基地 Basecamp
+      parameters:
+        - name: imagename
+          in: path
+          description: ''
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties: {}
+      security:
+        - bearer: []
 components:
   schemas:
+    RewildingDetail:
+      type: object
+      properties:
+        rewilding_id:
+          type: string
+        rewilding_name:
+          type: string
+        rewilding_location:
+          type: array
+          items:
+            type: string
+      required:
+        - rewilding_id
+        - rewilding_name
+        - rewilding_location
+    UserAgg:
+      type: object
+      properties:
+        user_avatar:
+          type: string
+        user_email:
+          type: string
+        user_id:
+          type: string
+        user_name:
+          type: string
+      required:
+        - user_email
+        - user_id
+        - user_name
+        - user_avatar
+    RewildingReferenceLinks:
+      type: object
+      properties:
+        rewilding_reference_links_link:
+          type: string
+        rewilding_reference_links_title:
+          type: string
+      required:
+        - rewilding_reference_links_link
+    RewildingSearchOne:
+      type: object
+      properties:
+        formattedAddress:
+          type: string
+        id:
+          type: string
+        rating:
+          type: number
+        userRatingCount:
+          type: number
+        types:
+          type: array
+          items:
+            type: string
+        displayName:
+          type: object
+          properties:
+            languageCode:
+              type: string
+            text:
+              type: string
+        location:
+          type: object
+          properties:
+            latitude:
+              type: number
+            longitude:
+              type: number
+          required:
+            - latitude
+            - longitude
+      required:
+        - formattedAddress
+        - id
+        - rating
+        - userRatingCount
+        - types
+        - displayName
+        - location
+    RefRewildingTypes:
+      type: object
+      properties:
+        ref_rewilding_types_google:
+          type: string
+          default: national_park,hiking_area
+        ref_rewilding_types_id:
+          type: string
+          default: 662696ebfc72a35c9b066f41
+        ref_rewilding_types_key:
+          type: string
+          default: mountain_climbing
+        ref_rewilding_types_name:
+          type: string
+          default: 登山
+        ref_rewilding_types_name_en:
+          type: string
+          default: Mountain Climbing
+      required:
+        - ref_rewilding_types_id
+        - ref_rewilding_types_name
+        - ref_rewilding_types_name_en
+        - ref_rewilding_types_key
+        - ref_rewilding_types_google
+    RequestPocketListUpdateBulk:
+      type: object
+      properties:
+        pocket_list_items_id:
+          type: array
+          items:
+            type: string
+        pocket_list_items_mst:
+          type: string
+      required:
+        - pocket_list_items_id
+        - pocket_list_items_mst
     RequestEventAnnouncement:
       type: array
       items:
@@ -3506,22 +3748,6 @@ components:
           type: string
         event_schedules_id:
           type: string
-    UserAgg:
-      type: object
-      properties:
-        user_avatar:
-          type: string
-        user_email:
-          type: string
-        user_id:
-          type: string
-        user_name:
-          type: string
-      required:
-        - user_email
-        - user_id
-        - user_name
-        - user_avatar
     EventPolaroidsSimple:
       type: object
       properties:
@@ -3942,21 +4168,13 @@ components:
         - events_photo
         - events_place
         - events_meeting_point_name
-    RewildingDetail:
+    ResponseGeneralSuccess:
       type: object
       properties:
-        rewilding_id:
+        message:
           type: string
-        rewilding_name:
-          type: string
-        rewilding_location:
-          type: array
-          items:
-            type: string
       required:
-        - rewilding_id
-        - rewilding_name
-        - rewilding_location
+        - message
     EventsDeleted:
       type: object
       properties:
@@ -4162,15 +4380,6 @@ components:
         - rewilding_rating
         - rewilding_photos
         - rewilding_location
-    RewildingReferenceLinks:
-      type: object
-      properties:
-        rewilding_reference_links_link:
-          type: string
-        rewilding_reference_links_title:
-          type: string
-      required:
-        - rewilding_reference_links_link
     RequestPocketList:
       type: object
       properties:
@@ -4264,13 +4473,6 @@ components:
         events_questionnaire_link:
           type: string
           default: https://surveycake.com/12
-    ResponseGeneralSuccess:
-      type: object
-      properties:
-        message:
-          type: string
-      required:
-        - message
     RewildingSearch:
       type: object
       properties:
@@ -4280,46 +4482,6 @@ components:
             $ref: '#/components/schemas/RewildingSearchOne'
       required:
         - places
-    RewildingSearchOne:
-      type: object
-      properties:
-        formattedAddress:
-          type: string
-        id:
-          type: string
-        rating:
-          type: number
-        userRatingCount:
-          type: number
-        types:
-          type: array
-          items:
-            type: string
-        displayName:
-          type: object
-          properties:
-            languageCode:
-              type: string
-            text:
-              type: string
-        location:
-          type: object
-          properties:
-            latitude:
-              type: number
-            longitude:
-              type: number
-          required:
-            - latitude
-            - longitude
-      required:
-        - formattedAddress
-        - id
-        - rating
-        - userRatingCount
-        - types
-        - displayName
-        - location
     RewildingOptions:
       type: object
       properties:
@@ -4327,30 +4489,6 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/RefRewildingTypes'
-    RefRewildingTypes:
-      type: object
-      properties:
-        ref_rewilding_types_google:
-          type: string
-          default: national_park,hiking_area
-        ref_rewilding_types_id:
-          type: string
-          default: 662696ebfc72a35c9b066f41
-        ref_rewilding_types_key:
-          type: string
-          default: mountain_climbing
-        ref_rewilding_types_name:
-          type: string
-          default: 登山
-        ref_rewilding_types_name_en:
-          type: string
-          default: Mountain Climbing
-      required:
-        - ref_rewilding_types_id
-        - ref_rewilding_types_name
-        - ref_rewilding_types_name_en
-        - ref_rewilding_types_key
-        - ref_rewilding_types_google
   securitySchemes:
     bearer:
       type: http
