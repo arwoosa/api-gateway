@@ -3462,7 +3462,7 @@ paths:
               schema: *ref_3
       security:
         - bearer: []
-  /event/cover/{imagename}.png:
+  /event/cover/{imagename}:
     get:
       summary: Retrieve Cover Image
       deprecated: false
