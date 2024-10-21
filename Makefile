@@ -15,7 +15,7 @@ push-docker:
 	docker push 94peter/${NAME}:$(V)
 
 gen-conf:
-	docker run -it \
+	docker run -i \
 	-e FC_ENABLE=1 -e FC_PARTIALS="./partials" \
 	-e FC_SETTINGS="./settings" -e FC_OUT=krakend_pretty.json \
 	-v $$PWD:/etc/krakend/ devopsfaith/krakend:2.7.2 check -d -t -c ./krakend.tmpl
@@ -23,14 +23,14 @@ gen-conf:
 
 
 merge-spec:
-	docker run -it \
+	docker run -i \
 	-v $$PWD:/workdir 94peter/openapi-cli:v1.11 /main ms \
 	-main /workdir/main_spec.yml \
 	-mergeDir /workdir/all_spec/ \
 	-output /workdir/doc/oosa.yml \
 
 gen-setting-json:
-	docker run -it \
+	docker run -i \
 	-v $$PWD:/workdir 94peter/openapi-cli:v1.11 /main ms \
 	-main /workdir/main_spec.yml \
 	-mergeDir /workdir/all_spec/ \
@@ -42,7 +42,7 @@ gen-setting-json:
 	rm ./doc/temp_web_api.yml
 
 gen-oath-rule: 
-	docker run -it \
+	docker run -i \
 	-v $$PWD:/workdir 94peter/openapi-cli:v1.11 /main tar \
 	-spec /workdir/doc/oosa.yml \
 	-output /workdir/doc/rules.json
