@@ -35,7 +35,7 @@ gen-setting-json:
 	-main /workdir/main_spec.yml \
 	-mergeDir /workdir/all_spec/ \
 	-output /workdir/doc/temp_web_api.yml
-	docker run -it \
+	docker run -i \
 	-v $$PWD:/workdir 94peter/openapi-cli:v1.11 /main togs \
 	-spec /workdir/doc/temp_web_api.yml \
 	-output /workdir/settings/endpoint.json
