@@ -39,7 +39,7 @@ gen-setting-json:
 	-v $$PWD:/workdir 94peter/openapi-cli:v1.11 /main togs \
 	-spec /workdir/doc/temp_web_api.yml \
 	-output /workdir/settings/endpoint.json
-	rm ./doc/temp_web_api.yml
+	rm $$PWD/doc/temp_web_api.yml
 
 gen-oath-rule: 
 	docker run -i \
