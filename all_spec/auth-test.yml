@@ -35,3 +35,23 @@ paths:
         '204':
           description: No event message board found
       security: []
+  /doc/{file}:
+    get:
+      summary: Read doc file
+      deprecated: false
+      description: Retrieve an event's message board
+      operationId: getDoc
+      parameters:
+      - name: file
+        in: path
+        description: String ID of the event
+        required: true
+        example: ''
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Array of EventMessageBoard Object
+        '204':
+          description: No event message board found
+      security: []

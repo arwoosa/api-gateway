@@ -1,0 +1,88 @@
+[
+    {
+      "id": "rule-register-0",
+      "version": "",
+      "description": "",
+      "match": {
+        "methods": [
+          "GET"
+        ],
+        "url": "\u003chttps|http\u003e://dev-user.oosa.life/sso/register"
+      },
+      "authenticators": [
+        {
+            "handler": "anonymous",
+            "config": {
+              "subject": "guest"
+            }
+        }
+      ],
+      "authorizer": {
+        "handler": "allow",
+        "config": {}
+      },
+      "mutators": [
+        {
+          "handler": "header",
+          "config": {}
+        }
+      ],
+      "errors": [
+        {
+          "handler": "json",
+          "config": {}
+        }
+      ],
+      "upstream": {
+        "preserve_host": false,
+        "strip_path": "",
+        "url": ""
+      }
+    },
+    {
+      "id": "rule-registerFinish-0",
+      "version": "",
+      "description": "",
+      "match": {
+        "methods": [
+          "POST"
+        ],
+        "url": "\u003chttps|http\u003e://dev-user.oosa.life/sso/register/finish"
+      },
+      "authenticators": [
+        {
+          "handler": "cookie_session",
+          "config": {}
+        },
+        {
+          "handler": "bearer_token",
+          "config": {}
+        },
+        {
+          "handler": "unauthorized",
+          "config": null
+        }
+      ],
+      "authorizer": {
+        "handler": "allow",
+        "config": {}
+      },
+      "mutators": [
+        {
+          "handler": "header",
+          "config": {}
+        }
+      ],
+      "errors": [
+        {
+          "handler": "json",
+          "config": {}
+        }
+      ],
+      "upstream": {
+        "preserve_host": false,
+        "strip_path": "",
+        "url": ""
+      }
+    }
+]
