@@ -31,3 +31,15 @@ services:
       - traefik.http.routers.gateway-auth.middlewares=oathkeeper, api
     networks:
       - oosa-network
+  oathkeeper:
+    image: oryd/oathkeeper:v0.40.7-distroless
+    depends_on:
+    - oosa_gateway
+    command: serve --config=/etc/config/oathkeeper/config.yaml
+    volumes:
+      - type: bind
+        source: ./oathkeeper
+        target: /etc/config/oathkeeper
+    restart: on-failure
+    networks:
+      - oosa-network

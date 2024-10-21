@@ -10,20 +10,19 @@ platform:
 steps:
 - name: merge api spec
   commands:
-  - docker run -v $PWD:/workdir 94peter/openapi-cli:v1.11 /main ms -main /workdir/main_spec.yml -mergeDir /workdir/all_spec/ -output /workdir/doc/oosa.yml
+  - make merge-spec
 - name: generate setting endpoint
   commands:
-  - docker run -v $PWD:/workdir 94peter/openapi-cli:v1.11 /main togs -spec /workdir/doc/oosa.yml -output /workdir/settings/endpoint.json
+  - make gen-setting-json
 - name: generate oath rules
   commands:
-  - docker run -v $PWD:/workdir 94peter/openapi-cli:v1.11 /main tar -spec /workdir/doc/oosa.yml -output /workdir/doc/rules.json
+  - make gen-oath-rule
 - name: build image
   commands:
   - docker build -t oosa-gw:dev .
 - name: restart service
   commands:
   - docker-compose -f docker-dev.yml down
-  - docker container prune -f
   - docker-compose -f docker-dev.yml up -d
 
 trigger:

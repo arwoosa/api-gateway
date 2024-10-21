@@ -852,7 +852,6 @@ paths:
                   format: binary
                 events_photo_cover:
                   type: string
-                  description: DEFAULT_0 (SKY), DEFAULT_1 (REWILDMODE_DEFAULT)
                 events_place:
                   type: string
                   description: 'Add from map: pass in Google Place ID'
@@ -2426,31 +2425,6 @@ paths:
       externalDocs:
         description: OOSA_REWILD_SERVICE
         url: http://oosa_rewild:6080
-  /event/cover/{imagename}:
-    get:
-      tags:
-      - OOSA_REWILD_SERVICE
-      - Event
-      - T2 揪團基地 Basecamp
-      summary: Retrieve Cover Image
-      parameters:
-      - name: imagename
-        in: path
-        required: true
-        schema:
-          type: string
-      responses:
-        "200":
-          description: Success
-          content:
-            application/json:
-              schema:
-                type: object
-      security:
-      - Bearer: []
-      externalDocs:
-        description: OOSA_REWILD_SERVICE
-        url: http://oosa_rewild:6080
   /forget-password:
     post:
       tags:
@@ -3104,58 +3078,6 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/PocketListItems'
-        "400":
-          description: Validation Error
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ResponseValidationError'
-        "404":
-          description: Record Not Found
-          content:
-            application/json:
-              schema:
-                type: object
-                required:
-                - message
-                properties:
-                  message:
-                    type: string
-                    description: message
-      security:
-      - Bearer: []
-      externalDocs:
-        description: OOSA_REWILD_SERVICE
-        url: http://oosa_rewild:6080
-    put:
-      tags:
-      - OOSA_REWILD_SERVICE
-      - Pocket List
-      - T1 探索 Discover
-      summary: Move pocket list item to another list (BULK)
-      description: Move pocket list item to another list
-      operationId: update-pocket-list-item
-      parameters:
-      - name: pocketListId
-        in: path
-        description: String ID of the user to get pocket list
-        required: true
-        schema:
-          type: string
-        example: ""
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/RequestPocketListUpdateBulk'
-            example: ""
-      responses:
-        "200":
-          description: Success message
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ResponseGeneralSuccess'
         "400":
           description: Validation Error
           content:

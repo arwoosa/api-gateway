@@ -38,10 +38,10 @@ gen-setting-json:
 	docker run -it \
 	-v $$PWD:/workdir 94peter/openapi-cli:v1.11 /main togs \
 	-spec /workdir/doc/temp_web_api.yml \
-	-output /workdir/settings/endpoint_new.json
+	-output /workdir/settings/endpoint.json
 	rm ./doc/temp_web_api.yml
 
-gen-oath-rule: merge-spec
+gen-oath-rule: 
 	docker run -it \
 	-v $$PWD:/workdir 94peter/openapi-cli:v1.11 /main tar \
 	-spec /workdir/doc/oosa.yml \
