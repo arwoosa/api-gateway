@@ -31,15 +31,9 @@ merge-spec:
 
 gen-setting-json:
 	docker run -i \
-	-v $$PWD:/workdir 94peter/openapi-cli:v1.11 /main ms \
-	-main /workdir/main_spec.yml \
-	-mergeDir /workdir/all_spec/ \
-	-output /workdir/doc/temp_web_api.yml
-	docker run -i \
 	-v $$PWD:/workdir 94peter/openapi-cli:v1.11 /main togs \
-	-spec /workdir/doc/temp_web_api.yml \
+	-spec /workdir/doc/oosa.yml \
 	-output /workdir/settings/endpoint.json
-	rm $$PWD/doc/temp_web_api.yml
 
 gen-oath-rule: 
 	docker run -i \

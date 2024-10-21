@@ -1,972 +1,10 @@
 {
   "group": [
     {
-      "description": "Retrieve User Notifications",
-      "endpoint": "/auth/notifications",
-      "method": "GET",
-      "backend": "/auth/notifications",
-      "host": [
-        "http://oosa_user:6080"
-      ]
-    },
-    {
-      "description": "Read a photo",
-      "endpoint": "/rewilding/{rewildingId}/photos/{photoId}",
-      "method": "GET",
-      "backend": "/rewilding/{rewildingId}/photos/{photoId}",
-      "host": [
-        "http://oosa_rewild:6080"
-      ]
-    },
-    {
-      "description": "Read Event Message Board",
-      "endpoint": "/test-no-auth",
-      "method": "GET",
-      "backend": "/test-no-auth",
-      "host": [
-        "http://oosa_auth_test:6080"
-      ]
-    },
-    {
-      "description": "Delete Event Schedule",
-      "endpoint": "/event/{eventId}/schedule/{scheduleId}",
-      "method": "DELETE",
-      "backend": "/event/{eventId}/schedule/{scheduleId}",
-      "host": [
-        "http://oosa_rewild:6080"
-      ]
-    },
-    {
-      "description": "Read Event Schedule",
-      "endpoint": "/event/{eventId}/schedule/{scheduleId}",
-      "method": "GET",
-      "backend": "/event/{eventId}/schedule/{scheduleId}",
-      "host": [
-        "http://oosa_rewild:6080"
-      ]
-    },
-    {
-      "description": "Update Event Schedule",
-      "endpoint": "/event/{eventId}/schedule/{scheduleId}",
-      "method": "PUT",
-      "backend": "/event/{eventId}/schedule/{scheduleId}",
-      "host": [
-        "http://oosa_rewild:6080"
-      ]
-    },
-    {
-      "description": "Update User Setting",
-      "endpoint": "/auth/setting",
-      "method": "PUT",
-      "backend": "/auth/setting",
-      "host": [
-        "http://oosa_user:6080"
-      ]
-    },
-    {
-      "description": "Retrieve Event Announcement",
-      "endpoint": "/event/{eventId}/announcement",
-      "method": "GET",
-      "backend": "/event/{eventId}/announcement",
-      "host": [
-        "http://oosa_rewild:6080"
-      ],
-      "input_querys": [
-        "category"
-      ]
-    },
-    {
-      "description": "Create Event Announcement",
-      "endpoint": "/event/{eventId}/announcement",
-      "method": "POST",
-      "backend": "/event/{eventId}/announcement",
-      "host": [
-        "http://oosa_rewild:6080"
-      ]
-    },
-    {
-      "description": "Forget Password - Updated",
-      "endpoint": "/forget-password/{token}",
-      "method": "POST",
-      "backend": "/forget-password/{token}",
-      "host": [
-        "http://oosa_user:6080"
-      ]
-    },
-    {
-      "description": "Retrieve Events",
-      "endpoint": "/event",
-      "method": "GET",
-      "backend": "/event",
-      "host": [
-        "http://oosa_rewild:6080"
-      ],
-      "input_querys": [
-        "event_period_begin",
-        "event_period_end",
-        "event_rewilding",
-        "event_past"
-      ]
-    },
-    {
-      "description": "Create Event",
-      "endpoint": "/event",
-      "method": "POST",
-      "backend": "/event",
-      "host": [
-        "http://oosa_rewild:6080"
-      ]
-    },
-    {
-      "description": "Retrieve all photos tied to a rewilding",
-      "endpoint": "/rewilding/{rewildingId}/photos",
-      "method": "GET",
-      "backend": "/rewilding/{rewildingId}/photos",
-      "host": [
-        "http://oosa_rewild:6080"
-      ]
-    },
-    {
-      "description": "Delete Rewilding",
-      "endpoint": "/rewilding/{rewildingId}",
-      "method": "DELETE",
-      "backend": "/rewilding/{rewildingId}",
-      "host": [
-        "http://oosa_rewild:6080"
-      ]
-    },
-    {
-      "description": "Read a rewilding spot",
-      "endpoint": "/rewilding/{rewildingId}",
-      "method": "GET",
-      "backend": "/rewilding/{rewildingId}",
-      "host": [
-        "http://oosa_rewild:6080"
-      ]
-    },
-    {
-      "description": "User",
-      "endpoint": "/user/{userId}",
-      "method": "GET",
-      "backend": "/user/{userId}",
-      "host": [
-        "http://oosa_user:6080"
-      ]
-    },
-    {
-      "description": "野放點自動完成",
-      "endpoint": "/rewilding-autocomplete",
-      "method": "GET",
-      "backend": "/rewilding-autocomplete",
-      "host": [
-        "http://oosa_rewild:6080"
-      ],
-      "input_querys": [
-        "input",
-        "language"
-      ]
-    },
-    {
-      "description": "Delete Event Schedule",
-      "endpoint": "/event/{eventId}/schedule",
-      "method": "DELETE",
-      "backend": "/event/{eventId}/schedule",
-      "host": [
-        "http://oosa_rewild:6080"
-      ]
-    },
-    {
-      "description": "Retrieve Event Schedule",
-      "endpoint": "/event/{eventId}/schedule",
-      "method": "GET",
-      "backend": "/event/{eventId}/schedule",
-      "host": [
-        "http://oosa_rewild:6080"
-      ]
-    },
-    {
-      "description": "Create Event Schedule",
-      "endpoint": "/event/{eventId}/schedule",
-      "method": "POST",
-      "backend": "/event/{eventId}/schedule",
-      "host": [
-        "http://oosa_rewild:6080"
-      ]
-    },
-    {
-      "description": "Read pocket list",
-      "endpoint": "/pocket-list/{pocketListId}",
-      "method": "GET",
-      "backend": "/pocket-list/{pocketListId}",
-      "host": [
-        "http://oosa_rewild:6080"
-      ]
-    },
-    {
-      "description": "Update existing pocket list",
-      "endpoint": "/pocket-list/{pocketListId}",
-      "method": "PUT",
-      "backend": "/pocket-list/{pocketListId}",
-      "host": [
-        "http://oosa_rewild:6080"
-      ]
-    },
-    {
-      "description": "Delete pocket list",
-      "endpoint": "/pocket-list/{pocketListId}",
-      "method": "DELETE",
-      "backend": "/pocket-list/{pocketListId}",
-      "host": [
-        "http://oosa_rewild:6080"
-      ]
-    },
-    {
-      "description": "get-doc",
-      "endpoint": "/doc/{file}",
-      "method": "GET",
-      "backend": "/doc/{file}",
-      "host": [
-        "http://oosa_auth_test:6080"
-      ]
-    },
-    {
-      "description": "User Event",
-      "endpoint": "/user/{userId}/event",
-      "method": "GET",
-      "backend": "/user/{userId}/event",
-      "host": [
-        "http://oosa_rewild:6080"
-      ],
-      "input_querys": [
-        "past",
-        "country_code"
-      ]
-    },
-    {
-      "description": "Forget Password",
-      "endpoint": "/forget-password",
-      "method": "POST",
-      "backend": "/forget-password",
-      "host": [
-        "http://oosa_user:6080"
-      ]
-    },
-    {
-      "description": "Retrieve Event Message Board",
-      "endpoint": "/event/{eventId}/message-board",
-      "method": "GET",
-      "backend": "/event/{eventId}/message-board",
-      "host": [
-        "http://oosa_rewild:6080"
-      ]
-    },
-    {
-      "description": "Create Event Message Board",
-      "endpoint": "/event/{eventId}/message-board",
-      "method": "POST",
-      "backend": "/event/{eventId}/message-board",
-      "host": [
-        "http://oosa_rewild:6080"
-      ]
-    },
-    {
-      "description": "Auth Facebook",
-      "endpoint": "/auth/facebook",
-      "method": "POST",
-      "backend": "/auth/facebook",
-      "host": [
-        "http://oosa_user:6080"
-      ]
-    },
-    {
-      "description": "Auth Google",
-      "endpoint": "/auth/google",
-      "method": "POST",
-      "backend": "/auth/google",
-      "host": [
-        "http://oosa_user:6080"
-      ]
-    },
-    {
-      "description": "Search rewilding from Google",
-      "endpoint": "/rewilding-search",
-      "method": "GET",
-      "backend": "/rewilding-search",
-      "host": [
-        "http://oosa_rewild:6080"
-      ],
-      "input_querys": [
-        "lat",
-        "lng",
-        "type",
-        "search"
-      ]
-    },
-    {
-      "description": "Read Authentication",
-      "endpoint": "/auth",
-      "method": "GET",
-      "backend": "/auth",
-      "host": [
-        "http://oosa_user:6080"
-      ]
-    },
-    {
-      "description": "Update User",
-      "endpoint": "/auth",
-      "method": "PUT",
-      "backend": "/auth",
-      "host": [
-        "http://oosa_user:6080"
-      ]
-    },
-    {
-      "description": "Retrieve User",
-      "endpoint": "/user",
-      "method": "GET",
-      "backend": "/user",
-      "host": [
-        "http://oosa_user:6080"
-      ],
-      "input_querys": [
-        "name"
-      ]
-    },
-    {
-      "description": "Retrieve Event Accounting",
-      "endpoint": "/event/{eventId}/accounting",
-      "method": "GET",
-      "backend": "/event/{eventId}/accounting",
-      "host": [
-        "http://oosa_rewild:6080"
-      ]
-    },
-    {
-      "description": "Create Event Accounting",
-      "endpoint": "/event/{eventId}/accounting",
-      "method": "POST",
-      "backend": "/event/{eventId}/accounting",
-      "host": [
-        "http://oosa_rewild:6080"
-      ]
-    },
-    {
-      "description": "Auth Line",
-      "endpoint": "/auth/line",
-      "method": "GET",
-      "backend": "/auth/line",
-      "host": [
-        "http://oosa_user:6080"
-      ],
-      "input_querys": [
-        "code",
-        "state"
-      ]
-    },
-    {
-      "description": "Retrieve Event Reference Links",
-      "endpoint": "/event/{eventId}/reference-links",
-      "method": "GET",
-      "backend": "/event/{eventId}/reference-links",
-      "host": [
-        "http://oosa_rewild:6080"
-      ]
-    },
-    {
-      "description": "Create Event Reference Links",
-      "endpoint": "/event/{eventId}/reference-links",
-      "method": "POST",
-      "backend": "/event/{eventId}/reference-links",
-      "host": [
-        "http://oosa_rewild:6080"
-      ]
-    },
-    {
-      "description": "Pin Event Message Board ",
-      "endpoint": "/event/{eventId}/message-board/{messageBoardId}/pin",
-      "method": "POST",
-      "backend": "/event/{eventId}/message-board/{messageBoardId}/pin",
-      "host": [
-        "http://oosa_rewild:6080"
-      ]
-    },
-    {
-      "description": "Retrieve News",
-      "endpoint": "/news",
-      "method": "GET",
-      "backend": "/news",
-      "host": [
-        "http://oosa_rewild:6080"
-      ]
-    },
-    {
-      "description": "Create News",
-      "endpoint": "/news",
-      "method": "POST",
-      "backend": "/news",
-      "host": [
-        "http://oosa_rewild:6080"
-      ]
-    },
-    {
-      "description": "Get pocket list",
-      "endpoint": "/pocket-list",
-      "method": "GET",
-      "backend": "/pocket-list",
-      "host": [
-        "http://oosa_rewild:6080"
-      ]
-    },
-    {
-      "description": "Create new pocket list",
-      "endpoint": "/pocket-list",
-      "method": "POST",
-      "backend": "/pocket-list",
-      "host": [
-        "http://oosa_rewild:6080"
-      ]
-    },
-    {
-      "description": "Delete Event",
-      "endpoint": "/event/{eventId}",
-      "method": "DELETE",
-      "backend": "/event/{eventId}",
-      "host": [
-        "http://oosa_rewild:6080"
-      ]
-    },
-    {
-      "description": "Read Event",
-      "endpoint": "/event/{eventId}",
-      "method": "GET",
-      "backend": "/event/{eventId}",
-      "host": [
-        "http://oosa_rewild:6080"
-      ]
-    },
-    {
-      "description": "Update Event",
-      "endpoint": "/event/{eventId}",
-      "method": "PUT",
-      "backend": "/event/{eventId}",
-      "host": [
-        "http://oosa_rewild:6080"
-      ]
-    },
-    {
-      "description": "Retrieve all event invitations",
-      "endpoint": "/event-invitations",
-      "method": "GET",
-      "backend": "/event-invitations",
-      "host": [
-        "http://oosa_rewild:6080"
-      ]
-    },
-    {
       "description": "Delete Event Participant",
       "endpoint": "/event/{eventId}/participants/{participantId}",
       "method": "DELETE",
       "backend": "/event/{eventId}/participants/{participantId}",
-      "host": [
-        "http://oosa_rewild:6080"
-      ]
-    },
-    {
-      "description": "Event Collaborate",
-      "endpoint": "/collaborative-log",
-      "method": "GET",
-      "backend": "/collaborative-log",
-      "host": [
-        "http://oosa_rewild:6080"
-      ]
-    },
-    {
-      "description": "User Achievement",
-      "endpoint": "/user/{userId}/achievement",
-      "method": "GET",
-      "backend": "/user/{userId}/achievement",
-      "host": [
-        "http://oosa_rewild:6080"
-      ]
-    },
-    {
-      "description": "Delete pocket list item by ID",
-      "endpoint": "/pocket-list/{pocketListId}/items/{pocketListItemsId}",
-      "method": "DELETE",
-      "backend": "/pocket-list/{pocketListId}/items/{pocketListItemsId}",
-      "host": [
-        "http://oosa_rewild:6080"
-      ]
-    },
-    {
-      "description": "Get pocket list item by ID",
-      "endpoint": "/pocket-list/{pocketListId}/items/{pocketListItemsId}",
-      "method": "GET",
-      "backend": "/pocket-list/{pocketListId}/items/{pocketListItemsId}",
-      "host": [
-        "http://oosa_rewild:6080"
-      ]
-    },
-    {
-      "description": "Move pocket list item to another list",
-      "endpoint": "/pocket-list/{pocketListId}/items/{pocketListItemsId}",
-      "method": "PUT",
-      "backend": "/pocket-list/{pocketListId}/items/{pocketListItemsId}",
-      "host": [
-        "http://oosa_rewild:6080"
-      ]
-    },
-    {
-      "description": "Statistics",
-      "endpoint": "/world/statistics",
-      "method": "GET",
-      "backend": "/world/statistics",
-      "host": [
-        "http://oosa_user:6080"
-      ]
-    },
-    {
-      "description": "Update Event Invitation Text",
-      "endpoint": "/event/{eventId}/invitation",
-      "method": "PUT",
-      "backend": "/event/{eventId}/invitation",
-      "host": [
-        "http://oosa_rewild:6080"
-      ]
-    },
-    {
-      "description": "Delete message board entry",
-      "endpoint": "/event/{eventId}/message-board/{messageBoardId}",
-      "method": "DELETE",
-      "backend": "/event/{eventId}/message-board/{messageBoardId}",
-      "host": [
-        "http://oosa_rewild:6080"
-      ]
-    },
-    {
-      "description": "Read Event Message Board",
-      "endpoint": "/event/{eventId}/message-board/{messageBoardId}",
-      "method": "GET",
-      "backend": "/event/{eventId}/message-board/{messageBoardId}",
-      "host": [
-        "http://oosa_rewild:6080"
-      ]
-    },
-    {
-      "description": "Update Event Message Board",
-      "endpoint": "/event/{eventId}/message-board/{messageBoardId}",
-      "method": "PUT",
-      "backend": "/event/{eventId}/message-board/{messageBoardId}",
-      "host": [
-        "http://oosa_rewild:6080"
-      ]
-    },
-    {
-      "description": "Retrieve rewilding register",
-      "endpoint": "/rewilding-register",
-      "method": "GET",
-      "backend": "/rewilding-register",
-      "host": [
-        "http://oosa_rewild:6080"
-      ]
-    },
-    {
-      "description": "Create rewilding register",
-      "endpoint": "/rewilding-register",
-      "method": "POST",
-      "backend": "/rewilding-register",
-      "host": [
-        "http://oosa_rewild:6080"
-      ]
-    },
-    {
-      "description": "Update Password",
-      "endpoint": "/auth/change-password",
-      "method": "PUT",
-      "backend": "/auth/change-password",
-      "host": [
-        "http://oosa_user:6080"
-      ]
-    },
-    {
-      "description": "Retrieve Cover Image",
-      "endpoint": "/event/cover/{imagename}",
-      "method": "GET",
-      "backend": "/event/cover/{imagename}",
-      "host": [
-        "http://oosa_rewild:6080"
-      ]
-    },
-    {
-      "description": "Update Event Invitation Text",
-      "endpoint": "/event/{eventId}/join",
-      "method": "POST",
-      "backend": "/event/{eventId}/join",
-      "host": [
-        "http://oosa_rewild:6080"
-      ]
-    },
-    {
-      "description": "Retrieve",
-      "endpoint": "/references",
-      "method": "GET",
-      "backend": "/references",
-      "host": [
-        "http://oosa_rewild:6080"
-      ]
-    },
-    {
-      "description": "Retrieve Polaroid",
-      "endpoint": "/collaborative-log/{eventId}/polaroids",
-      "method": "GET",
-      "backend": "/collaborative-log/{eventId}/polaroids",
-      "host": [
-        "http://oosa_rewild:6080"
-      ]
-    },
-    {
-      "description": "Create Polaroid",
-      "endpoint": "/collaborative-log/{eventId}/polaroids",
-      "method": "POST",
-      "backend": "/collaborative-log/{eventId}/polaroids",
-      "host": [
-        "http://oosa_rewild:6080"
-      ]
-    },
-    {
-      "description": "Create CollabLog Questionnaire",
-      "endpoint": "/collaborative-log/{eventId}/questionnaire",
-      "method": "POST",
-      "backend": "/collaborative-log/{eventId}/questionnaire",
-      "host": [
-        "http://oosa_rewild:6080"
-      ]
-    },
-    {
-      "description": "Retrieve User Following",
-      "endpoint": "/user-following",
-      "method": "GET",
-      "backend": "/user-following",
-      "host": [
-        "http://oosa_user:6080"
-      ]
-    },
-    {
-      "description": "Create User Following",
-      "endpoint": "/user-following",
-      "method": "POST",
-      "backend": "/user-following",
-      "host": [
-        "http://oosa_user:6080"
-      ]
-    },
-    {
-      "description": "Ranking Rewilding",
-      "endpoint": "/world/ranking-rewilding",
-      "method": "GET",
-      "backend": "/world/ranking-rewilding",
-      "host": [
-        "http://oosa_user:6080"
-      ]
-    },
-    {
-      "description": "Email - Register",
-      "endpoint": "/register",
-      "method": "POST",
-      "backend": "/register",
-      "host": [
-        "http://oosa_user:6080"
-      ]
-    },
-    {
-      "description": "Update News",
-      "endpoint": "/news/{id}",
-      "method": "PUT",
-      "backend": "/news/{id}",
-      "host": [
-        "http://oosa_rewild:6080"
-      ]
-    },
-    {
-      "description": "Delete News",
-      "endpoint": "/news/{id}",
-      "method": "DELETE",
-      "backend": "/news/{id}",
-      "host": [
-        "http://oosa_rewild:6080"
-      ]
-    },
-    {
-      "description": "Read News",
-      "endpoint": "/news/{id}",
-      "method": "GET",
-      "backend": "/news/{id}",
-      "host": [
-        "http://oosa_rewild:6080"
-      ]
-    },
-    {
-      "description": "Retrieve Achievements",
-      "endpoint": "/achievement",
-      "method": "GET",
-      "backend": "/achievement",
-      "host": [
-        "http://oosa_rewild:6080"
-      ],
-      "input_querys": [
-        "achievement_type"
-      ]
-    },
-    {
-      "description": "Statistics",
-      "endpoint": "/user/statistics",
-      "method": "GET",
-      "backend": "/user/statistics",
-      "host": [
-        "http://oosa_user:6080"
-      ]
-    },
-    {
-      "description": "從google detail取得野放點資訊",
-      "endpoint": "/rewilding/places/{place_id}",
-      "method": "GET",
-      "backend": "/rewilding/places/{place_id}",
-      "host": [
-        "http://oosa_rewild:6080"
-      ]
-    },
-    {
-      "description": "附近的野放點",
-      "endpoint": "/rewilding-searchNearby",
-      "method": "GET",
-      "backend": "/rewilding-searchNearby",
-      "host": [
-        "http://oosa_rewild:6080"
-      ],
-      "input_querys": [
-        "type",
-        "lat",
-        "lng",
-        "radius",
-        "language"
-      ]
-    },
-    {
-      "description": "Delete Event Accounting",
-      "endpoint": "/event/{eventId}/accounting/{accountingId}",
-      "method": "DELETE",
-      "backend": "/event/{eventId}/accounting/{accountingId}",
-      "host": [
-        "http://oosa_rewild:6080"
-      ]
-    },
-    {
-      "description": "Read Event Accounting",
-      "endpoint": "/event/{eventId}/accounting/{accountingId}",
-      "method": "GET",
-      "backend": "/event/{eventId}/accounting/{accountingId}",
-      "host": [
-        "http://oosa_rewild:6080"
-      ]
-    },
-    {
-      "description": "Update Event Accounting",
-      "endpoint": "/event/{eventId}/accounting/{accountingId}",
-      "method": "PUT",
-      "backend": "/event/{eventId}/accounting/{accountingId}",
-      "host": [
-        "http://oosa_rewild:6080"
-      ]
-    },
-    {
-      "description": "Update User Avatar",
-      "endpoint": "/auth/avatar",
-      "method": "POST",
-      "backend": "/auth/avatar",
-      "host": [
-        "http://oosa_user:6080"
-      ]
-    },
-    {
-      "description": "Create rewilding spot",
-      "endpoint": "/rewilding",
-      "method": "POST",
-      "backend": "/rewilding",
-      "host": [
-        "http://oosa_rewild:6080"
-      ]
-    },
-    {
-      "description": "Retrieve all rewilding spots",
-      "endpoint": "/rewilding",
-      "method": "GET",
-      "backend": "/rewilding",
-      "host": [
-        "http://oosa_rewild:6080"
-      ],
-      "input_querys": [
-        "owner"
-      ]
-    },
-    {
-      "description": "User Event",
-      "endpoint": "/my/event",
-      "method": "GET",
-      "backend": "/my/event",
-      "host": [
-        "http://oosa_rewild:6080"
-      ],
-      "input_querys": [
-        "past",
-        "country_code"
-      ]
-    },
-    {
-      "description": "Retrieve Event Participants",
-      "endpoint": "/event/{eventId}/participants",
-      "method": "GET",
-      "backend": "/event/{eventId}/participants",
-      "host": [
-        "http://oosa_rewild:6080"
-      ]
-    },
-    {
-      "description": "Create Event Participant",
-      "endpoint": "/event/{eventId}/participants",
-      "method": "POST",
-      "backend": "/event/{eventId}/participants",
-      "host": [
-        "http://oosa_rewild:6080"
-      ]
-    },
-    {
-      "description": "Auth Email",
-      "endpoint": "/auth/email",
-      "method": "POST",
-      "backend": "/auth/email",
-      "host": [
-        "http://oosa_user:6080"
-      ]
-    },
-    {
-      "description": "User Badges",
-      "endpoint": "/user/{userId}/badges",
-      "method": "GET",
-      "backend": "/user/{userId}/badges",
-      "host": [
-        "http://oosa_user:6080"
-      ]
-    },
-    {
-      "description": "Read event invitations",
-      "endpoint": "/event-invitation/{eventInvitationId}",
-      "method": "GET",
-      "backend": "/event-invitation/{eventInvitationId}",
-      "host": [
-        "http://oosa_rewild:6080"
-      ]
-    },
-    {
-      "description": "Auth Apple",
-      "endpoint": "/auth/apple",
-      "method": "POST",
-      "backend": "/auth/apple",
-      "host": [
-        "http://oosa_user:6080"
-      ]
-    },
-    {
-      "description": "Retrieve Collaborative Log - Album Link",
-      "endpoint": "/collaborative-log/{eventId}/album-link",
-      "method": "GET",
-      "backend": "/collaborative-log/{eventId}/album-link",
-      "host": [
-        "http://oosa_rewild:6080"
-      ]
-    },
-    {
-      "description": "Create Collaborative Log - Album Link",
-      "endpoint": "/collaborative-log/{eventId}/album-link",
-      "method": "POST",
-      "backend": "/collaborative-log/{eventId}/album-link",
-      "host": [
-        "http://oosa_rewild:6080"
-      ]
-    },
-    {
-      "description": "Create CollabLog Experience",
-      "endpoint": "/collaborative-log/{eventId}/experience",
-      "method": "POST",
-      "backend": "/collaborative-log/{eventId}/experience",
-      "host": [
-        "http://oosa_rewild:6080"
-      ]
-    },
-    {
-      "description": "Ranking Feelings",
-      "endpoint": "/world/ranking-feelings",
-      "method": "GET",
-      "backend": "/world/ranking-feelings",
-      "host": [
-        "http://oosa_user:6080"
-      ],
-      "input_querys": [
-        "feelings"
-      ]
-    },
-    {
-      "description": "Update User Profile Picture",
-      "endpoint": "/auth/profile-picture",
-      "method": "POST",
-      "backend": "/auth/profile-picture",
-      "host": [
-        "http://oosa_user:6080"
-      ]
-    },
-    {
-      "description": "Retrieve Badge",
-      "endpoint": "/auth/badges",
-      "method": "GET",
-      "backend": "/auth/badges",
-      "host": [
-        "http://oosa_user:6080"
-      ],
-      "input_querys": [
-        "single"
-      ]
-    },
-    {
-      "description": "Change event invitation status",
-      "endpoint": "/event-invitations/{eventInvitationId}",
-      "method": "PUT",
-      "backend": "/event-invitations/{eventInvitationId}",
-      "host": [
-        "http://oosa_rewild:6080"
-      ]
-    },
-    {
-      "description": "Rewilding register",
-      "endpoint": "/rewilding-register/references",
-      "method": "GET",
-      "backend": "/rewilding-register/references",
-      "host": [
-        "http://oosa_rewild:6080"
-      ]
-    },
-    {
-      "description": "Read Event Message Board",
-      "endpoint": "/test-auth",
-      "method": "GET",
-      "backend": "/test-auth",
-      "host": [
-        "http://oosa_auth_test:6080"
-      ]
-    },
-    {
-      "description": "Move pocket list item to another list (BULK)",
-      "endpoint": "/pocket-list/{pocketListId}/items",
-      "method": "PUT",
-      "backend": "/pocket-list/{pocketListId}/items",
       "host": [
         "http://oosa_rewild:6080"
       ]
@@ -999,6 +37,602 @@
       ]
     },
     {
+      "description": "Move pocket list item to another list (BULK)",
+      "endpoint": "/pocket-list/{pocketListId}/items",
+      "method": "PUT",
+      "backend": "/pocket-list/{pocketListId}/items",
+      "host": [
+        "http://oosa_rewild:6080"
+      ]
+    },
+    {
+      "description": "Retrieve rewilding register",
+      "endpoint": "/rewilding-register",
+      "method": "GET",
+      "backend": "/rewilding-register",
+      "host": [
+        "http://oosa_rewild:6080"
+      ]
+    },
+    {
+      "description": "Create rewilding register",
+      "endpoint": "/rewilding-register",
+      "method": "POST",
+      "backend": "/rewilding-register",
+      "host": [
+        "http://oosa_rewild:6080"
+      ]
+    },
+    {
+      "description": "Retrieve all photos tied to a rewilding",
+      "endpoint": "/rewilding/{rewildingId}/photos",
+      "method": "GET",
+      "backend": "/rewilding/{rewildingId}/photos",
+      "host": [
+        "http://oosa_rewild:6080"
+      ]
+    },
+    {
+      "description": "Update existing pocket list",
+      "endpoint": "/pocket-list/{pocketListId}",
+      "method": "PUT",
+      "backend": "/pocket-list/{pocketListId}",
+      "host": [
+        "http://oosa_rewild:6080"
+      ]
+    },
+    {
+      "description": "Delete pocket list",
+      "endpoint": "/pocket-list/{pocketListId}",
+      "method": "DELETE",
+      "backend": "/pocket-list/{pocketListId}",
+      "host": [
+        "http://oosa_rewild:6080"
+      ]
+    },
+    {
+      "description": "Read pocket list",
+      "endpoint": "/pocket-list/{pocketListId}",
+      "method": "GET",
+      "backend": "/pocket-list/{pocketListId}",
+      "host": [
+        "http://oosa_rewild:6080"
+      ]
+    },
+    {
+      "description": "Create CollabLog Questionnaire",
+      "endpoint": "/collaborative-log/{eventId}/questionnaire",
+      "method": "POST",
+      "backend": "/collaborative-log/{eventId}/questionnaire",
+      "host": [
+        "http://oosa_rewild:6080"
+      ]
+    },
+    {
+      "description": "Auth Apple",
+      "endpoint": "/auth/apple",
+      "method": "POST",
+      "backend": "/auth/apple",
+      "host": [
+        "http://oosa_user:6080"
+      ]
+    },
+    {
+      "description": "Read Authentication",
+      "endpoint": "/auth",
+      "method": "GET",
+      "backend": "/auth",
+      "host": [
+        "http://oosa_user:6080"
+      ]
+    },
+    {
+      "description": "Update User",
+      "endpoint": "/auth",
+      "method": "PUT",
+      "backend": "/auth",
+      "host": [
+        "http://oosa_user:6080"
+      ]
+    },
+    {
+      "description": "Retrieve Badge",
+      "endpoint": "/auth/badges",
+      "method": "GET",
+      "backend": "/auth/badges",
+      "host": [
+        "http://oosa_user:6080"
+      ],
+      "input_querys": [
+        "single"
+      ]
+    },
+    {
+      "description": "Auth Facebook",
+      "endpoint": "/auth/facebook",
+      "method": "POST",
+      "backend": "/auth/facebook",
+      "host": [
+        "http://oosa_user:6080"
+      ]
+    },
+    {
+      "description": "Retrieve User Notifications",
+      "endpoint": "/auth/notifications",
+      "method": "GET",
+      "backend": "/auth/notifications",
+      "host": [
+        "http://oosa_user:6080"
+      ]
+    },
+    {
+      "description": "get-doc",
+      "endpoint": "/doc/{file}",
+      "method": "GET",
+      "backend": "/doc/{file}",
+      "host": [
+        "http://oosa_auth_test:6080"
+      ]
+    },
+    {
+      "description": "Search rewilding from Google",
+      "endpoint": "/rewilding-search",
+      "method": "GET",
+      "backend": "/rewilding-search",
+      "host": [
+        "http://oosa_rewild:6080"
+      ],
+      "input_querys": [
+        "lat",
+        "lng",
+        "type",
+        "search"
+      ]
+    },
+    {
+      "description": "Delete message board entry",
+      "endpoint": "/event/{eventId}/message-board/{messageBoardId}",
+      "method": "DELETE",
+      "backend": "/event/{eventId}/message-board/{messageBoardId}",
+      "host": [
+        "http://oosa_rewild:6080"
+      ]
+    },
+    {
+      "description": "Read Event Message Board",
+      "endpoint": "/event/{eventId}/message-board/{messageBoardId}",
+      "method": "GET",
+      "backend": "/event/{eventId}/message-board/{messageBoardId}",
+      "host": [
+        "http://oosa_rewild:6080"
+      ]
+    },
+    {
+      "description": "Update Event Message Board",
+      "endpoint": "/event/{eventId}/message-board/{messageBoardId}",
+      "method": "PUT",
+      "backend": "/event/{eventId}/message-board/{messageBoardId}",
+      "host": [
+        "http://oosa_rewild:6080"
+      ]
+    },
+    {
+      "description": "Create Event",
+      "endpoint": "/event",
+      "method": "POST",
+      "backend": "/event",
+      "host": [
+        "http://oosa_rewild:6080"
+      ]
+    },
+    {
+      "description": "Retrieve Events",
+      "endpoint": "/event",
+      "method": "GET",
+      "backend": "/event",
+      "host": [
+        "http://oosa_rewild:6080"
+      ],
+      "input_querys": [
+        "event_period_begin",
+        "event_period_end",
+        "event_rewilding",
+        "event_past"
+      ]
+    },
+    {
+      "description": "從google detail取得野放點資訊",
+      "endpoint": "/rewilding/places/{place_id}",
+      "method": "GET",
+      "backend": "/rewilding/places/{place_id}",
+      "host": [
+        "http://oosa_rewild:6080"
+      ]
+    },
+    {
+      "description": "Auth Email",
+      "endpoint": "/auth/email",
+      "method": "POST",
+      "backend": "/auth/email",
+      "host": [
+        "http://oosa_user:6080"
+      ]
+    },
+    {
+      "description": "Update Password",
+      "endpoint": "/auth/change-password",
+      "method": "PUT",
+      "backend": "/auth/change-password",
+      "host": [
+        "http://oosa_user:6080"
+      ]
+    },
+    {
+      "description": "User Event",
+      "endpoint": "/user/{userId}/event",
+      "method": "GET",
+      "backend": "/user/{userId}/event",
+      "host": [
+        "http://oosa_rewild:6080"
+      ],
+      "input_querys": [
+        "past",
+        "country_code"
+      ]
+    },
+    {
+      "description": "Statistics",
+      "endpoint": "/world/statistics",
+      "method": "GET",
+      "backend": "/world/statistics",
+      "host": [
+        "http://oosa_user:6080"
+      ]
+    },
+    {
+      "description": "Update Event",
+      "endpoint": "/event/{eventId}",
+      "method": "PUT",
+      "backend": "/event/{eventId}",
+      "host": [
+        "http://oosa_rewild:6080"
+      ]
+    },
+    {
+      "description": "Delete Event",
+      "endpoint": "/event/{eventId}",
+      "method": "DELETE",
+      "backend": "/event/{eventId}",
+      "host": [
+        "http://oosa_rewild:6080"
+      ]
+    },
+    {
+      "description": "Read Event",
+      "endpoint": "/event/{eventId}",
+      "method": "GET",
+      "backend": "/event/{eventId}",
+      "host": [
+        "http://oosa_rewild:6080"
+      ]
+    },
+    {
+      "description": "Retrieve Polaroid",
+      "endpoint": "/collaborative-log/{eventId}/polaroids",
+      "method": "GET",
+      "backend": "/collaborative-log/{eventId}/polaroids",
+      "host": [
+        "http://oosa_rewild:6080"
+      ]
+    },
+    {
+      "description": "Create Polaroid",
+      "endpoint": "/collaborative-log/{eventId}/polaroids",
+      "method": "POST",
+      "backend": "/collaborative-log/{eventId}/polaroids",
+      "host": [
+        "http://oosa_rewild:6080"
+      ]
+    },
+    {
+      "description": "附近的野放點",
+      "endpoint": "/rewilding-searchNearby",
+      "method": "GET",
+      "backend": "/rewilding-searchNearby",
+      "host": [
+        "http://oosa_rewild:6080"
+      ],
+      "input_querys": [
+        "type",
+        "lat",
+        "lng",
+        "radius",
+        "language"
+      ]
+    },
+    {
+      "description": "Delete pocket list item by ID",
+      "endpoint": "/pocket-list/{pocketListId}/items/{pocketListItemsId}",
+      "method": "DELETE",
+      "backend": "/pocket-list/{pocketListId}/items/{pocketListItemsId}",
+      "host": [
+        "http://oosa_rewild:6080"
+      ]
+    },
+    {
+      "description": "Get pocket list item by ID",
+      "endpoint": "/pocket-list/{pocketListId}/items/{pocketListItemsId}",
+      "method": "GET",
+      "backend": "/pocket-list/{pocketListId}/items/{pocketListItemsId}",
+      "host": [
+        "http://oosa_rewild:6080"
+      ]
+    },
+    {
+      "description": "Move pocket list item to another list",
+      "endpoint": "/pocket-list/{pocketListId}/items/{pocketListItemsId}",
+      "method": "PUT",
+      "backend": "/pocket-list/{pocketListId}/items/{pocketListItemsId}",
+      "host": [
+        "http://oosa_rewild:6080"
+      ]
+    },
+    {
+      "description": "Email - Register",
+      "endpoint": "/register",
+      "method": "POST",
+      "backend": "/register",
+      "host": [
+        "http://oosa_user:6080"
+      ]
+    },
+    {
+      "description": "Retrieve Achievements",
+      "endpoint": "/achievement",
+      "method": "GET",
+      "backend": "/achievement",
+      "host": [
+        "http://oosa_rewild:6080"
+      ],
+      "input_querys": [
+        "achievement_type"
+      ]
+    },
+    {
+      "description": "Retrieve Cover Image",
+      "endpoint": "/event/cover/{imagename}",
+      "method": "GET",
+      "backend": "/event/cover/{imagename}",
+      "host": [
+        "http://oosa_rewild:6080"
+      ]
+    },
+    {
+      "description": "Update User Avatar",
+      "endpoint": "/auth/avatar",
+      "method": "POST",
+      "backend": "/auth/avatar",
+      "host": [
+        "http://oosa_user:6080"
+      ]
+    },
+    {
+      "description": "Delete User Following",
+      "endpoint": "/user-following/{userFollowingId}",
+      "method": "DELETE",
+      "backend": "/user-following/{userFollowingId}",
+      "host": [
+        "http://oosa_user:6080"
+      ]
+    },
+    {
+      "description": "Read User Following",
+      "endpoint": "/user-following/{userFollowingId}",
+      "method": "GET",
+      "backend": "/user-following/{userFollowingId}",
+      "host": [
+        "http://oosa_user:6080"
+      ]
+    },
+    {
+      "description": "Forget Password - Updated",
+      "endpoint": "/forget-password/{token}",
+      "method": "POST",
+      "backend": "/forget-password/{token}",
+      "host": [
+        "http://oosa_user:6080"
+      ]
+    },
+    {
+      "description": "Link Query",
+      "endpoint": "/link-query",
+      "method": "POST",
+      "backend": "/link-query",
+      "host": [
+        "http://oosa_rewild:6080"
+      ]
+    },
+    {
+      "description": "Read event invitations",
+      "endpoint": "/event-invitation/{eventInvitationId}",
+      "method": "GET",
+      "backend": "/event-invitation/{eventInvitationId}",
+      "host": [
+        "http://oosa_rewild:6080"
+      ]
+    },
+    {
+      "description": "Update User Setting",
+      "endpoint": "/auth/setting",
+      "method": "PUT",
+      "backend": "/auth/setting",
+      "host": [
+        "http://oosa_user:6080"
+      ]
+    },
+    {
+      "description": "Event Collaborate",
+      "endpoint": "/collaborative-log",
+      "method": "GET",
+      "backend": "/collaborative-log",
+      "host": [
+        "http://oosa_rewild:6080"
+      ]
+    },
+    {
+      "description": "Delete Event Accounting",
+      "endpoint": "/event/{eventId}/accounting/{accountingId}",
+      "method": "DELETE",
+      "backend": "/event/{eventId}/accounting/{accountingId}",
+      "host": [
+        "http://oosa_rewild:6080"
+      ]
+    },
+    {
+      "description": "Read Event Accounting",
+      "endpoint": "/event/{eventId}/accounting/{accountingId}",
+      "method": "GET",
+      "backend": "/event/{eventId}/accounting/{accountingId}",
+      "host": [
+        "http://oosa_rewild:6080"
+      ]
+    },
+    {
+      "description": "Update Event Accounting",
+      "endpoint": "/event/{eventId}/accounting/{accountingId}",
+      "method": "PUT",
+      "backend": "/event/{eventId}/accounting/{accountingId}",
+      "host": [
+        "http://oosa_rewild:6080"
+      ]
+    },
+    {
+      "description": "Delete Event Schedule",
+      "endpoint": "/event/{eventId}/schedule/{scheduleId}",
+      "method": "DELETE",
+      "backend": "/event/{eventId}/schedule/{scheduleId}",
+      "host": [
+        "http://oosa_rewild:6080"
+      ]
+    },
+    {
+      "description": "Read Event Schedule",
+      "endpoint": "/event/{eventId}/schedule/{scheduleId}",
+      "method": "GET",
+      "backend": "/event/{eventId}/schedule/{scheduleId}",
+      "host": [
+        "http://oosa_rewild:6080"
+      ]
+    },
+    {
+      "description": "Update Event Schedule",
+      "endpoint": "/event/{eventId}/schedule/{scheduleId}",
+      "method": "PUT",
+      "backend": "/event/{eventId}/schedule/{scheduleId}",
+      "host": [
+        "http://oosa_rewild:6080"
+      ]
+    },
+    {
+      "description": "Retrieve all event invitations",
+      "endpoint": "/event-invitations",
+      "method": "GET",
+      "backend": "/event-invitations",
+      "host": [
+        "http://oosa_rewild:6080"
+      ]
+    },
+    {
+      "description": "Delete News",
+      "endpoint": "/news/{id}",
+      "method": "DELETE",
+      "backend": "/news/{id}",
+      "host": [
+        "http://oosa_rewild:6080"
+      ]
+    },
+    {
+      "description": "Read News",
+      "endpoint": "/news/{id}",
+      "method": "GET",
+      "backend": "/news/{id}",
+      "host": [
+        "http://oosa_rewild:6080"
+      ]
+    },
+    {
+      "description": "Update News",
+      "endpoint": "/news/{id}",
+      "method": "PUT",
+      "backend": "/news/{id}",
+      "host": [
+        "http://oosa_rewild:6080"
+      ]
+    },
+    {
+      "description": "Create Event Schedule",
+      "endpoint": "/event/{eventId}/schedule",
+      "method": "POST",
+      "backend": "/event/{eventId}/schedule",
+      "host": [
+        "http://oosa_rewild:6080"
+      ]
+    },
+    {
+      "description": "Delete Event Schedule",
+      "endpoint": "/event/{eventId}/schedule",
+      "method": "DELETE",
+      "backend": "/event/{eventId}/schedule",
+      "host": [
+        "http://oosa_rewild:6080"
+      ]
+    },
+    {
+      "description": "Retrieve Event Schedule",
+      "endpoint": "/event/{eventId}/schedule",
+      "method": "GET",
+      "backend": "/event/{eventId}/schedule",
+      "host": [
+        "http://oosa_rewild:6080"
+      ]
+    },
+    {
+      "description": "Delete Rewilding",
+      "endpoint": "/rewilding/{rewildingId}",
+      "method": "DELETE",
+      "backend": "/rewilding/{rewildingId}",
+      "host": [
+        "http://oosa_rewild:6080"
+      ]
+    },
+    {
+      "description": "Read a rewilding spot",
+      "endpoint": "/rewilding/{rewildingId}",
+      "method": "GET",
+      "backend": "/rewilding/{rewildingId}",
+      "host": [
+        "http://oosa_rewild:6080"
+      ]
+    },
+    {
+      "description": "Retrieve Collaborative Log - Album Link",
+      "endpoint": "/collaborative-log/{eventId}/album-link",
+      "method": "GET",
+      "backend": "/collaborative-log/{eventId}/album-link",
+      "host": [
+        "http://oosa_rewild:6080"
+      ]
+    },
+    {
+      "description": "Create Collaborative Log - Album Link",
+      "endpoint": "/collaborative-log/{eventId}/album-link",
+      "method": "POST",
+      "backend": "/collaborative-log/{eventId}/album-link",
+      "host": [
+        "http://oosa_rewild:6080"
+      ]
+    },
+    {
       "description": "Create Contact Us",
       "endpoint": "/contact-us",
       "method": "POST",
@@ -1008,10 +642,193 @@
       ]
     },
     {
-      "description": "Update Event Reference Links",
-      "endpoint": "/event/{eventId}/reference-links/{referenceLinkId}",
+      "description": "Change event invitation status",
+      "endpoint": "/event-invitations/{eventInvitationId}",
       "method": "PUT",
-      "backend": "/event/{eventId}/reference-links/{referenceLinkId}",
+      "backend": "/event-invitations/{eventInvitationId}",
+      "host": [
+        "http://oosa_rewild:6080"
+      ]
+    },
+    {
+      "description": "User",
+      "endpoint": "/user/{userId}",
+      "method": "GET",
+      "backend": "/user/{userId}",
+      "host": [
+        "http://oosa_user:6080"
+      ]
+    },
+    {
+      "description": "Forget Password",
+      "endpoint": "/forget-password",
+      "method": "POST",
+      "backend": "/forget-password",
+      "host": [
+        "http://oosa_user:6080"
+      ]
+    },
+    {
+      "description": "Create Event Accounting",
+      "endpoint": "/event/{eventId}/accounting",
+      "method": "POST",
+      "backend": "/event/{eventId}/accounting",
+      "host": [
+        "http://oosa_rewild:6080"
+      ]
+    },
+    {
+      "description": "Retrieve Event Accounting",
+      "endpoint": "/event/{eventId}/accounting",
+      "method": "GET",
+      "backend": "/event/{eventId}/accounting",
+      "host": [
+        "http://oosa_rewild:6080"
+      ]
+    },
+    {
+      "description": "Update Event Invitation Text",
+      "endpoint": "/event/{eventId}/join",
+      "method": "POST",
+      "backend": "/event/{eventId}/join",
+      "host": [
+        "http://oosa_rewild:6080"
+      ]
+    },
+    {
+      "description": "User Achievement",
+      "endpoint": "/user/{userId}/achievement",
+      "method": "GET",
+      "backend": "/user/{userId}/achievement",
+      "host": [
+        "http://oosa_rewild:6080"
+      ]
+    },
+    {
+      "description": "Retrieve User",
+      "endpoint": "/user",
+      "method": "GET",
+      "backend": "/user",
+      "host": [
+        "http://oosa_user:6080"
+      ],
+      "input_querys": [
+        "name"
+      ]
+    },
+    {
+      "description": "Ranking Feelings",
+      "endpoint": "/world/ranking-feelings",
+      "method": "GET",
+      "backend": "/world/ranking-feelings",
+      "host": [
+        "http://oosa_user:6080"
+      ],
+      "input_querys": [
+        "feelings"
+      ]
+    },
+    {
+      "description": "Ranking Rewilding",
+      "endpoint": "/world/ranking-rewilding",
+      "method": "GET",
+      "backend": "/world/ranking-rewilding",
+      "host": [
+        "http://oosa_user:6080"
+      ]
+    },
+    {
+      "description": "Retrieve Event Participants",
+      "endpoint": "/event/{eventId}/participants",
+      "method": "GET",
+      "backend": "/event/{eventId}/participants",
+      "host": [
+        "http://oosa_rewild:6080"
+      ]
+    },
+    {
+      "description": "Create Event Participant",
+      "endpoint": "/event/{eventId}/participants",
+      "method": "POST",
+      "backend": "/event/{eventId}/participants",
+      "host": [
+        "http://oosa_rewild:6080"
+      ]
+    },
+    {
+      "description": "User Event",
+      "endpoint": "/my/event",
+      "method": "GET",
+      "backend": "/my/event",
+      "host": [
+        "http://oosa_rewild:6080"
+      ],
+      "input_querys": [
+        "past",
+        "country_code"
+      ]
+    },
+    {
+      "description": "Read Authentication Copy",
+      "endpoint": "/oosa-daily",
+      "method": "POST",
+      "backend": "/oosa-daily",
+      "host": [
+        "http://oosa_user:6080"
+      ]
+    },
+    {
+      "description": "Retrieve User Friends",
+      "endpoint": "/user/friends",
+      "method": "GET",
+      "backend": "/user/friends",
+      "host": [
+        "http://oosa_user:6080"
+      ],
+      "input_querys": [
+        "name"
+      ]
+    },
+    {
+      "description": "野放點自動完成",
+      "endpoint": "/rewilding-autocomplete",
+      "method": "GET",
+      "backend": "/rewilding-autocomplete",
+      "host": [
+        "http://oosa_rewild:6080"
+      ],
+      "input_querys": [
+        "input",
+        "language"
+      ]
+    },
+    {
+      "description": "Read a photo",
+      "endpoint": "/rewilding/{rewildingId}/photos/{photoId}",
+      "method": "GET",
+      "backend": "/rewilding/{rewildingId}/photos/{photoId}",
+      "host": [
+        "http://oosa_rewild:6080"
+      ]
+    },
+    {
+      "description": "Auth Line",
+      "endpoint": "/auth/line",
+      "method": "GET",
+      "backend": "/auth/line",
+      "host": [
+        "http://oosa_user:6080"
+      ],
+      "input_querys": [
+        "code",
+        "state"
+      ]
+    },
+    {
+      "description": "Pin Event Message Board ",
+      "endpoint": "/event/{eventId}/message-board/{messageBoardId}/pin",
+      "method": "POST",
+      "backend": "/event/{eventId}/message-board/{messageBoardId}/pin",
       "host": [
         "http://oosa_rewild:6080"
       ]
@@ -1035,51 +852,30 @@
       ]
     },
     {
-      "description": "Link Query",
-      "endpoint": "/link-query",
-      "method": "POST",
-      "backend": "/link-query",
+      "description": "Update Event Reference Links",
+      "endpoint": "/event/{eventId}/reference-links/{referenceLinkId}",
+      "method": "PUT",
+      "backend": "/event/{eventId}/reference-links/{referenceLinkId}",
       "host": [
         "http://oosa_rewild:6080"
       ]
     },
     {
-      "description": "Retrieve User Friends",
-      "endpoint": "/user/friends",
+      "description": "Retrieve Event Message Board",
+      "endpoint": "/event/{eventId}/message-board",
       "method": "GET",
-      "backend": "/user/friends",
+      "backend": "/event/{eventId}/message-board",
       "host": [
-        "http://oosa_user:6080"
-      ],
-      "input_querys": [
-        "name"
+        "http://oosa_rewild:6080"
       ]
     },
     {
-      "description": "Delete User Following",
-      "endpoint": "/user-following/{userFollowingId}",
-      "method": "DELETE",
-      "backend": "/user-following/{userFollowingId}",
-      "host": [
-        "http://oosa_user:6080"
-      ]
-    },
-    {
-      "description": "Read User Following",
-      "endpoint": "/user-following/{userFollowingId}",
-      "method": "GET",
-      "backend": "/user-following/{userFollowingId}",
-      "host": [
-        "http://oosa_user:6080"
-      ]
-    },
-    {
-      "description": "Read Authentication Copy",
-      "endpoint": "/oosa-daily",
+      "description": "Create Event Message Board",
+      "endpoint": "/event/{eventId}/message-board",
       "method": "POST",
-      "backend": "/oosa-daily",
+      "backend": "/event/{eventId}/message-board",
       "host": [
-        "http://oosa_user:6080"
+        "http://oosa_rewild:6080"
       ]
     },
     {
@@ -1097,6 +893,210 @@
         "rectangle_hight_lat",
         "rectangle_hight_lng",
         "language"
+      ]
+    },
+    {
+      "description": "Retrieve News",
+      "endpoint": "/news",
+      "method": "GET",
+      "backend": "/news",
+      "host": [
+        "http://oosa_rewild:6080"
+      ]
+    },
+    {
+      "description": "Create News",
+      "endpoint": "/news",
+      "method": "POST",
+      "backend": "/news",
+      "host": [
+        "http://oosa_rewild:6080"
+      ]
+    },
+    {
+      "description": "Auth Google",
+      "endpoint": "/auth/google",
+      "method": "POST",
+      "backend": "/auth/google",
+      "host": [
+        "http://oosa_user:6080"
+      ]
+    },
+    {
+      "description": "Retrieve Event Reference Links",
+      "endpoint": "/event/{eventId}/reference-links",
+      "method": "GET",
+      "backend": "/event/{eventId}/reference-links",
+      "host": [
+        "http://oosa_rewild:6080"
+      ]
+    },
+    {
+      "description": "Create Event Reference Links",
+      "endpoint": "/event/{eventId}/reference-links",
+      "method": "POST",
+      "backend": "/event/{eventId}/reference-links",
+      "host": [
+        "http://oosa_rewild:6080"
+      ]
+    },
+    {
+      "description": "Retrieve Event Announcement",
+      "endpoint": "/event/{eventId}/announcement",
+      "method": "GET",
+      "backend": "/event/{eventId}/announcement",
+      "host": [
+        "http://oosa_rewild:6080"
+      ],
+      "input_querys": [
+        "category"
+      ]
+    },
+    {
+      "description": "Create Event Announcement",
+      "endpoint": "/event/{eventId}/announcement",
+      "method": "POST",
+      "backend": "/event/{eventId}/announcement",
+      "host": [
+        "http://oosa_rewild:6080"
+      ]
+    },
+    {
+      "description": "Update Event Invitation Text",
+      "endpoint": "/event/{eventId}/invitation",
+      "method": "PUT",
+      "backend": "/event/{eventId}/invitation",
+      "host": [
+        "http://oosa_rewild:6080"
+      ]
+    },
+    {
+      "description": "Retrieve all rewilding spots",
+      "endpoint": "/rewilding",
+      "method": "GET",
+      "backend": "/rewilding",
+      "host": [
+        "http://oosa_rewild:6080"
+      ],
+      "input_querys": [
+        "owner"
+      ]
+    },
+    {
+      "description": "Create rewilding spot",
+      "endpoint": "/rewilding",
+      "method": "POST",
+      "backend": "/rewilding",
+      "host": [
+        "http://oosa_rewild:6080"
+      ]
+    },
+    {
+      "description": "Rewilding register",
+      "endpoint": "/rewilding-register/references",
+      "method": "GET",
+      "backend": "/rewilding-register/references",
+      "host": [
+        "http://oosa_rewild:6080"
+      ]
+    },
+    {
+      "description": "Statistics",
+      "endpoint": "/user/statistics",
+      "method": "GET",
+      "backend": "/user/statistics",
+      "host": [
+        "http://oosa_user:6080"
+      ]
+    },
+    {
+      "description": "Update User Profile Picture",
+      "endpoint": "/auth/profile-picture",
+      "method": "POST",
+      "backend": "/auth/profile-picture",
+      "host": [
+        "http://oosa_user:6080"
+      ]
+    },
+    {
+      "description": "Read Event Message Board",
+      "endpoint": "/test-no-auth",
+      "method": "GET",
+      "backend": "/test-no-auth",
+      "host": [
+        "http://oosa_auth_test:6080"
+      ]
+    },
+    {
+      "description": "User Badges",
+      "endpoint": "/user/{userId}/badges",
+      "method": "GET",
+      "backend": "/user/{userId}/badges",
+      "host": [
+        "http://oosa_user:6080"
+      ]
+    },
+    {
+      "description": "Create CollabLog Experience",
+      "endpoint": "/collaborative-log/{eventId}/experience",
+      "method": "POST",
+      "backend": "/collaborative-log/{eventId}/experience",
+      "host": [
+        "http://oosa_rewild:6080"
+      ]
+    },
+    {
+      "description": "Read Event Message Board",
+      "endpoint": "/test-auth",
+      "method": "GET",
+      "backend": "/test-auth",
+      "host": [
+        "http://oosa_auth_test:6080"
+      ]
+    },
+    {
+      "description": "Retrieve",
+      "endpoint": "/references",
+      "method": "GET",
+      "backend": "/references",
+      "host": [
+        "http://oosa_rewild:6080"
+      ]
+    },
+    {
+      "description": "Retrieve User Following",
+      "endpoint": "/user-following",
+      "method": "GET",
+      "backend": "/user-following",
+      "host": [
+        "http://oosa_user:6080"
+      ]
+    },
+    {
+      "description": "Create User Following",
+      "endpoint": "/user-following",
+      "method": "POST",
+      "backend": "/user-following",
+      "host": [
+        "http://oosa_user:6080"
+      ]
+    },
+    {
+      "description": "Get pocket list",
+      "endpoint": "/pocket-list",
+      "method": "GET",
+      "backend": "/pocket-list",
+      "host": [
+        "http://oosa_rewild:6080"
+      ]
+    },
+    {
+      "description": "Create new pocket list",
+      "endpoint": "/pocket-list",
+      "method": "POST",
+      "backend": "/pocket-list",
+      "host": [
+        "http://oosa_rewild:6080"
       ]
     }
   ]
