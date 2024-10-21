@@ -28,13 +28,17 @@ services:
     labels:
       - traefik.http.routers.gateway-auth.entrypoints=web
       - traefik.http.routers.gateway-auth.rule= (Host(`auth-oosa.docker.localhost`) || Host(`dev-auth.oosa.life`)) && PathPrefix(`/api`)
-      - traefik.http.routers.gateway-auth.middlewares=oathkeeper, api
+      - traefik.http.routers.gateway-auth.middlewares=api-oathkeeper, api
     networks:
       - oosa-network
-  oathkeeper:
+  api-oathkeeper:
     image: oryd/oathkeeper:v0.40.7-distroless
     depends_on:
-    - oosa_gateway
+    - oosa_gateway_auth
+    labels:
+    - traefik.http.middlewares.api-oathkeeper.forwardauth.address=http://api-oathkeeper:4456/decisions
+    - traefik.http.middlewares.api-oathkeeper.forwardauth.authResponseHeaders=Authorization
+    - traefik.http.middlewares.api-oathkeeper.forwardauth.authResponseHeadersRegex=^X-
     command: serve --config=/etc/config/oathkeeper/config.yaml
     volumes:
       - type: bind
