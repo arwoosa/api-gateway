@@ -11,7 +11,7 @@ services:
     - ./.env.${ENV}
     command: ["run", "-c", "/etc/krakend/krakend.tmpl"]
     volumes:
-    - ../oosa-gateway:/etc/krakend
+    - ../:/etc/krakend
     networks:
     - ${NETWORK_NAME}
   api-oathkeeper:

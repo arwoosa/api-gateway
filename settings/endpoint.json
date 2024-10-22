@@ -114,7 +114,7 @@
       "method": "POST",
       "backend": "/auth/apple",
       "host": [
-        "http://oosa_user:6080"
+        "http://user"
       ]
     },
     {
@@ -123,7 +123,7 @@
       "method": "GET",
       "backend": "/auth",
       "host": [
-        "http://oosa_user:6080"
+        "http://user"
       ]
     },
     {
@@ -132,7 +132,7 @@
       "method": "PUT",
       "backend": "/auth",
       "host": [
-        "http://oosa_user:6080"
+        "http://user"
       ]
     },
     {
@@ -141,7 +141,7 @@
       "method": "GET",
       "backend": "/auth/badges",
       "host": [
-        "http://oosa_user:6080"
+        "http://user"
       ],
       "input_querys": [
         "single"
@@ -153,7 +153,7 @@
       "method": "POST",
       "backend": "/auth/facebook",
       "host": [
-        "http://oosa_user:6080"
+        "http://user"
       ]
     },
     {
@@ -162,7 +162,7 @@
       "method": "GET",
       "backend": "/auth/notifications",
       "host": [
-        "http://oosa_user:6080"
+        "http://user"
       ]
     },
     {
@@ -255,7 +255,7 @@
       "method": "POST",
       "backend": "/auth/email",
       "host": [
-        "http://oosa_user:6080"
+        "http://user"
       ]
     },
     {
@@ -264,7 +264,7 @@
       "method": "PUT",
       "backend": "/auth/change-password",
       "host": [
-        "http://oosa_user:6080"
+        "http://user"
       ]
     },
     {
@@ -286,7 +286,7 @@
       "method": "GET",
       "backend": "/world/statistics",
       "host": [
-        "http://oosa_user:6080"
+        "http://user"
       ]
     },
     {
@@ -383,7 +383,7 @@
       "method": "POST",
       "backend": "/register",
       "host": [
-        "http://oosa_user:6080"
+        "http://user"
       ]
     },
     {
@@ -413,7 +413,7 @@
       "method": "POST",
       "backend": "/auth/avatar",
       "host": [
-        "http://oosa_user:6080"
+        "http://user"
       ]
     },
     {
@@ -422,7 +422,7 @@
       "method": "DELETE",
       "backend": "/user-following/{userFollowingId}",
       "host": [
-        "http://oosa_user:6080"
+        "http://user"
       ]
     },
     {
@@ -431,7 +431,7 @@
       "method": "GET",
       "backend": "/user-following/{userFollowingId}",
       "host": [
-        "http://oosa_user:6080"
+        "http://user"
       ]
     },
     {
@@ -440,7 +440,7 @@
       "method": "POST",
       "backend": "/forget-password/{token}",
       "host": [
-        "http://oosa_user:6080"
+        "http://user"
       ]
     },
     {
@@ -467,7 +467,7 @@
       "method": "PUT",
       "backend": "/auth/setting",
       "host": [
-        "http://oosa_user:6080"
+        "http://user"
       ]
     },
     {
@@ -638,7 +638,7 @@
       "method": "POST",
       "backend": "/contact-us",
       "host": [
-        "http://oosa_user:6080"
+        "http://user"
       ]
     },
     {
@@ -656,7 +656,7 @@
       "method": "GET",
       "backend": "/user/{userId}",
       "host": [
-        "http://oosa_user:6080"
+        "http://user"
       ]
     },
     {
@@ -665,7 +665,7 @@
       "method": "POST",
       "backend": "/forget-password",
       "host": [
-        "http://oosa_user:6080"
+        "http://user"
       ]
     },
     {
@@ -710,7 +710,7 @@
       "method": "GET",
       "backend": "/user",
       "host": [
-        "http://oosa_user:6080"
+        "http://user"
       ],
       "input_querys": [
         "name"
@@ -722,7 +722,7 @@
       "method": "GET",
       "backend": "/world/ranking-feelings",
       "host": [
-        "http://oosa_user:6080"
+        "http://user"
       ],
       "input_querys": [
         "feelings"
@@ -734,7 +734,7 @@
       "method": "GET",
       "backend": "/world/ranking-rewilding",
       "host": [
-        "http://oosa_user:6080"
+        "http://user"
       ]
     },
     {
@@ -774,7 +774,7 @@
       "method": "POST",
       "backend": "/oosa-daily",
       "host": [
-        "http://oosa_user:6080"
+        "http://user"
       ]
     },
     {
@@ -783,7 +783,7 @@
       "method": "GET",
       "backend": "/user/friends",
       "host": [
-        "http://oosa_user:6080"
+        "http://user"
       ],
       "input_querys": [
         "name"
@@ -817,7 +817,7 @@
       "method": "GET",
       "backend": "/auth/line",
       "host": [
-        "http://oosa_user:6080"
+        "http://user"
       ],
       "input_querys": [
         "code",
@@ -919,7 +919,7 @@
       "method": "POST",
       "backend": "/auth/google",
       "host": [
-        "http://oosa_user:6080"
+        "http://user"
       ]
     },
     {
@@ -1006,7 +1006,7 @@
       "method": "GET",
       "backend": "/user/statistics",
       "host": [
-        "http://oosa_user:6080"
+        "http://user"
       ]
     },
     {
@@ -1015,7 +1015,7 @@
       "method": "POST",
       "backend": "/auth/profile-picture",
       "host": [
-        "http://oosa_user:6080"
+        "http://user"
       ]
     },
     {
@@ -1033,7 +1033,7 @@
       "method": "GET",
       "backend": "/user/{userId}/badges",
       "host": [
-        "http://oosa_user:6080"
+        "http://user"
       ]
     },
     {
@@ -1069,7 +1069,7 @@
       "method": "GET",
       "backend": "/user-following",
       "host": [
-        "http://oosa_user:6080"
+        "http://user"
       ]
     },
     {
@@ -1078,7 +1078,7 @@
       "method": "POST",
       "backend": "/user-following",
       "host": [
-        "http://oosa_user:6080"
+        "http://user"
       ]
     },
     {
