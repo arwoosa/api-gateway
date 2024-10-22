@@ -87,6 +87,7 @@ paths:
       - T5 個人 My
       summary: Update User
       description: Update the authenticated user detail
+      operationId: updateUser
       requestBody:
         content:
           application/json:
@@ -133,6 +134,7 @@ paths:
       - T5 個人 My
       summary: Update User Avatar
       description: Update user avatar
+      operationId: updateAvatar
       requestBody:
         content:
           application/json:
@@ -159,6 +161,7 @@ paths:
       - T5 個人 My
       summary: Retrieve Badge
       description: Retrieve badges earned by user
+      operationId: getBadge
       parameters:
       - name: single
         in: query
@@ -186,6 +189,7 @@ paths:
       - T5 個人 My
       summary: Update Password
       description: Update the authenticated user password
+      operationId: updatePassword
       requestBody:
         content:
           application/json:
@@ -212,6 +216,7 @@ paths:
       - _註冊與登入 Register and Sign in
       summary: Auth Email
       description: Use this endpoint to login using email
+      operationId: authByEmail
       requestBody:
         content:
           application/json:
@@ -337,6 +342,7 @@ paths:
       - T5 個人 My
       summary: Retrieve User Notifications
       description: Retrieve notifications
+      operationId: getUserNotif
       responses:
         "200":
           description: Notifications
@@ -359,6 +365,7 @@ paths:
       - T5 個人 My
       summary: Update User Profile Picture
       description: Update profile picture
+      operationId: UpdateProfile
       requestBody:
         content:
           multipart/form-data:
@@ -388,6 +395,7 @@ paths:
       - T5 個人 My
       summary: Update User Setting
       description: Update settings<br/>1 - True (On)<br />0 - False (Off)
+      operationId: updateUserSet
       requestBody:
         content:
           application/json:
@@ -688,6 +696,7 @@ paths:
       - T5 個人 My
       summary: Create Contact Us
       description: Create contact us record
+      operationId: createContactUs
       requestBody:
         content:
           application/json:
@@ -2481,6 +2490,7 @@ paths:
       - T5 個人 My
       summary: Forget Password
       description: Forget Password Request
+      operationId: forgetPassword
       requestBody:
         content:
           application/json:
@@ -2507,6 +2517,7 @@ paths:
       - T5 個人 My
       summary: Forget Password - Updated
       description: Update password from forget password
+      operationId: forgetPasswordUpdated
       parameters:
       - name: token
         in: path
@@ -2776,6 +2787,7 @@ paths:
       summary: Read Authentication Copy
       description: Retrieve the authenticated user detail. <br/>1. Google<br/>2. Line<br/>3.
         Email<br/>4. Facebook
+      operationId: readAuthCopy
       responses:
         "200":
           description: OK
@@ -3380,6 +3392,7 @@ paths:
       - _註冊與登入 Register and Sign in
       summary: Email - Register
       description: Use this endpoint to register using email
+      operationId: emailRegister
       requestBody:
         content:
           application/json:
@@ -3983,6 +3996,67 @@ paths:
       externalDocs:
         description: OOSA_REWILD_SERVICE
         url: http://oosa_rewild:6080
+  /sso/register:
+    get:
+      summary: 開始SSO註冊
+      operationId: startSsoRegister
+      responses:
+        "303":
+          description: See Other
+          content:
+            '*/*':
+              schema:
+                type: object
+      security: []
+      externalDocs:
+        description: OOSA_USER_SERVICE
+        url: http://user
+  /sso/register/finish:
+    post:
+      summary: SSO註冊使用者完成
+      operationId: finishSsoRegister
+      parameters:
+      - name: state
+        in: query
+        schema:
+          type: string
+      - name: X-User
+        in: header
+        schema:
+          type: string
+        example: ""
+      - name: X-Userid
+        in: header
+        schema:
+          type: string
+        example: ""
+      - name: X-Email
+        in: header
+        schema:
+          type: string
+        example: ""
+      - name: X-Name
+        in: header
+        schema:
+          type: string
+        example: ""
+      - name: X-Language
+        in: header
+        schema:
+          type: string
+        example: ""
+      responses:
+        "200":
+          description: Success
+          content:
+            '*/*':
+              schema:
+                type: object
+      security:
+      - Bearer: []
+      externalDocs:
+        description: OOSA_USER_SERVICE
+        url: http://user
   /test-auth:
     get:
       summary: Read Event Message Board
@@ -4047,6 +4121,7 @@ paths:
       - T4 世界 World
       summary: Retrieve User Following
       description: Get user following
+      operationId: getUserFollowing
       responses:
         "200":
           description: User following
@@ -4068,6 +4143,7 @@ paths:
       - T4 世界 World
       summary: Create User Following
       description: Create user following
+      operationId: createUserFollowing
       requestBody:
         content:
           application/json:
@@ -4093,6 +4169,7 @@ paths:
       - User Following
       summary: Delete User Following
       description: Delete user following
+      operationId: deleteUserFollowing
       parameters:
       - name: userFollowingId
         in: path
@@ -4119,6 +4196,7 @@ paths:
       - User Following
       summary: Read User Following
       description: Get user following
+      operationId: getUserFollowingId
       parameters:
       - name: userFollowingId
         in: path
@@ -4146,7 +4224,7 @@ paths:
       - User Event
       summary: User
       description: Retrieve an authenticated user events
-      operationId: get-my-events
+      operationId: getUser
       parameters:
       - name: userId
         in: path
@@ -4211,7 +4289,7 @@ paths:
       - User Event
       summary: User Badges
       description: Retrieve an authenticated user events
-      operationId: get-my-events
+      operationId: getUserBadges
       parameters:
       - name: userId
         in: path
@@ -4316,7 +4394,7 @@ paths:
       - User Event
       summary: Statistics
       description: Retrieve an authenticated user events
-      operationId: get-my-events
+      operationId: getUserStat
       responses:
         "200":
           description: Array of EventReferenceLinks Object
@@ -4343,7 +4421,7 @@ paths:
       - T4 世界 World
       summary: Ranking Feelings
       description: Retrieve an authenticated user events
-      operationId: get-my-events
+      operationId: getRankFeel
       parameters:
       - name: feelings
         in: query
@@ -4377,7 +4455,7 @@ paths:
       - T4 世界 World
       summary: Ranking Rewilding
       description: Retrieve an authenticated user events
-      operationId: get-my-events
+      operationId: getRankRewild
       responses:
         "200":
           description: Array of EventReferenceLinks Object
@@ -4406,7 +4484,7 @@ paths:
       - T4 世界 World
       summary: Statistics
       description: Retrieve an authenticated user events
-      operationId: get-my-events
+      operationId: getUserWorldStat
       responses:
         "200":
           description: Array of EventReferenceLinks Object
@@ -5572,6 +5650,10 @@ components:
           format: int32
         users_email:
           type: string
+        users_follower_count:
+          type: integer
+        users_following_count:
+          type: integer
         users_id:
           type: string
         users_is_business:
@@ -5746,6 +5828,10 @@ components:
           format: int32
         users_email:
           type: string
+        users_follower_count:
+          type: integer
+        users_following_count:
+          type: integer
         users_followings:
           $ref: '#/components/schemas/UserFollowings'
         users_id:

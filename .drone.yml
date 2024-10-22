@@ -22,10 +22,10 @@ steps:
   - docker build -t oosa-gw:dev .
 - name: restart service
   commands:
-  - docker-compose -f docker-dev.yml down
-  - docker-compose -f docker-dev.yml up -d
+  - docker-compose -f ./.docker/docker-test.yml down
+  - docker-compose -f ./.docker/docker-test.yml up -d
 
 trigger:
   branch:
-  - dev
+  - test
 ...

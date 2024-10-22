@@ -1,3 +1,6 @@
+servers:
+- url: http://user
+  description: OOSA_USER_SERVICE
 openapi: 3.1.0
 info:
   title: OOSA
@@ -44,6 +47,7 @@ paths:
       summary: Update User Avatar
       deprecated: false
       description: Update user avatar
+      operationId: updateAvatar
       tags:
         - OOSA_USER_SERVICE
         - Authentication
@@ -69,6 +73,7 @@ paths:
       summary: Retrieve Badge
       deprecated: false
       description: Retrieve badges earned by user
+      operationId: getBadge
       tags:
         - OOSA_USER_SERVICE
         - User Badges
@@ -95,6 +100,7 @@ paths:
       summary: Update Password
       deprecated: false
       description: Update the authenticated user password
+      operationId: updatePassword
       tags:
         - OOSA_USER_SERVICE
         - Authentication
@@ -120,6 +126,7 @@ paths:
       summary: Auth Email
       deprecated: false
       description: Use this endpoint to login using email
+      operationId: authByEmail
       tags:
         - OOSA_USER_SERVICE
         - Authentication
@@ -238,6 +245,7 @@ paths:
       summary: Update User Setting
       deprecated: false
       description: Update settings<br/>1 - True (On)<br />0 - False (Off)
+      operationId: updateUserSet
       tags:
         - OOSA_USER_SERVICE
         - Authentication
@@ -262,6 +270,7 @@ paths:
       summary: Create Contact Us
       deprecated: false
       description: Create contact us record
+      operationId: createContactUs
       tags:
         - OOSA_USER_SERVICE
         - Contact Us
@@ -291,6 +300,7 @@ paths:
       summary: Forget Password
       deprecated: false
       description: Forget Password Request
+      operationId: forgetPassword
       tags:
         - OOSA_USER_SERVICE
         - Forget Password
@@ -315,6 +325,7 @@ paths:
       summary: Email - Register
       deprecated: false
       description: Use this endpoint to register using email
+      operationId: emailRegister
       tags:
         - OOSA_USER_SERVICE
         - Authentication
@@ -345,6 +356,7 @@ paths:
       summary: Delete User Following
       deprecated: false
       description: Delete user following
+      operationId: deleteUserFollowing
       tags:
         - OOSA_USER_SERVICE
         - User Following
@@ -368,6 +380,7 @@ paths:
       summary: Read User Following
       deprecated: false
       description: Get user following
+      operationId: getUserFollowingId
       tags:
         - OOSA_USER_SERVICE
         - User Following
@@ -393,6 +406,7 @@ paths:
       summary: Update User
       deprecated: false
       description: Update the authenticated user detail
+      operationId: updateUser
       tags:
         - OOSA_USER_SERVICE
         - Authentication
@@ -447,6 +461,7 @@ paths:
       summary: Forget Password - Updated
       deprecated: false
       description: Update password from forget password
+      operationId: forgetPasswordUpdated
       tags:
         - OOSA_USER_SERVICE
         - Forget Password
@@ -506,6 +521,7 @@ paths:
       summary: Retrieve User Notifications
       deprecated: false
       description: Retrieve notifications
+      operationId: getUserNotif
       tags:
         - OOSA_USER_SERVICE
         - User Notifications
@@ -527,6 +543,7 @@ paths:
       summary: Create User Following
       deprecated: false
       description: Create user following
+      operationId: createUserFollowing
       tags:
         - OOSA_USER_SERVICE
         - User Following
@@ -550,6 +567,7 @@ paths:
       summary: Retrieve User Following
       deprecated: false
       description: Get user following
+      operationId: getUserFollowing
       tags:
         - OOSA_USER_SERVICE
         - User Following
@@ -570,6 +588,7 @@ paths:
       summary: Update User Profile Picture
       deprecated: false
       description: Update profile picture
+      operationId: UpdateProfile
       tags:
         - OOSA_USER_SERVICE
         - Authentication
@@ -599,6 +618,7 @@ paths:
       description: >-
         Retrieve the authenticated user detail. <br/>1. Google<br/>2.
         Line<br/>3. Email<br/>4. Facebook
+      operationId: readAuthCopy
       tags:
         - OOSA_USER_SERVICE
         - Authentication
@@ -652,7 +672,7 @@ paths:
       summary: User
       deprecated: false
       description: Retrieve an authenticated user events
-      operationId: get-my-events
+      operationId: getUser
       tags:
         - OOSA_REWILD_SERVICE
         - User Event
@@ -684,7 +704,7 @@ paths:
       summary: User Badges
       deprecated: false
       description: Retrieve an authenticated user events
-      operationId: get-my-events
+      operationId: getUserBadges
       tags:
         - OOSA_REWILD_SERVICE
         - User Event
@@ -715,7 +735,7 @@ paths:
       summary: Statistics
       deprecated: false
       description: Retrieve an authenticated user events
-      operationId: get-my-events
+      operationId: getUserStat
       tags:
         - OOSA_REWILD_SERVICE
         - User Event
@@ -740,7 +760,7 @@ paths:
       summary: Statistics
       deprecated: false
       description: Retrieve an authenticated user events
-      operationId: get-my-events
+      operationId: getUserWorldStat
       tags:
         - OOSA_REWILD_SERVICE
         - User Event
@@ -766,7 +786,7 @@ paths:
       summary: Ranking Feelings
       deprecated: false
       description: Retrieve an authenticated user events
-      operationId: get-my-events
+      operationId: getRankFeel
       tags:
         - OOSA_REWILD_SERVICE
         - User Event
@@ -801,7 +821,7 @@ paths:
       summary: Ranking Rewilding
       deprecated: false
       description: Retrieve an authenticated user events
-      operationId: get-my-events
+      operationId: getRankRewild
       tags:
         - OOSA_REWILD_SERVICE
         - User Event
@@ -824,8 +844,108 @@ paths:
                 properties: {}
       security:
         - bearer: []
+  /sso/register:
+    get:
+      summary: 開始SSO註冊
+      deprecated: false
+      description: ''
+      operationId: startSsoRegister
+      tags: []
+      parameters: []
+      responses:
+        '303':
+          description: See Other
+          content:
+            '*/*':
+              schema:
+                type: object
+                properties: {}
+      security: []
+  /sso/register/finish:
+    post:
+      summary: SSO註冊使用者完成
+      deprecated: false
+      description: ''
+      operationId: finishSsoRegister
+      tags: []
+      parameters:
+        - name: state
+          in: query
+          description: ''
+          required: false
+          schema:
+            type: string
+        - name: X-User
+          in: header
+          description: ''
+          required: false
+          example: ''
+          schema:
+            type: string
+        - name: X-Userid
+          in: header
+          description: ''
+          required: false
+          example: ''
+          schema:
+            type: string
+        - name: X-Email
+          in: header
+          description: ''
+          required: false
+          example: ''
+          schema:
+            type: string
+        - name: X-Name
+          in: header
+          description: ''
+          required: false
+          example: ''
+          schema:
+            type: string
+        - name: X-Language
+          in: header
+          description: ''
+          required: false
+          example: ''
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Success
+          content:
+            '*/*':
+              schema:
+                type: object
+                properties: {}
+      security:
+        - bearer: []
 components:
   schemas:
+    UserFriendsOne:
+      type: object
+      properties:
+        users_avatar:
+          type: string
+          default: AVATAR_1
+        users_id:
+          type: string
+          default: 6613fae21977170d4fd608a6
+        users_name:
+          type: string
+          default: Tommy
+    UserBadgesDetail:
+      type: object
+      properties:
+        badges_code:
+          type: string
+          default: N1
+        badges_id:
+          type: string
+          default: 6695534c1da4d6fee70fc3e4
+        badges_name:
+          type: string
+          default: 1st. Rewild
     RankingRewilding:
       type: object
       properties:
@@ -892,6 +1012,10 @@ components:
         users_username:
           type: string
         users_breathing_points:
+          type: integer
+        users_following_count:
+          type: integer
+        users_follower_count:
           type: integer
         users_followings: *ref_5
       required:
@@ -961,42 +1085,6 @@ components:
       items:
         oneOf:
           - $ref: '#/components/schemas/UserFriendsOne'
-    UserFriendsOne:
-      type: object
-      properties:
-        users_avatar:
-          type: string
-          default: AVATAR_1
-        users_id:
-          type: string
-          default: 6613fae21977170d4fd608a6
-        users_name:
-          type: string
-          default: Tommy
-    RequestForgetPasswordReset:
-      type: object
-      properties:
-        email:
-          type: string
-          default: tommy@oosa.ar.tw
-        password:
-          type: string
-          default: 123456
-    RequestUsersUpdate:
-      type: object
-      properties:
-        users_email:
-          type: string
-          default: tommy@oosa.ar.tw
-        users_name:
-          type: string
-          default: Tommy
-        users_setting_language:
-          type: string
-          default: en
-        users_username:
-          type: string
-          default: xiaolongbao
     UserLogin:
       type: object
       properties:
@@ -1052,6 +1140,10 @@ components:
           type: string
         users_breathing_points:
           type: integer
+        users_following_count:
+          type: integer
+        users_follower_count:
+          type: integer
       required:
         - users_avatar
         - users_created_at
@@ -1069,6 +1161,36 @@ components:
         - users_source
         - users_source_id
         - users_username
+    RequestForgetPasswordReset:
+      type: object
+      properties:
+        email:
+          type: string
+          default: tommy@oosa.ar.tw
+        password:
+          type: string
+          default: 123456
+    RequestUsersUpdate:
+      type: object
+      properties:
+        users_email:
+          type: string
+          default: tommy@oosa.ar.tw
+        users_name:
+          type: string
+          default: Tommy
+        users_setting_language:
+          type: string
+          default: en
+        users_username:
+          type: string
+          default: xiaolongbao
+    RequestAuthUpdateAvatar:
+      type: object
+      properties:
+        users_avatar:
+          type: string
+          default: AVATAR_1
     ResponseGeneralError:
       type: object
       properties:
@@ -1167,24 +1289,6 @@ components:
         user_badges_user:
           type: string
           default: 65f6861102948c60bcb3cb1d
-    UserBadgesDetail:
-      type: object
-      properties:
-        badges_code:
-          type: string
-          default: N1
-        badges_id:
-          type: string
-          default: 6695534c1da4d6fee70fc3e4
-        badges_name:
-          type: string
-          default: 1st. Rewild
-    RequestAuthUpdateAvatar:
-      type: object
-      properties:
-        users_avatar:
-          type: string
-          default: AVATAR_1
     ResponseValidationError:
       type: object
       properties:
@@ -1194,6 +1298,3 @@ components:
     bearer:
       type: http
       scheme: bearer
-servers:
-- url: http://user
-  description: OOSA_USER_SERVICE
