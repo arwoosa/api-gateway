@@ -851,7 +851,13 @@ paths:
       description: ''
       operationId: startSsoRegister
       tags: []
-      parameters: []
+      parameters:
+        - name: return_to
+          in: query
+          description: ''
+          required: false
+          schema:
+            type: string
       responses:
         '303':
           description: See Other

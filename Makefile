@@ -40,3 +40,5 @@ gen-oath-rule:
 	-v $$PWD:/workdir 94peter/openapi-cli:v1.11 /main tar \
 	-spec /workdir/doc/${ENV}_oosa.yml \
 	-output /workdir/doc/${ENV}_rules.json
+
+gen-all: merge-spec gen-setting-json gen-oath-rule

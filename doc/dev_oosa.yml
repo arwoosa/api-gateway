@@ -4000,6 +4000,11 @@ paths:
     get:
       summary: 開始SSO註冊
       operationId: startSsoRegister
+      parameters:
+      - name: return_to
+        in: query
+        schema:
+          type: string
       responses:
         "303":
           description: See Other
