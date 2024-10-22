@@ -1,505 +1,5 @@
 [
   {
-    "id": "rule--0",
-    "version": "",
-    "description": "",
-    "match": {
-      "methods": [
-        "DELETE"
-      ],
-      "url": "\u003chttps|http\u003e://oosa.docker.localhost/api/event/\u003c.*\u003e/reference-links/\u003c.*\u003e"
-    },
-    "authenticators": [
-      {
-        "handler": "cookie_session",
-        "config": {}
-      },
-      {
-        "handler": "bearer_token",
-        "config": {}
-      },
-      {
-        "handler": "unauthorized",
-        "config": null
-      }
-    ],
-    "authorizer": {
-      "handler": "allow",
-      "config": {}
-    },
-    "mutators": [
-      {
-        "handler": "header",
-        "config": {}
-      }
-    ],
-    "errors": [
-      {
-        "handler": "json",
-        "config": {}
-      }
-    ],
-    "upstream": {
-      "preserve_host": false,
-      "strip_path": "",
-      "url": ""
-    }
-  },
-  {
-    "id": "rule--0",
-    "version": "",
-    "description": "",
-    "match": {
-      "methods": [
-        "GET"
-      ],
-      "url": "\u003chttps|http\u003e://oosa.docker.localhost/api/event/\u003c.*\u003e/reference-links/\u003c.*\u003e"
-    },
-    "authenticators": [
-      {
-        "handler": "cookie_session",
-        "config": {}
-      },
-      {
-        "handler": "bearer_token",
-        "config": {}
-      },
-      {
-        "handler": "unauthorized",
-        "config": null
-      }
-    ],
-    "authorizer": {
-      "handler": "allow",
-      "config": {}
-    },
-    "mutators": [
-      {
-        "handler": "header",
-        "config": {}
-      }
-    ],
-    "errors": [
-      {
-        "handler": "json",
-        "config": {}
-      }
-    ],
-    "upstream": {
-      "preserve_host": false,
-      "strip_path": "",
-      "url": ""
-    }
-  },
-  {
-    "id": "rule--0",
-    "version": "",
-    "description": "",
-    "match": {
-      "methods": [
-        "PUT"
-      ],
-      "url": "\u003chttps|http\u003e://oosa.docker.localhost/api/event/\u003c.*\u003e/reference-links/\u003c.*\u003e"
-    },
-    "authenticators": [
-      {
-        "handler": "cookie_session",
-        "config": {}
-      },
-      {
-        "handler": "bearer_token",
-        "config": {}
-      },
-      {
-        "handler": "unauthorized",
-        "config": null
-      }
-    ],
-    "authorizer": {
-      "handler": "allow",
-      "config": {}
-    },
-    "mutators": [
-      {
-        "handler": "header",
-        "config": {}
-      }
-    ],
-    "errors": [
-      {
-        "handler": "json",
-        "config": {}
-      }
-    ],
-    "upstream": {
-      "preserve_host": false,
-      "strip_path": "",
-      "url": ""
-    }
-  },
-  {
-    "id": "rule-search-rewilding-0",
-    "version": "",
-    "description": "",
-    "match": {
-      "methods": [
-        "GET"
-      ],
-      "url": "\u003chttps|http\u003e://oosa.docker.localhost/api/rewilding-search"
-    },
-    "authenticators": [
-      {
-        "handler": "cookie_session",
-        "config": {}
-      },
-      {
-        "handler": "bearer_token",
-        "config": {}
-      },
-      {
-        "handler": "unauthorized",
-        "config": null
-      }
-    ],
-    "authorizer": {
-      "handler": "allow",
-      "config": {}
-    },
-    "mutators": [
-      {
-        "handler": "header",
-        "config": {}
-      }
-    ],
-    "errors": [
-      {
-        "handler": "json",
-        "config": {}
-      }
-    ],
-    "upstream": {
-      "preserve_host": false,
-      "strip_path": "",
-      "url": ""
-    }
-  },
-  {
-    "id": "rule--0",
-    "version": "",
-    "description": "",
-    "match": {
-      "methods": [
-        "POST"
-      ],
-      "url": "\u003chttps|http\u003e://oosa.docker.localhost/api/contact-us"
-    },
-    "authenticators": [
-      {
-        "handler": "cookie_session",
-        "config": {}
-      },
-      {
-        "handler": "bearer_token",
-        "config": {}
-      },
-      {
-        "handler": "unauthorized",
-        "config": null
-      }
-    ],
-    "authorizer": {
-      "handler": "allow",
-      "config": {}
-    },
-    "mutators": [
-      {
-        "handler": "header",
-        "config": {}
-      }
-    ],
-    "errors": [
-      {
-        "handler": "json",
-        "config": {}
-      }
-    ],
-    "upstream": {
-      "preserve_host": false,
-      "strip_path": "",
-      "url": ""
-    }
-  },
-  {
-    "id": "rule--0",
-    "version": "",
-    "description": "",
-    "match": {
-      "methods": [
-        "POST"
-      ],
-      "url": "\u003chttps|http\u003e://oosa.docker.localhost/api/auth/profile-picture"
-    },
-    "authenticators": [
-      {
-        "handler": "cookie_session",
-        "config": {}
-      },
-      {
-        "handler": "bearer_token",
-        "config": {}
-      },
-      {
-        "handler": "unauthorized",
-        "config": null
-      }
-    ],
-    "authorizer": {
-      "handler": "allow",
-      "config": {}
-    },
-    "mutators": [
-      {
-        "handler": "header",
-        "config": {}
-      }
-    ],
-    "errors": [
-      {
-        "handler": "json",
-        "config": {}
-      }
-    ],
-    "upstream": {
-      "preserve_host": false,
-      "strip_path": "",
-      "url": ""
-    }
-  },
-  {
-    "id": "rule--0",
-    "version": "",
-    "description": "",
-    "match": {
-      "methods": [
-        "POST"
-      ],
-      "url": "\u003chttps|http\u003e://oosa.docker.localhost/api/event/\u003c.*\u003e/join"
-    },
-    "authenticators": [
-      {
-        "handler": "cookie_session",
-        "config": {}
-      },
-      {
-        "handler": "bearer_token",
-        "config": {}
-      },
-      {
-        "handler": "unauthorized",
-        "config": null
-      }
-    ],
-    "authorizer": {
-      "handler": "allow",
-      "config": {}
-    },
-    "mutators": [
-      {
-        "handler": "header",
-        "config": {}
-      }
-    ],
-    "errors": [
-      {
-        "handler": "json",
-        "config": {}
-      }
-    ],
-    "upstream": {
-      "preserve_host": false,
-      "strip_path": "",
-      "url": ""
-    }
-  },
-  {
-    "id": "rule-get-my-events-0",
-    "version": "",
-    "description": "",
-    "match": {
-      "methods": [
-        "GET"
-      ],
-      "url": "\u003chttps|http\u003e://oosa.docker.localhost/api/user/\u003c.*\u003e/achievement"
-    },
-    "authenticators": [
-      {
-        "handler": "cookie_session",
-        "config": {}
-      },
-      {
-        "handler": "bearer_token",
-        "config": {}
-      },
-      {
-        "handler": "unauthorized",
-        "config": null
-      }
-    ],
-    "authorizer": {
-      "handler": "allow",
-      "config": {}
-    },
-    "mutators": [
-      {
-        "handler": "header",
-        "config": {}
-      }
-    ],
-    "errors": [
-      {
-        "handler": "json",
-        "config": {}
-      }
-    ],
-    "upstream": {
-      "preserve_host": false,
-      "strip_path": "",
-      "url": ""
-    }
-  },
-  {
-    "id": "rule-getCollaborativeLogs-0",
-    "version": "",
-    "description": "",
-    "match": {
-      "methods": [
-        "GET"
-      ],
-      "url": "\u003chttps|http\u003e://oosa.docker.localhost/api/collaborative-log"
-    },
-    "authenticators": [
-      {
-        "handler": "anonymous",
-        "config": {
-          "subject": "guest"
-        }
-      }
-    ],
-    "authorizer": {
-      "handler": "allow",
-      "config": {}
-    },
-    "mutators": [
-      {
-        "handler": "header",
-        "config": {}
-      }
-    ],
-    "errors": [
-      {
-        "handler": "json",
-        "config": {}
-      }
-    ],
-    "upstream": {
-      "preserve_host": false,
-      "strip_path": "",
-      "url": ""
-    }
-  },
-  {
-    "id": "rule-getUrlInfo-0",
-    "version": "",
-    "description": "",
-    "match": {
-      "methods": [
-        "POST"
-      ],
-      "url": "\u003chttps|http\u003e://oosa.docker.localhost/api/link-query"
-    },
-    "authenticators": [
-      {
-        "handler": "cookie_session",
-        "config": {}
-      },
-      {
-        "handler": "bearer_token",
-        "config": {}
-      },
-      {
-        "handler": "unauthorized",
-        "config": null
-      }
-    ],
-    "authorizer": {
-      "handler": "allow",
-      "config": {}
-    },
-    "mutators": [
-      {
-        "handler": "header",
-        "config": {}
-      }
-    ],
-    "errors": [
-      {
-        "handler": "json",
-        "config": {}
-      }
-    ],
-    "upstream": {
-      "preserve_host": false,
-      "strip_path": "",
-      "url": ""
-    }
-  },
-  {
-    "id": "rule-delete-picket-list-item-0",
-    "version": "",
-    "description": "",
-    "match": {
-      "methods": [
-        "DELETE"
-      ],
-      "url": "\u003chttps|http\u003e://oosa.docker.localhost/api/pocket-list/\u003c.*\u003e/items"
-    },
-    "authenticators": [
-      {
-        "handler": "cookie_session",
-        "config": {}
-      },
-      {
-        "handler": "bearer_token",
-        "config": {}
-      },
-      {
-        "handler": "unauthorized",
-        "config": null
-      }
-    ],
-    "authorizer": {
-      "handler": "allow",
-      "config": {}
-    },
-    "mutators": [
-      {
-        "handler": "header",
-        "config": {}
-      }
-    ],
-    "errors": [
-      {
-        "handler": "json",
-        "config": {}
-      }
-    ],
-    "upstream": {
-      "preserve_host": false,
-      "strip_path": "",
-      "url": ""
-    }
-  },
-  {
     "id": "rule-get-picket-list-items-0",
     "version": "",
     "description": "",
@@ -638,14 +138,60 @@
     }
   },
   {
-    "id": "rule--0",
+    "id": "rule-delete-picket-list-item-0",
     "version": "",
     "description": "",
     "match": {
       "methods": [
         "DELETE"
       ],
-      "url": "\u003chttps|http\u003e://oosa.docker.localhost/api/event/\u003c.*\u003e/message-board/\u003c.*\u003e"
+      "url": "\u003chttps|http\u003e://oosa.docker.localhost/api/pocket-list/\u003c.*\u003e/items"
+    },
+    "authenticators": [
+      {
+        "handler": "cookie_session",
+        "config": {}
+      },
+      {
+        "handler": "bearer_token",
+        "config": {}
+      },
+      {
+        "handler": "unauthorized",
+        "config": null
+      }
+    ],
+    "authorizer": {
+      "handler": "allow",
+      "config": {}
+    },
+    "mutators": [
+      {
+        "handler": "header",
+        "config": {}
+      }
+    ],
+    "errors": [
+      {
+        "handler": "json",
+        "config": {}
+      }
+    ],
+    "upstream": {
+      "preserve_host": false,
+      "strip_path": "",
+      "url": ""
+    }
+  },
+  {
+    "id": "rule-get-my-events-0",
+    "version": "",
+    "description": "",
+    "match": {
+      "methods": [
+        "GET"
+      ],
+      "url": "\u003chttps|http\u003e://oosa.docker.localhost/api/user/\u003c.*\u003e/achievement"
     },
     "authenticators": [
       {
@@ -691,7 +237,53 @@
       "methods": [
         "GET"
       ],
-      "url": "\u003chttps|http\u003e://oosa.docker.localhost/api/event/\u003c.*\u003e/message-board/\u003c.*\u003e"
+      "url": "\u003chttps|http\u003e://oosa.docker.localhost/api/rewilding/\u003c.*\u003e/photos/\u003c.*\u003e"
+    },
+    "authenticators": [
+      {
+        "handler": "cookie_session",
+        "config": {}
+      },
+      {
+        "handler": "bearer_token",
+        "config": {}
+      },
+      {
+        "handler": "unauthorized",
+        "config": null
+      }
+    ],
+    "authorizer": {
+      "handler": "allow",
+      "config": {}
+    },
+    "mutators": [
+      {
+        "handler": "header",
+        "config": {}
+      }
+    ],
+    "errors": [
+      {
+        "handler": "json",
+        "config": {}
+      }
+    ],
+    "upstream": {
+      "preserve_host": false,
+      "strip_path": "",
+      "url": ""
+    }
+  },
+  {
+    "id": "rule-delete-picket-list-item-0",
+    "version": "",
+    "description": "",
+    "match": {
+      "methods": [
+        "DELETE"
+      ],
+      "url": "\u003chttps|http\u003e://oosa.docker.localhost/api/pocket-list/\u003c.*\u003e/items/\u003c.*\u003e"
     },
     "authenticators": [
       {
@@ -731,13 +323,59 @@
   },
   {
     "id": "rule--0",
+    "version": "",
+    "description": "",
+    "match": {
+      "methods": [
+        "GET"
+      ],
+      "url": "\u003chttps|http\u003e://oosa.docker.localhost/api/pocket-list/\u003c.*\u003e/items/\u003c.*\u003e"
+    },
+    "authenticators": [
+      {
+        "handler": "cookie_session",
+        "config": {}
+      },
+      {
+        "handler": "bearer_token",
+        "config": {}
+      },
+      {
+        "handler": "unauthorized",
+        "config": null
+      }
+    ],
+    "authorizer": {
+      "handler": "allow",
+      "config": {}
+    },
+    "mutators": [
+      {
+        "handler": "header",
+        "config": {}
+      }
+    ],
+    "errors": [
+      {
+        "handler": "json",
+        "config": {}
+      }
+    ],
+    "upstream": {
+      "preserve_host": false,
+      "strip_path": "",
+      "url": ""
+    }
+  },
+  {
+    "id": "rule-update-pocket-list-item-0",
     "version": "",
     "description": "",
     "match": {
       "methods": [
         "PUT"
       ],
-      "url": "\u003chttps|http\u003e://oosa.docker.localhost/api/event/\u003c.*\u003e/message-board/\u003c.*\u003e"
+      "url": "\u003chttps|http\u003e://oosa.docker.localhost/api/pocket-list/\u003c.*\u003e/items/\u003c.*\u003e"
     },
     "authenticators": [
       {
@@ -776,54 +414,14 @@
     }
   },
   {
-    "id": "rule-getAuthByLine-0",
+    "id": "rule-get-my-events-0",
     "version": "",
     "description": "",
     "match": {
       "methods": [
         "GET"
       ],
-      "url": "\u003chttps|http\u003e://oosa.docker.localhost/api/auth/line"
-    },
-    "authenticators": [
-      {
-        "handler": "anonymous",
-        "config": {
-          "subject": "guest"
-        }
-      }
-    ],
-    "authorizer": {
-      "handler": "allow",
-      "config": {}
-    },
-    "mutators": [
-      {
-        "handler": "header",
-        "config": {}
-      }
-    ],
-    "errors": [
-      {
-        "handler": "json",
-        "config": {}
-      }
-    ],
-    "upstream": {
-      "preserve_host": false,
-      "strip_path": "",
-      "url": ""
-    }
-  },
-  {
-    "id": "rule-getReferences-0",
-    "version": "",
-    "description": "",
-    "match": {
-      "methods": [
-        "GET"
-      ],
-      "url": "\u003chttps|http\u003e://oosa.docker.localhost/api/references"
+      "url": "\u003chttps|http\u003e://oosa.docker.localhost/api/user/\u003c.*\u003e/event"
     },
     "authenticators": [
       {
@@ -869,47 +467,7 @@
       "methods": [
         "GET"
       ],
-      "url": "\u003chttps|http\u003e://oosa.docker.localhost/api/rewilding-searchText"
-    },
-    "authenticators": [
-      {
-        "handler": "anonymous",
-        "config": {
-          "subject": "guest"
-        }
-      }
-    ],
-    "authorizer": {
-      "handler": "allow",
-      "config": {}
-    },
-    "mutators": [
-      {
-        "handler": "header",
-        "config": {}
-      }
-    ],
-    "errors": [
-      {
-        "handler": "json",
-        "config": {}
-      }
-    ],
-    "upstream": {
-      "preserve_host": false,
-      "strip_path": "",
-      "url": ""
-    }
-  },
-  {
-    "id": "rule--0",
-    "version": "",
-    "description": "",
-    "match": {
-      "methods": [
-        "GET"
-      ],
-      "url": "\u003chttps|http\u003e://oosa.docker.localhost/api/event-invitations"
+      "url": "\u003chttps|http\u003e://oosa.docker.localhost/api/event/\u003c.*\u003e/announcement"
     },
     "authenticators": [
       {
@@ -955,7 +513,7 @@
       "methods": [
         "POST"
       ],
-      "url": "\u003chttps|http\u003e://oosa.docker.localhost/api/event/\u003c.*\u003e/message-board/\u003c.*\u003e/pin"
+      "url": "\u003chttps|http\u003e://oosa.docker.localhost/api/event/\u003c.*\u003e/announcement"
     },
     "authenticators": [
       {
@@ -994,14 +552,106 @@
     }
   },
   {
-    "id": "rule-authByGoogle-0",
+    "id": "rule--0",
+    "version": "",
+    "description": "",
+    "match": {
+      "methods": [
+        "GET"
+      ],
+      "url": "\u003chttps|http\u003e://oosa.docker.localhost/api/event/\u003c.*\u003e/participants"
+    },
+    "authenticators": [
+      {
+        "handler": "cookie_session",
+        "config": {}
+      },
+      {
+        "handler": "bearer_token",
+        "config": {}
+      },
+      {
+        "handler": "unauthorized",
+        "config": null
+      }
+    ],
+    "authorizer": {
+      "handler": "allow",
+      "config": {}
+    },
+    "mutators": [
+      {
+        "handler": "header",
+        "config": {}
+      }
+    ],
+    "errors": [
+      {
+        "handler": "json",
+        "config": {}
+      }
+    ],
+    "upstream": {
+      "preserve_host": false,
+      "strip_path": "",
+      "url": ""
+    }
+  },
+  {
+    "id": "rule--0",
     "version": "",
     "description": "",
     "match": {
       "methods": [
         "POST"
       ],
-      "url": "\u003chttps|http\u003e://oosa.docker.localhost/api/auth/google"
+      "url": "\u003chttps|http\u003e://oosa.docker.localhost/api/event/\u003c.*\u003e/participants"
+    },
+    "authenticators": [
+      {
+        "handler": "cookie_session",
+        "config": {}
+      },
+      {
+        "handler": "bearer_token",
+        "config": {}
+      },
+      {
+        "handler": "unauthorized",
+        "config": null
+      }
+    ],
+    "authorizer": {
+      "handler": "allow",
+      "config": {}
+    },
+    "mutators": [
+      {
+        "handler": "header",
+        "config": {}
+      }
+    ],
+    "errors": [
+      {
+        "handler": "json",
+        "config": {}
+      }
+    ],
+    "upstream": {
+      "preserve_host": false,
+      "strip_path": "",
+      "url": ""
+    }
+  },
+  {
+    "id": "rule-getDoc-0",
+    "version": "",
+    "description": "",
+    "match": {
+      "methods": [
+        "GET"
+      ],
+      "url": "\u003chttps|http\u003e://oosa.docker.localhost/api/doc/\u003c.*\u003e"
     },
     "authenticators": [
       {
@@ -1009,6 +659,52 @@
         "config": {
           "subject": "guest"
         }
+      }
+    ],
+    "authorizer": {
+      "handler": "allow",
+      "config": {}
+    },
+    "mutators": [
+      {
+        "handler": "header",
+        "config": {}
+      }
+    ],
+    "errors": [
+      {
+        "handler": "json",
+        "config": {}
+      }
+    ],
+    "upstream": {
+      "preserve_host": false,
+      "strip_path": "",
+      "url": ""
+    }
+  },
+  {
+    "id": "rule--0",
+    "version": "",
+    "description": "",
+    "match": {
+      "methods": [
+        "POST"
+      ],
+      "url": "\u003chttps|http\u003e://oosa.docker.localhost/api/register"
+    },
+    "authenticators": [
+      {
+        "handler": "cookie_session",
+        "config": {}
+      },
+      {
+        "handler": "bearer_token",
+        "config": {}
+      },
+      {
+        "handler": "unauthorized",
+        "config": null
       }
     ],
     "authorizer": {
@@ -1126,236 +822,6 @@
     }
   },
   {
-    "id": "rule-authByApple-0",
-    "version": "",
-    "description": "",
-    "match": {
-      "methods": [
-        "POST"
-      ],
-      "url": "\u003chttps|http\u003e://oosa.docker.localhost/api/auth/apple"
-    },
-    "authenticators": [
-      {
-        "handler": "cookie_session",
-        "config": {}
-      },
-      {
-        "handler": "bearer_token",
-        "config": {}
-      },
-      {
-        "handler": "unauthorized",
-        "config": null
-      }
-    ],
-    "authorizer": {
-      "handler": "allow",
-      "config": {}
-    },
-    "mutators": [
-      {
-        "handler": "header",
-        "config": {}
-      }
-    ],
-    "errors": [
-      {
-        "handler": "json",
-        "config": {}
-      }
-    ],
-    "upstream": {
-      "preserve_host": false,
-      "strip_path": "",
-      "url": ""
-    }
-  },
-  {
-    "id": "rule-get-my-events-0",
-    "version": "",
-    "description": "",
-    "match": {
-      "methods": [
-        "GET"
-      ],
-      "url": "\u003chttps|http\u003e://oosa.docker.localhost/api/user/\u003c.*\u003e/badges"
-    },
-    "authenticators": [
-      {
-        "handler": "cookie_session",
-        "config": {}
-      },
-      {
-        "handler": "bearer_token",
-        "config": {}
-      },
-      {
-        "handler": "unauthorized",
-        "config": null
-      }
-    ],
-    "authorizer": {
-      "handler": "allow",
-      "config": {}
-    },
-    "mutators": [
-      {
-        "handler": "header",
-        "config": {}
-      }
-    ],
-    "errors": [
-      {
-        "handler": "json",
-        "config": {}
-      }
-    ],
-    "upstream": {
-      "preserve_host": false,
-      "strip_path": "",
-      "url": ""
-    }
-  },
-  {
-    "id": "rule-get-my-events-0",
-    "version": "",
-    "description": "",
-    "match": {
-      "methods": [
-        "GET"
-      ],
-      "url": "\u003chttps|http\u003e://oosa.docker.localhost/api/world/ranking-feelings"
-    },
-    "authenticators": [
-      {
-        "handler": "cookie_session",
-        "config": {}
-      },
-      {
-        "handler": "bearer_token",
-        "config": {}
-      },
-      {
-        "handler": "unauthorized",
-        "config": null
-      }
-    ],
-    "authorizer": {
-      "handler": "allow",
-      "config": {}
-    },
-    "mutators": [
-      {
-        "handler": "header",
-        "config": {}
-      }
-    ],
-    "errors": [
-      {
-        "handler": "json",
-        "config": {}
-      }
-    ],
-    "upstream": {
-      "preserve_host": false,
-      "strip_path": "",
-      "url": ""
-    }
-  },
-  {
-    "id": "rule--0",
-    "version": "",
-    "description": "",
-    "match": {
-      "methods": [
-        "GET"
-      ],
-      "url": "\u003chttps|http\u003e://oosa.docker.localhost/api/event/\u003c.*\u003e/reference-links"
-    },
-    "authenticators": [
-      {
-        "handler": "cookie_session",
-        "config": {}
-      },
-      {
-        "handler": "bearer_token",
-        "config": {}
-      },
-      {
-        "handler": "unauthorized",
-        "config": null
-      }
-    ],
-    "authorizer": {
-      "handler": "allow",
-      "config": {}
-    },
-    "mutators": [
-      {
-        "handler": "header",
-        "config": {}
-      }
-    ],
-    "errors": [
-      {
-        "handler": "json",
-        "config": {}
-      }
-    ],
-    "upstream": {
-      "preserve_host": false,
-      "strip_path": "",
-      "url": ""
-    }
-  },
-  {
-    "id": "rule--0",
-    "version": "",
-    "description": "",
-    "match": {
-      "methods": [
-        "POST"
-      ],
-      "url": "\u003chttps|http\u003e://oosa.docker.localhost/api/event/\u003c.*\u003e/reference-links"
-    },
-    "authenticators": [
-      {
-        "handler": "cookie_session",
-        "config": {}
-      },
-      {
-        "handler": "bearer_token",
-        "config": {}
-      },
-      {
-        "handler": "unauthorized",
-        "config": null
-      }
-    ],
-    "authorizer": {
-      "handler": "allow",
-      "config": {}
-    },
-    "mutators": [
-      {
-        "handler": "header",
-        "config": {}
-      }
-    ],
-    "errors": [
-      {
-        "handler": "json",
-        "config": {}
-      }
-    ],
-    "upstream": {
-      "preserve_host": false,
-      "strip_path": "",
-      "url": ""
-    }
-  },
-  {
     "id": "rule--0",
     "version": "",
     "description": "",
@@ -1363,7 +829,93 @@
       "methods": [
         "PUT"
       ],
-      "url": "\u003chttps|http\u003e://oosa.docker.localhost/api/auth/setting"
+      "url": "\u003chttps|http\u003e://oosa.docker.localhost/api/auth/change-password"
+    },
+    "authenticators": [
+      {
+        "handler": "cookie_session",
+        "config": {}
+      },
+      {
+        "handler": "bearer_token",
+        "config": {}
+      },
+      {
+        "handler": "unauthorized",
+        "config": null
+      }
+    ],
+    "authorizer": {
+      "handler": "allow",
+      "config": {}
+    },
+    "mutators": [
+      {
+        "handler": "header",
+        "config": {}
+      }
+    ],
+    "errors": [
+      {
+        "handler": "json",
+        "config": {}
+      }
+    ],
+    "upstream": {
+      "preserve_host": false,
+      "strip_path": "",
+      "url": ""
+    }
+  },
+  {
+    "id": "rule-get-events-0",
+    "version": "",
+    "description": "",
+    "match": {
+      "methods": [
+        "GET"
+      ],
+      "url": "\u003chttps|http\u003e://oosa.docker.localhost/api/event"
+    },
+    "authenticators": [
+      {
+        "handler": "anonymous",
+        "config": {
+          "subject": "guest"
+        }
+      }
+    ],
+    "authorizer": {
+      "handler": "allow",
+      "config": {}
+    },
+    "mutators": [
+      {
+        "handler": "header",
+        "config": {}
+      }
+    ],
+    "errors": [
+      {
+        "handler": "json",
+        "config": {}
+      }
+    ],
+    "upstream": {
+      "preserve_host": false,
+      "strip_path": "",
+      "url": ""
+    }
+  },
+  {
+    "id": "rule-create-event-0",
+    "version": "",
+    "description": "",
+    "match": {
+      "methods": [
+        "POST"
+      ],
+      "url": "\u003chttps|http\u003e://oosa.docker.localhost/api/event"
     },
     "authenticators": [
       {
@@ -1407,9 +959,49 @@
     "description": "",
     "match": {
       "methods": [
-        "POST"
+        "GET"
       ],
-      "url": "\u003chttps|http\u003e://oosa.docker.localhost/api/forget-password"
+      "url": "\u003chttps|http\u003e://oosa.docker.localhost/api/rewilding-searchNearby"
+    },
+    "authenticators": [
+      {
+        "handler": "anonymous",
+        "config": {
+          "subject": "guest"
+        }
+      }
+    ],
+    "authorizer": {
+      "handler": "allow",
+      "config": {}
+    },
+    "mutators": [
+      {
+        "handler": "header",
+        "config": {}
+      }
+    ],
+    "errors": [
+      {
+        "handler": "json",
+        "config": {}
+      }
+    ],
+    "upstream": {
+      "preserve_host": false,
+      "strip_path": "",
+      "url": ""
+    }
+  },
+  {
+    "id": "rule-search-rewilding-0",
+    "version": "",
+    "description": "",
+    "match": {
+      "methods": [
+        "GET"
+      ],
+      "url": "\u003chttps|http\u003e://oosa.docker.localhost/api/rewilding-search"
     },
     "authenticators": [
       {
@@ -1456,6 +1048,98 @@
         "GET"
       ],
       "url": "\u003chttps|http\u003e://oosa.docker.localhost/api/rewilding/\u003c.*\u003e/photos"
+    },
+    "authenticators": [
+      {
+        "handler": "cookie_session",
+        "config": {}
+      },
+      {
+        "handler": "bearer_token",
+        "config": {}
+      },
+      {
+        "handler": "unauthorized",
+        "config": null
+      }
+    ],
+    "authorizer": {
+      "handler": "allow",
+      "config": {}
+    },
+    "mutators": [
+      {
+        "handler": "header",
+        "config": {}
+      }
+    ],
+    "errors": [
+      {
+        "handler": "json",
+        "config": {}
+      }
+    ],
+    "upstream": {
+      "preserve_host": false,
+      "strip_path": "",
+      "url": ""
+    }
+  },
+  {
+    "id": "rule-get-rewildings-0",
+    "version": "",
+    "description": "",
+    "match": {
+      "methods": [
+        "DELETE"
+      ],
+      "url": "\u003chttps|http\u003e://oosa.docker.localhost/api/rewilding/\u003c.*\u003e"
+    },
+    "authenticators": [
+      {
+        "handler": "cookie_session",
+        "config": {}
+      },
+      {
+        "handler": "bearer_token",
+        "config": {}
+      },
+      {
+        "handler": "unauthorized",
+        "config": null
+      }
+    ],
+    "authorizer": {
+      "handler": "allow",
+      "config": {}
+    },
+    "mutators": [
+      {
+        "handler": "header",
+        "config": {}
+      }
+    ],
+    "errors": [
+      {
+        "handler": "json",
+        "config": {}
+      }
+    ],
+    "upstream": {
+      "preserve_host": false,
+      "strip_path": "",
+      "url": ""
+    }
+  },
+  {
+    "id": "rule-get-rewilding-detail-0",
+    "version": "",
+    "description": "",
+    "match": {
+      "methods": [
+        "GET"
+      ],
+      "url": "\u003chttps|http\u003e://oosa.docker.localhost/api/rewilding/\u003c.*\u003e"
     },
     "authenticators": [
       {
@@ -1545,52 +1229,6 @@
     "description": "",
     "match": {
       "methods": [
-        "PUT"
-      ],
-      "url": "\u003chttps|http\u003e://oosa.docker.localhost/api/auth/change-password"
-    },
-    "authenticators": [
-      {
-        "handler": "cookie_session",
-        "config": {}
-      },
-      {
-        "handler": "bearer_token",
-        "config": {}
-      },
-      {
-        "handler": "unauthorized",
-        "config": null
-      }
-    ],
-    "authorizer": {
-      "handler": "allow",
-      "config": {}
-    },
-    "mutators": [
-      {
-        "handler": "header",
-        "config": {}
-      }
-    ],
-    "errors": [
-      {
-        "handler": "json",
-        "config": {}
-      }
-    ],
-    "upstream": {
-      "preserve_host": false,
-      "strip_path": "",
-      "url": ""
-    }
-  },
-  {
-    "id": "rule--0",
-    "version": "",
-    "description": "",
-    "match": {
-      "methods": [
         "GET"
       ],
       "url": "\u003chttps|http\u003e://oosa.docker.localhost/api/event/\u003c.*\u003e/message-board"
@@ -1685,467 +1323,7 @@
       "methods": [
         "GET"
       ],
-      "url": "\u003chttps|http\u003e://oosa.docker.localhost/api/event/\u003c.*\u003e/accounting/\u003c.*\u003e"
-    },
-    "authenticators": [
-      {
-        "handler": "cookie_session",
-        "config": {}
-      },
-      {
-        "handler": "bearer_token",
-        "config": {}
-      },
-      {
-        "handler": "unauthorized",
-        "config": null
-      }
-    ],
-    "authorizer": {
-      "handler": "allow",
-      "config": {}
-    },
-    "mutators": [
-      {
-        "handler": "header",
-        "config": {}
-      }
-    ],
-    "errors": [
-      {
-        "handler": "json",
-        "config": {}
-      }
-    ],
-    "upstream": {
-      "preserve_host": false,
-      "strip_path": "",
-      "url": ""
-    }
-  },
-  {
-    "id": "rule--0",
-    "version": "",
-    "description": "",
-    "match": {
-      "methods": [
-        "PUT"
-      ],
-      "url": "\u003chttps|http\u003e://oosa.docker.localhost/api/event/\u003c.*\u003e/accounting/\u003c.*\u003e"
-    },
-    "authenticators": [
-      {
-        "handler": "cookie_session",
-        "config": {}
-      },
-      {
-        "handler": "bearer_token",
-        "config": {}
-      },
-      {
-        "handler": "unauthorized",
-        "config": null
-      }
-    ],
-    "authorizer": {
-      "handler": "allow",
-      "config": {}
-    },
-    "mutators": [
-      {
-        "handler": "header",
-        "config": {}
-      }
-    ],
-    "errors": [
-      {
-        "handler": "json",
-        "config": {}
-      }
-    ],
-    "upstream": {
-      "preserve_host": false,
-      "strip_path": "",
-      "url": ""
-    }
-  },
-  {
-    "id": "rule--0",
-    "version": "",
-    "description": "",
-    "match": {
-      "methods": [
-        "DELETE"
-      ],
-      "url": "\u003chttps|http\u003e://oosa.docker.localhost/api/event/\u003c.*\u003e/accounting/\u003c.*\u003e"
-    },
-    "authenticators": [
-      {
-        "handler": "cookie_session",
-        "config": {}
-      },
-      {
-        "handler": "bearer_token",
-        "config": {}
-      },
-      {
-        "handler": "unauthorized",
-        "config": null
-      }
-    ],
-    "authorizer": {
-      "handler": "allow",
-      "config": {}
-    },
-    "mutators": [
-      {
-        "handler": "header",
-        "config": {}
-      }
-    ],
-    "errors": [
-      {
-        "handler": "json",
-        "config": {}
-      }
-    ],
-    "upstream": {
-      "preserve_host": false,
-      "strip_path": "",
-      "url": ""
-    }
-  },
-  {
-    "id": "rule--0",
-    "version": "",
-    "description": "",
-    "match": {
-      "methods": [
-        "PUT"
-      ],
-      "url": "\u003chttps|http\u003e://oosa.docker.localhost/api/event/\u003c.*\u003e/schedule/\u003c.*\u003e"
-    },
-    "authenticators": [
-      {
-        "handler": "cookie_session",
-        "config": {}
-      },
-      {
-        "handler": "bearer_token",
-        "config": {}
-      },
-      {
-        "handler": "unauthorized",
-        "config": null
-      }
-    ],
-    "authorizer": {
-      "handler": "allow",
-      "config": {}
-    },
-    "mutators": [
-      {
-        "handler": "header",
-        "config": {}
-      }
-    ],
-    "errors": [
-      {
-        "handler": "json",
-        "config": {}
-      }
-    ],
-    "upstream": {
-      "preserve_host": false,
-      "strip_path": "",
-      "url": ""
-    }
-  },
-  {
-    "id": "rule--0",
-    "version": "",
-    "description": "",
-    "match": {
-      "methods": [
-        "DELETE"
-      ],
-      "url": "\u003chttps|http\u003e://oosa.docker.localhost/api/event/\u003c.*\u003e/schedule/\u003c.*\u003e"
-    },
-    "authenticators": [
-      {
-        "handler": "cookie_session",
-        "config": {}
-      },
-      {
-        "handler": "bearer_token",
-        "config": {}
-      },
-      {
-        "handler": "unauthorized",
-        "config": null
-      }
-    ],
-    "authorizer": {
-      "handler": "allow",
-      "config": {}
-    },
-    "mutators": [
-      {
-        "handler": "header",
-        "config": {}
-      }
-    ],
-    "errors": [
-      {
-        "handler": "json",
-        "config": {}
-      }
-    ],
-    "upstream": {
-      "preserve_host": false,
-      "strip_path": "",
-      "url": ""
-    }
-  },
-  {
-    "id": "rule--0",
-    "version": "",
-    "description": "",
-    "match": {
-      "methods": [
-        "GET"
-      ],
-      "url": "\u003chttps|http\u003e://oosa.docker.localhost/api/event/\u003c.*\u003e/schedule/\u003c.*\u003e"
-    },
-    "authenticators": [
-      {
-        "handler": "cookie_session",
-        "config": {}
-      },
-      {
-        "handler": "bearer_token",
-        "config": {}
-      },
-      {
-        "handler": "unauthorized",
-        "config": null
-      }
-    ],
-    "authorizer": {
-      "handler": "allow",
-      "config": {}
-    },
-    "mutators": [
-      {
-        "handler": "header",
-        "config": {}
-      }
-    ],
-    "errors": [
-      {
-        "handler": "json",
-        "config": {}
-      }
-    ],
-    "upstream": {
-      "preserve_host": false,
-      "strip_path": "",
-      "url": ""
-    }
-  },
-  {
-    "id": "rule--0",
-    "version": "",
-    "description": "",
-    "match": {
-      "methods": [
-        "GET"
-      ],
-      "url": "\u003chttps|http\u003e://oosa.docker.localhost/api/event/\u003c.*\u003e/announcement"
-    },
-    "authenticators": [
-      {
-        "handler": "cookie_session",
-        "config": {}
-      },
-      {
-        "handler": "bearer_token",
-        "config": {}
-      },
-      {
-        "handler": "unauthorized",
-        "config": null
-      }
-    ],
-    "authorizer": {
-      "handler": "allow",
-      "config": {}
-    },
-    "mutators": [
-      {
-        "handler": "header",
-        "config": {}
-      }
-    ],
-    "errors": [
-      {
-        "handler": "json",
-        "config": {}
-      }
-    ],
-    "upstream": {
-      "preserve_host": false,
-      "strip_path": "",
-      "url": ""
-    }
-  },
-  {
-    "id": "rule--0",
-    "version": "",
-    "description": "",
-    "match": {
-      "methods": [
-        "POST"
-      ],
-      "url": "\u003chttps|http\u003e://oosa.docker.localhost/api/event/\u003c.*\u003e/announcement"
-    },
-    "authenticators": [
-      {
-        "handler": "cookie_session",
-        "config": {}
-      },
-      {
-        "handler": "bearer_token",
-        "config": {}
-      },
-      {
-        "handler": "unauthorized",
-        "config": null
-      }
-    ],
-    "authorizer": {
-      "handler": "allow",
-      "config": {}
-    },
-    "mutators": [
-      {
-        "handler": "header",
-        "config": {}
-      }
-    ],
-    "errors": [
-      {
-        "handler": "json",
-        "config": {}
-      }
-    ],
-    "upstream": {
-      "preserve_host": false,
-      "strip_path": "",
-      "url": ""
-    }
-  },
-  {
-    "id": "rule-get-my-events-0",
-    "version": "",
-    "description": "",
-    "match": {
-      "methods": [
-        "GET"
-      ],
-      "url": "\u003chttps|http\u003e://oosa.docker.localhost/api/world/ranking-rewilding"
-    },
-    "authenticators": [
-      {
-        "handler": "cookie_session",
-        "config": {}
-      },
-      {
-        "handler": "bearer_token",
-        "config": {}
-      },
-      {
-        "handler": "unauthorized",
-        "config": null
-      }
-    ],
-    "authorizer": {
-      "handler": "allow",
-      "config": {}
-    },
-    "mutators": [
-      {
-        "handler": "header",
-        "config": {}
-      }
-    ],
-    "errors": [
-      {
-        "handler": "json",
-        "config": {}
-      }
-    ],
-    "upstream": {
-      "preserve_host": false,
-      "strip_path": "",
-      "url": ""
-    }
-  },
-  {
-    "id": "rule--0",
-    "version": "",
-    "description": "",
-    "match": {
-      "methods": [
-        "GET"
-      ],
-      "url": "\u003chttps|http\u003e://oosa.docker.localhost/api/rewilding-register/references"
-    },
-    "authenticators": [
-      {
-        "handler": "cookie_session",
-        "config": {}
-      },
-      {
-        "handler": "bearer_token",
-        "config": {}
-      },
-      {
-        "handler": "unauthorized",
-        "config": null
-      }
-    ],
-    "authorizer": {
-      "handler": "allow",
-      "config": {}
-    },
-    "mutators": [
-      {
-        "handler": "header",
-        "config": {}
-      }
-    ],
-    "errors": [
-      {
-        "handler": "json",
-        "config": {}
-      }
-    ],
-    "upstream": {
-      "preserve_host": false,
-      "strip_path": "",
-      "url": ""
-    }
-  },
-  {
-    "id": "rule-get-rewildings-0",
-    "version": "",
-    "description": "",
-    "match": {
-      "methods": [
-        "GET"
-      ],
-      "url": "\u003chttps|http\u003e://oosa.docker.localhost/api/rewilding"
+      "url": "\u003chttps|http\u003e://oosa.docker.localhost/api/rewilding-autocomplete"
     },
     "authenticators": [
       {
@@ -2183,147 +1361,9 @@
     "description": "",
     "match": {
       "methods": [
-        "POST"
-      ],
-      "url": "\u003chttps|http\u003e://oosa.docker.localhost/api/rewilding"
-    },
-    "authenticators": [
-      {
-        "handler": "cookie_session",
-        "config": {}
-      },
-      {
-        "handler": "bearer_token",
-        "config": {}
-      },
-      {
-        "handler": "unauthorized",
-        "config": null
-      }
-    ],
-    "authorizer": {
-      "handler": "allow",
-      "config": {}
-    },
-    "mutators": [
-      {
-        "handler": "header",
-        "config": {}
-      }
-    ],
-    "errors": [
-      {
-        "handler": "json",
-        "config": {}
-      }
-    ],
-    "upstream": {
-      "preserve_host": false,
-      "strip_path": "",
-      "url": ""
-    }
-  },
-  {
-    "id": "rule-create-event-0",
-    "version": "",
-    "description": "",
-    "match": {
-      "methods": [
         "DELETE"
       ],
-      "url": "\u003chttps|http\u003e://oosa.docker.localhost/api/news/\u003c.*\u003e"
-    },
-    "authenticators": [
-      {
-        "handler": "cookie_session",
-        "config": {}
-      },
-      {
-        "handler": "bearer_token",
-        "config": {}
-      },
-      {
-        "handler": "unauthorized",
-        "config": null
-      }
-    ],
-    "authorizer": {
-      "handler": "allow",
-      "config": {}
-    },
-    "mutators": [
-      {
-        "handler": "header",
-        "config": {}
-      }
-    ],
-    "errors": [
-      {
-        "handler": "json",
-        "config": {}
-      }
-    ],
-    "upstream": {
-      "preserve_host": false,
-      "strip_path": "",
-      "url": ""
-    }
-  },
-  {
-    "id": "rule-create-event-0",
-    "version": "",
-    "description": "",
-    "match": {
-      "methods": [
-        "GET"
-      ],
-      "url": "\u003chttps|http\u003e://oosa.docker.localhost/api/news/\u003c.*\u003e"
-    },
-    "authenticators": [
-      {
-        "handler": "cookie_session",
-        "config": {}
-      },
-      {
-        "handler": "bearer_token",
-        "config": {}
-      },
-      {
-        "handler": "unauthorized",
-        "config": null
-      }
-    ],
-    "authorizer": {
-      "handler": "allow",
-      "config": {}
-    },
-    "mutators": [
-      {
-        "handler": "header",
-        "config": {}
-      }
-    ],
-    "errors": [
-      {
-        "handler": "json",
-        "config": {}
-      }
-    ],
-    "upstream": {
-      "preserve_host": false,
-      "strip_path": "",
-      "url": ""
-    }
-  },
-  {
-    "id": "rule-create-event-0",
-    "version": "",
-    "description": "",
-    "match": {
-      "methods": [
-        "PUT"
-      ],
-      "url": "\u003chttps|http\u003e://oosa.docker.localhost/api/news/\u003c.*\u003e"
+      "url": "\u003chttps|http\u003e://oosa.docker.localhost/api/event/\u003c.*\u003e/accounting/\u003c.*\u003e"
     },
     "authenticators": [
       {
@@ -2367,9 +1407,147 @@
     "description": "",
     "match": {
       "methods": [
-        "POST"
+        "GET"
       ],
-      "url": "\u003chttps|http\u003e://oosa.docker.localhost/api/forget-password/\u003c[[:digit:]]+\u003e"
+      "url": "\u003chttps|http\u003e://oosa.docker.localhost/api/event/\u003c.*\u003e/accounting/\u003c.*\u003e"
+    },
+    "authenticators": [
+      {
+        "handler": "cookie_session",
+        "config": {}
+      },
+      {
+        "handler": "bearer_token",
+        "config": {}
+      },
+      {
+        "handler": "unauthorized",
+        "config": null
+      }
+    ],
+    "authorizer": {
+      "handler": "allow",
+      "config": {}
+    },
+    "mutators": [
+      {
+        "handler": "header",
+        "config": {}
+      }
+    ],
+    "errors": [
+      {
+        "handler": "json",
+        "config": {}
+      }
+    ],
+    "upstream": {
+      "preserve_host": false,
+      "strip_path": "",
+      "url": ""
+    }
+  },
+  {
+    "id": "rule--0",
+    "version": "",
+    "description": "",
+    "match": {
+      "methods": [
+        "PUT"
+      ],
+      "url": "\u003chttps|http\u003e://oosa.docker.localhost/api/event/\u003c.*\u003e/accounting/\u003c.*\u003e"
+    },
+    "authenticators": [
+      {
+        "handler": "cookie_session",
+        "config": {}
+      },
+      {
+        "handler": "bearer_token",
+        "config": {}
+      },
+      {
+        "handler": "unauthorized",
+        "config": null
+      }
+    ],
+    "authorizer": {
+      "handler": "allow",
+      "config": {}
+    },
+    "mutators": [
+      {
+        "handler": "header",
+        "config": {}
+      }
+    ],
+    "errors": [
+      {
+        "handler": "json",
+        "config": {}
+      }
+    ],
+    "upstream": {
+      "preserve_host": false,
+      "strip_path": "",
+      "url": ""
+    }
+  },
+  {
+    "id": "rule--0",
+    "version": "",
+    "description": "",
+    "match": {
+      "methods": [
+        "GET"
+      ],
+      "url": "\u003chttps|http\u003e://oosa.docker.localhost/api/auth/notifications"
+    },
+    "authenticators": [
+      {
+        "handler": "cookie_session",
+        "config": {}
+      },
+      {
+        "handler": "bearer_token",
+        "config": {}
+      },
+      {
+        "handler": "unauthorized",
+        "config": null
+      }
+    ],
+    "authorizer": {
+      "handler": "allow",
+      "config": {}
+    },
+    "mutators": [
+      {
+        "handler": "header",
+        "config": {}
+      }
+    ],
+    "errors": [
+      {
+        "handler": "json",
+        "config": {}
+      }
+    ],
+    "upstream": {
+      "preserve_host": false,
+      "strip_path": "",
+      "url": ""
+    }
+  },
+  {
+    "id": "rule--0",
+    "version": "",
+    "description": "",
+    "match": {
+      "methods": [
+        "DELETE"
+      ],
+      "url": "\u003chttps|http\u003e://oosa.docker.localhost/api/event/\u003c.*\u003e/participants/\u003c.*\u003e"
     },
     "authenticators": [
       {
@@ -2415,53 +1593,7 @@
       "methods": [
         "GET"
       ],
-      "url": "\u003chttps|http\u003e://oosa.docker.localhost/api/user/statistics"
-    },
-    "authenticators": [
-      {
-        "handler": "cookie_session",
-        "config": {}
-      },
-      {
-        "handler": "bearer_token",
-        "config": {}
-      },
-      {
-        "handler": "unauthorized",
-        "config": null
-      }
-    ],
-    "authorizer": {
-      "handler": "allow",
-      "config": {}
-    },
-    "mutators": [
-      {
-        "handler": "header",
-        "config": {}
-      }
-    ],
-    "errors": [
-      {
-        "handler": "json",
-        "config": {}
-      }
-    ],
-    "upstream": {
-      "preserve_host": false,
-      "strip_path": "",
-      "url": ""
-    }
-  },
-  {
-    "id": "rule--0",
-    "version": "",
-    "description": "",
-    "match": {
-      "methods": [
-        "POST"
-      ],
-      "url": "\u003chttps|http\u003e://oosa.docker.localhost/api/register"
+      "url": "\u003chttps|http\u003e://oosa.docker.localhost/api/user/\u003c.*\u003e"
     },
     "authenticators": [
       {
@@ -2597,101 +1729,9 @@
     "description": "",
     "match": {
       "methods": [
-        "GET"
+        "POST"
       ],
-      "url": "\u003chttps|http\u003e://oosa.docker.localhost/api/rewilding/places/\u003c.*\u003e"
-    },
-    "authenticators": [
-      {
-        "handler": "cookie_session",
-        "config": {}
-      },
-      {
-        "handler": "bearer_token",
-        "config": {}
-      },
-      {
-        "handler": "unauthorized",
-        "config": null
-      }
-    ],
-    "authorizer": {
-      "handler": "allow",
-      "config": {}
-    },
-    "mutators": [
-      {
-        "handler": "header",
-        "config": {}
-      }
-    ],
-    "errors": [
-      {
-        "handler": "json",
-        "config": {}
-      }
-    ],
-    "upstream": {
-      "preserve_host": false,
-      "strip_path": "",
-      "url": ""
-    }
-  },
-  {
-    "id": "rule-update-pocket-list-item-0",
-    "version": "",
-    "description": "",
-    "match": {
-      "methods": [
-        "PUT"
-      ],
-      "url": "\u003chttps|http\u003e://oosa.docker.localhost/api/pocket-list/\u003c.*\u003e/items/\u003c.*\u003e"
-    },
-    "authenticators": [
-      {
-        "handler": "cookie_session",
-        "config": {}
-      },
-      {
-        "handler": "bearer_token",
-        "config": {}
-      },
-      {
-        "handler": "unauthorized",
-        "config": null
-      }
-    ],
-    "authorizer": {
-      "handler": "allow",
-      "config": {}
-    },
-    "mutators": [
-      {
-        "handler": "header",
-        "config": {}
-      }
-    ],
-    "errors": [
-      {
-        "handler": "json",
-        "config": {}
-      }
-    ],
-    "upstream": {
-      "preserve_host": false,
-      "strip_path": "",
-      "url": ""
-    }
-  },
-  {
-    "id": "rule-delete-picket-list-item-0",
-    "version": "",
-    "description": "",
-    "match": {
-      "methods": [
-        "DELETE"
-      ],
-      "url": "\u003chttps|http\u003e://oosa.docker.localhost/api/pocket-list/\u003c.*\u003e/items/\u003c.*\u003e"
+      "url": "\u003chttps|http\u003e://oosa.docker.localhost/api/contact-us"
     },
     "authenticators": [
       {
@@ -2737,7 +1777,145 @@
       "methods": [
         "GET"
       ],
-      "url": "\u003chttps|http\u003e://oosa.docker.localhost/api/pocket-list/\u003c.*\u003e/items/\u003c.*\u003e"
+      "url": "\u003chttps|http\u003e://oosa.docker.localhost/api/event-invitation/\u003c.*\u003e"
+    },
+    "authenticators": [
+      {
+        "handler": "cookie_session",
+        "config": {}
+      },
+      {
+        "handler": "bearer_token",
+        "config": {}
+      },
+      {
+        "handler": "unauthorized",
+        "config": null
+      }
+    ],
+    "authorizer": {
+      "handler": "allow",
+      "config": {}
+    },
+    "mutators": [
+      {
+        "handler": "header",
+        "config": {}
+      }
+    ],
+    "errors": [
+      {
+        "handler": "json",
+        "config": {}
+      }
+    ],
+    "upstream": {
+      "preserve_host": false,
+      "strip_path": "",
+      "url": ""
+    }
+  },
+  {
+    "id": "rule--0",
+    "version": "",
+    "description": "",
+    "match": {
+      "methods": [
+        "DELETE"
+      ],
+      "url": "\u003chttps|http\u003e://oosa.docker.localhost/api/event/\u003c.*\u003e/reference-links/\u003c.*\u003e"
+    },
+    "authenticators": [
+      {
+        "handler": "cookie_session",
+        "config": {}
+      },
+      {
+        "handler": "bearer_token",
+        "config": {}
+      },
+      {
+        "handler": "unauthorized",
+        "config": null
+      }
+    ],
+    "authorizer": {
+      "handler": "allow",
+      "config": {}
+    },
+    "mutators": [
+      {
+        "handler": "header",
+        "config": {}
+      }
+    ],
+    "errors": [
+      {
+        "handler": "json",
+        "config": {}
+      }
+    ],
+    "upstream": {
+      "preserve_host": false,
+      "strip_path": "",
+      "url": ""
+    }
+  },
+  {
+    "id": "rule--0",
+    "version": "",
+    "description": "",
+    "match": {
+      "methods": [
+        "GET"
+      ],
+      "url": "\u003chttps|http\u003e://oosa.docker.localhost/api/event/\u003c.*\u003e/reference-links/\u003c.*\u003e"
+    },
+    "authenticators": [
+      {
+        "handler": "cookie_session",
+        "config": {}
+      },
+      {
+        "handler": "bearer_token",
+        "config": {}
+      },
+      {
+        "handler": "unauthorized",
+        "config": null
+      }
+    ],
+    "authorizer": {
+      "handler": "allow",
+      "config": {}
+    },
+    "mutators": [
+      {
+        "handler": "header",
+        "config": {}
+      }
+    ],
+    "errors": [
+      {
+        "handler": "json",
+        "config": {}
+      }
+    ],
+    "upstream": {
+      "preserve_host": false,
+      "strip_path": "",
+      "url": ""
+    }
+  },
+  {
+    "id": "rule--0",
+    "version": "",
+    "description": "",
+    "match": {
+      "methods": [
+        "PUT"
+      ],
+      "url": "\u003chttps|http\u003e://oosa.docker.localhost/api/event/\u003c.*\u003e/reference-links/\u003c.*\u003e"
     },
     "authenticators": [
       {
@@ -2783,7 +1961,587 @@
       "methods": [
         "GET"
       ],
-      "url": "\u003chttps|http\u003e://oosa.docker.localhost/api/user/\u003c.*\u003e"
+      "url": "\u003chttps|http\u003e://oosa.docker.localhost/api/world/ranking-feelings"
+    },
+    "authenticators": [
+      {
+        "handler": "cookie_session",
+        "config": {}
+      },
+      {
+        "handler": "bearer_token",
+        "config": {}
+      },
+      {
+        "handler": "unauthorized",
+        "config": null
+      }
+    ],
+    "authorizer": {
+      "handler": "allow",
+      "config": {}
+    },
+    "mutators": [
+      {
+        "handler": "header",
+        "config": {}
+      }
+    ],
+    "errors": [
+      {
+        "handler": "json",
+        "config": {}
+      }
+    ],
+    "upstream": {
+      "preserve_host": false,
+      "strip_path": "",
+      "url": ""
+    }
+  },
+  {
+    "id": "rule--0",
+    "version": "",
+    "description": "",
+    "match": {
+      "methods": [
+        "POST"
+      ],
+      "url": "\u003chttps|http\u003e://oosa.docker.localhost/api/auth/profile-picture"
+    },
+    "authenticators": [
+      {
+        "handler": "cookie_session",
+        "config": {}
+      },
+      {
+        "handler": "bearer_token",
+        "config": {}
+      },
+      {
+        "handler": "unauthorized",
+        "config": null
+      }
+    ],
+    "authorizer": {
+      "handler": "allow",
+      "config": {}
+    },
+    "mutators": [
+      {
+        "handler": "header",
+        "config": {}
+      }
+    ],
+    "errors": [
+      {
+        "handler": "json",
+        "config": {}
+      }
+    ],
+    "upstream": {
+      "preserve_host": false,
+      "strip_path": "",
+      "url": ""
+    }
+  },
+  {
+    "id": "rule-get-my-events-0",
+    "version": "",
+    "description": "",
+    "match": {
+      "methods": [
+        "GET"
+      ],
+      "url": "\u003chttps|http\u003e://oosa.docker.localhost/api/world/ranking-rewilding"
+    },
+    "authenticators": [
+      {
+        "handler": "cookie_session",
+        "config": {}
+      },
+      {
+        "handler": "bearer_token",
+        "config": {}
+      },
+      {
+        "handler": "unauthorized",
+        "config": null
+      }
+    ],
+    "authorizer": {
+      "handler": "allow",
+      "config": {}
+    },
+    "mutators": [
+      {
+        "handler": "header",
+        "config": {}
+      }
+    ],
+    "errors": [
+      {
+        "handler": "json",
+        "config": {}
+      }
+    ],
+    "upstream": {
+      "preserve_host": false,
+      "strip_path": "",
+      "url": ""
+    }
+  },
+  {
+    "id": "rule-create-event-0",
+    "version": "",
+    "description": "",
+    "match": {
+      "methods": [
+        "DELETE"
+      ],
+      "url": "\u003chttps|http\u003e://oosa.docker.localhost/api/news/\u003c.*\u003e"
+    },
+    "authenticators": [
+      {
+        "handler": "cookie_session",
+        "config": {}
+      },
+      {
+        "handler": "bearer_token",
+        "config": {}
+      },
+      {
+        "handler": "unauthorized",
+        "config": null
+      }
+    ],
+    "authorizer": {
+      "handler": "allow",
+      "config": {}
+    },
+    "mutators": [
+      {
+        "handler": "header",
+        "config": {}
+      }
+    ],
+    "errors": [
+      {
+        "handler": "json",
+        "config": {}
+      }
+    ],
+    "upstream": {
+      "preserve_host": false,
+      "strip_path": "",
+      "url": ""
+    }
+  },
+  {
+    "id": "rule-create-event-0",
+    "version": "",
+    "description": "",
+    "match": {
+      "methods": [
+        "GET"
+      ],
+      "url": "\u003chttps|http\u003e://oosa.docker.localhost/api/news/\u003c.*\u003e"
+    },
+    "authenticators": [
+      {
+        "handler": "cookie_session",
+        "config": {}
+      },
+      {
+        "handler": "bearer_token",
+        "config": {}
+      },
+      {
+        "handler": "unauthorized",
+        "config": null
+      }
+    ],
+    "authorizer": {
+      "handler": "allow",
+      "config": {}
+    },
+    "mutators": [
+      {
+        "handler": "header",
+        "config": {}
+      }
+    ],
+    "errors": [
+      {
+        "handler": "json",
+        "config": {}
+      }
+    ],
+    "upstream": {
+      "preserve_host": false,
+      "strip_path": "",
+      "url": ""
+    }
+  },
+  {
+    "id": "rule-create-event-0",
+    "version": "",
+    "description": "",
+    "match": {
+      "methods": [
+        "PUT"
+      ],
+      "url": "\u003chttps|http\u003e://oosa.docker.localhost/api/news/\u003c.*\u003e"
+    },
+    "authenticators": [
+      {
+        "handler": "cookie_session",
+        "config": {}
+      },
+      {
+        "handler": "bearer_token",
+        "config": {}
+      },
+      {
+        "handler": "unauthorized",
+        "config": null
+      }
+    ],
+    "authorizer": {
+      "handler": "allow",
+      "config": {}
+    },
+    "mutators": [
+      {
+        "handler": "header",
+        "config": {}
+      }
+    ],
+    "errors": [
+      {
+        "handler": "json",
+        "config": {}
+      }
+    ],
+    "upstream": {
+      "preserve_host": false,
+      "strip_path": "",
+      "url": ""
+    }
+  },
+  {
+    "id": "rule--0",
+    "version": "",
+    "description": "",
+    "match": {
+      "methods": [
+        "GET"
+      ],
+      "url": "\u003chttps|http\u003e://oosa.docker.localhost/api/event-invitations"
+    },
+    "authenticators": [
+      {
+        "handler": "cookie_session",
+        "config": {}
+      },
+      {
+        "handler": "bearer_token",
+        "config": {}
+      },
+      {
+        "handler": "unauthorized",
+        "config": null
+      }
+    ],
+    "authorizer": {
+      "handler": "allow",
+      "config": {}
+    },
+    "mutators": [
+      {
+        "handler": "header",
+        "config": {}
+      }
+    ],
+    "errors": [
+      {
+        "handler": "json",
+        "config": {}
+      }
+    ],
+    "upstream": {
+      "preserve_host": false,
+      "strip_path": "",
+      "url": ""
+    }
+  },
+  {
+    "id": "rule-get-events-0",
+    "version": "",
+    "description": "",
+    "match": {
+      "methods": [
+        "GET"
+      ],
+      "url": "\u003chttps|http\u003e://oosa.docker.localhost/api/achievement"
+    },
+    "authenticators": [
+      {
+        "handler": "cookie_session",
+        "config": {}
+      },
+      {
+        "handler": "bearer_token",
+        "config": {}
+      },
+      {
+        "handler": "unauthorized",
+        "config": null
+      }
+    ],
+    "authorizer": {
+      "handler": "allow",
+      "config": {}
+    },
+    "mutators": [
+      {
+        "handler": "header",
+        "config": {}
+      }
+    ],
+    "errors": [
+      {
+        "handler": "json",
+        "config": {}
+      }
+    ],
+    "upstream": {
+      "preserve_host": false,
+      "strip_path": "",
+      "url": ""
+    }
+  },
+  {
+    "id": "rule--0",
+    "version": "",
+    "description": "",
+    "match": {
+      "methods": [
+        "POST"
+      ],
+      "url": "\u003chttps|http\u003e://oosa.docker.localhost/api/auth/email"
+    },
+    "authenticators": [
+      {
+        "handler": "anonymous",
+        "config": {
+          "subject": "guest"
+        }
+      }
+    ],
+    "authorizer": {
+      "handler": "allow",
+      "config": {}
+    },
+    "mutators": [
+      {
+        "handler": "header",
+        "config": {}
+      }
+    ],
+    "errors": [
+      {
+        "handler": "json",
+        "config": {}
+      }
+    ],
+    "upstream": {
+      "preserve_host": false,
+      "strip_path": "",
+      "url": ""
+    }
+  },
+  {
+    "id": "rule--0",
+    "version": "",
+    "description": "",
+    "match": {
+      "methods": [
+        "GET"
+      ],
+      "url": "\u003chttps|http\u003e://oosa.docker.localhost/api/collaborative-log/\u003c.*\u003e/polaroids"
+    },
+    "authenticators": [
+      {
+        "handler": "cookie_session",
+        "config": {}
+      },
+      {
+        "handler": "bearer_token",
+        "config": {}
+      },
+      {
+        "handler": "unauthorized",
+        "config": null
+      }
+    ],
+    "authorizer": {
+      "handler": "allow",
+      "config": {}
+    },
+    "mutators": [
+      {
+        "handler": "header",
+        "config": {}
+      }
+    ],
+    "errors": [
+      {
+        "handler": "json",
+        "config": {}
+      }
+    ],
+    "upstream": {
+      "preserve_host": false,
+      "strip_path": "",
+      "url": ""
+    }
+  },
+  {
+    "id": "rule--0",
+    "version": "",
+    "description": "",
+    "match": {
+      "methods": [
+        "POST"
+      ],
+      "url": "\u003chttps|http\u003e://oosa.docker.localhost/api/collaborative-log/\u003c.*\u003e/polaroids"
+    },
+    "authenticators": [
+      {
+        "handler": "cookie_session",
+        "config": {}
+      },
+      {
+        "handler": "bearer_token",
+        "config": {}
+      },
+      {
+        "handler": "unauthorized",
+        "config": null
+      }
+    ],
+    "authorizer": {
+      "handler": "allow",
+      "config": {}
+    },
+    "mutators": [
+      {
+        "handler": "header",
+        "config": {}
+      }
+    ],
+    "errors": [
+      {
+        "handler": "json",
+        "config": {}
+      }
+    ],
+    "upstream": {
+      "preserve_host": false,
+      "strip_path": "",
+      "url": ""
+    }
+  },
+  {
+    "id": "rule-getAuthByLine-0",
+    "version": "",
+    "description": "",
+    "match": {
+      "methods": [
+        "GET"
+      ],
+      "url": "\u003chttps|http\u003e://oosa.docker.localhost/api/auth/line"
+    },
+    "authenticators": [
+      {
+        "handler": "anonymous",
+        "config": {
+          "subject": "guest"
+        }
+      }
+    ],
+    "authorizer": {
+      "handler": "allow",
+      "config": {}
+    },
+    "mutators": [
+      {
+        "handler": "header",
+        "config": {}
+      }
+    ],
+    "errors": [
+      {
+        "handler": "json",
+        "config": {}
+      }
+    ],
+    "upstream": {
+      "preserve_host": false,
+      "strip_path": "",
+      "url": ""
+    }
+  },
+  {
+    "id": "rule-get-rewildings-0",
+    "version": "",
+    "description": "",
+    "match": {
+      "methods": [
+        "GET"
+      ],
+      "url": "\u003chttps|http\u003e://oosa.docker.localhost/api/rewilding"
+    },
+    "authenticators": [
+      {
+        "handler": "anonymous",
+        "config": {
+          "subject": "guest"
+        }
+      }
+    ],
+    "authorizer": {
+      "handler": "allow",
+      "config": {}
+    },
+    "mutators": [
+      {
+        "handler": "header",
+        "config": {}
+      }
+    ],
+    "errors": [
+      {
+        "handler": "json",
+        "config": {}
+      }
+    ],
+    "upstream": {
+      "preserve_host": false,
+      "strip_path": "",
+      "url": ""
+    }
+  },
+  {
+    "id": "rule--0",
+    "version": "",
+    "description": "",
+    "match": {
+      "methods": [
+        "POST"
+      ],
+      "url": "\u003chttps|http\u003e://oosa.docker.localhost/api/rewilding"
     },
     "authenticators": [
       {
@@ -2868,6 +2626,788 @@
     }
   },
   {
+    "id": "rule--0",
+    "version": "",
+    "description": "",
+    "match": {
+      "methods": [
+        "GET"
+      ],
+      "url": "\u003chttps|http\u003e://oosa.docker.localhost/api/event/cover/\u003c.*\u003e"
+    },
+    "authenticators": [
+      {
+        "handler": "cookie_session",
+        "config": {}
+      },
+      {
+        "handler": "bearer_token",
+        "config": {}
+      },
+      {
+        "handler": "unauthorized",
+        "config": null
+      }
+    ],
+    "authorizer": {
+      "handler": "allow",
+      "config": {}
+    },
+    "mutators": [
+      {
+        "handler": "header",
+        "config": {}
+      }
+    ],
+    "errors": [
+      {
+        "handler": "json",
+        "config": {}
+      }
+    ],
+    "upstream": {
+      "preserve_host": false,
+      "strip_path": "",
+      "url": ""
+    }
+  },
+  {
+    "id": "rule--0",
+    "version": "",
+    "description": "",
+    "match": {
+      "methods": [
+        "DELETE"
+      ],
+      "url": "\u003chttps|http\u003e://oosa.docker.localhost/api/event/\u003c.*\u003e/schedule/\u003c.*\u003e"
+    },
+    "authenticators": [
+      {
+        "handler": "cookie_session",
+        "config": {}
+      },
+      {
+        "handler": "bearer_token",
+        "config": {}
+      },
+      {
+        "handler": "unauthorized",
+        "config": null
+      }
+    ],
+    "authorizer": {
+      "handler": "allow",
+      "config": {}
+    },
+    "mutators": [
+      {
+        "handler": "header",
+        "config": {}
+      }
+    ],
+    "errors": [
+      {
+        "handler": "json",
+        "config": {}
+      }
+    ],
+    "upstream": {
+      "preserve_host": false,
+      "strip_path": "",
+      "url": ""
+    }
+  },
+  {
+    "id": "rule--0",
+    "version": "",
+    "description": "",
+    "match": {
+      "methods": [
+        "GET"
+      ],
+      "url": "\u003chttps|http\u003e://oosa.docker.localhost/api/event/\u003c.*\u003e/schedule/\u003c.*\u003e"
+    },
+    "authenticators": [
+      {
+        "handler": "cookie_session",
+        "config": {}
+      },
+      {
+        "handler": "bearer_token",
+        "config": {}
+      },
+      {
+        "handler": "unauthorized",
+        "config": null
+      }
+    ],
+    "authorizer": {
+      "handler": "allow",
+      "config": {}
+    },
+    "mutators": [
+      {
+        "handler": "header",
+        "config": {}
+      }
+    ],
+    "errors": [
+      {
+        "handler": "json",
+        "config": {}
+      }
+    ],
+    "upstream": {
+      "preserve_host": false,
+      "strip_path": "",
+      "url": ""
+    }
+  },
+  {
+    "id": "rule--0",
+    "version": "",
+    "description": "",
+    "match": {
+      "methods": [
+        "PUT"
+      ],
+      "url": "\u003chttps|http\u003e://oosa.docker.localhost/api/event/\u003c.*\u003e/schedule/\u003c.*\u003e"
+    },
+    "authenticators": [
+      {
+        "handler": "cookie_session",
+        "config": {}
+      },
+      {
+        "handler": "bearer_token",
+        "config": {}
+      },
+      {
+        "handler": "unauthorized",
+        "config": null
+      }
+    ],
+    "authorizer": {
+      "handler": "allow",
+      "config": {}
+    },
+    "mutators": [
+      {
+        "handler": "header",
+        "config": {}
+      }
+    ],
+    "errors": [
+      {
+        "handler": "json",
+        "config": {}
+      }
+    ],
+    "upstream": {
+      "preserve_host": false,
+      "strip_path": "",
+      "url": ""
+    }
+  },
+  {
+    "id": "rule--0",
+    "version": "",
+    "description": "",
+    "match": {
+      "methods": [
+        "GET"
+      ],
+      "url": "\u003chttps|http\u003e://oosa.docker.localhost/api/user-following"
+    },
+    "authenticators": [
+      {
+        "handler": "cookie_session",
+        "config": {}
+      },
+      {
+        "handler": "bearer_token",
+        "config": {}
+      },
+      {
+        "handler": "unauthorized",
+        "config": null
+      }
+    ],
+    "authorizer": {
+      "handler": "allow",
+      "config": {}
+    },
+    "mutators": [
+      {
+        "handler": "header",
+        "config": {}
+      }
+    ],
+    "errors": [
+      {
+        "handler": "json",
+        "config": {}
+      }
+    ],
+    "upstream": {
+      "preserve_host": false,
+      "strip_path": "",
+      "url": ""
+    }
+  },
+  {
+    "id": "rule--0",
+    "version": "",
+    "description": "",
+    "match": {
+      "methods": [
+        "POST"
+      ],
+      "url": "\u003chttps|http\u003e://oosa.docker.localhost/api/user-following"
+    },
+    "authenticators": [
+      {
+        "handler": "cookie_session",
+        "config": {}
+      },
+      {
+        "handler": "bearer_token",
+        "config": {}
+      },
+      {
+        "handler": "unauthorized",
+        "config": null
+      }
+    ],
+    "authorizer": {
+      "handler": "allow",
+      "config": {}
+    },
+    "mutators": [
+      {
+        "handler": "header",
+        "config": {}
+      }
+    ],
+    "errors": [
+      {
+        "handler": "json",
+        "config": {}
+      }
+    ],
+    "upstream": {
+      "preserve_host": false,
+      "strip_path": "",
+      "url": ""
+    }
+  },
+  {
+    "id": "rule-getUserInfo-0",
+    "version": "",
+    "description": "",
+    "match": {
+      "methods": [
+        "GET"
+      ],
+      "url": "\u003chttps|http\u003e://oosa.docker.localhost/api/user"
+    },
+    "authenticators": [
+      {
+        "handler": "cookie_session",
+        "config": {}
+      },
+      {
+        "handler": "bearer_token",
+        "config": {}
+      },
+      {
+        "handler": "unauthorized",
+        "config": null
+      }
+    ],
+    "authorizer": {
+      "handler": "allow",
+      "config": {}
+    },
+    "mutators": [
+      {
+        "handler": "header",
+        "config": {}
+      }
+    ],
+    "errors": [
+      {
+        "handler": "json",
+        "config": {}
+      }
+    ],
+    "upstream": {
+      "preserve_host": false,
+      "strip_path": "",
+      "url": ""
+    }
+  },
+  {
+    "id": "rule--0",
+    "version": "",
+    "description": "",
+    "match": {
+      "methods": [
+        "PUT"
+      ],
+      "url": "\u003chttps|http\u003e://oosa.docker.localhost/api/event-invitations/\u003c.*\u003e"
+    },
+    "authenticators": [
+      {
+        "handler": "cookie_session",
+        "config": {}
+      },
+      {
+        "handler": "bearer_token",
+        "config": {}
+      },
+      {
+        "handler": "unauthorized",
+        "config": null
+      }
+    ],
+    "authorizer": {
+      "handler": "allow",
+      "config": {}
+    },
+    "mutators": [
+      {
+        "handler": "header",
+        "config": {}
+      }
+    ],
+    "errors": [
+      {
+        "handler": "json",
+        "config": {}
+      }
+    ],
+    "upstream": {
+      "preserve_host": false,
+      "strip_path": "",
+      "url": ""
+    }
+  },
+  {
+    "id": "rule-get-rewilding-register-0",
+    "version": "",
+    "description": "",
+    "match": {
+      "methods": [
+        "GET"
+      ],
+      "url": "\u003chttps|http\u003e://oosa.docker.localhost/api/rewilding-register"
+    },
+    "authenticators": [
+      {
+        "handler": "cookie_session",
+        "config": {}
+      },
+      {
+        "handler": "bearer_token",
+        "config": {}
+      },
+      {
+        "handler": "unauthorized",
+        "config": null
+      }
+    ],
+    "authorizer": {
+      "handler": "allow",
+      "config": {}
+    },
+    "mutators": [
+      {
+        "handler": "header",
+        "config": {}
+      }
+    ],
+    "errors": [
+      {
+        "handler": "json",
+        "config": {}
+      }
+    ],
+    "upstream": {
+      "preserve_host": false,
+      "strip_path": "",
+      "url": ""
+    }
+  },
+  {
+    "id": "rule-create-rewilding-0",
+    "version": "",
+    "description": "",
+    "match": {
+      "methods": [
+        "POST"
+      ],
+      "url": "\u003chttps|http\u003e://oosa.docker.localhost/api/rewilding-register"
+    },
+    "authenticators": [
+      {
+        "handler": "cookie_session",
+        "config": {}
+      },
+      {
+        "handler": "bearer_token",
+        "config": {}
+      },
+      {
+        "handler": "unauthorized",
+        "config": null
+      }
+    ],
+    "authorizer": {
+      "handler": "allow",
+      "config": {}
+    },
+    "mutators": [
+      {
+        "handler": "header",
+        "config": {}
+      }
+    ],
+    "errors": [
+      {
+        "handler": "json",
+        "config": {}
+      }
+    ],
+    "upstream": {
+      "preserve_host": false,
+      "strip_path": "",
+      "url": ""
+    }
+  },
+  {
+    "id": "rule-getUrlInfo-0",
+    "version": "",
+    "description": "",
+    "match": {
+      "methods": [
+        "POST"
+      ],
+      "url": "\u003chttps|http\u003e://oosa.docker.localhost/api/link-query"
+    },
+    "authenticators": [
+      {
+        "handler": "cookie_session",
+        "config": {}
+      },
+      {
+        "handler": "bearer_token",
+        "config": {}
+      },
+      {
+        "handler": "unauthorized",
+        "config": null
+      }
+    ],
+    "authorizer": {
+      "handler": "allow",
+      "config": {}
+    },
+    "mutators": [
+      {
+        "handler": "header",
+        "config": {}
+      }
+    ],
+    "errors": [
+      {
+        "handler": "json",
+        "config": {}
+      }
+    ],
+    "upstream": {
+      "preserve_host": false,
+      "strip_path": "",
+      "url": ""
+    }
+  },
+  {
+    "id": "rule-delete-picket-list-0",
+    "version": "",
+    "description": "",
+    "match": {
+      "methods": [
+        "DELETE"
+      ],
+      "url": "\u003chttps|http\u003e://oosa.docker.localhost/api/pocket-list/\u003c.*\u003e"
+    },
+    "authenticators": [
+      {
+        "handler": "cookie_session",
+        "config": {}
+      },
+      {
+        "handler": "bearer_token",
+        "config": {}
+      },
+      {
+        "handler": "unauthorized",
+        "config": null
+      }
+    ],
+    "authorizer": {
+      "handler": "allow",
+      "config": {}
+    },
+    "mutators": [
+      {
+        "handler": "header",
+        "config": {}
+      }
+    ],
+    "errors": [
+      {
+        "handler": "json",
+        "config": {}
+      }
+    ],
+    "upstream": {
+      "preserve_host": false,
+      "strip_path": "",
+      "url": ""
+    }
+  },
+  {
+    "id": "rule--0",
+    "version": "",
+    "description": "",
+    "match": {
+      "methods": [
+        "GET"
+      ],
+      "url": "\u003chttps|http\u003e://oosa.docker.localhost/api/pocket-list/\u003c.*\u003e"
+    },
+    "authenticators": [
+      {
+        "handler": "cookie_session",
+        "config": {}
+      },
+      {
+        "handler": "bearer_token",
+        "config": {}
+      },
+      {
+        "handler": "unauthorized",
+        "config": null
+      }
+    ],
+    "authorizer": {
+      "handler": "allow",
+      "config": {}
+    },
+    "mutators": [
+      {
+        "handler": "header",
+        "config": {}
+      }
+    ],
+    "errors": [
+      {
+        "handler": "json",
+        "config": {}
+      }
+    ],
+    "upstream": {
+      "preserve_host": false,
+      "strip_path": "",
+      "url": ""
+    }
+  },
+  {
+    "id": "rule-update-pocket-list-0",
+    "version": "",
+    "description": "",
+    "match": {
+      "methods": [
+        "PUT"
+      ],
+      "url": "\u003chttps|http\u003e://oosa.docker.localhost/api/pocket-list/\u003c.*\u003e"
+    },
+    "authenticators": [
+      {
+        "handler": "cookie_session",
+        "config": {}
+      },
+      {
+        "handler": "bearer_token",
+        "config": {}
+      },
+      {
+        "handler": "unauthorized",
+        "config": null
+      }
+    ],
+    "authorizer": {
+      "handler": "allow",
+      "config": {}
+    },
+    "mutators": [
+      {
+        "handler": "header",
+        "config": {}
+      }
+    ],
+    "errors": [
+      {
+        "handler": "json",
+        "config": {}
+      }
+    ],
+    "upstream": {
+      "preserve_host": false,
+      "strip_path": "",
+      "url": ""
+    }
+  },
+  {
+    "id": "rule-getCollaborativeAlbumLinks-0",
+    "version": "",
+    "description": "",
+    "match": {
+      "methods": [
+        "GET"
+      ],
+      "url": "\u003chttps|http\u003e://oosa.docker.localhost/api/collaborative-log/\u003c.*\u003e/album-link"
+    },
+    "authenticators": [
+      {
+        "handler": "cookie_session",
+        "config": {}
+      },
+      {
+        "handler": "bearer_token",
+        "config": {}
+      },
+      {
+        "handler": "unauthorized",
+        "config": null
+      }
+    ],
+    "authorizer": {
+      "handler": "allow",
+      "config": {}
+    },
+    "mutators": [
+      {
+        "handler": "header",
+        "config": {}
+      }
+    ],
+    "errors": [
+      {
+        "handler": "json",
+        "config": {}
+      }
+    ],
+    "upstream": {
+      "preserve_host": false,
+      "strip_path": "",
+      "url": ""
+    }
+  },
+  {
+    "id": "rule-createCollaborativeAlbumLink-0",
+    "version": "",
+    "description": "",
+    "match": {
+      "methods": [
+        "POST"
+      ],
+      "url": "\u003chttps|http\u003e://oosa.docker.localhost/api/collaborative-log/\u003c.*\u003e/album-link"
+    },
+    "authenticators": [
+      {
+        "handler": "cookie_session",
+        "config": {}
+      },
+      {
+        "handler": "bearer_token",
+        "config": {}
+      },
+      {
+        "handler": "unauthorized",
+        "config": null
+      }
+    ],
+    "authorizer": {
+      "handler": "allow",
+      "config": {}
+    },
+    "mutators": [
+      {
+        "handler": "header",
+        "config": {}
+      }
+    ],
+    "errors": [
+      {
+        "handler": "json",
+        "config": {}
+      }
+    ],
+    "upstream": {
+      "preserve_host": false,
+      "strip_path": "",
+      "url": ""
+    }
+  },
+  {
+    "id": "rule-getReferences-0",
+    "version": "",
+    "description": "",
+    "match": {
+      "methods": [
+        "GET"
+      ],
+      "url": "\u003chttps|http\u003e://oosa.docker.localhost/api/references"
+    },
+    "authenticators": [
+      {
+        "handler": "cookie_session",
+        "config": {}
+      },
+      {
+        "handler": "bearer_token",
+        "config": {}
+      },
+      {
+        "handler": "unauthorized",
+        "config": null
+      }
+    ],
+    "authorizer": {
+      "handler": "allow",
+      "config": {}
+    },
+    "mutators": [
+      {
+        "handler": "header",
+        "config": {}
+      }
+    ],
+    "errors": [
+      {
+        "handler": "json",
+        "config": {}
+      }
+    ],
+    "upstream": {
+      "preserve_host": false,
+      "strip_path": "",
+      "url": ""
+    }
+  },
+  {
     "id": "rule-get-my-events-0",
     "version": "",
     "description": "",
@@ -2914,14 +3454,14 @@
     }
   },
   {
-    "id": "rule--0",
+    "id": "rule-getFriends-0",
     "version": "",
     "description": "",
     "match": {
       "methods": [
-        "PUT"
+        "GET"
       ],
-      "url": "\u003chttps|http\u003e://oosa.docker.localhost/api/event/\u003c.*\u003e/invitation"
+      "url": "\u003chttps|http\u003e://oosa.docker.localhost/api/user/friends"
     },
     "authenticators": [
       {
@@ -2967,7 +3507,329 @@
       "methods": [
         "POST"
       ],
-      "url": "\u003chttps|http\u003e://oosa.docker.localhost/api/auth/email"
+      "url": "\u003chttps|http\u003e://oosa.docker.localhost/api/event/\u003c.*\u003e/message-board/\u003c.*\u003e/pin"
+    },
+    "authenticators": [
+      {
+        "handler": "cookie_session",
+        "config": {}
+      },
+      {
+        "handler": "bearer_token",
+        "config": {}
+      },
+      {
+        "handler": "unauthorized",
+        "config": null
+      }
+    ],
+    "authorizer": {
+      "handler": "allow",
+      "config": {}
+    },
+    "mutators": [
+      {
+        "handler": "header",
+        "config": {}
+      }
+    ],
+    "errors": [
+      {
+        "handler": "json",
+        "config": {}
+      }
+    ],
+    "upstream": {
+      "preserve_host": false,
+      "strip_path": "",
+      "url": ""
+    }
+  },
+  {
+    "id": "rule--0",
+    "version": "",
+    "description": "",
+    "match": {
+      "methods": [
+        "GET"
+      ],
+      "url": "\u003chttps|http\u003e://oosa.docker.localhost/api/event/\u003c.*\u003e/accounting"
+    },
+    "authenticators": [
+      {
+        "handler": "cookie_session",
+        "config": {}
+      },
+      {
+        "handler": "bearer_token",
+        "config": {}
+      },
+      {
+        "handler": "unauthorized",
+        "config": null
+      }
+    ],
+    "authorizer": {
+      "handler": "allow",
+      "config": {}
+    },
+    "mutators": [
+      {
+        "handler": "header",
+        "config": {}
+      }
+    ],
+    "errors": [
+      {
+        "handler": "json",
+        "config": {}
+      }
+    ],
+    "upstream": {
+      "preserve_host": false,
+      "strip_path": "",
+      "url": ""
+    }
+  },
+  {
+    "id": "rule--0",
+    "version": "",
+    "description": "",
+    "match": {
+      "methods": [
+        "POST"
+      ],
+      "url": "\u003chttps|http\u003e://oosa.docker.localhost/api/event/\u003c.*\u003e/accounting"
+    },
+    "authenticators": [
+      {
+        "handler": "cookie_session",
+        "config": {}
+      },
+      {
+        "handler": "bearer_token",
+        "config": {}
+      },
+      {
+        "handler": "unauthorized",
+        "config": null
+      }
+    ],
+    "authorizer": {
+      "handler": "allow",
+      "config": {}
+    },
+    "mutators": [
+      {
+        "handler": "header",
+        "config": {}
+      }
+    ],
+    "errors": [
+      {
+        "handler": "json",
+        "config": {}
+      }
+    ],
+    "upstream": {
+      "preserve_host": false,
+      "strip_path": "",
+      "url": ""
+    }
+  },
+  {
+    "id": "rule--0",
+    "version": "",
+    "description": "",
+    "match": {
+      "methods": [
+        "PUT"
+      ],
+      "url": "\u003chttps|http\u003e://oosa.docker.localhost/api/event/\u003c.*\u003e/message-board/\u003c.*\u003e"
+    },
+    "authenticators": [
+      {
+        "handler": "cookie_session",
+        "config": {}
+      },
+      {
+        "handler": "bearer_token",
+        "config": {}
+      },
+      {
+        "handler": "unauthorized",
+        "config": null
+      }
+    ],
+    "authorizer": {
+      "handler": "allow",
+      "config": {}
+    },
+    "mutators": [
+      {
+        "handler": "header",
+        "config": {}
+      }
+    ],
+    "errors": [
+      {
+        "handler": "json",
+        "config": {}
+      }
+    ],
+    "upstream": {
+      "preserve_host": false,
+      "strip_path": "",
+      "url": ""
+    }
+  },
+  {
+    "id": "rule--0",
+    "version": "",
+    "description": "",
+    "match": {
+      "methods": [
+        "DELETE"
+      ],
+      "url": "\u003chttps|http\u003e://oosa.docker.localhost/api/event/\u003c.*\u003e/message-board/\u003c.*\u003e"
+    },
+    "authenticators": [
+      {
+        "handler": "cookie_session",
+        "config": {}
+      },
+      {
+        "handler": "bearer_token",
+        "config": {}
+      },
+      {
+        "handler": "unauthorized",
+        "config": null
+      }
+    ],
+    "authorizer": {
+      "handler": "allow",
+      "config": {}
+    },
+    "mutators": [
+      {
+        "handler": "header",
+        "config": {}
+      }
+    ],
+    "errors": [
+      {
+        "handler": "json",
+        "config": {}
+      }
+    ],
+    "upstream": {
+      "preserve_host": false,
+      "strip_path": "",
+      "url": ""
+    }
+  },
+  {
+    "id": "rule--0",
+    "version": "",
+    "description": "",
+    "match": {
+      "methods": [
+        "GET"
+      ],
+      "url": "\u003chttps|http\u003e://oosa.docker.localhost/api/event/\u003c.*\u003e/message-board/\u003c.*\u003e"
+    },
+    "authenticators": [
+      {
+        "handler": "cookie_session",
+        "config": {}
+      },
+      {
+        "handler": "bearer_token",
+        "config": {}
+      },
+      {
+        "handler": "unauthorized",
+        "config": null
+      }
+    ],
+    "authorizer": {
+      "handler": "allow",
+      "config": {}
+    },
+    "mutators": [
+      {
+        "handler": "header",
+        "config": {}
+      }
+    ],
+    "errors": [
+      {
+        "handler": "json",
+        "config": {}
+      }
+    ],
+    "upstream": {
+      "preserve_host": false,
+      "strip_path": "",
+      "url": ""
+    }
+  },
+  {
+    "id": "rule-authByApple-0",
+    "version": "",
+    "description": "",
+    "match": {
+      "methods": [
+        "POST"
+      ],
+      "url": "\u003chttps|http\u003e://oosa.docker.localhost/api/auth/apple"
+    },
+    "authenticators": [
+      {
+        "handler": "cookie_session",
+        "config": {}
+      },
+      {
+        "handler": "bearer_token",
+        "config": {}
+      },
+      {
+        "handler": "unauthorized",
+        "config": null
+      }
+    ],
+    "authorizer": {
+      "handler": "allow",
+      "config": {}
+    },
+    "mutators": [
+      {
+        "handler": "header",
+        "config": {}
+      }
+    ],
+    "errors": [
+      {
+        "handler": "json",
+        "config": {}
+      }
+    ],
+    "upstream": {
+      "preserve_host": false,
+      "strip_path": "",
+      "url": ""
+    }
+  },
+  {
+    "id": "rule-authByFacebook-0",
+    "version": "",
+    "description": "",
+    "match": {
+      "methods": [
+        "POST"
+      ],
+      "url": "\u003chttps|http\u003e://oosa.docker.localhost/api/auth/facebook"
     },
     "authenticators": [
       {
@@ -3005,9 +3867,9 @@
     "description": "",
     "match": {
       "methods": [
-        "POST"
+        "GET"
       ],
-      "url": "\u003chttps|http\u003e://oosa.docker.localhost/api/collaborative-log/\u003c.*\u003e/questionnaire"
+      "url": "\u003chttps|http\u003e://oosa.docker.localhost/api/rewilding/places/\u003c.*\u003e"
     },
     "authenticators": [
       {
@@ -3053,7 +3915,7 @@
       "methods": [
         "GET"
       ],
-      "url": "\u003chttps|http\u003e://oosa.docker.localhost/api/rewilding/\u003c.*\u003e/photos/\u003c.*\u003e"
+      "url": "\u003chttps|http\u003e://oosa.docker.localhost/api/rewilding-register/references"
     },
     "authenticators": [
       {
@@ -3093,197 +3955,13 @@
   },
   {
     "id": "rule--0",
-    "version": "",
-    "description": "",
-    "match": {
-      "methods": [
-        "GET"
-      ],
-      "url": "\u003chttps|http\u003e://oosa.docker.localhost/api/auth/notifications"
-    },
-    "authenticators": [
-      {
-        "handler": "cookie_session",
-        "config": {}
-      },
-      {
-        "handler": "bearer_token",
-        "config": {}
-      },
-      {
-        "handler": "unauthorized",
-        "config": null
-      }
-    ],
-    "authorizer": {
-      "handler": "allow",
-      "config": {}
-    },
-    "mutators": [
-      {
-        "handler": "header",
-        "config": {}
-      }
-    ],
-    "errors": [
-      {
-        "handler": "json",
-        "config": {}
-      }
-    ],
-    "upstream": {
-      "preserve_host": false,
-      "strip_path": "",
-      "url": ""
-    }
-  },
-  {
-    "id": "rule-create-event-0",
     "version": "",
     "description": "",
     "match": {
       "methods": [
         "POST"
       ],
-      "url": "\u003chttps|http\u003e://oosa.docker.localhost/api/news"
-    },
-    "authenticators": [
-      {
-        "handler": "cookie_session",
-        "config": {}
-      },
-      {
-        "handler": "bearer_token",
-        "config": {}
-      },
-      {
-        "handler": "unauthorized",
-        "config": null
-      }
-    ],
-    "authorizer": {
-      "handler": "allow",
-      "config": {}
-    },
-    "mutators": [
-      {
-        "handler": "header",
-        "config": {}
-      }
-    ],
-    "errors": [
-      {
-        "handler": "json",
-        "config": {}
-      }
-    ],
-    "upstream": {
-      "preserve_host": false,
-      "strip_path": "",
-      "url": ""
-    }
-  },
-  {
-    "id": "rule-create-event-0",
-    "version": "",
-    "description": "",
-    "match": {
-      "methods": [
-        "GET"
-      ],
-      "url": "\u003chttps|http\u003e://oosa.docker.localhost/api/news"
-    },
-    "authenticators": [
-      {
-        "handler": "cookie_session",
-        "config": {}
-      },
-      {
-        "handler": "bearer_token",
-        "config": {}
-      },
-      {
-        "handler": "unauthorized",
-        "config": null
-      }
-    ],
-    "authorizer": {
-      "handler": "allow",
-      "config": {}
-    },
-    "mutators": [
-      {
-        "handler": "header",
-        "config": {}
-      }
-    ],
-    "errors": [
-      {
-        "handler": "json",
-        "config": {}
-      }
-    ],
-    "upstream": {
-      "preserve_host": false,
-      "strip_path": "",
-      "url": ""
-    }
-  },
-  {
-    "id": "rule-get-my-events-0",
-    "version": "",
-    "description": "",
-    "match": {
-      "methods": [
-        "GET"
-      ],
-      "url": "\u003chttps|http\u003e://oosa.docker.localhost/api/user/\u003c.*\u003e/event"
-    },
-    "authenticators": [
-      {
-        "handler": "cookie_session",
-        "config": {}
-      },
-      {
-        "handler": "bearer_token",
-        "config": {}
-      },
-      {
-        "handler": "unauthorized",
-        "config": null
-      }
-    ],
-    "authorizer": {
-      "handler": "allow",
-      "config": {}
-    },
-    "mutators": [
-      {
-        "handler": "header",
-        "config": {}
-      }
-    ],
-    "errors": [
-      {
-        "handler": "json",
-        "config": {}
-      }
-    ],
-    "upstream": {
-      "preserve_host": false,
-      "strip_path": "",
-      "url": ""
-    }
-  },
-  {
-    "id": "rule-get-events-0",
-    "version": "",
-    "description": "",
-    "match": {
-      "methods": [
-        "GET"
-      ],
-      "url": "\u003chttps|http\u003e://oosa.docker.localhost/api/achievement"
+      "url": "\u003chttps|http\u003e://oosa.docker.localhost/api/collaborative-log/\u003c.*\u003e/questionnaire"
     },
     "authenticators": [
       {
@@ -3465,141 +4143,9 @@
     "description": "",
     "match": {
       "methods": [
-        "GET"
+        "PUT"
       ],
-      "url": "\u003chttps|http\u003e://oosa.docker.localhost/api/rewilding-autocomplete"
-    },
-    "authenticators": [
-      {
-        "handler": "anonymous",
-        "config": {
-          "subject": "guest"
-        }
-      }
-    ],
-    "authorizer": {
-      "handler": "allow",
-      "config": {}
-    },
-    "mutators": [
-      {
-        "handler": "header",
-        "config": {}
-      }
-    ],
-    "errors": [
-      {
-        "handler": "json",
-        "config": {}
-      }
-    ],
-    "upstream": {
-      "preserve_host": false,
-      "strip_path": "",
-      "url": ""
-    }
-  },
-  {
-    "id": "rule--0",
-    "version": "",
-    "description": "",
-    "match": {
-      "methods": [
-        "GET"
-      ],
-      "url": "\u003chttps|http\u003e://oosa.docker.localhost/api/event/\u003c.*\u003e/participants"
-    },
-    "authenticators": [
-      {
-        "handler": "cookie_session",
-        "config": {}
-      },
-      {
-        "handler": "bearer_token",
-        "config": {}
-      },
-      {
-        "handler": "unauthorized",
-        "config": null
-      }
-    ],
-    "authorizer": {
-      "handler": "allow",
-      "config": {}
-    },
-    "mutators": [
-      {
-        "handler": "header",
-        "config": {}
-      }
-    ],
-    "errors": [
-      {
-        "handler": "json",
-        "config": {}
-      }
-    ],
-    "upstream": {
-      "preserve_host": false,
-      "strip_path": "",
-      "url": ""
-    }
-  },
-  {
-    "id": "rule--0",
-    "version": "",
-    "description": "",
-    "match": {
-      "methods": [
-        "POST"
-      ],
-      "url": "\u003chttps|http\u003e://oosa.docker.localhost/api/event/\u003c.*\u003e/participants"
-    },
-    "authenticators": [
-      {
-        "handler": "cookie_session",
-        "config": {}
-      },
-      {
-        "handler": "bearer_token",
-        "config": {}
-      },
-      {
-        "handler": "unauthorized",
-        "config": null
-      }
-    ],
-    "authorizer": {
-      "handler": "allow",
-      "config": {}
-    },
-    "mutators": [
-      {
-        "handler": "header",
-        "config": {}
-      }
-    ],
-    "errors": [
-      {
-        "handler": "json",
-        "config": {}
-      }
-    ],
-    "upstream": {
-      "preserve_host": false,
-      "strip_path": "",
-      "url": ""
-    }
-  },
-  {
-    "id": "rule-delete-event-schedule-0",
-    "version": "",
-    "description": "",
-    "match": {
-      "methods": [
-        "DELETE"
-      ],
-      "url": "\u003chttps|http\u003e://oosa.docker.localhost/api/event/\u003c.*\u003e/schedule"
+      "url": "\u003chttps|http\u003e://oosa.docker.localhost/api/event/\u003c.*\u003e/invitation"
     },
     "authenticators": [
       {
@@ -3730,106 +4276,14 @@
     }
   },
   {
-    "id": "rule-createCollaborativeAlbumLink-0",
-    "version": "",
-    "description": "",
-    "match": {
-      "methods": [
-        "POST"
-      ],
-      "url": "\u003chttps|http\u003e://oosa.docker.localhost/api/collaborative-log/\u003c.*\u003e/album-link"
-    },
-    "authenticators": [
-      {
-        "handler": "cookie_session",
-        "config": {}
-      },
-      {
-        "handler": "bearer_token",
-        "config": {}
-      },
-      {
-        "handler": "unauthorized",
-        "config": null
-      }
-    ],
-    "authorizer": {
-      "handler": "allow",
-      "config": {}
-    },
-    "mutators": [
-      {
-        "handler": "header",
-        "config": {}
-      }
-    ],
-    "errors": [
-      {
-        "handler": "json",
-        "config": {}
-      }
-    ],
-    "upstream": {
-      "preserve_host": false,
-      "strip_path": "",
-      "url": ""
-    }
-  },
-  {
-    "id": "rule-getCollaborativeAlbumLinks-0",
-    "version": "",
-    "description": "",
-    "match": {
-      "methods": [
-        "GET"
-      ],
-      "url": "\u003chttps|http\u003e://oosa.docker.localhost/api/collaborative-log/\u003c.*\u003e/album-link"
-    },
-    "authenticators": [
-      {
-        "handler": "cookie_session",
-        "config": {}
-      },
-      {
-        "handler": "bearer_token",
-        "config": {}
-      },
-      {
-        "handler": "unauthorized",
-        "config": null
-      }
-    ],
-    "authorizer": {
-      "handler": "allow",
-      "config": {}
-    },
-    "mutators": [
-      {
-        "handler": "header",
-        "config": {}
-      }
-    ],
-    "errors": [
-      {
-        "handler": "json",
-        "config": {}
-      }
-    ],
-    "upstream": {
-      "preserve_host": false,
-      "strip_path": "",
-      "url": ""
-    }
-  },
-  {
-    "id": "rule-get-rewildings-0",
+    "id": "rule-delete-event-schedule-0",
     "version": "",
     "description": "",
     "match": {
       "methods": [
         "DELETE"
       ],
-      "url": "\u003chttps|http\u003e://oosa.docker.localhost/api/rewilding/\u003c.*\u003e"
+      "url": "\u003chttps|http\u003e://oosa.docker.localhost/api/event/\u003c.*\u003e/schedule"
     },
     "authenticators": [
       {
@@ -3868,27 +4322,21 @@
     }
   },
   {
-    "id": "rule-get-rewilding-detail-0",
+    "id": "rule-getCollaborativeLogs-0",
     "version": "",
     "description": "",
     "match": {
       "methods": [
         "GET"
       ],
-      "url": "\u003chttps|http\u003e://oosa.docker.localhost/api/rewilding/\u003c.*\u003e"
+      "url": "\u003chttps|http\u003e://oosa.docker.localhost/api/collaborative-log"
     },
     "authenticators": [
       {
-        "handler": "cookie_session",
-        "config": {}
-      },
-      {
-        "handler": "bearer_token",
-        "config": {}
-      },
-      {
-        "handler": "unauthorized",
-        "config": null
+        "handler": "anonymous",
+        "config": {
+          "subject": "guest"
+        }
       }
     ],
     "authorizer": {
@@ -3914,14 +4362,54 @@
     }
   },
   {
-    "id": "rule-getAuthHeader-0",
+    "id": "rule-getNoAuthHeader-0",
     "version": "",
     "description": "",
     "match": {
       "methods": [
         "GET"
       ],
-      "url": "\u003chttps|http\u003e://oosa.docker.localhost/api/test-auth"
+      "url": "\u003chttps|http\u003e://oosa.docker.localhost/api/test-no-auth"
+    },
+    "authenticators": [
+      {
+        "handler": "anonymous",
+        "config": {
+          "subject": "guest"
+        }
+      }
+    ],
+    "authorizer": {
+      "handler": "allow",
+      "config": {}
+    },
+    "mutators": [
+      {
+        "handler": "header",
+        "config": {}
+      }
+    ],
+    "errors": [
+      {
+        "handler": "json",
+        "config": {}
+      }
+    ],
+    "upstream": {
+      "preserve_host": false,
+      "strip_path": "",
+      "url": ""
+    }
+  },
+  {
+    "id": "rule--0",
+    "version": "",
+    "description": "",
+    "match": {
+      "methods": [
+        "GET"
+      ],
+      "url": "\u003chttps|http\u003e://oosa.docker.localhost/api/user-following/\u003c[[:digit:]]+\u003e"
     },
     "authenticators": [
       {
@@ -3965,9 +4453,9 @@
     "description": "",
     "match": {
       "methods": [
-        "GET"
+        "DELETE"
       ],
-      "url": "\u003chttps|http\u003e://oosa.docker.localhost/api/event/cover/\u003c.*\u003e"
+      "url": "\u003chttps|http\u003e://oosa.docker.localhost/api/user-following/\u003c[[:digit:]]+\u003e"
     },
     "authenticators": [
       {
@@ -4057,9 +4545,49 @@
     "description": "",
     "match": {
       "methods": [
-        "DELETE"
+        "GET"
       ],
-      "url": "\u003chttps|http\u003e://oosa.docker.localhost/api/event/\u003c.*\u003e/participants/\u003c.*\u003e"
+      "url": "\u003chttps|http\u003e://oosa.docker.localhost/api/rewilding-searchText"
+    },
+    "authenticators": [
+      {
+        "handler": "anonymous",
+        "config": {
+          "subject": "guest"
+        }
+      }
+    ],
+    "authorizer": {
+      "handler": "allow",
+      "config": {}
+    },
+    "mutators": [
+      {
+        "handler": "header",
+        "config": {}
+      }
+    ],
+    "errors": [
+      {
+        "handler": "json",
+        "config": {}
+      }
+    ],
+    "upstream": {
+      "preserve_host": false,
+      "strip_path": "",
+      "url": ""
+    }
+  },
+  {
+    "id": "rule-create-event-0",
+    "version": "",
+    "description": "",
+    "match": {
+      "methods": [
+        "POST"
+      ],
+      "url": "\u003chttps|http\u003e://oosa.docker.localhost/api/news"
     },
     "authenticators": [
       {
@@ -4098,14 +4626,14 @@
     }
   },
   {
-    "id": "rule--0",
+    "id": "rule-create-event-0",
     "version": "",
     "description": "",
     "match": {
       "methods": [
         "GET"
       ],
-      "url": "\u003chttps|http\u003e://oosa.docker.localhost/api/user-following"
+      "url": "\u003chttps|http\u003e://oosa.docker.localhost/api/news"
     },
     "authenticators": [
       {
@@ -4151,7 +4679,7 @@
       "methods": [
         "POST"
       ],
-      "url": "\u003chttps|http\u003e://oosa.docker.localhost/api/user-following"
+      "url": "\u003chttps|http\u003e://oosa.docker.localhost/api/forget-password"
     },
     "authenticators": [
       {
@@ -4190,14 +4718,60 @@
     }
   },
   {
-    "id": "rule-getUserInfo-0",
+    "id": "rule--0",
+    "version": "",
+    "description": "",
+    "match": {
+      "methods": [
+        "PUT"
+      ],
+      "url": "\u003chttps|http\u003e://oosa.docker.localhost/api/auth/setting"
+    },
+    "authenticators": [
+      {
+        "handler": "cookie_session",
+        "config": {}
+      },
+      {
+        "handler": "bearer_token",
+        "config": {}
+      },
+      {
+        "handler": "unauthorized",
+        "config": null
+      }
+    ],
+    "authorizer": {
+      "handler": "allow",
+      "config": {}
+    },
+    "mutators": [
+      {
+        "handler": "header",
+        "config": {}
+      }
+    ],
+    "errors": [
+      {
+        "handler": "json",
+        "config": {}
+      }
+    ],
+    "upstream": {
+      "preserve_host": false,
+      "strip_path": "",
+      "url": ""
+    }
+  },
+  {
+    "id": "rule-get-my-events-0",
     "version": "",
     "description": "",
     "match": {
       "methods": [
         "GET"
       ],
-      "url": "\u003chttps|http\u003e://oosa.docker.localhost/api/user"
+      "url": "\u003chttps|http\u003e://oosa.docker.localhost/api/user/\u003c.*\u003e/badges"
     },
     "authenticators": [
       {
@@ -4236,14 +4810,14 @@
     }
   },
   {
-    "id": "rule-authByFacebook-0",
+    "id": "rule-authByGoogle-0",
     "version": "",
     "description": "",
     "match": {
       "methods": [
         "POST"
       ],
-      "url": "\u003chttps|http\u003e://oosa.docker.localhost/api/auth/facebook"
+      "url": "\u003chttps|http\u003e://oosa.docker.localhost/api/auth/google"
     },
     "authenticators": [
       {
@@ -4281,239 +4855,9 @@
     "description": "",
     "match": {
       "methods": [
-        "PUT"
+        "POST"
       ],
-      "url": "\u003chttps|http\u003e://oosa.docker.localhost/api/event-invitations/\u003c.*\u003e"
-    },
-    "authenticators": [
-      {
-        "handler": "cookie_session",
-        "config": {}
-      },
-      {
-        "handler": "bearer_token",
-        "config": {}
-      },
-      {
-        "handler": "unauthorized",
-        "config": null
-      }
-    ],
-    "authorizer": {
-      "handler": "allow",
-      "config": {}
-    },
-    "mutators": [
-      {
-        "handler": "header",
-        "config": {}
-      }
-    ],
-    "errors": [
-      {
-        "handler": "json",
-        "config": {}
-      }
-    ],
-    "upstream": {
-      "preserve_host": false,
-      "strip_path": "",
-      "url": ""
-    }
-  },
-  {
-    "id": "rule-delete-picket-list-0",
-    "version": "",
-    "description": "",
-    "match": {
-      "methods": [
-        "DELETE"
-      ],
-      "url": "\u003chttps|http\u003e://oosa.docker.localhost/api/pocket-list/\u003c.*\u003e"
-    },
-    "authenticators": [
-      {
-        "handler": "cookie_session",
-        "config": {}
-      },
-      {
-        "handler": "bearer_token",
-        "config": {}
-      },
-      {
-        "handler": "unauthorized",
-        "config": null
-      }
-    ],
-    "authorizer": {
-      "handler": "allow",
-      "config": {}
-    },
-    "mutators": [
-      {
-        "handler": "header",
-        "config": {}
-      }
-    ],
-    "errors": [
-      {
-        "handler": "json",
-        "config": {}
-      }
-    ],
-    "upstream": {
-      "preserve_host": false,
-      "strip_path": "",
-      "url": ""
-    }
-  },
-  {
-    "id": "rule--0",
-    "version": "",
-    "description": "",
-    "match": {
-      "methods": [
-        "GET"
-      ],
-      "url": "\u003chttps|http\u003e://oosa.docker.localhost/api/pocket-list/\u003c.*\u003e"
-    },
-    "authenticators": [
-      {
-        "handler": "cookie_session",
-        "config": {}
-      },
-      {
-        "handler": "bearer_token",
-        "config": {}
-      },
-      {
-        "handler": "unauthorized",
-        "config": null
-      }
-    ],
-    "authorizer": {
-      "handler": "allow",
-      "config": {}
-    },
-    "mutators": [
-      {
-        "handler": "header",
-        "config": {}
-      }
-    ],
-    "errors": [
-      {
-        "handler": "json",
-        "config": {}
-      }
-    ],
-    "upstream": {
-      "preserve_host": false,
-      "strip_path": "",
-      "url": ""
-    }
-  },
-  {
-    "id": "rule-update-pocket-list-0",
-    "version": "",
-    "description": "",
-    "match": {
-      "methods": [
-        "PUT"
-      ],
-      "url": "\u003chttps|http\u003e://oosa.docker.localhost/api/pocket-list/\u003c.*\u003e"
-    },
-    "authenticators": [
-      {
-        "handler": "cookie_session",
-        "config": {}
-      },
-      {
-        "handler": "bearer_token",
-        "config": {}
-      },
-      {
-        "handler": "unauthorized",
-        "config": null
-      }
-    ],
-    "authorizer": {
-      "handler": "allow",
-      "config": {}
-    },
-    "mutators": [
-      {
-        "handler": "header",
-        "config": {}
-      }
-    ],
-    "errors": [
-      {
-        "handler": "json",
-        "config": {}
-      }
-    ],
-    "upstream": {
-      "preserve_host": false,
-      "strip_path": "",
-      "url": ""
-    }
-  },
-  {
-    "id": "rule-getFriends-0",
-    "version": "",
-    "description": "",
-    "match": {
-      "methods": [
-        "GET"
-      ],
-      "url": "\u003chttps|http\u003e://oosa.docker.localhost/api/user/friends"
-    },
-    "authenticators": [
-      {
-        "handler": "cookie_session",
-        "config": {}
-      },
-      {
-        "handler": "bearer_token",
-        "config": {}
-      },
-      {
-        "handler": "unauthorized",
-        "config": null
-      }
-    ],
-    "authorizer": {
-      "handler": "allow",
-      "config": {}
-    },
-    "mutators": [
-      {
-        "handler": "header",
-        "config": {}
-      }
-    ],
-    "errors": [
-      {
-        "handler": "json",
-        "config": {}
-      }
-    ],
-    "upstream": {
-      "preserve_host": false,
-      "strip_path": "",
-      "url": ""
-    }
-  },
-  {
-    "id": "rule--0",
-    "version": "",
-    "description": "",
-    "match": {
-      "methods": [
-        "GET"
-      ],
-      "url": "\u003chttps|http\u003e://oosa.docker.localhost/api/collaborative-log/\u003c.*\u003e/polaroids"
+      "url": "\u003chttps|http\u003e://oosa.docker.localhost/api/event/\u003c.*\u003e/join"
     },
     "authenticators": [
       {
@@ -4559,7 +4903,7 @@
       "methods": [
         "POST"
       ],
-      "url": "\u003chttps|http\u003e://oosa.docker.localhost/api/collaborative-log/\u003c.*\u003e/polaroids"
+      "url": "\u003chttps|http\u003e://oosa.docker.localhost/api/forget-password/\u003c[[:digit:]]+\u003e"
     },
     "authenticators": [
       {
@@ -4690,272 +5034,14 @@
     }
   },
   {
-    "id": "rule-getNoAuthHeader-0",
+    "id": "rule-getAuthHeader-0",
     "version": "",
     "description": "",
     "match": {
       "methods": [
         "GET"
       ],
-      "url": "\u003chttps|http\u003e://oosa.docker.localhost/api/test-no-auth"
-    },
-    "authenticators": [
-      {
-        "handler": "anonymous",
-        "config": {
-          "subject": "guest"
-        }
-      }
-    ],
-    "authorizer": {
-      "handler": "allow",
-      "config": {}
-    },
-    "mutators": [
-      {
-        "handler": "header",
-        "config": {}
-      }
-    ],
-    "errors": [
-      {
-        "handler": "json",
-        "config": {}
-      }
-    ],
-    "upstream": {
-      "preserve_host": false,
-      "strip_path": "",
-      "url": ""
-    }
-  },
-  {
-    "id": "rule-getDoc-0",
-    "version": "",
-    "description": "",
-    "match": {
-      "methods": [
-        "GET"
-      ],
-      "url": "\u003chttps|http\u003e://oosa.docker.localhost/api/doc/{file}"
-    },
-    "authenticators": [
-      {
-        "handler": "anonymous",
-        "config": {
-          "subject": "guest"
-        }
-      }
-    ],
-    "authorizer": {
-      "handler": "allow",
-      "config": {}
-    },
-    "mutators": [
-      {
-        "handler": "header",
-        "config": {}
-      }
-    ],
-    "errors": [
-      {
-        "handler": "json",
-        "config": {}
-      }
-    ],
-    "upstream": {
-      "preserve_host": false,
-      "strip_path": "",
-      "url": ""
-    }
-  },
-  {
-    "id": "rule-get-rewilding-register-0",
-    "version": "",
-    "description": "",
-    "match": {
-      "methods": [
-        "GET"
-      ],
-      "url": "\u003chttps|http\u003e://oosa.docker.localhost/api/rewilding-register"
-    },
-    "authenticators": [
-      {
-        "handler": "cookie_session",
-        "config": {}
-      },
-      {
-        "handler": "bearer_token",
-        "config": {}
-      },
-      {
-        "handler": "unauthorized",
-        "config": null
-      }
-    ],
-    "authorizer": {
-      "handler": "allow",
-      "config": {}
-    },
-    "mutators": [
-      {
-        "handler": "header",
-        "config": {}
-      }
-    ],
-    "errors": [
-      {
-        "handler": "json",
-        "config": {}
-      }
-    ],
-    "upstream": {
-      "preserve_host": false,
-      "strip_path": "",
-      "url": ""
-    }
-  },
-  {
-    "id": "rule-create-rewilding-0",
-    "version": "",
-    "description": "",
-    "match": {
-      "methods": [
-        "POST"
-      ],
-      "url": "\u003chttps|http\u003e://oosa.docker.localhost/api/rewilding-register"
-    },
-    "authenticators": [
-      {
-        "handler": "cookie_session",
-        "config": {}
-      },
-      {
-        "handler": "bearer_token",
-        "config": {}
-      },
-      {
-        "handler": "unauthorized",
-        "config": null
-      }
-    ],
-    "authorizer": {
-      "handler": "allow",
-      "config": {}
-    },
-    "mutators": [
-      {
-        "handler": "header",
-        "config": {}
-      }
-    ],
-    "errors": [
-      {
-        "handler": "json",
-        "config": {}
-      }
-    ],
-    "upstream": {
-      "preserve_host": false,
-      "strip_path": "",
-      "url": ""
-    }
-  },
-  {
-    "id": "rule-get-events-0",
-    "version": "",
-    "description": "",
-    "match": {
-      "methods": [
-        "GET"
-      ],
-      "url": "\u003chttps|http\u003e://oosa.docker.localhost/api/event"
-    },
-    "authenticators": [
-      {
-        "handler": "anonymous",
-        "config": {
-          "subject": "guest"
-        }
-      }
-    ],
-    "authorizer": {
-      "handler": "allow",
-      "config": {}
-    },
-    "mutators": [
-      {
-        "handler": "header",
-        "config": {}
-      }
-    ],
-    "errors": [
-      {
-        "handler": "json",
-        "config": {}
-      }
-    ],
-    "upstream": {
-      "preserve_host": false,
-      "strip_path": "",
-      "url": ""
-    }
-  },
-  {
-    "id": "rule-create-event-0",
-    "version": "",
-    "description": "",
-    "match": {
-      "methods": [
-        "POST"
-      ],
-      "url": "\u003chttps|http\u003e://oosa.docker.localhost/api/event"
-    },
-    "authenticators": [
-      {
-        "handler": "cookie_session",
-        "config": {}
-      },
-      {
-        "handler": "bearer_token",
-        "config": {}
-      },
-      {
-        "handler": "unauthorized",
-        "config": null
-      }
-    ],
-    "authorizer": {
-      "handler": "allow",
-      "config": {}
-    },
-    "mutators": [
-      {
-        "handler": "header",
-        "config": {}
-      }
-    ],
-    "errors": [
-      {
-        "handler": "json",
-        "config": {}
-      }
-    ],
-    "upstream": {
-      "preserve_host": false,
-      "strip_path": "",
-      "url": ""
-    }
-  },
-  {
-    "id": "rule--0",
-    "version": "",
-    "description": "",
-    "match": {
-      "methods": [
-        "DELETE"
-      ],
-      "url": "\u003chttps|http\u003e://oosa.docker.localhost/api/user-following/\u003c[[:digit:]]+\u003e"
+      "url": "\u003chttps|http\u003e://oosa.docker.localhost/api/test-auth"
     },
     "authenticators": [
       {
@@ -5001,139 +5087,7 @@
       "methods": [
         "GET"
       ],
-      "url": "\u003chttps|http\u003e://oosa.docker.localhost/api/user-following/\u003c[[:digit:]]+\u003e"
-    },
-    "authenticators": [
-      {
-        "handler": "cookie_session",
-        "config": {}
-      },
-      {
-        "handler": "bearer_token",
-        "config": {}
-      },
-      {
-        "handler": "unauthorized",
-        "config": null
-      }
-    ],
-    "authorizer": {
-      "handler": "allow",
-      "config": {}
-    },
-    "mutators": [
-      {
-        "handler": "header",
-        "config": {}
-      }
-    ],
-    "errors": [
-      {
-        "handler": "json",
-        "config": {}
-      }
-    ],
-    "upstream": {
-      "preserve_host": false,
-      "strip_path": "",
-      "url": ""
-    }
-  },
-  {
-    "id": "rule--0",
-    "version": "",
-    "description": "",
-    "match": {
-      "methods": [
-        "GET"
-      ],
-      "url": "\u003chttps|http\u003e://oosa.docker.localhost/api/event-invitation/\u003c.*\u003e"
-    },
-    "authenticators": [
-      {
-        "handler": "cookie_session",
-        "config": {}
-      },
-      {
-        "handler": "bearer_token",
-        "config": {}
-      },
-      {
-        "handler": "unauthorized",
-        "config": null
-      }
-    ],
-    "authorizer": {
-      "handler": "allow",
-      "config": {}
-    },
-    "mutators": [
-      {
-        "handler": "header",
-        "config": {}
-      }
-    ],
-    "errors": [
-      {
-        "handler": "json",
-        "config": {}
-      }
-    ],
-    "upstream": {
-      "preserve_host": false,
-      "strip_path": "",
-      "url": ""
-    }
-  },
-  {
-    "id": "rule--0",
-    "version": "",
-    "description": "",
-    "match": {
-      "methods": [
-        "GET"
-      ],
-      "url": "\u003chttps|http\u003e://oosa.docker.localhost/api/rewilding-searchNearby"
-    },
-    "authenticators": [
-      {
-        "handler": "anonymous",
-        "config": {
-          "subject": "guest"
-        }
-      }
-    ],
-    "authorizer": {
-      "handler": "allow",
-      "config": {}
-    },
-    "mutators": [
-      {
-        "handler": "header",
-        "config": {}
-      }
-    ],
-    "errors": [
-      {
-        "handler": "json",
-        "config": {}
-      }
-    ],
-    "upstream": {
-      "preserve_host": false,
-      "strip_path": "",
-      "url": ""
-    }
-  },
-  {
-    "id": "rule--0",
-    "version": "",
-    "description": "",
-    "match": {
-      "methods": [
-        "GET"
-      ],
-      "url": "\u003chttps|http\u003e://oosa.docker.localhost/api/event/\u003c.*\u003e/accounting"
+      "url": "\u003chttps|http\u003e://oosa.docker.localhost/api/event/\u003c.*\u003e/reference-links"
     },
     "authenticators": [
       {
@@ -5179,7 +5133,53 @@
       "methods": [
         "POST"
       ],
-      "url": "\u003chttps|http\u003e://oosa.docker.localhost/api/event/\u003c.*\u003e/accounting"
+      "url": "\u003chttps|http\u003e://oosa.docker.localhost/api/event/\u003c.*\u003e/reference-links"
+    },
+    "authenticators": [
+      {
+        "handler": "cookie_session",
+        "config": {}
+      },
+      {
+        "handler": "bearer_token",
+        "config": {}
+      },
+      {
+        "handler": "unauthorized",
+        "config": null
+      }
+    ],
+    "authorizer": {
+      "handler": "allow",
+      "config": {}
+    },
+    "mutators": [
+      {
+        "handler": "header",
+        "config": {}
+      }
+    ],
+    "errors": [
+      {
+        "handler": "json",
+        "config": {}
+      }
+    ],
+    "upstream": {
+      "preserve_host": false,
+      "strip_path": "",
+      "url": ""
+    }
+  },
+  {
+    "id": "rule-get-my-events-0",
+    "version": "",
+    "description": "",
+    "match": {
+      "methods": [
+        "GET"
+      ],
+      "url": "\u003chttps|http\u003e://oosa.docker.localhost/api/user/statistics"
     },
     "authenticators": [
       {

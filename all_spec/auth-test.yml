@@ -41,6 +41,14 @@ paths:
       deprecated: false
       description: Get doc content
       operationId: getDoc
+      parameters:
+        - name: file
+          in: path
+          description: String ID of the event
+          required: true
+          example: ''
+          schema:
+            type: string
       responses:
         '200':
           description: Array of EventMessageBoard Object

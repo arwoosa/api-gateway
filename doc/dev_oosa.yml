@@ -717,6 +717,14 @@ paths:
       summary: get-doc
       description: Get doc content
       operationId: getDoc
+      parameters:
+      - name: file
+        in: path
+        description: String ID of the event
+        required: true
+        schema:
+          type: string
+        example: ""
       responses:
         "200":
           description: Array of EventMessageBoard Object
