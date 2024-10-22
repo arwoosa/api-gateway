@@ -1,5 +1,5 @@
 servers:
-- url: http://user
+- url: http://oosa_user:6080
   description: OOSA_USER_SERVICE
 openapi: 3.1.0
 info:
