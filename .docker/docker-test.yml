@@ -42,7 +42,7 @@ services:
     command: serve --config=/etc/config/oathkeeper/config.yaml
     volumes:
       - type: bind
-        source: ./oathkeeper
+        source: ../oathkeeper
         target: /etc/config/oathkeeper
     restart: on-failure
     networks:
