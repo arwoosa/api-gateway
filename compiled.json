@@ -42,7 +42,77 @@
     },
     
     {
-    "endpoint": "/event/{eventId}/participants/{participantId}",
+    "endpoint": "/rewilding-register/references",
+    "method": "GET",
+    "input_headers": [
+        "User-Agent",
+        "Authorization",
+        "Content-Type",
+        "Host",
+        "Connection",
+        "X-User",
+        "X-Userid",
+        "X-Email",
+        "X-Name",
+        "X-Language"
+    ],
+    
+    "output_encoding": "no-op",
+    "extra_config": {
+      "qos/ratelimit/router": {
+    "max_rate": 50,
+    "client_max_rate": 10,
+    "strategy": "ip"
+}
+    },
+    "backend": [
+      {
+        "url_pattern": "/rewilding-register/references",
+        "method": "GET",
+        "encoding": "no-op",
+        "host": ["http://oosa_rewild:6080"],
+        "extra_config": {
+          
+        }
+      }
+    ]},
+    {
+    "endpoint": "/collaborative-log/{eventId}/experience",
+    "method": "POST",
+    "input_headers": [
+        "User-Agent",
+        "Authorization",
+        "Content-Type",
+        "Host",
+        "Connection",
+        "X-User",
+        "X-Userid",
+        "X-Email",
+        "X-Name",
+        "X-Language"
+    ],
+    
+    "output_encoding": "no-op",
+    "extra_config": {
+      "qos/ratelimit/router": {
+    "max_rate": 50,
+    "client_max_rate": 10,
+    "strategy": "ip"
+}
+    },
+    "backend": [
+      {
+        "url_pattern": "/collaborative-log/{eventId}/experience",
+        "method": "POST",
+        "encoding": "no-op",
+        "host": ["http://oosa_rewild:6080"],
+        "extra_config": {
+          
+        }
+      }
+    ]},
+    {
+    "endpoint": "/event/{eventId}/accounting/{accountingId}",
     "method": "DELETE",
     "input_headers": [
         "User-Agent",
@@ -67,7 +137,7 @@
     },
     "backend": [
       {
-        "url_pattern": "/event/{eventId}/participants/{participantId}",
+        "url_pattern": "/event/{eventId}/accounting/{accountingId}",
         "method": "DELETE",
         "encoding": "no-op",
         "host": ["http://oosa_rewild:6080"],
@@ -77,42 +147,7 @@
       }
     ]},
     {
-    "endpoint": "/pocket-list/{pocketListId}/items",
-    "method": "DELETE",
-    "input_headers": [
-        "User-Agent",
-        "Authorization",
-        "Content-Type",
-        "Host",
-        "Connection",
-        "X-User",
-        "X-Userid",
-        "X-Email",
-        "X-Name",
-        "X-Language"
-    ],
-    
-    "output_encoding": "no-op",
-    "extra_config": {
-      "qos/ratelimit/router": {
-    "max_rate": 50,
-    "client_max_rate": 10,
-    "strategy": "ip"
-}
-    },
-    "backend": [
-      {
-        "url_pattern": "/pocket-list/{pocketListId}/items",
-        "method": "DELETE",
-        "encoding": "no-op",
-        "host": ["http://oosa_rewild:6080"],
-        "extra_config": {
-          
-        }
-      }
-    ]},
-    {
-    "endpoint": "/pocket-list/{pocketListId}/items",
+    "endpoint": "/event/{eventId}/accounting/{accountingId}",
     "method": "GET",
     "input_headers": [
         "User-Agent",
@@ -137,7 +172,7 @@
     },
     "backend": [
       {
-        "url_pattern": "/pocket-list/{pocketListId}/items",
+        "url_pattern": "/event/{eventId}/accounting/{accountingId}",
         "method": "GET",
         "encoding": "no-op",
         "host": ["http://oosa_rewild:6080"],
@@ -147,42 +182,7 @@
       }
     ]},
     {
-    "endpoint": "/pocket-list/{pocketListId}/items",
-    "method": "POST",
-    "input_headers": [
-        "User-Agent",
-        "Authorization",
-        "Content-Type",
-        "Host",
-        "Connection",
-        "X-User",
-        "X-Userid",
-        "X-Email",
-        "X-Name",
-        "X-Language"
-    ],
-    
-    "output_encoding": "no-op",
-    "extra_config": {
-      "qos/ratelimit/router": {
-    "max_rate": 50,
-    "client_max_rate": 10,
-    "strategy": "ip"
-}
-    },
-    "backend": [
-      {
-        "url_pattern": "/pocket-list/{pocketListId}/items",
-        "method": "POST",
-        "encoding": "no-op",
-        "host": ["http://oosa_rewild:6080"],
-        "extra_config": {
-          
-        }
-      }
-    ]},
-    {
-    "endpoint": "/pocket-list/{pocketListId}/items",
+    "endpoint": "/event/{eventId}/accounting/{accountingId}",
     "method": "PUT",
     "input_headers": [
         "User-Agent",
@@ -207,7 +207,7 @@
     },
     "backend": [
       {
-        "url_pattern": "/pocket-list/{pocketListId}/items",
+        "url_pattern": "/event/{eventId}/accounting/{accountingId}",
         "method": "PUT",
         "encoding": "no-op",
         "host": ["http://oosa_rewild:6080"],
@@ -217,42 +217,7 @@
       }
     ]},
     {
-    "endpoint": "/rewilding-register",
-    "method": "GET",
-    "input_headers": [
-        "User-Agent",
-        "Authorization",
-        "Content-Type",
-        "Host",
-        "Connection",
-        "X-User",
-        "X-Userid",
-        "X-Email",
-        "X-Name",
-        "X-Language"
-    ],
-    
-    "output_encoding": "no-op",
-    "extra_config": {
-      "qos/ratelimit/router": {
-    "max_rate": 50,
-    "client_max_rate": 10,
-    "strategy": "ip"
-}
-    },
-    "backend": [
-      {
-        "url_pattern": "/rewilding-register",
-        "method": "GET",
-        "encoding": "no-op",
-        "host": ["http://oosa_rewild:6080"],
-        "extra_config": {
-          
-        }
-      }
-    ]},
-    {
-    "endpoint": "/rewilding-register",
+    "endpoint": "/event/{eventId}/announcement",
     "method": "POST",
     "input_headers": [
         "User-Agent",
@@ -277,7 +242,7 @@
     },
     "backend": [
       {
-        "url_pattern": "/rewilding-register",
+        "url_pattern": "/event/{eventId}/announcement",
         "method": "POST",
         "encoding": "no-op",
         "host": ["http://oosa_rewild:6080"],
@@ -287,7 +252,42 @@
       }
     ]},
     {
-    "endpoint": "/rewilding/{rewildingId}/photos",
+    "endpoint": "/event/{eventId}/announcement",
+    "method": "GET",
+    "input_headers": [
+        "User-Agent",
+        "Authorization",
+        "Content-Type",
+        "Host",
+        "Connection",
+        "X-User",
+        "X-Userid",
+        "X-Email",
+        "X-Name",
+        "X-Language"
+    ],
+    "input_query_strings": ["category"],
+    "output_encoding": "no-op",
+    "extra_config": {
+      "qos/ratelimit/router": {
+    "max_rate": 50,
+    "client_max_rate": 10,
+    "strategy": "ip"
+}
+    },
+    "backend": [
+      {
+        "url_pattern": "/event/{eventId}/announcement",
+        "method": "GET",
+        "encoding": "no-op",
+        "host": ["http://oosa_rewild:6080"],
+        "extra_config": {
+          
+        }
+      }
+    ]},
+    {
+    "endpoint": "/rewilding/{rewildingId}/photos/{photoId}",
     "method": "GET",
     "input_headers": [
         "User-Agent",
@@ -312,7 +312,7 @@
     },
     "backend": [
       {
-        "url_pattern": "/rewilding/{rewildingId}/photos",
+        "url_pattern": "/rewilding/{rewildingId}/photos/{photoId}",
         "method": "GET",
         "encoding": "no-op",
         "host": ["http://oosa_rewild:6080"],
@@ -322,8 +322,8 @@
       }
     ]},
     {
-    "endpoint": "/pocket-list/{pocketListId}",
-    "method": "PUT",
+    "endpoint": "/user/friends",
+    "method": "GET",
     "input_headers": [
         "User-Agent",
         "Authorization",
@@ -336,7 +336,7 @@
         "X-Name",
         "X-Language"
     ],
-    
+    "input_query_strings": ["name"],
     "output_encoding": "no-op",
     "extra_config": {
       "qos/ratelimit/router": {
@@ -347,52 +347,17 @@
     },
     "backend": [
       {
-        "url_pattern": "/pocket-list/{pocketListId}",
-        "method": "PUT",
+        "url_pattern": "/user/friends",
+        "method": "GET",
         "encoding": "no-op",
-        "host": ["http://oosa_rewild:6080"],
+        "host": ["http://user"],
         "extra_config": {
           
         }
       }
     ]},
     {
-    "endpoint": "/pocket-list/{pocketListId}",
-    "method": "DELETE",
-    "input_headers": [
-        "User-Agent",
-        "Authorization",
-        "Content-Type",
-        "Host",
-        "Connection",
-        "X-User",
-        "X-Userid",
-        "X-Email",
-        "X-Name",
-        "X-Language"
-    ],
-    
-    "output_encoding": "no-op",
-    "extra_config": {
-      "qos/ratelimit/router": {
-    "max_rate": 50,
-    "client_max_rate": 10,
-    "strategy": "ip"
-}
-    },
-    "backend": [
-      {
-        "url_pattern": "/pocket-list/{pocketListId}",
-        "method": "DELETE",
-        "encoding": "no-op",
-        "host": ["http://oosa_rewild:6080"],
-        "extra_config": {
-          
-        }
-      }
-    ]},
-    {
-    "endpoint": "/pocket-list/{pocketListId}",
+    "endpoint": "/collaborative-log/{eventId}/album-link",
     "method": "GET",
     "input_headers": [
         "User-Agent",
@@ -417,7 +382,7 @@
     },
     "backend": [
       {
-        "url_pattern": "/pocket-list/{pocketListId}",
+        "url_pattern": "/collaborative-log/{eventId}/album-link",
         "method": "GET",
         "encoding": "no-op",
         "host": ["http://oosa_rewild:6080"],
@@ -427,7 +392,7 @@
       }
     ]},
     {
-    "endpoint": "/collaborative-log/{eventId}/questionnaire",
+    "endpoint": "/collaborative-log/{eventId}/album-link",
     "method": "POST",
     "input_headers": [
         "User-Agent",
@@ -452,1023 +417,8 @@
     },
     "backend": [
       {
-        "url_pattern": "/collaborative-log/{eventId}/questionnaire",
+        "url_pattern": "/collaborative-log/{eventId}/album-link",
         "method": "POST",
-        "encoding": "no-op",
-        "host": ["http://oosa_rewild:6080"],
-        "extra_config": {
-          
-        }
-      }
-    ]},
-    {
-    "endpoint": "/auth/apple",
-    "method": "POST",
-    "input_headers": [
-        "User-Agent",
-        "Authorization",
-        "Content-Type",
-        "Host",
-        "Connection",
-        "X-User",
-        "X-Userid",
-        "X-Email",
-        "X-Name",
-        "X-Language"
-    ],
-    
-    "output_encoding": "no-op",
-    "extra_config": {
-      "qos/ratelimit/router": {
-    "max_rate": 50,
-    "client_max_rate": 10,
-    "strategy": "ip"
-}
-    },
-    "backend": [
-      {
-        "url_pattern": "/auth/apple",
-        "method": "POST",
-        "encoding": "no-op",
-        "host": ["http://user"],
-        "extra_config": {
-          
-        }
-      }
-    ]},
-    {
-    "endpoint": "/auth",
-    "method": "GET",
-    "input_headers": [
-        "User-Agent",
-        "Authorization",
-        "Content-Type",
-        "Host",
-        "Connection",
-        "X-User",
-        "X-Userid",
-        "X-Email",
-        "X-Name",
-        "X-Language"
-    ],
-    
-    "output_encoding": "no-op",
-    "extra_config": {
-      "qos/ratelimit/router": {
-    "max_rate": 50,
-    "client_max_rate": 10,
-    "strategy": "ip"
-}
-    },
-    "backend": [
-      {
-        "url_pattern": "/auth",
-        "method": "GET",
-        "encoding": "no-op",
-        "host": ["http://user"],
-        "extra_config": {
-          
-        }
-      }
-    ]},
-    {
-    "endpoint": "/auth",
-    "method": "PUT",
-    "input_headers": [
-        "User-Agent",
-        "Authorization",
-        "Content-Type",
-        "Host",
-        "Connection",
-        "X-User",
-        "X-Userid",
-        "X-Email",
-        "X-Name",
-        "X-Language"
-    ],
-    
-    "output_encoding": "no-op",
-    "extra_config": {
-      "qos/ratelimit/router": {
-    "max_rate": 50,
-    "client_max_rate": 10,
-    "strategy": "ip"
-}
-    },
-    "backend": [
-      {
-        "url_pattern": "/auth",
-        "method": "PUT",
-        "encoding": "no-op",
-        "host": ["http://user"],
-        "extra_config": {
-          
-        }
-      }
-    ]},
-    {
-    "endpoint": "/auth/badges",
-    "method": "GET",
-    "input_headers": [
-        "User-Agent",
-        "Authorization",
-        "Content-Type",
-        "Host",
-        "Connection",
-        "X-User",
-        "X-Userid",
-        "X-Email",
-        "X-Name",
-        "X-Language"
-    ],
-    "input_query_strings": ["single"],
-    "output_encoding": "no-op",
-    "extra_config": {
-      "qos/ratelimit/router": {
-    "max_rate": 50,
-    "client_max_rate": 10,
-    "strategy": "ip"
-}
-    },
-    "backend": [
-      {
-        "url_pattern": "/auth/badges",
-        "method": "GET",
-        "encoding": "no-op",
-        "host": ["http://user"],
-        "extra_config": {
-          
-        }
-      }
-    ]},
-    {
-    "endpoint": "/auth/facebook",
-    "method": "POST",
-    "input_headers": [
-        "User-Agent",
-        "Authorization",
-        "Content-Type",
-        "Host",
-        "Connection",
-        "X-User",
-        "X-Userid",
-        "X-Email",
-        "X-Name",
-        "X-Language"
-    ],
-    
-    "output_encoding": "no-op",
-    "extra_config": {
-      "qos/ratelimit/router": {
-    "max_rate": 50,
-    "client_max_rate": 10,
-    "strategy": "ip"
-}
-    },
-    "backend": [
-      {
-        "url_pattern": "/auth/facebook",
-        "method": "POST",
-        "encoding": "no-op",
-        "host": ["http://user"],
-        "extra_config": {
-          
-        }
-      }
-    ]},
-    {
-    "endpoint": "/auth/notifications",
-    "method": "GET",
-    "input_headers": [
-        "User-Agent",
-        "Authorization",
-        "Content-Type",
-        "Host",
-        "Connection",
-        "X-User",
-        "X-Userid",
-        "X-Email",
-        "X-Name",
-        "X-Language"
-    ],
-    
-    "output_encoding": "no-op",
-    "extra_config": {
-      "qos/ratelimit/router": {
-    "max_rate": 50,
-    "client_max_rate": 10,
-    "strategy": "ip"
-}
-    },
-    "backend": [
-      {
-        "url_pattern": "/auth/notifications",
-        "method": "GET",
-        "encoding": "no-op",
-        "host": ["http://user"],
-        "extra_config": {
-          
-        }
-      }
-    ]},
-    {
-    "endpoint": "/doc/{file}",
-    "method": "GET",
-    "input_headers": [
-        "User-Agent",
-        "Authorization",
-        "Content-Type",
-        "Host",
-        "Connection",
-        "X-User",
-        "X-Userid",
-        "X-Email",
-        "X-Name",
-        "X-Language"
-    ],
-    
-    "output_encoding": "no-op",
-    "extra_config": {
-      "qos/ratelimit/router": {
-    "max_rate": 50,
-    "client_max_rate": 10,
-    "strategy": "ip"
-}
-    },
-    "backend": [
-      {
-        "url_pattern": "/doc/{file}",
-        "method": "GET",
-        "encoding": "no-op",
-        "host": ["http://oosa_auth_test:6080"],
-        "extra_config": {
-          
-        }
-      }
-    ]},
-    {
-    "endpoint": "/rewilding-search",
-    "method": "GET",
-    "input_headers": [
-        "User-Agent",
-        "Authorization",
-        "Content-Type",
-        "Host",
-        "Connection",
-        "X-User",
-        "X-Userid",
-        "X-Email",
-        "X-Name",
-        "X-Language"
-    ],
-    "input_query_strings": ["lat","lng","type","search"],
-    "output_encoding": "no-op",
-    "extra_config": {
-      "qos/ratelimit/router": {
-    "max_rate": 50,
-    "client_max_rate": 10,
-    "strategy": "ip"
-}
-    },
-    "backend": [
-      {
-        "url_pattern": "/rewilding-search",
-        "method": "GET",
-        "encoding": "no-op",
-        "host": ["http://oosa_rewild:6080"],
-        "extra_config": {
-          
-        }
-      }
-    ]},
-    {
-    "endpoint": "/event/{eventId}/message-board/{messageBoardId}",
-    "method": "DELETE",
-    "input_headers": [
-        "User-Agent",
-        "Authorization",
-        "Content-Type",
-        "Host",
-        "Connection",
-        "X-User",
-        "X-Userid",
-        "X-Email",
-        "X-Name",
-        "X-Language"
-    ],
-    
-    "output_encoding": "no-op",
-    "extra_config": {
-      "qos/ratelimit/router": {
-    "max_rate": 50,
-    "client_max_rate": 10,
-    "strategy": "ip"
-}
-    },
-    "backend": [
-      {
-        "url_pattern": "/event/{eventId}/message-board/{messageBoardId}",
-        "method": "DELETE",
-        "encoding": "no-op",
-        "host": ["http://oosa_rewild:6080"],
-        "extra_config": {
-          
-        }
-      }
-    ]},
-    {
-    "endpoint": "/event/{eventId}/message-board/{messageBoardId}",
-    "method": "GET",
-    "input_headers": [
-        "User-Agent",
-        "Authorization",
-        "Content-Type",
-        "Host",
-        "Connection",
-        "X-User",
-        "X-Userid",
-        "X-Email",
-        "X-Name",
-        "X-Language"
-    ],
-    
-    "output_encoding": "no-op",
-    "extra_config": {
-      "qos/ratelimit/router": {
-    "max_rate": 50,
-    "client_max_rate": 10,
-    "strategy": "ip"
-}
-    },
-    "backend": [
-      {
-        "url_pattern": "/event/{eventId}/message-board/{messageBoardId}",
-        "method": "GET",
-        "encoding": "no-op",
-        "host": ["http://oosa_rewild:6080"],
-        "extra_config": {
-          
-        }
-      }
-    ]},
-    {
-    "endpoint": "/event/{eventId}/message-board/{messageBoardId}",
-    "method": "PUT",
-    "input_headers": [
-        "User-Agent",
-        "Authorization",
-        "Content-Type",
-        "Host",
-        "Connection",
-        "X-User",
-        "X-Userid",
-        "X-Email",
-        "X-Name",
-        "X-Language"
-    ],
-    
-    "output_encoding": "no-op",
-    "extra_config": {
-      "qos/ratelimit/router": {
-    "max_rate": 50,
-    "client_max_rate": 10,
-    "strategy": "ip"
-}
-    },
-    "backend": [
-      {
-        "url_pattern": "/event/{eventId}/message-board/{messageBoardId}",
-        "method": "PUT",
-        "encoding": "no-op",
-        "host": ["http://oosa_rewild:6080"],
-        "extra_config": {
-          
-        }
-      }
-    ]},
-    {
-    "endpoint": "/event",
-    "method": "POST",
-    "input_headers": [
-        "User-Agent",
-        "Authorization",
-        "Content-Type",
-        "Host",
-        "Connection",
-        "X-User",
-        "X-Userid",
-        "X-Email",
-        "X-Name",
-        "X-Language"
-    ],
-    
-    "output_encoding": "no-op",
-    "extra_config": {
-      "qos/ratelimit/router": {
-    "max_rate": 50,
-    "client_max_rate": 10,
-    "strategy": "ip"
-}
-    },
-    "backend": [
-      {
-        "url_pattern": "/event",
-        "method": "POST",
-        "encoding": "no-op",
-        "host": ["http://oosa_rewild:6080"],
-        "extra_config": {
-          
-        }
-      }
-    ]},
-    {
-    "endpoint": "/event",
-    "method": "GET",
-    "input_headers": [
-        "User-Agent",
-        "Authorization",
-        "Content-Type",
-        "Host",
-        "Connection",
-        "X-User",
-        "X-Userid",
-        "X-Email",
-        "X-Name",
-        "X-Language"
-    ],
-    "input_query_strings": ["event_period_begin","event_period_end","event_rewilding","event_past"],
-    "output_encoding": "no-op",
-    "extra_config": {
-      "qos/ratelimit/router": {
-    "max_rate": 50,
-    "client_max_rate": 10,
-    "strategy": "ip"
-}
-    },
-    "backend": [
-      {
-        "url_pattern": "/event",
-        "method": "GET",
-        "encoding": "no-op",
-        "host": ["http://oosa_rewild:6080"],
-        "extra_config": {
-          
-        }
-      }
-    ]},
-    {
-    "endpoint": "/rewilding/places/{place_id}",
-    "method": "GET",
-    "input_headers": [
-        "User-Agent",
-        "Authorization",
-        "Content-Type",
-        "Host",
-        "Connection",
-        "X-User",
-        "X-Userid",
-        "X-Email",
-        "X-Name",
-        "X-Language"
-    ],
-    
-    "output_encoding": "no-op",
-    "extra_config": {
-      "qos/ratelimit/router": {
-    "max_rate": 50,
-    "client_max_rate": 10,
-    "strategy": "ip"
-}
-    },
-    "backend": [
-      {
-        "url_pattern": "/rewilding/places/{place_id}",
-        "method": "GET",
-        "encoding": "no-op",
-        "host": ["http://oosa_rewild:6080"],
-        "extra_config": {
-          
-        }
-      }
-    ]},
-    {
-    "endpoint": "/auth/email",
-    "method": "POST",
-    "input_headers": [
-        "User-Agent",
-        "Authorization",
-        "Content-Type",
-        "Host",
-        "Connection",
-        "X-User",
-        "X-Userid",
-        "X-Email",
-        "X-Name",
-        "X-Language"
-    ],
-    
-    "output_encoding": "no-op",
-    "extra_config": {
-      "qos/ratelimit/router": {
-    "max_rate": 50,
-    "client_max_rate": 10,
-    "strategy": "ip"
-}
-    },
-    "backend": [
-      {
-        "url_pattern": "/auth/email",
-        "method": "POST",
-        "encoding": "no-op",
-        "host": ["http://user"],
-        "extra_config": {
-          
-        }
-      }
-    ]},
-    {
-    "endpoint": "/auth/change-password",
-    "method": "PUT",
-    "input_headers": [
-        "User-Agent",
-        "Authorization",
-        "Content-Type",
-        "Host",
-        "Connection",
-        "X-User",
-        "X-Userid",
-        "X-Email",
-        "X-Name",
-        "X-Language"
-    ],
-    
-    "output_encoding": "no-op",
-    "extra_config": {
-      "qos/ratelimit/router": {
-    "max_rate": 50,
-    "client_max_rate": 10,
-    "strategy": "ip"
-}
-    },
-    "backend": [
-      {
-        "url_pattern": "/auth/change-password",
-        "method": "PUT",
-        "encoding": "no-op",
-        "host": ["http://user"],
-        "extra_config": {
-          
-        }
-      }
-    ]},
-    {
-    "endpoint": "/user/{userId}/event",
-    "method": "GET",
-    "input_headers": [
-        "User-Agent",
-        "Authorization",
-        "Content-Type",
-        "Host",
-        "Connection",
-        "X-User",
-        "X-Userid",
-        "X-Email",
-        "X-Name",
-        "X-Language"
-    ],
-    "input_query_strings": ["past","country_code"],
-    "output_encoding": "no-op",
-    "extra_config": {
-      "qos/ratelimit/router": {
-    "max_rate": 50,
-    "client_max_rate": 10,
-    "strategy": "ip"
-}
-    },
-    "backend": [
-      {
-        "url_pattern": "/user/{userId}/event",
-        "method": "GET",
-        "encoding": "no-op",
-        "host": ["http://oosa_rewild:6080"],
-        "extra_config": {
-          
-        }
-      }
-    ]},
-    {
-    "endpoint": "/world/statistics",
-    "method": "GET",
-    "input_headers": [
-        "User-Agent",
-        "Authorization",
-        "Content-Type",
-        "Host",
-        "Connection",
-        "X-User",
-        "X-Userid",
-        "X-Email",
-        "X-Name",
-        "X-Language"
-    ],
-    
-    "output_encoding": "no-op",
-    "extra_config": {
-      "qos/ratelimit/router": {
-    "max_rate": 50,
-    "client_max_rate": 10,
-    "strategy": "ip"
-}
-    },
-    "backend": [
-      {
-        "url_pattern": "/world/statistics",
-        "method": "GET",
-        "encoding": "no-op",
-        "host": ["http://user"],
-        "extra_config": {
-          
-        }
-      }
-    ]},
-    {
-    "endpoint": "/event/{eventId}",
-    "method": "PUT",
-    "input_headers": [
-        "User-Agent",
-        "Authorization",
-        "Content-Type",
-        "Host",
-        "Connection",
-        "X-User",
-        "X-Userid",
-        "X-Email",
-        "X-Name",
-        "X-Language"
-    ],
-    
-    "output_encoding": "no-op",
-    "extra_config": {
-      "qos/ratelimit/router": {
-    "max_rate": 50,
-    "client_max_rate": 10,
-    "strategy": "ip"
-}
-    },
-    "backend": [
-      {
-        "url_pattern": "/event/{eventId}",
-        "method": "PUT",
-        "encoding": "no-op",
-        "host": ["http://oosa_rewild:6080"],
-        "extra_config": {
-          
-        }
-      }
-    ]},
-    {
-    "endpoint": "/event/{eventId}",
-    "method": "DELETE",
-    "input_headers": [
-        "User-Agent",
-        "Authorization",
-        "Content-Type",
-        "Host",
-        "Connection",
-        "X-User",
-        "X-Userid",
-        "X-Email",
-        "X-Name",
-        "X-Language"
-    ],
-    
-    "output_encoding": "no-op",
-    "extra_config": {
-      "qos/ratelimit/router": {
-    "max_rate": 50,
-    "client_max_rate": 10,
-    "strategy": "ip"
-}
-    },
-    "backend": [
-      {
-        "url_pattern": "/event/{eventId}",
-        "method": "DELETE",
-        "encoding": "no-op",
-        "host": ["http://oosa_rewild:6080"],
-        "extra_config": {
-          
-        }
-      }
-    ]},
-    {
-    "endpoint": "/event/{eventId}",
-    "method": "GET",
-    "input_headers": [
-        "User-Agent",
-        "Authorization",
-        "Content-Type",
-        "Host",
-        "Connection",
-        "X-User",
-        "X-Userid",
-        "X-Email",
-        "X-Name",
-        "X-Language"
-    ],
-    
-    "output_encoding": "no-op",
-    "extra_config": {
-      "qos/ratelimit/router": {
-    "max_rate": 50,
-    "client_max_rate": 10,
-    "strategy": "ip"
-}
-    },
-    "backend": [
-      {
-        "url_pattern": "/event/{eventId}",
-        "method": "GET",
-        "encoding": "no-op",
-        "host": ["http://oosa_rewild:6080"],
-        "extra_config": {
-          
-        }
-      }
-    ]},
-    {
-    "endpoint": "/collaborative-log/{eventId}/polaroids",
-    "method": "GET",
-    "input_headers": [
-        "User-Agent",
-        "Authorization",
-        "Content-Type",
-        "Host",
-        "Connection",
-        "X-User",
-        "X-Userid",
-        "X-Email",
-        "X-Name",
-        "X-Language"
-    ],
-    
-    "output_encoding": "no-op",
-    "extra_config": {
-      "qos/ratelimit/router": {
-    "max_rate": 50,
-    "client_max_rate": 10,
-    "strategy": "ip"
-}
-    },
-    "backend": [
-      {
-        "url_pattern": "/collaborative-log/{eventId}/polaroids",
-        "method": "GET",
-        "encoding": "no-op",
-        "host": ["http://oosa_rewild:6080"],
-        "extra_config": {
-          
-        }
-      }
-    ]},
-    {
-    "endpoint": "/collaborative-log/{eventId}/polaroids",
-    "method": "POST",
-    "input_headers": [
-        "User-Agent",
-        "Authorization",
-        "Content-Type",
-        "Host",
-        "Connection",
-        "X-User",
-        "X-Userid",
-        "X-Email",
-        "X-Name",
-        "X-Language"
-    ],
-    
-    "output_encoding": "no-op",
-    "extra_config": {
-      "qos/ratelimit/router": {
-    "max_rate": 50,
-    "client_max_rate": 10,
-    "strategy": "ip"
-}
-    },
-    "backend": [
-      {
-        "url_pattern": "/collaborative-log/{eventId}/polaroids",
-        "method": "POST",
-        "encoding": "no-op",
-        "host": ["http://oosa_rewild:6080"],
-        "extra_config": {
-          
-        }
-      }
-    ]},
-    {
-    "endpoint": "/rewilding-searchNearby",
-    "method": "GET",
-    "input_headers": [
-        "User-Agent",
-        "Authorization",
-        "Content-Type",
-        "Host",
-        "Connection",
-        "X-User",
-        "X-Userid",
-        "X-Email",
-        "X-Name",
-        "X-Language"
-    ],
-    "input_query_strings": ["type","lat","lng","radius","language"],
-    "output_encoding": "no-op",
-    "extra_config": {
-      "qos/ratelimit/router": {
-    "max_rate": 50,
-    "client_max_rate": 10,
-    "strategy": "ip"
-}
-    },
-    "backend": [
-      {
-        "url_pattern": "/rewilding-searchNearby",
-        "method": "GET",
-        "encoding": "no-op",
-        "host": ["http://oosa_rewild:6080"],
-        "extra_config": {
-          
-        }
-      }
-    ]},
-    {
-    "endpoint": "/pocket-list/{pocketListId}/items/{pocketListItemsId}",
-    "method": "DELETE",
-    "input_headers": [
-        "User-Agent",
-        "Authorization",
-        "Content-Type",
-        "Host",
-        "Connection",
-        "X-User",
-        "X-Userid",
-        "X-Email",
-        "X-Name",
-        "X-Language"
-    ],
-    
-    "output_encoding": "no-op",
-    "extra_config": {
-      "qos/ratelimit/router": {
-    "max_rate": 50,
-    "client_max_rate": 10,
-    "strategy": "ip"
-}
-    },
-    "backend": [
-      {
-        "url_pattern": "/pocket-list/{pocketListId}/items/{pocketListItemsId}",
-        "method": "DELETE",
-        "encoding": "no-op",
-        "host": ["http://oosa_rewild:6080"],
-        "extra_config": {
-          
-        }
-      }
-    ]},
-    {
-    "endpoint": "/pocket-list/{pocketListId}/items/{pocketListItemsId}",
-    "method": "GET",
-    "input_headers": [
-        "User-Agent",
-        "Authorization",
-        "Content-Type",
-        "Host",
-        "Connection",
-        "X-User",
-        "X-Userid",
-        "X-Email",
-        "X-Name",
-        "X-Language"
-    ],
-    
-    "output_encoding": "no-op",
-    "extra_config": {
-      "qos/ratelimit/router": {
-    "max_rate": 50,
-    "client_max_rate": 10,
-    "strategy": "ip"
-}
-    },
-    "backend": [
-      {
-        "url_pattern": "/pocket-list/{pocketListId}/items/{pocketListItemsId}",
-        "method": "GET",
-        "encoding": "no-op",
-        "host": ["http://oosa_rewild:6080"],
-        "extra_config": {
-          
-        }
-      }
-    ]},
-    {
-    "endpoint": "/pocket-list/{pocketListId}/items/{pocketListItemsId}",
-    "method": "PUT",
-    "input_headers": [
-        "User-Agent",
-        "Authorization",
-        "Content-Type",
-        "Host",
-        "Connection",
-        "X-User",
-        "X-Userid",
-        "X-Email",
-        "X-Name",
-        "X-Language"
-    ],
-    
-    "output_encoding": "no-op",
-    "extra_config": {
-      "qos/ratelimit/router": {
-    "max_rate": 50,
-    "client_max_rate": 10,
-    "strategy": "ip"
-}
-    },
-    "backend": [
-      {
-        "url_pattern": "/pocket-list/{pocketListId}/items/{pocketListItemsId}",
-        "method": "PUT",
-        "encoding": "no-op",
-        "host": ["http://oosa_rewild:6080"],
-        "extra_config": {
-          
-        }
-      }
-    ]},
-    {
-    "endpoint": "/register",
-    "method": "POST",
-    "input_headers": [
-        "User-Agent",
-        "Authorization",
-        "Content-Type",
-        "Host",
-        "Connection",
-        "X-User",
-        "X-Userid",
-        "X-Email",
-        "X-Name",
-        "X-Language"
-    ],
-    
-    "output_encoding": "no-op",
-    "extra_config": {
-      "qos/ratelimit/router": {
-    "max_rate": 50,
-    "client_max_rate": 10,
-    "strategy": "ip"
-}
-    },
-    "backend": [
-      {
-        "url_pattern": "/register",
-        "method": "POST",
-        "encoding": "no-op",
-        "host": ["http://user"],
-        "extra_config": {
-          
-        }
-      }
-    ]},
-    {
-    "endpoint": "/achievement",
-    "method": "GET",
-    "input_headers": [
-        "User-Agent",
-        "Authorization",
-        "Content-Type",
-        "Host",
-        "Connection",
-        "X-User",
-        "X-Userid",
-        "X-Email",
-        "X-Name",
-        "X-Language"
-    ],
-    "input_query_strings": ["achievement_type"],
-    "output_encoding": "no-op",
-    "extra_config": {
-      "qos/ratelimit/router": {
-    "max_rate": 50,
-    "client_max_rate": 10,
-    "strategy": "ip"
-}
-    },
-    "backend": [
-      {
-        "url_pattern": "/achievement",
-        "method": "GET",
         "encoding": "no-op",
         "host": ["http://oosa_rewild:6080"],
         "extra_config": {
@@ -1512,42 +462,7 @@
       }
     ]},
     {
-    "endpoint": "/auth/avatar",
-    "method": "POST",
-    "input_headers": [
-        "User-Agent",
-        "Authorization",
-        "Content-Type",
-        "Host",
-        "Connection",
-        "X-User",
-        "X-Userid",
-        "X-Email",
-        "X-Name",
-        "X-Language"
-    ],
-    
-    "output_encoding": "no-op",
-    "extra_config": {
-      "qos/ratelimit/router": {
-    "max_rate": 50,
-    "client_max_rate": 10,
-    "strategy": "ip"
-}
-    },
-    "backend": [
-      {
-        "url_pattern": "/auth/avatar",
-        "method": "POST",
-        "encoding": "no-op",
-        "host": ["http://user"],
-        "extra_config": {
-          
-        }
-      }
-    ]},
-    {
-    "endpoint": "/user-following/{userFollowingId}",
+    "endpoint": "/event/{eventId}",
     "method": "DELETE",
     "input_headers": [
         "User-Agent",
@@ -1572,17 +487,17 @@
     },
     "backend": [
       {
-        "url_pattern": "/user-following/{userFollowingId}",
+        "url_pattern": "/event/{eventId}",
         "method": "DELETE",
         "encoding": "no-op",
-        "host": ["http://user"],
+        "host": ["http://oosa_rewild:6080"],
         "extra_config": {
           
         }
       }
     ]},
     {
-    "endpoint": "/user-following/{userFollowingId}",
+    "endpoint": "/event/{eventId}",
     "method": "GET",
     "input_headers": [
         "User-Agent",
@@ -1607,112 +522,7 @@
     },
     "backend": [
       {
-        "url_pattern": "/user-following/{userFollowingId}",
-        "method": "GET",
-        "encoding": "no-op",
-        "host": ["http://user"],
-        "extra_config": {
-          
-        }
-      }
-    ]},
-    {
-    "endpoint": "/forget-password/{token}",
-    "method": "POST",
-    "input_headers": [
-        "User-Agent",
-        "Authorization",
-        "Content-Type",
-        "Host",
-        "Connection",
-        "X-User",
-        "X-Userid",
-        "X-Email",
-        "X-Name",
-        "X-Language"
-    ],
-    
-    "output_encoding": "no-op",
-    "extra_config": {
-      "qos/ratelimit/router": {
-    "max_rate": 50,
-    "client_max_rate": 10,
-    "strategy": "ip"
-}
-    },
-    "backend": [
-      {
-        "url_pattern": "/forget-password/{token}",
-        "method": "POST",
-        "encoding": "no-op",
-        "host": ["http://user"],
-        "extra_config": {
-          
-        }
-      }
-    ]},
-    {
-    "endpoint": "/link-query",
-    "method": "POST",
-    "input_headers": [
-        "User-Agent",
-        "Authorization",
-        "Content-Type",
-        "Host",
-        "Connection",
-        "X-User",
-        "X-Userid",
-        "X-Email",
-        "X-Name",
-        "X-Language"
-    ],
-    
-    "output_encoding": "no-op",
-    "extra_config": {
-      "qos/ratelimit/router": {
-    "max_rate": 50,
-    "client_max_rate": 10,
-    "strategy": "ip"
-}
-    },
-    "backend": [
-      {
-        "url_pattern": "/link-query",
-        "method": "POST",
-        "encoding": "no-op",
-        "host": ["http://oosa_rewild:6080"],
-        "extra_config": {
-          
-        }
-      }
-    ]},
-    {
-    "endpoint": "/event-invitation/{eventInvitationId}",
-    "method": "GET",
-    "input_headers": [
-        "User-Agent",
-        "Authorization",
-        "Content-Type",
-        "Host",
-        "Connection",
-        "X-User",
-        "X-Userid",
-        "X-Email",
-        "X-Name",
-        "X-Language"
-    ],
-    
-    "output_encoding": "no-op",
-    "extra_config": {
-      "qos/ratelimit/router": {
-    "max_rate": 50,
-    "client_max_rate": 10,
-    "strategy": "ip"
-}
-    },
-    "backend": [
-      {
-        "url_pattern": "/event-invitation/{eventInvitationId}",
+        "url_pattern": "/event/{eventId}",
         "method": "GET",
         "encoding": "no-op",
         "host": ["http://oosa_rewild:6080"],
@@ -1722,7 +532,7 @@
       }
     ]},
     {
-    "endpoint": "/auth/setting",
+    "endpoint": "/event/{eventId}",
     "method": "PUT",
     "input_headers": [
         "User-Agent",
@@ -1747,147 +557,7 @@
     },
     "backend": [
       {
-        "url_pattern": "/auth/setting",
-        "method": "PUT",
-        "encoding": "no-op",
-        "host": ["http://user"],
-        "extra_config": {
-          
-        }
-      }
-    ]},
-    {
-    "endpoint": "/collaborative-log",
-    "method": "GET",
-    "input_headers": [
-        "User-Agent",
-        "Authorization",
-        "Content-Type",
-        "Host",
-        "Connection",
-        "X-User",
-        "X-Userid",
-        "X-Email",
-        "X-Name",
-        "X-Language"
-    ],
-    
-    "output_encoding": "no-op",
-    "extra_config": {
-      "qos/ratelimit/router": {
-    "max_rate": 50,
-    "client_max_rate": 10,
-    "strategy": "ip"
-}
-    },
-    "backend": [
-      {
-        "url_pattern": "/collaborative-log",
-        "method": "GET",
-        "encoding": "no-op",
-        "host": ["http://oosa_rewild:6080"],
-        "extra_config": {
-          
-        }
-      }
-    ]},
-    {
-    "endpoint": "/event/{eventId}/accounting/{accountingId}",
-    "method": "DELETE",
-    "input_headers": [
-        "User-Agent",
-        "Authorization",
-        "Content-Type",
-        "Host",
-        "Connection",
-        "X-User",
-        "X-Userid",
-        "X-Email",
-        "X-Name",
-        "X-Language"
-    ],
-    
-    "output_encoding": "no-op",
-    "extra_config": {
-      "qos/ratelimit/router": {
-    "max_rate": 50,
-    "client_max_rate": 10,
-    "strategy": "ip"
-}
-    },
-    "backend": [
-      {
-        "url_pattern": "/event/{eventId}/accounting/{accountingId}",
-        "method": "DELETE",
-        "encoding": "no-op",
-        "host": ["http://oosa_rewild:6080"],
-        "extra_config": {
-          
-        }
-      }
-    ]},
-    {
-    "endpoint": "/event/{eventId}/accounting/{accountingId}",
-    "method": "GET",
-    "input_headers": [
-        "User-Agent",
-        "Authorization",
-        "Content-Type",
-        "Host",
-        "Connection",
-        "X-User",
-        "X-Userid",
-        "X-Email",
-        "X-Name",
-        "X-Language"
-    ],
-    
-    "output_encoding": "no-op",
-    "extra_config": {
-      "qos/ratelimit/router": {
-    "max_rate": 50,
-    "client_max_rate": 10,
-    "strategy": "ip"
-}
-    },
-    "backend": [
-      {
-        "url_pattern": "/event/{eventId}/accounting/{accountingId}",
-        "method": "GET",
-        "encoding": "no-op",
-        "host": ["http://oosa_rewild:6080"],
-        "extra_config": {
-          
-        }
-      }
-    ]},
-    {
-    "endpoint": "/event/{eventId}/accounting/{accountingId}",
-    "method": "PUT",
-    "input_headers": [
-        "User-Agent",
-        "Authorization",
-        "Content-Type",
-        "Host",
-        "Connection",
-        "X-User",
-        "X-Userid",
-        "X-Email",
-        "X-Name",
-        "X-Language"
-    ],
-    
-    "output_encoding": "no-op",
-    "extra_config": {
-      "qos/ratelimit/router": {
-    "max_rate": 50,
-    "client_max_rate": 10,
-    "strategy": "ip"
-}
-    },
-    "backend": [
-      {
-        "url_pattern": "/event/{eventId}/accounting/{accountingId}",
+        "url_pattern": "/event/{eventId}",
         "method": "PUT",
         "encoding": "no-op",
         "host": ["http://oosa_rewild:6080"],
@@ -1897,42 +567,7 @@
       }
     ]},
     {
-    "endpoint": "/event/{eventId}/schedule/{scheduleId}",
-    "method": "DELETE",
-    "input_headers": [
-        "User-Agent",
-        "Authorization",
-        "Content-Type",
-        "Host",
-        "Connection",
-        "X-User",
-        "X-Userid",
-        "X-Email",
-        "X-Name",
-        "X-Language"
-    ],
-    
-    "output_encoding": "no-op",
-    "extra_config": {
-      "qos/ratelimit/router": {
-    "max_rate": 50,
-    "client_max_rate": 10,
-    "strategy": "ip"
-}
-    },
-    "backend": [
-      {
-        "url_pattern": "/event/{eventId}/schedule/{scheduleId}",
-        "method": "DELETE",
-        "encoding": "no-op",
-        "host": ["http://oosa_rewild:6080"],
-        "extra_config": {
-          
-        }
-      }
-    ]},
-    {
-    "endpoint": "/event/{eventId}/schedule/{scheduleId}",
+    "endpoint": "/rewilding/places/{place_id}",
     "method": "GET",
     "input_headers": [
         "User-Agent",
@@ -1957,287 +592,7 @@
     },
     "backend": [
       {
-        "url_pattern": "/event/{eventId}/schedule/{scheduleId}",
-        "method": "GET",
-        "encoding": "no-op",
-        "host": ["http://oosa_rewild:6080"],
-        "extra_config": {
-          
-        }
-      }
-    ]},
-    {
-    "endpoint": "/event/{eventId}/schedule/{scheduleId}",
-    "method": "PUT",
-    "input_headers": [
-        "User-Agent",
-        "Authorization",
-        "Content-Type",
-        "Host",
-        "Connection",
-        "X-User",
-        "X-Userid",
-        "X-Email",
-        "X-Name",
-        "X-Language"
-    ],
-    
-    "output_encoding": "no-op",
-    "extra_config": {
-      "qos/ratelimit/router": {
-    "max_rate": 50,
-    "client_max_rate": 10,
-    "strategy": "ip"
-}
-    },
-    "backend": [
-      {
-        "url_pattern": "/event/{eventId}/schedule/{scheduleId}",
-        "method": "PUT",
-        "encoding": "no-op",
-        "host": ["http://oosa_rewild:6080"],
-        "extra_config": {
-          
-        }
-      }
-    ]},
-    {
-    "endpoint": "/event-invitations",
-    "method": "GET",
-    "input_headers": [
-        "User-Agent",
-        "Authorization",
-        "Content-Type",
-        "Host",
-        "Connection",
-        "X-User",
-        "X-Userid",
-        "X-Email",
-        "X-Name",
-        "X-Language"
-    ],
-    
-    "output_encoding": "no-op",
-    "extra_config": {
-      "qos/ratelimit/router": {
-    "max_rate": 50,
-    "client_max_rate": 10,
-    "strategy": "ip"
-}
-    },
-    "backend": [
-      {
-        "url_pattern": "/event-invitations",
-        "method": "GET",
-        "encoding": "no-op",
-        "host": ["http://oosa_rewild:6080"],
-        "extra_config": {
-          
-        }
-      }
-    ]},
-    {
-    "endpoint": "/news/{id}",
-    "method": "DELETE",
-    "input_headers": [
-        "User-Agent",
-        "Authorization",
-        "Content-Type",
-        "Host",
-        "Connection",
-        "X-User",
-        "X-Userid",
-        "X-Email",
-        "X-Name",
-        "X-Language"
-    ],
-    
-    "output_encoding": "no-op",
-    "extra_config": {
-      "qos/ratelimit/router": {
-    "max_rate": 50,
-    "client_max_rate": 10,
-    "strategy": "ip"
-}
-    },
-    "backend": [
-      {
-        "url_pattern": "/news/{id}",
-        "method": "DELETE",
-        "encoding": "no-op",
-        "host": ["http://oosa_rewild:6080"],
-        "extra_config": {
-          
-        }
-      }
-    ]},
-    {
-    "endpoint": "/news/{id}",
-    "method": "GET",
-    "input_headers": [
-        "User-Agent",
-        "Authorization",
-        "Content-Type",
-        "Host",
-        "Connection",
-        "X-User",
-        "X-Userid",
-        "X-Email",
-        "X-Name",
-        "X-Language"
-    ],
-    
-    "output_encoding": "no-op",
-    "extra_config": {
-      "qos/ratelimit/router": {
-    "max_rate": 50,
-    "client_max_rate": 10,
-    "strategy": "ip"
-}
-    },
-    "backend": [
-      {
-        "url_pattern": "/news/{id}",
-        "method": "GET",
-        "encoding": "no-op",
-        "host": ["http://oosa_rewild:6080"],
-        "extra_config": {
-          
-        }
-      }
-    ]},
-    {
-    "endpoint": "/news/{id}",
-    "method": "PUT",
-    "input_headers": [
-        "User-Agent",
-        "Authorization",
-        "Content-Type",
-        "Host",
-        "Connection",
-        "X-User",
-        "X-Userid",
-        "X-Email",
-        "X-Name",
-        "X-Language"
-    ],
-    
-    "output_encoding": "no-op",
-    "extra_config": {
-      "qos/ratelimit/router": {
-    "max_rate": 50,
-    "client_max_rate": 10,
-    "strategy": "ip"
-}
-    },
-    "backend": [
-      {
-        "url_pattern": "/news/{id}",
-        "method": "PUT",
-        "encoding": "no-op",
-        "host": ["http://oosa_rewild:6080"],
-        "extra_config": {
-          
-        }
-      }
-    ]},
-    {
-    "endpoint": "/event/{eventId}/schedule",
-    "method": "POST",
-    "input_headers": [
-        "User-Agent",
-        "Authorization",
-        "Content-Type",
-        "Host",
-        "Connection",
-        "X-User",
-        "X-Userid",
-        "X-Email",
-        "X-Name",
-        "X-Language"
-    ],
-    
-    "output_encoding": "no-op",
-    "extra_config": {
-      "qos/ratelimit/router": {
-    "max_rate": 50,
-    "client_max_rate": 10,
-    "strategy": "ip"
-}
-    },
-    "backend": [
-      {
-        "url_pattern": "/event/{eventId}/schedule",
-        "method": "POST",
-        "encoding": "no-op",
-        "host": ["http://oosa_rewild:6080"],
-        "extra_config": {
-          
-        }
-      }
-    ]},
-    {
-    "endpoint": "/event/{eventId}/schedule",
-    "method": "DELETE",
-    "input_headers": [
-        "User-Agent",
-        "Authorization",
-        "Content-Type",
-        "Host",
-        "Connection",
-        "X-User",
-        "X-Userid",
-        "X-Email",
-        "X-Name",
-        "X-Language"
-    ],
-    
-    "output_encoding": "no-op",
-    "extra_config": {
-      "qos/ratelimit/router": {
-    "max_rate": 50,
-    "client_max_rate": 10,
-    "strategy": "ip"
-}
-    },
-    "backend": [
-      {
-        "url_pattern": "/event/{eventId}/schedule",
-        "method": "DELETE",
-        "encoding": "no-op",
-        "host": ["http://oosa_rewild:6080"],
-        "extra_config": {
-          
-        }
-      }
-    ]},
-    {
-    "endpoint": "/event/{eventId}/schedule",
-    "method": "GET",
-    "input_headers": [
-        "User-Agent",
-        "Authorization",
-        "Content-Type",
-        "Host",
-        "Connection",
-        "X-User",
-        "X-Userid",
-        "X-Email",
-        "X-Name",
-        "X-Language"
-    ],
-    
-    "output_encoding": "no-op",
-    "extra_config": {
-      "qos/ratelimit/router": {
-    "max_rate": 50,
-    "client_max_rate": 10,
-    "strategy": "ip"
-}
-    },
-    "backend": [
-      {
-        "url_pattern": "/event/{eventId}/schedule",
+        "url_pattern": "/rewilding/places/{place_id}",
         "method": "GET",
         "encoding": "no-op",
         "host": ["http://oosa_rewild:6080"],
@@ -2308,286 +663,6 @@
     "backend": [
       {
         "url_pattern": "/rewilding/{rewildingId}",
-        "method": "GET",
-        "encoding": "no-op",
-        "host": ["http://oosa_rewild:6080"],
-        "extra_config": {
-          
-        }
-      }
-    ]},
-    {
-    "endpoint": "/collaborative-log/{eventId}/album-link",
-    "method": "GET",
-    "input_headers": [
-        "User-Agent",
-        "Authorization",
-        "Content-Type",
-        "Host",
-        "Connection",
-        "X-User",
-        "X-Userid",
-        "X-Email",
-        "X-Name",
-        "X-Language"
-    ],
-    
-    "output_encoding": "no-op",
-    "extra_config": {
-      "qos/ratelimit/router": {
-    "max_rate": 50,
-    "client_max_rate": 10,
-    "strategy": "ip"
-}
-    },
-    "backend": [
-      {
-        "url_pattern": "/collaborative-log/{eventId}/album-link",
-        "method": "GET",
-        "encoding": "no-op",
-        "host": ["http://oosa_rewild:6080"],
-        "extra_config": {
-          
-        }
-      }
-    ]},
-    {
-    "endpoint": "/collaborative-log/{eventId}/album-link",
-    "method": "POST",
-    "input_headers": [
-        "User-Agent",
-        "Authorization",
-        "Content-Type",
-        "Host",
-        "Connection",
-        "X-User",
-        "X-Userid",
-        "X-Email",
-        "X-Name",
-        "X-Language"
-    ],
-    
-    "output_encoding": "no-op",
-    "extra_config": {
-      "qos/ratelimit/router": {
-    "max_rate": 50,
-    "client_max_rate": 10,
-    "strategy": "ip"
-}
-    },
-    "backend": [
-      {
-        "url_pattern": "/collaborative-log/{eventId}/album-link",
-        "method": "POST",
-        "encoding": "no-op",
-        "host": ["http://oosa_rewild:6080"],
-        "extra_config": {
-          
-        }
-      }
-    ]},
-    {
-    "endpoint": "/contact-us",
-    "method": "POST",
-    "input_headers": [
-        "User-Agent",
-        "Authorization",
-        "Content-Type",
-        "Host",
-        "Connection",
-        "X-User",
-        "X-Userid",
-        "X-Email",
-        "X-Name",
-        "X-Language"
-    ],
-    
-    "output_encoding": "no-op",
-    "extra_config": {
-      "qos/ratelimit/router": {
-    "max_rate": 50,
-    "client_max_rate": 10,
-    "strategy": "ip"
-}
-    },
-    "backend": [
-      {
-        "url_pattern": "/contact-us",
-        "method": "POST",
-        "encoding": "no-op",
-        "host": ["http://user"],
-        "extra_config": {
-          
-        }
-      }
-    ]},
-    {
-    "endpoint": "/event-invitations/{eventInvitationId}",
-    "method": "PUT",
-    "input_headers": [
-        "User-Agent",
-        "Authorization",
-        "Content-Type",
-        "Host",
-        "Connection",
-        "X-User",
-        "X-Userid",
-        "X-Email",
-        "X-Name",
-        "X-Language"
-    ],
-    
-    "output_encoding": "no-op",
-    "extra_config": {
-      "qos/ratelimit/router": {
-    "max_rate": 50,
-    "client_max_rate": 10,
-    "strategy": "ip"
-}
-    },
-    "backend": [
-      {
-        "url_pattern": "/event-invitations/{eventInvitationId}",
-        "method": "PUT",
-        "encoding": "no-op",
-        "host": ["http://oosa_rewild:6080"],
-        "extra_config": {
-          
-        }
-      }
-    ]},
-    {
-    "endpoint": "/user/{userId}",
-    "method": "GET",
-    "input_headers": [
-        "User-Agent",
-        "Authorization",
-        "Content-Type",
-        "Host",
-        "Connection",
-        "X-User",
-        "X-Userid",
-        "X-Email",
-        "X-Name",
-        "X-Language"
-    ],
-    
-    "output_encoding": "no-op",
-    "extra_config": {
-      "qos/ratelimit/router": {
-    "max_rate": 50,
-    "client_max_rate": 10,
-    "strategy": "ip"
-}
-    },
-    "backend": [
-      {
-        "url_pattern": "/user/{userId}",
-        "method": "GET",
-        "encoding": "no-op",
-        "host": ["http://user"],
-        "extra_config": {
-          
-        }
-      }
-    ]},
-    {
-    "endpoint": "/forget-password",
-    "method": "POST",
-    "input_headers": [
-        "User-Agent",
-        "Authorization",
-        "Content-Type",
-        "Host",
-        "Connection",
-        "X-User",
-        "X-Userid",
-        "X-Email",
-        "X-Name",
-        "X-Language"
-    ],
-    
-    "output_encoding": "no-op",
-    "extra_config": {
-      "qos/ratelimit/router": {
-    "max_rate": 50,
-    "client_max_rate": 10,
-    "strategy": "ip"
-}
-    },
-    "backend": [
-      {
-        "url_pattern": "/forget-password",
-        "method": "POST",
-        "encoding": "no-op",
-        "host": ["http://user"],
-        "extra_config": {
-          
-        }
-      }
-    ]},
-    {
-    "endpoint": "/event/{eventId}/accounting",
-    "method": "POST",
-    "input_headers": [
-        "User-Agent",
-        "Authorization",
-        "Content-Type",
-        "Host",
-        "Connection",
-        "X-User",
-        "X-Userid",
-        "X-Email",
-        "X-Name",
-        "X-Language"
-    ],
-    
-    "output_encoding": "no-op",
-    "extra_config": {
-      "qos/ratelimit/router": {
-    "max_rate": 50,
-    "client_max_rate": 10,
-    "strategy": "ip"
-}
-    },
-    "backend": [
-      {
-        "url_pattern": "/event/{eventId}/accounting",
-        "method": "POST",
-        "encoding": "no-op",
-        "host": ["http://oosa_rewild:6080"],
-        "extra_config": {
-          
-        }
-      }
-    ]},
-    {
-    "endpoint": "/event/{eventId}/accounting",
-    "method": "GET",
-    "input_headers": [
-        "User-Agent",
-        "Authorization",
-        "Content-Type",
-        "Host",
-        "Connection",
-        "X-User",
-        "X-Userid",
-        "X-Email",
-        "X-Name",
-        "X-Language"
-    ],
-    
-    "output_encoding": "no-op",
-    "extra_config": {
-      "qos/ratelimit/router": {
-    "max_rate": 50,
-    "client_max_rate": 10,
-    "strategy": "ip"
-}
-    },
-    "backend": [
-      {
-        "url_pattern": "/event/{eventId}/accounting",
         "method": "GET",
         "encoding": "no-op",
         "host": ["http://oosa_rewild:6080"],
@@ -2632,7 +707,7 @@
       }
     ]},
     {
-    "endpoint": "/user/{userId}/achievement",
+    "endpoint": "/user-following/{userFollowingId}",
     "method": "GET",
     "input_headers": [
         "User-Agent",
@@ -2657,8 +732,498 @@
     },
     "backend": [
       {
-        "url_pattern": "/user/{userId}/achievement",
+        "url_pattern": "/user-following/{userFollowingId}",
         "method": "GET",
+        "encoding": "no-op",
+        "host": ["http://user"],
+        "extra_config": {
+          
+        }
+      }
+    ]},
+    {
+    "endpoint": "/user-following/{userFollowingId}",
+    "method": "DELETE",
+    "input_headers": [
+        "User-Agent",
+        "Authorization",
+        "Content-Type",
+        "Host",
+        "Connection",
+        "X-User",
+        "X-Userid",
+        "X-Email",
+        "X-Name",
+        "X-Language"
+    ],
+    
+    "output_encoding": "no-op",
+    "extra_config": {
+      "qos/ratelimit/router": {
+    "max_rate": 50,
+    "client_max_rate": 10,
+    "strategy": "ip"
+}
+    },
+    "backend": [
+      {
+        "url_pattern": "/user-following/{userFollowingId}",
+        "method": "DELETE",
+        "encoding": "no-op",
+        "host": ["http://user"],
+        "extra_config": {
+          
+        }
+      }
+    ]},
+    {
+    "endpoint": "/auth",
+    "method": "PUT",
+    "input_headers": [
+        "User-Agent",
+        "Authorization",
+        "Content-Type",
+        "Host",
+        "Connection",
+        "X-User",
+        "X-Userid",
+        "X-Email",
+        "X-Name",
+        "X-Language"
+    ],
+    
+    "output_encoding": "no-op",
+    "extra_config": {
+      "qos/ratelimit/router": {
+    "max_rate": 50,
+    "client_max_rate": 10,
+    "strategy": "ip"
+}
+    },
+    "backend": [
+      {
+        "url_pattern": "/auth",
+        "method": "PUT",
+        "encoding": "no-op",
+        "host": ["http://user"],
+        "extra_config": {
+          
+        }
+      }
+    ]},
+    {
+    "endpoint": "/auth",
+    "method": "GET",
+    "input_headers": [
+        "User-Agent",
+        "Authorization",
+        "Content-Type",
+        "Host",
+        "Connection",
+        "X-User",
+        "X-Userid",
+        "X-Email",
+        "X-Name",
+        "X-Language"
+    ],
+    
+    "output_encoding": "no-op",
+    "extra_config": {
+      "qos/ratelimit/router": {
+    "max_rate": 50,
+    "client_max_rate": 10,
+    "strategy": "ip"
+}
+    },
+    "backend": [
+      {
+        "url_pattern": "/auth",
+        "method": "GET",
+        "encoding": "no-op",
+        "host": ["http://user"],
+        "extra_config": {
+          
+        }
+      }
+    ]},
+    {
+    "endpoint": "/link-query",
+    "method": "POST",
+    "input_headers": [
+        "User-Agent",
+        "Authorization",
+        "Content-Type",
+        "Host",
+        "Connection",
+        "X-User",
+        "X-Userid",
+        "X-Email",
+        "X-Name",
+        "X-Language"
+    ],
+    
+    "output_encoding": "no-op",
+    "extra_config": {
+      "qos/ratelimit/router": {
+    "max_rate": 50,
+    "client_max_rate": 10,
+    "strategy": "ip"
+}
+    },
+    "backend": [
+      {
+        "url_pattern": "/link-query",
+        "method": "POST",
+        "encoding": "no-op",
+        "host": ["http://oosa_rewild:6080"],
+        "extra_config": {
+          
+        }
+      }
+    ]},
+    {
+    "endpoint": "/user/{userId}/badges",
+    "method": "GET",
+    "input_headers": [
+        "User-Agent",
+        "Authorization",
+        "Content-Type",
+        "Host",
+        "Connection",
+        "X-User",
+        "X-Userid",
+        "X-Email",
+        "X-Name",
+        "X-Language"
+    ],
+    
+    "output_encoding": "no-op",
+    "extra_config": {
+      "qos/ratelimit/router": {
+    "max_rate": 50,
+    "client_max_rate": 10,
+    "strategy": "ip"
+}
+    },
+    "backend": [
+      {
+        "url_pattern": "/user/{userId}/badges",
+        "method": "GET",
+        "encoding": "no-op",
+        "host": ["http://user"],
+        "extra_config": {
+          
+        }
+      }
+    ]},
+    {
+    "endpoint": "/event/{eventId}/message-board",
+    "method": "GET",
+    "input_headers": [
+        "User-Agent",
+        "Authorization",
+        "Content-Type",
+        "Host",
+        "Connection",
+        "X-User",
+        "X-Userid",
+        "X-Email",
+        "X-Name",
+        "X-Language"
+    ],
+    
+    "output_encoding": "no-op",
+    "extra_config": {
+      "qos/ratelimit/router": {
+    "max_rate": 50,
+    "client_max_rate": 10,
+    "strategy": "ip"
+}
+    },
+    "backend": [
+      {
+        "url_pattern": "/event/{eventId}/message-board",
+        "method": "GET",
+        "encoding": "no-op",
+        "host": ["http://oosa_rewild:6080"],
+        "extra_config": {
+          
+        }
+      }
+    ]},
+    {
+    "endpoint": "/event/{eventId}/message-board",
+    "method": "POST",
+    "input_headers": [
+        "User-Agent",
+        "Authorization",
+        "Content-Type",
+        "Host",
+        "Connection",
+        "X-User",
+        "X-Userid",
+        "X-Email",
+        "X-Name",
+        "X-Language"
+    ],
+    
+    "output_encoding": "no-op",
+    "extra_config": {
+      "qos/ratelimit/router": {
+    "max_rate": 50,
+    "client_max_rate": 10,
+    "strategy": "ip"
+}
+    },
+    "backend": [
+      {
+        "url_pattern": "/event/{eventId}/message-board",
+        "method": "POST",
+        "encoding": "no-op",
+        "host": ["http://oosa_rewild:6080"],
+        "extra_config": {
+          
+        }
+      }
+    ]},
+    {
+    "endpoint": "/world/ranking-rewilding",
+    "method": "GET",
+    "input_headers": [
+        "User-Agent",
+        "Authorization",
+        "Content-Type",
+        "Host",
+        "Connection",
+        "X-User",
+        "X-Userid",
+        "X-Email",
+        "X-Name",
+        "X-Language"
+    ],
+    
+    "output_encoding": "no-op",
+    "extra_config": {
+      "qos/ratelimit/router": {
+    "max_rate": 50,
+    "client_max_rate": 10,
+    "strategy": "ip"
+}
+    },
+    "backend": [
+      {
+        "url_pattern": "/world/ranking-rewilding",
+        "method": "GET",
+        "encoding": "no-op",
+        "host": ["http://user"],
+        "extra_config": {
+          
+        }
+      }
+    ]},
+    {
+    "endpoint": "/rewilding-autocomplete",
+    "method": "GET",
+    "input_headers": [
+        "User-Agent",
+        "Authorization",
+        "Content-Type",
+        "Host",
+        "Connection",
+        "X-User",
+        "X-Userid",
+        "X-Email",
+        "X-Name",
+        "X-Language"
+    ],
+    "input_query_strings": ["input","language"],
+    "output_encoding": "no-op",
+    "extra_config": {
+      "qos/ratelimit/router": {
+    "max_rate": 50,
+    "client_max_rate": 10,
+    "strategy": "ip"
+}
+    },
+    "backend": [
+      {
+        "url_pattern": "/rewilding-autocomplete",
+        "method": "GET",
+        "encoding": "no-op",
+        "host": ["http://oosa_rewild:6080"],
+        "extra_config": {
+          
+        }
+      }
+    ]},
+    {
+    "endpoint": "/event/{eventId}/invitation",
+    "method": "PUT",
+    "input_headers": [
+        "User-Agent",
+        "Authorization",
+        "Content-Type",
+        "Host",
+        "Connection",
+        "X-User",
+        "X-Userid",
+        "X-Email",
+        "X-Name",
+        "X-Language"
+    ],
+    
+    "output_encoding": "no-op",
+    "extra_config": {
+      "qos/ratelimit/router": {
+    "max_rate": 50,
+    "client_max_rate": 10,
+    "strategy": "ip"
+}
+    },
+    "backend": [
+      {
+        "url_pattern": "/event/{eventId}/invitation",
+        "method": "PUT",
+        "encoding": "no-op",
+        "host": ["http://oosa_rewild:6080"],
+        "extra_config": {
+          
+        }
+      }
+    ]},
+    {
+    "endpoint": "/event-invitations/{eventInvitationId}",
+    "method": "PUT",
+    "input_headers": [
+        "User-Agent",
+        "Authorization",
+        "Content-Type",
+        "Host",
+        "Connection",
+        "X-User",
+        "X-Userid",
+        "X-Email",
+        "X-Name",
+        "X-Language"
+    ],
+    
+    "output_encoding": "no-op",
+    "extra_config": {
+      "qos/ratelimit/router": {
+    "max_rate": 50,
+    "client_max_rate": 10,
+    "strategy": "ip"
+}
+    },
+    "backend": [
+      {
+        "url_pattern": "/event-invitations/{eventInvitationId}",
+        "method": "PUT",
+        "encoding": "no-op",
+        "host": ["http://oosa_rewild:6080"],
+        "extra_config": {
+          
+        }
+      }
+    ]},
+    {
+    "endpoint": "/references",
+    "method": "GET",
+    "input_headers": [
+        "User-Agent",
+        "Authorization",
+        "Content-Type",
+        "Host",
+        "Connection",
+        "X-User",
+        "X-Userid",
+        "X-Email",
+        "X-Name",
+        "X-Language"
+    ],
+    
+    "output_encoding": "no-op",
+    "extra_config": {
+      "qos/ratelimit/router": {
+    "max_rate": 50,
+    "client_max_rate": 10,
+    "strategy": "ip"
+}
+    },
+    "backend": [
+      {
+        "url_pattern": "/references",
+        "method": "GET",
+        "encoding": "no-op",
+        "host": ["http://oosa_rewild:6080"],
+        "extra_config": {
+          
+        }
+      }
+    ]},
+    {
+    "endpoint": "/rewilding-register",
+    "method": "GET",
+    "input_headers": [
+        "User-Agent",
+        "Authorization",
+        "Content-Type",
+        "Host",
+        "Connection",
+        "X-User",
+        "X-Userid",
+        "X-Email",
+        "X-Name",
+        "X-Language"
+    ],
+    
+    "output_encoding": "no-op",
+    "extra_config": {
+      "qos/ratelimit/router": {
+    "max_rate": 50,
+    "client_max_rate": 10,
+    "strategy": "ip"
+}
+    },
+    "backend": [
+      {
+        "url_pattern": "/rewilding-register",
+        "method": "GET",
+        "encoding": "no-op",
+        "host": ["http://oosa_rewild:6080"],
+        "extra_config": {
+          
+        }
+      }
+    ]},
+    {
+    "endpoint": "/rewilding-register",
+    "method": "POST",
+    "input_headers": [
+        "User-Agent",
+        "Authorization",
+        "Content-Type",
+        "Host",
+        "Connection",
+        "X-User",
+        "X-Userid",
+        "X-Email",
+        "X-Name",
+        "X-Language"
+    ],
+    
+    "output_encoding": "no-op",
+    "extra_config": {
+      "qos/ratelimit/router": {
+    "max_rate": 50,
+    "client_max_rate": 10,
+    "strategy": "ip"
+}
+    },
+    "backend": [
+      {
+        "url_pattern": "/rewilding-register",
+        "method": "POST",
         "encoding": "no-op",
         "host": ["http://oosa_rewild:6080"],
         "extra_config": {
@@ -2737,8 +1302,8 @@
       }
     ]},
     {
-    "endpoint": "/world/ranking-rewilding",
-    "method": "GET",
+    "endpoint": "/event/{eventId}/message-board/{messageBoardId}",
+    "method": "DELETE",
     "input_headers": [
         "User-Agent",
         "Authorization",
@@ -2762,17 +1327,17 @@
     },
     "backend": [
       {
-        "url_pattern": "/world/ranking-rewilding",
-        "method": "GET",
+        "url_pattern": "/event/{eventId}/message-board/{messageBoardId}",
+        "method": "DELETE",
         "encoding": "no-op",
-        "host": ["http://user"],
+        "host": ["http://oosa_rewild:6080"],
         "extra_config": {
           
         }
       }
     ]},
     {
-    "endpoint": "/event/{eventId}/participants",
+    "endpoint": "/event/{eventId}/message-board/{messageBoardId}",
     "method": "GET",
     "input_headers": [
         "User-Agent",
@@ -2797,7 +1362,7 @@
     },
     "backend": [
       {
-        "url_pattern": "/event/{eventId}/participants",
+        "url_pattern": "/event/{eventId}/message-board/{messageBoardId}",
         "method": "GET",
         "encoding": "no-op",
         "host": ["http://oosa_rewild:6080"],
@@ -2807,7 +1372,112 @@
       }
     ]},
     {
-    "endpoint": "/event/{eventId}/participants",
+    "endpoint": "/event/{eventId}/message-board/{messageBoardId}",
+    "method": "PUT",
+    "input_headers": [
+        "User-Agent",
+        "Authorization",
+        "Content-Type",
+        "Host",
+        "Connection",
+        "X-User",
+        "X-Userid",
+        "X-Email",
+        "X-Name",
+        "X-Language"
+    ],
+    
+    "output_encoding": "no-op",
+    "extra_config": {
+      "qos/ratelimit/router": {
+    "max_rate": 50,
+    "client_max_rate": 10,
+    "strategy": "ip"
+}
+    },
+    "backend": [
+      {
+        "url_pattern": "/event/{eventId}/message-board/{messageBoardId}",
+        "method": "PUT",
+        "encoding": "no-op",
+        "host": ["http://oosa_rewild:6080"],
+        "extra_config": {
+          
+        }
+      }
+    ]},
+    {
+    "endpoint": "/test-no-auth",
+    "method": "GET",
+    "input_headers": [
+        "User-Agent",
+        "Authorization",
+        "Content-Type",
+        "Host",
+        "Connection",
+        "X-User",
+        "X-Userid",
+        "X-Email",
+        "X-Name",
+        "X-Language"
+    ],
+    
+    "output_encoding": "no-op",
+    "extra_config": {
+      "qos/ratelimit/router": {
+    "max_rate": 50,
+    "client_max_rate": 10,
+    "strategy": "ip"
+}
+    },
+    "backend": [
+      {
+        "url_pattern": "/test-no-auth",
+        "method": "GET",
+        "encoding": "no-op",
+        "host": ["http://oosa_auth_test:6080"],
+        "extra_config": {
+          
+        }
+      }
+    ]},
+    {
+    "endpoint": "/news",
+    "method": "GET",
+    "input_headers": [
+        "User-Agent",
+        "Authorization",
+        "Content-Type",
+        "Host",
+        "Connection",
+        "X-User",
+        "X-Userid",
+        "X-Email",
+        "X-Name",
+        "X-Language"
+    ],
+    
+    "output_encoding": "no-op",
+    "extra_config": {
+      "qos/ratelimit/router": {
+    "max_rate": 50,
+    "client_max_rate": 10,
+    "strategy": "ip"
+}
+    },
+    "backend": [
+      {
+        "url_pattern": "/news",
+        "method": "GET",
+        "encoding": "no-op",
+        "host": ["http://oosa_rewild:6080"],
+        "extra_config": {
+          
+        }
+      }
+    ]},
+    {
+    "endpoint": "/news",
     "method": "POST",
     "input_headers": [
         "User-Agent",
@@ -2832,7 +1502,7 @@
     },
     "backend": [
       {
-        "url_pattern": "/event/{eventId}/participants",
+        "url_pattern": "/news",
         "method": "POST",
         "encoding": "no-op",
         "host": ["http://oosa_rewild:6080"],
@@ -2842,7 +1512,42 @@
       }
     ]},
     {
-    "endpoint": "/my/event",
+    "endpoint": "/auth/change-password",
+    "method": "PUT",
+    "input_headers": [
+        "User-Agent",
+        "Authorization",
+        "Content-Type",
+        "Host",
+        "Connection",
+        "X-User",
+        "X-Userid",
+        "X-Email",
+        "X-Name",
+        "X-Language"
+    ],
+    
+    "output_encoding": "no-op",
+    "extra_config": {
+      "qos/ratelimit/router": {
+    "max_rate": 50,
+    "client_max_rate": 10,
+    "strategy": "ip"
+}
+    },
+    "backend": [
+      {
+        "url_pattern": "/auth/change-password",
+        "method": "PUT",
+        "encoding": "no-op",
+        "host": ["http://user"],
+        "extra_config": {
+          
+        }
+      }
+    ]},
+    {
+    "endpoint": "/rewilding-search",
     "method": "GET",
     "input_headers": [
         "User-Agent",
@@ -2856,7 +1561,7 @@
         "X-Name",
         "X-Language"
     ],
-    "input_query_strings": ["past","country_code"],
+    "input_query_strings": ["lat","lng","type","search"],
     "output_encoding": "no-op",
     "extra_config": {
       "qos/ratelimit/router": {
@@ -2867,7 +1572,7 @@
     },
     "backend": [
       {
-        "url_pattern": "/my/event",
+        "url_pattern": "/rewilding-search",
         "method": "GET",
         "encoding": "no-op",
         "host": ["http://oosa_rewild:6080"],
@@ -2912,77 +1617,7 @@
       }
     ]},
     {
-    "endpoint": "/user/friends",
-    "method": "GET",
-    "input_headers": [
-        "User-Agent",
-        "Authorization",
-        "Content-Type",
-        "Host",
-        "Connection",
-        "X-User",
-        "X-Userid",
-        "X-Email",
-        "X-Name",
-        "X-Language"
-    ],
-    "input_query_strings": ["name"],
-    "output_encoding": "no-op",
-    "extra_config": {
-      "qos/ratelimit/router": {
-    "max_rate": 50,
-    "client_max_rate": 10,
-    "strategy": "ip"
-}
-    },
-    "backend": [
-      {
-        "url_pattern": "/user/friends",
-        "method": "GET",
-        "encoding": "no-op",
-        "host": ["http://user"],
-        "extra_config": {
-          
-        }
-      }
-    ]},
-    {
-    "endpoint": "/rewilding-autocomplete",
-    "method": "GET",
-    "input_headers": [
-        "User-Agent",
-        "Authorization",
-        "Content-Type",
-        "Host",
-        "Connection",
-        "X-User",
-        "X-Userid",
-        "X-Email",
-        "X-Name",
-        "X-Language"
-    ],
-    "input_query_strings": ["input","language"],
-    "output_encoding": "no-op",
-    "extra_config": {
-      "qos/ratelimit/router": {
-    "max_rate": 50,
-    "client_max_rate": 10,
-    "strategy": "ip"
-}
-    },
-    "backend": [
-      {
-        "url_pattern": "/rewilding-autocomplete",
-        "method": "GET",
-        "encoding": "no-op",
-        "host": ["http://oosa_rewild:6080"],
-        "extra_config": {
-          
-        }
-      }
-    ]},
-    {
-    "endpoint": "/rewilding/{rewildingId}/photos/{photoId}",
+    "endpoint": "/collaborative-log/{eventId}/polaroids",
     "method": "GET",
     "input_headers": [
         "User-Agent",
@@ -3007,7 +1642,7 @@
     },
     "backend": [
       {
-        "url_pattern": "/rewilding/{rewildingId}/photos/{photoId}",
+        "url_pattern": "/collaborative-log/{eventId}/polaroids",
         "method": "GET",
         "encoding": "no-op",
         "host": ["http://oosa_rewild:6080"],
@@ -3017,42 +1652,7 @@
       }
     ]},
     {
-    "endpoint": "/auth/line",
-    "method": "GET",
-    "input_headers": [
-        "User-Agent",
-        "Authorization",
-        "Content-Type",
-        "Host",
-        "Connection",
-        "X-User",
-        "X-Userid",
-        "X-Email",
-        "X-Name",
-        "X-Language"
-    ],
-    "input_query_strings": ["code","state"],
-    "output_encoding": "no-op",
-    "extra_config": {
-      "qos/ratelimit/router": {
-    "max_rate": 50,
-    "client_max_rate": 10,
-    "strategy": "ip"
-}
-    },
-    "backend": [
-      {
-        "url_pattern": "/auth/line",
-        "method": "GET",
-        "encoding": "no-op",
-        "host": ["http://user"],
-        "extra_config": {
-          
-        }
-      }
-    ]},
-    {
-    "endpoint": "/event/{eventId}/message-board/{messageBoardId}/pin",
+    "endpoint": "/collaborative-log/{eventId}/polaroids",
     "method": "POST",
     "input_headers": [
         "User-Agent",
@@ -3077,8 +1677,218 @@
     },
     "backend": [
       {
-        "url_pattern": "/event/{eventId}/message-board/{messageBoardId}/pin",
+        "url_pattern": "/collaborative-log/{eventId}/polaroids",
         "method": "POST",
+        "encoding": "no-op",
+        "host": ["http://oosa_rewild:6080"],
+        "extra_config": {
+          
+        }
+      }
+    ]},
+    {
+    "endpoint": "/my/event",
+    "method": "GET",
+    "input_headers": [
+        "User-Agent",
+        "Authorization",
+        "Content-Type",
+        "Host",
+        "Connection",
+        "X-User",
+        "X-Userid",
+        "X-Email",
+        "X-Name",
+        "X-Language"
+    ],
+    "input_query_strings": ["past","country_code"],
+    "output_encoding": "no-op",
+    "extra_config": {
+      "qos/ratelimit/router": {
+    "max_rate": 50,
+    "client_max_rate": 10,
+    "strategy": "ip"
+}
+    },
+    "backend": [
+      {
+        "url_pattern": "/my/event",
+        "method": "GET",
+        "encoding": "no-op",
+        "host": ["http://oosa_rewild:6080"],
+        "extra_config": {
+          
+        }
+      }
+    ]},
+    {
+    "endpoint": "/contact-us",
+    "method": "POST",
+    "input_headers": [
+        "User-Agent",
+        "Authorization",
+        "Content-Type",
+        "Host",
+        "Connection",
+        "X-User",
+        "X-Userid",
+        "X-Email",
+        "X-Name",
+        "X-Language"
+    ],
+    
+    "output_encoding": "no-op",
+    "extra_config": {
+      "qos/ratelimit/router": {
+    "max_rate": 50,
+    "client_max_rate": 10,
+    "strategy": "ip"
+}
+    },
+    "backend": [
+      {
+        "url_pattern": "/contact-us",
+        "method": "POST",
+        "encoding": "no-op",
+        "host": ["http://user"],
+        "extra_config": {
+          
+        }
+      }
+    ]},
+    {
+    "endpoint": "/event/{eventId}/accounting",
+    "method": "GET",
+    "input_headers": [
+        "User-Agent",
+        "Authorization",
+        "Content-Type",
+        "Host",
+        "Connection",
+        "X-User",
+        "X-Userid",
+        "X-Email",
+        "X-Name",
+        "X-Language"
+    ],
+    
+    "output_encoding": "no-op",
+    "extra_config": {
+      "qos/ratelimit/router": {
+    "max_rate": 50,
+    "client_max_rate": 10,
+    "strategy": "ip"
+}
+    },
+    "backend": [
+      {
+        "url_pattern": "/event/{eventId}/accounting",
+        "method": "GET",
+        "encoding": "no-op",
+        "host": ["http://oosa_rewild:6080"],
+        "extra_config": {
+          
+        }
+      }
+    ]},
+    {
+    "endpoint": "/event/{eventId}/accounting",
+    "method": "POST",
+    "input_headers": [
+        "User-Agent",
+        "Authorization",
+        "Content-Type",
+        "Host",
+        "Connection",
+        "X-User",
+        "X-Userid",
+        "X-Email",
+        "X-Name",
+        "X-Language"
+    ],
+    
+    "output_encoding": "no-op",
+    "extra_config": {
+      "qos/ratelimit/router": {
+    "max_rate": 50,
+    "client_max_rate": 10,
+    "strategy": "ip"
+}
+    },
+    "backend": [
+      {
+        "url_pattern": "/event/{eventId}/accounting",
+        "method": "POST",
+        "encoding": "no-op",
+        "host": ["http://oosa_rewild:6080"],
+        "extra_config": {
+          
+        }
+      }
+    ]},
+    {
+    "endpoint": "/event-invitation/{eventInvitationId}",
+    "method": "GET",
+    "input_headers": [
+        "User-Agent",
+        "Authorization",
+        "Content-Type",
+        "Host",
+        "Connection",
+        "X-User",
+        "X-Userid",
+        "X-Email",
+        "X-Name",
+        "X-Language"
+    ],
+    
+    "output_encoding": "no-op",
+    "extra_config": {
+      "qos/ratelimit/router": {
+    "max_rate": 50,
+    "client_max_rate": 10,
+    "strategy": "ip"
+}
+    },
+    "backend": [
+      {
+        "url_pattern": "/event-invitation/{eventInvitationId}",
+        "method": "GET",
+        "encoding": "no-op",
+        "host": ["http://oosa_rewild:6080"],
+        "extra_config": {
+          
+        }
+      }
+    ]},
+    {
+    "endpoint": "/rewilding/{rewildingId}/photos",
+    "method": "GET",
+    "input_headers": [
+        "User-Agent",
+        "Authorization",
+        "Content-Type",
+        "Host",
+        "Connection",
+        "X-User",
+        "X-Userid",
+        "X-Email",
+        "X-Name",
+        "X-Language"
+    ],
+    
+    "output_encoding": "no-op",
+    "extra_config": {
+      "qos/ratelimit/router": {
+    "max_rate": 50,
+    "client_max_rate": 10,
+    "strategy": "ip"
+}
+    },
+    "backend": [
+      {
+        "url_pattern": "/rewilding/{rewildingId}/photos",
+        "method": "GET",
         "encoding": "no-op",
         "host": ["http://oosa_rewild:6080"],
         "extra_config": {
@@ -3192,8 +2002,8 @@
       }
     ]},
     {
-    "endpoint": "/event/{eventId}/message-board",
-    "method": "GET",
+    "endpoint": "/event/{eventId}/participants/{participantId}",
+    "method": "DELETE",
     "input_headers": [
         "User-Agent",
         "Authorization",
@@ -3217,8 +2027,8 @@
     },
     "backend": [
       {
-        "url_pattern": "/event/{eventId}/message-board",
-        "method": "GET",
+        "url_pattern": "/event/{eventId}/participants/{participantId}",
+        "method": "DELETE",
         "encoding": "no-op",
         "host": ["http://oosa_rewild:6080"],
         "extra_config": {
@@ -3227,7 +2037,7 @@
       }
     ]},
     {
-    "endpoint": "/event/{eventId}/message-board",
+    "endpoint": "/register",
     "method": "POST",
     "input_headers": [
         "User-Agent",
@@ -3252,7 +2062,252 @@
     },
     "backend": [
       {
-        "url_pattern": "/event/{eventId}/message-board",
+        "url_pattern": "/register",
+        "method": "POST",
+        "encoding": "no-op",
+        "host": ["http://user"],
+        "extra_config": {
+          
+        }
+      }
+    ]},
+    {
+    "endpoint": "/user/{userId}/achievement",
+    "method": "GET",
+    "input_headers": [
+        "User-Agent",
+        "Authorization",
+        "Content-Type",
+        "Host",
+        "Connection",
+        "X-User",
+        "X-Userid",
+        "X-Email",
+        "X-Name",
+        "X-Language"
+    ],
+    
+    "output_encoding": "no-op",
+    "extra_config": {
+      "qos/ratelimit/router": {
+    "max_rate": 50,
+    "client_max_rate": 10,
+    "strategy": "ip"
+}
+    },
+    "backend": [
+      {
+        "url_pattern": "/user/{userId}/achievement",
+        "method": "GET",
+        "encoding": "no-op",
+        "host": ["http://oosa_rewild:6080"],
+        "extra_config": {
+          
+        }
+      }
+    ]},
+    {
+    "endpoint": "/auth/notifications",
+    "method": "GET",
+    "input_headers": [
+        "User-Agent",
+        "Authorization",
+        "Content-Type",
+        "Host",
+        "Connection",
+        "X-User",
+        "X-Userid",
+        "X-Email",
+        "X-Name",
+        "X-Language"
+    ],
+    
+    "output_encoding": "no-op",
+    "extra_config": {
+      "qos/ratelimit/router": {
+    "max_rate": 50,
+    "client_max_rate": 10,
+    "strategy": "ip"
+}
+    },
+    "backend": [
+      {
+        "url_pattern": "/auth/notifications",
+        "method": "GET",
+        "encoding": "no-op",
+        "host": ["http://user"],
+        "extra_config": {
+          
+        }
+      }
+    ]},
+    {
+    "endpoint": "/auth/badges",
+    "method": "GET",
+    "input_headers": [
+        "User-Agent",
+        "Authorization",
+        "Content-Type",
+        "Host",
+        "Connection",
+        "X-User",
+        "X-Userid",
+        "X-Email",
+        "X-Name",
+        "X-Language"
+    ],
+    "input_query_strings": ["single"],
+    "output_encoding": "no-op",
+    "extra_config": {
+      "qos/ratelimit/router": {
+    "max_rate": 50,
+    "client_max_rate": 10,
+    "strategy": "ip"
+}
+    },
+    "backend": [
+      {
+        "url_pattern": "/auth/badges",
+        "method": "GET",
+        "encoding": "no-op",
+        "host": ["http://user"],
+        "extra_config": {
+          
+        }
+      }
+    ]},
+    {
+    "endpoint": "/event/{eventId}/schedule/{scheduleId}",
+    "method": "DELETE",
+    "input_headers": [
+        "User-Agent",
+        "Authorization",
+        "Content-Type",
+        "Host",
+        "Connection",
+        "X-User",
+        "X-Userid",
+        "X-Email",
+        "X-Name",
+        "X-Language"
+    ],
+    
+    "output_encoding": "no-op",
+    "extra_config": {
+      "qos/ratelimit/router": {
+    "max_rate": 50,
+    "client_max_rate": 10,
+    "strategy": "ip"
+}
+    },
+    "backend": [
+      {
+        "url_pattern": "/event/{eventId}/schedule/{scheduleId}",
+        "method": "DELETE",
+        "encoding": "no-op",
+        "host": ["http://oosa_rewild:6080"],
+        "extra_config": {
+          
+        }
+      }
+    ]},
+    {
+    "endpoint": "/event/{eventId}/schedule/{scheduleId}",
+    "method": "GET",
+    "input_headers": [
+        "User-Agent",
+        "Authorization",
+        "Content-Type",
+        "Host",
+        "Connection",
+        "X-User",
+        "X-Userid",
+        "X-Email",
+        "X-Name",
+        "X-Language"
+    ],
+    
+    "output_encoding": "no-op",
+    "extra_config": {
+      "qos/ratelimit/router": {
+    "max_rate": 50,
+    "client_max_rate": 10,
+    "strategy": "ip"
+}
+    },
+    "backend": [
+      {
+        "url_pattern": "/event/{eventId}/schedule/{scheduleId}",
+        "method": "GET",
+        "encoding": "no-op",
+        "host": ["http://oosa_rewild:6080"],
+        "extra_config": {
+          
+        }
+      }
+    ]},
+    {
+    "endpoint": "/event/{eventId}/schedule/{scheduleId}",
+    "method": "PUT",
+    "input_headers": [
+        "User-Agent",
+        "Authorization",
+        "Content-Type",
+        "Host",
+        "Connection",
+        "X-User",
+        "X-Userid",
+        "X-Email",
+        "X-Name",
+        "X-Language"
+    ],
+    
+    "output_encoding": "no-op",
+    "extra_config": {
+      "qos/ratelimit/router": {
+    "max_rate": 50,
+    "client_max_rate": 10,
+    "strategy": "ip"
+}
+    },
+    "backend": [
+      {
+        "url_pattern": "/event/{eventId}/schedule/{scheduleId}",
+        "method": "PUT",
+        "encoding": "no-op",
+        "host": ["http://oosa_rewild:6080"],
+        "extra_config": {
+          
+        }
+      }
+    ]},
+    {
+    "endpoint": "/collaborative-log/{eventId}/questionnaire",
+    "method": "POST",
+    "input_headers": [
+        "User-Agent",
+        "Authorization",
+        "Content-Type",
+        "Host",
+        "Connection",
+        "X-User",
+        "X-Userid",
+        "X-Email",
+        "X-Name",
+        "X-Language"
+    ],
+    
+    "output_encoding": "no-op",
+    "extra_config": {
+      "qos/ratelimit/router": {
+    "max_rate": 50,
+    "client_max_rate": 10,
+    "strategy": "ip"
+}
+    },
+    "backend": [
+      {
+        "url_pattern": "/collaborative-log/{eventId}/questionnaire",
         "method": "POST",
         "encoding": "no-op",
         "host": ["http://oosa_rewild:6080"],
@@ -3262,7 +2317,7 @@
       }
     ]},
     {
-    "endpoint": "/rewilding-searchText",
+    "endpoint": "/auth/line",
     "method": "GET",
     "input_headers": [
         "User-Agent",
@@ -3276,7 +2331,7 @@
         "X-Name",
         "X-Language"
     ],
-    "input_query_strings": ["keyword","rectangle_low_lat","rectangle_low_lng","rectangle_hight_lat","rectangle_hight_lng","language"],
+    "input_query_strings": ["code","state"],
     "output_encoding": "no-op",
     "extra_config": {
       "qos/ratelimit/router": {
@@ -3287,52 +2342,17 @@
     },
     "backend": [
       {
-        "url_pattern": "/rewilding-searchText",
+        "url_pattern": "/auth/line",
         "method": "GET",
         "encoding": "no-op",
-        "host": ["http://oosa_rewild:6080"],
+        "host": ["http://user"],
         "extra_config": {
           
         }
       }
     ]},
     {
-    "endpoint": "/news",
-    "method": "GET",
-    "input_headers": [
-        "User-Agent",
-        "Authorization",
-        "Content-Type",
-        "Host",
-        "Connection",
-        "X-User",
-        "X-Userid",
-        "X-Email",
-        "X-Name",
-        "X-Language"
-    ],
-    
-    "output_encoding": "no-op",
-    "extra_config": {
-      "qos/ratelimit/router": {
-    "max_rate": 50,
-    "client_max_rate": 10,
-    "strategy": "ip"
-}
-    },
-    "backend": [
-      {
-        "url_pattern": "/news",
-        "method": "GET",
-        "encoding": "no-op",
-        "host": ["http://oosa_rewild:6080"],
-        "extra_config": {
-          
-        }
-      }
-    ]},
-    {
-    "endpoint": "/news",
+    "endpoint": "/auth/email",
     "method": "POST",
     "input_headers": [
         "User-Agent",
@@ -3357,7 +2377,77 @@
     },
     "backend": [
       {
-        "url_pattern": "/news",
+        "url_pattern": "/auth/email",
+        "method": "POST",
+        "encoding": "no-op",
+        "host": ["http://user"],
+        "extra_config": {
+          
+        }
+      }
+    ]},
+    {
+    "endpoint": "/event",
+    "method": "GET",
+    "input_headers": [
+        "User-Agent",
+        "Authorization",
+        "Content-Type",
+        "Host",
+        "Connection",
+        "X-User",
+        "X-Userid",
+        "X-Email",
+        "X-Name",
+        "X-Language"
+    ],
+    "input_query_strings": ["event_period_begin","event_period_end","event_rewilding","event_past"],
+    "output_encoding": "no-op",
+    "extra_config": {
+      "qos/ratelimit/router": {
+    "max_rate": 50,
+    "client_max_rate": 10,
+    "strategy": "ip"
+}
+    },
+    "backend": [
+      {
+        "url_pattern": "/event",
+        "method": "GET",
+        "encoding": "no-op",
+        "host": ["http://oosa_rewild:6080"],
+        "extra_config": {
+          
+        }
+      }
+    ]},
+    {
+    "endpoint": "/event",
+    "method": "POST",
+    "input_headers": [
+        "User-Agent",
+        "Authorization",
+        "Content-Type",
+        "Host",
+        "Connection",
+        "X-User",
+        "X-Userid",
+        "X-Email",
+        "X-Name",
+        "X-Language"
+    ],
+    
+    "output_encoding": "no-op",
+    "extra_config": {
+      "qos/ratelimit/router": {
+    "max_rate": 50,
+    "client_max_rate": 10,
+    "strategy": "ip"
+}
+    },
+    "backend": [
+      {
+        "url_pattern": "/event",
         "method": "POST",
         "encoding": "no-op",
         "host": ["http://oosa_rewild:6080"],
@@ -3367,7 +2457,42 @@
       }
     ]},
     {
-    "endpoint": "/auth/google",
+    "endpoint": "/user/{userId}/event",
+    "method": "GET",
+    "input_headers": [
+        "User-Agent",
+        "Authorization",
+        "Content-Type",
+        "Host",
+        "Connection",
+        "X-User",
+        "X-Userid",
+        "X-Email",
+        "X-Name",
+        "X-Language"
+    ],
+    "input_query_strings": ["past","country_code"],
+    "output_encoding": "no-op",
+    "extra_config": {
+      "qos/ratelimit/router": {
+    "max_rate": 50,
+    "client_max_rate": 10,
+    "strategy": "ip"
+}
+    },
+    "backend": [
+      {
+        "url_pattern": "/user/{userId}/event",
+        "method": "GET",
+        "encoding": "no-op",
+        "host": ["http://oosa_rewild:6080"],
+        "extra_config": {
+          
+        }
+      }
+    ]},
+    {
+    "endpoint": "/auth/facebook",
     "method": "POST",
     "input_headers": [
         "User-Agent",
@@ -3392,7 +2517,987 @@
     },
     "backend": [
       {
-        "url_pattern": "/auth/google",
+        "url_pattern": "/auth/facebook",
+        "method": "POST",
+        "encoding": "no-op",
+        "host": ["http://user"],
+        "extra_config": {
+          
+        }
+      }
+    ]},
+    {
+    "endpoint": "/news/{id}",
+    "method": "DELETE",
+    "input_headers": [
+        "User-Agent",
+        "Authorization",
+        "Content-Type",
+        "Host",
+        "Connection",
+        "X-User",
+        "X-Userid",
+        "X-Email",
+        "X-Name",
+        "X-Language"
+    ],
+    
+    "output_encoding": "no-op",
+    "extra_config": {
+      "qos/ratelimit/router": {
+    "max_rate": 50,
+    "client_max_rate": 10,
+    "strategy": "ip"
+}
+    },
+    "backend": [
+      {
+        "url_pattern": "/news/{id}",
+        "method": "DELETE",
+        "encoding": "no-op",
+        "host": ["http://oosa_rewild:6080"],
+        "extra_config": {
+          
+        }
+      }
+    ]},
+    {
+    "endpoint": "/news/{id}",
+    "method": "GET",
+    "input_headers": [
+        "User-Agent",
+        "Authorization",
+        "Content-Type",
+        "Host",
+        "Connection",
+        "X-User",
+        "X-Userid",
+        "X-Email",
+        "X-Name",
+        "X-Language"
+    ],
+    
+    "output_encoding": "no-op",
+    "extra_config": {
+      "qos/ratelimit/router": {
+    "max_rate": 50,
+    "client_max_rate": 10,
+    "strategy": "ip"
+}
+    },
+    "backend": [
+      {
+        "url_pattern": "/news/{id}",
+        "method": "GET",
+        "encoding": "no-op",
+        "host": ["http://oosa_rewild:6080"],
+        "extra_config": {
+          
+        }
+      }
+    ]},
+    {
+    "endpoint": "/news/{id}",
+    "method": "PUT",
+    "input_headers": [
+        "User-Agent",
+        "Authorization",
+        "Content-Type",
+        "Host",
+        "Connection",
+        "X-User",
+        "X-Userid",
+        "X-Email",
+        "X-Name",
+        "X-Language"
+    ],
+    
+    "output_encoding": "no-op",
+    "extra_config": {
+      "qos/ratelimit/router": {
+    "max_rate": 50,
+    "client_max_rate": 10,
+    "strategy": "ip"
+}
+    },
+    "backend": [
+      {
+        "url_pattern": "/news/{id}",
+        "method": "PUT",
+        "encoding": "no-op",
+        "host": ["http://oosa_rewild:6080"],
+        "extra_config": {
+          
+        }
+      }
+    ]},
+    {
+    "endpoint": "/auth/apple",
+    "method": "POST",
+    "input_headers": [
+        "User-Agent",
+        "Authorization",
+        "Content-Type",
+        "Host",
+        "Connection",
+        "X-User",
+        "X-Userid",
+        "X-Email",
+        "X-Name",
+        "X-Language"
+    ],
+    
+    "output_encoding": "no-op",
+    "extra_config": {
+      "qos/ratelimit/router": {
+    "max_rate": 50,
+    "client_max_rate": 10,
+    "strategy": "ip"
+}
+    },
+    "backend": [
+      {
+        "url_pattern": "/auth/apple",
+        "method": "POST",
+        "encoding": "no-op",
+        "host": ["http://user"],
+        "extra_config": {
+          
+        }
+      }
+    ]},
+    {
+    "endpoint": "/doc/{file}",
+    "method": "GET",
+    "input_headers": [
+        "User-Agent",
+        "Authorization",
+        "Content-Type",
+        "Host",
+        "Connection",
+        "X-User",
+        "X-Userid",
+        "X-Email",
+        "X-Name",
+        "X-Language"
+    ],
+    
+    "output_encoding": "no-op",
+    "extra_config": {
+      "qos/ratelimit/router": {
+    "max_rate": 50,
+    "client_max_rate": 10,
+    "strategy": "ip"
+}
+    },
+    "backend": [
+      {
+        "url_pattern": "/doc/{file}",
+        "method": "GET",
+        "encoding": "no-op",
+        "host": ["http://oosa_auth_test:6080"],
+        "extra_config": {
+          
+        }
+      }
+    ]},
+    {
+    "endpoint": "/event-invitations",
+    "method": "GET",
+    "input_headers": [
+        "User-Agent",
+        "Authorization",
+        "Content-Type",
+        "Host",
+        "Connection",
+        "X-User",
+        "X-Userid",
+        "X-Email",
+        "X-Name",
+        "X-Language"
+    ],
+    
+    "output_encoding": "no-op",
+    "extra_config": {
+      "qos/ratelimit/router": {
+    "max_rate": 50,
+    "client_max_rate": 10,
+    "strategy": "ip"
+}
+    },
+    "backend": [
+      {
+        "url_pattern": "/event-invitations",
+        "method": "GET",
+        "encoding": "no-op",
+        "host": ["http://oosa_rewild:6080"],
+        "extra_config": {
+          
+        }
+      }
+    ]},
+    {
+    "endpoint": "/event/{eventId}/schedule",
+    "method": "DELETE",
+    "input_headers": [
+        "User-Agent",
+        "Authorization",
+        "Content-Type",
+        "Host",
+        "Connection",
+        "X-User",
+        "X-Userid",
+        "X-Email",
+        "X-Name",
+        "X-Language"
+    ],
+    
+    "output_encoding": "no-op",
+    "extra_config": {
+      "qos/ratelimit/router": {
+    "max_rate": 50,
+    "client_max_rate": 10,
+    "strategy": "ip"
+}
+    },
+    "backend": [
+      {
+        "url_pattern": "/event/{eventId}/schedule",
+        "method": "DELETE",
+        "encoding": "no-op",
+        "host": ["http://oosa_rewild:6080"],
+        "extra_config": {
+          
+        }
+      }
+    ]},
+    {
+    "endpoint": "/event/{eventId}/schedule",
+    "method": "GET",
+    "input_headers": [
+        "User-Agent",
+        "Authorization",
+        "Content-Type",
+        "Host",
+        "Connection",
+        "X-User",
+        "X-Userid",
+        "X-Email",
+        "X-Name",
+        "X-Language"
+    ],
+    
+    "output_encoding": "no-op",
+    "extra_config": {
+      "qos/ratelimit/router": {
+    "max_rate": 50,
+    "client_max_rate": 10,
+    "strategy": "ip"
+}
+    },
+    "backend": [
+      {
+        "url_pattern": "/event/{eventId}/schedule",
+        "method": "GET",
+        "encoding": "no-op",
+        "host": ["http://oosa_rewild:6080"],
+        "extra_config": {
+          
+        }
+      }
+    ]},
+    {
+    "endpoint": "/event/{eventId}/schedule",
+    "method": "POST",
+    "input_headers": [
+        "User-Agent",
+        "Authorization",
+        "Content-Type",
+        "Host",
+        "Connection",
+        "X-User",
+        "X-Userid",
+        "X-Email",
+        "X-Name",
+        "X-Language"
+    ],
+    
+    "output_encoding": "no-op",
+    "extra_config": {
+      "qos/ratelimit/router": {
+    "max_rate": 50,
+    "client_max_rate": 10,
+    "strategy": "ip"
+}
+    },
+    "backend": [
+      {
+        "url_pattern": "/event/{eventId}/schedule",
+        "method": "POST",
+        "encoding": "no-op",
+        "host": ["http://oosa_rewild:6080"],
+        "extra_config": {
+          
+        }
+      }
+    ]},
+    {
+    "endpoint": "/pocket-list/{pocketListId}",
+    "method": "PUT",
+    "input_headers": [
+        "User-Agent",
+        "Authorization",
+        "Content-Type",
+        "Host",
+        "Connection",
+        "X-User",
+        "X-Userid",
+        "X-Email",
+        "X-Name",
+        "X-Language"
+    ],
+    
+    "output_encoding": "no-op",
+    "extra_config": {
+      "qos/ratelimit/router": {
+    "max_rate": 50,
+    "client_max_rate": 10,
+    "strategy": "ip"
+}
+    },
+    "backend": [
+      {
+        "url_pattern": "/pocket-list/{pocketListId}",
+        "method": "PUT",
+        "encoding": "no-op",
+        "host": ["http://oosa_rewild:6080"],
+        "extra_config": {
+          
+        }
+      }
+    ]},
+    {
+    "endpoint": "/pocket-list/{pocketListId}",
+    "method": "DELETE",
+    "input_headers": [
+        "User-Agent",
+        "Authorization",
+        "Content-Type",
+        "Host",
+        "Connection",
+        "X-User",
+        "X-Userid",
+        "X-Email",
+        "X-Name",
+        "X-Language"
+    ],
+    
+    "output_encoding": "no-op",
+    "extra_config": {
+      "qos/ratelimit/router": {
+    "max_rate": 50,
+    "client_max_rate": 10,
+    "strategy": "ip"
+}
+    },
+    "backend": [
+      {
+        "url_pattern": "/pocket-list/{pocketListId}",
+        "method": "DELETE",
+        "encoding": "no-op",
+        "host": ["http://oosa_rewild:6080"],
+        "extra_config": {
+          
+        }
+      }
+    ]},
+    {
+    "endpoint": "/pocket-list/{pocketListId}",
+    "method": "GET",
+    "input_headers": [
+        "User-Agent",
+        "Authorization",
+        "Content-Type",
+        "Host",
+        "Connection",
+        "X-User",
+        "X-Userid",
+        "X-Email",
+        "X-Name",
+        "X-Language"
+    ],
+    
+    "output_encoding": "no-op",
+    "extra_config": {
+      "qos/ratelimit/router": {
+    "max_rate": 50,
+    "client_max_rate": 10,
+    "strategy": "ip"
+}
+    },
+    "backend": [
+      {
+        "url_pattern": "/pocket-list/{pocketListId}",
+        "method": "GET",
+        "encoding": "no-op",
+        "host": ["http://oosa_rewild:6080"],
+        "extra_config": {
+          
+        }
+      }
+    ]},
+    {
+    "endpoint": "/forget-password",
+    "method": "POST",
+    "input_headers": [
+        "User-Agent",
+        "Authorization",
+        "Content-Type",
+        "Host",
+        "Connection",
+        "X-User",
+        "X-Userid",
+        "X-Email",
+        "X-Name",
+        "X-Language"
+    ],
+    
+    "output_encoding": "no-op",
+    "extra_config": {
+      "qos/ratelimit/router": {
+    "max_rate": 50,
+    "client_max_rate": 10,
+    "strategy": "ip"
+}
+    },
+    "backend": [
+      {
+        "url_pattern": "/forget-password",
+        "method": "POST",
+        "encoding": "no-op",
+        "host": ["http://user"],
+        "extra_config": {
+          
+        }
+      }
+    ]},
+    {
+    "endpoint": "/achievement",
+    "method": "GET",
+    "input_headers": [
+        "User-Agent",
+        "Authorization",
+        "Content-Type",
+        "Host",
+        "Connection",
+        "X-User",
+        "X-Userid",
+        "X-Email",
+        "X-Name",
+        "X-Language"
+    ],
+    "input_query_strings": ["achievement_type"],
+    "output_encoding": "no-op",
+    "extra_config": {
+      "qos/ratelimit/router": {
+    "max_rate": 50,
+    "client_max_rate": 10,
+    "strategy": "ip"
+}
+    },
+    "backend": [
+      {
+        "url_pattern": "/achievement",
+        "method": "GET",
+        "encoding": "no-op",
+        "host": ["http://oosa_rewild:6080"],
+        "extra_config": {
+          
+        }
+      }
+    ]},
+    {
+    "endpoint": "/auth/profile-picture",
+    "method": "POST",
+    "input_headers": [
+        "User-Agent",
+        "Authorization",
+        "Content-Type",
+        "Host",
+        "Connection",
+        "X-User",
+        "X-Userid",
+        "X-Email",
+        "X-Name",
+        "X-Language"
+    ],
+    
+    "output_encoding": "no-op",
+    "extra_config": {
+      "qos/ratelimit/router": {
+    "max_rate": 50,
+    "client_max_rate": 10,
+    "strategy": "ip"
+}
+    },
+    "backend": [
+      {
+        "url_pattern": "/auth/profile-picture",
+        "method": "POST",
+        "encoding": "no-op",
+        "host": ["http://user"],
+        "extra_config": {
+          
+        }
+      }
+    ]},
+    {
+    "endpoint": "/pocket-list/{pocketListId}/items",
+    "method": "DELETE",
+    "input_headers": [
+        "User-Agent",
+        "Authorization",
+        "Content-Type",
+        "Host",
+        "Connection",
+        "X-User",
+        "X-Userid",
+        "X-Email",
+        "X-Name",
+        "X-Language"
+    ],
+    
+    "output_encoding": "no-op",
+    "extra_config": {
+      "qos/ratelimit/router": {
+    "max_rate": 50,
+    "client_max_rate": 10,
+    "strategy": "ip"
+}
+    },
+    "backend": [
+      {
+        "url_pattern": "/pocket-list/{pocketListId}/items",
+        "method": "DELETE",
+        "encoding": "no-op",
+        "host": ["http://oosa_rewild:6080"],
+        "extra_config": {
+          
+        }
+      }
+    ]},
+    {
+    "endpoint": "/pocket-list/{pocketListId}/items",
+    "method": "GET",
+    "input_headers": [
+        "User-Agent",
+        "Authorization",
+        "Content-Type",
+        "Host",
+        "Connection",
+        "X-User",
+        "X-Userid",
+        "X-Email",
+        "X-Name",
+        "X-Language"
+    ],
+    
+    "output_encoding": "no-op",
+    "extra_config": {
+      "qos/ratelimit/router": {
+    "max_rate": 50,
+    "client_max_rate": 10,
+    "strategy": "ip"
+}
+    },
+    "backend": [
+      {
+        "url_pattern": "/pocket-list/{pocketListId}/items",
+        "method": "GET",
+        "encoding": "no-op",
+        "host": ["http://oosa_rewild:6080"],
+        "extra_config": {
+          
+        }
+      }
+    ]},
+    {
+    "endpoint": "/pocket-list/{pocketListId}/items",
+    "method": "POST",
+    "input_headers": [
+        "User-Agent",
+        "Authorization",
+        "Content-Type",
+        "Host",
+        "Connection",
+        "X-User",
+        "X-Userid",
+        "X-Email",
+        "X-Name",
+        "X-Language"
+    ],
+    
+    "output_encoding": "no-op",
+    "extra_config": {
+      "qos/ratelimit/router": {
+    "max_rate": 50,
+    "client_max_rate": 10,
+    "strategy": "ip"
+}
+    },
+    "backend": [
+      {
+        "url_pattern": "/pocket-list/{pocketListId}/items",
+        "method": "POST",
+        "encoding": "no-op",
+        "host": ["http://oosa_rewild:6080"],
+        "extra_config": {
+          
+        }
+      }
+    ]},
+    {
+    "endpoint": "/pocket-list/{pocketListId}/items",
+    "method": "PUT",
+    "input_headers": [
+        "User-Agent",
+        "Authorization",
+        "Content-Type",
+        "Host",
+        "Connection",
+        "X-User",
+        "X-Userid",
+        "X-Email",
+        "X-Name",
+        "X-Language"
+    ],
+    
+    "output_encoding": "no-op",
+    "extra_config": {
+      "qos/ratelimit/router": {
+    "max_rate": 50,
+    "client_max_rate": 10,
+    "strategy": "ip"
+}
+    },
+    "backend": [
+      {
+        "url_pattern": "/pocket-list/{pocketListId}/items",
+        "method": "PUT",
+        "encoding": "no-op",
+        "host": ["http://oosa_rewild:6080"],
+        "extra_config": {
+          
+        }
+      }
+    ]},
+    {
+    "endpoint": "/rewilding-searchNearby",
+    "method": "GET",
+    "input_headers": [
+        "User-Agent",
+        "Authorization",
+        "Content-Type",
+        "Host",
+        "Connection",
+        "X-User",
+        "X-Userid",
+        "X-Email",
+        "X-Name",
+        "X-Language"
+    ],
+    "input_query_strings": ["type","lat","lng","radius","language"],
+    "output_encoding": "no-op",
+    "extra_config": {
+      "qos/ratelimit/router": {
+    "max_rate": 50,
+    "client_max_rate": 10,
+    "strategy": "ip"
+}
+    },
+    "backend": [
+      {
+        "url_pattern": "/rewilding-searchNearby",
+        "method": "GET",
+        "encoding": "no-op",
+        "host": ["http://oosa_rewild:6080"],
+        "extra_config": {
+          
+        }
+      }
+    ]},
+    {
+    "endpoint": "/collaborative-log",
+    "method": "GET",
+    "input_headers": [
+        "User-Agent",
+        "Authorization",
+        "Content-Type",
+        "Host",
+        "Connection",
+        "X-User",
+        "X-Userid",
+        "X-Email",
+        "X-Name",
+        "X-Language"
+    ],
+    
+    "output_encoding": "no-op",
+    "extra_config": {
+      "qos/ratelimit/router": {
+    "max_rate": 50,
+    "client_max_rate": 10,
+    "strategy": "ip"
+}
+    },
+    "backend": [
+      {
+        "url_pattern": "/collaborative-log",
+        "method": "GET",
+        "encoding": "no-op",
+        "host": ["http://oosa_rewild:6080"],
+        "extra_config": {
+          
+        }
+      }
+    ]},
+    {
+    "endpoint": "/user/{userId}",
+    "method": "GET",
+    "input_headers": [
+        "User-Agent",
+        "Authorization",
+        "Content-Type",
+        "Host",
+        "Connection",
+        "X-User",
+        "X-Userid",
+        "X-Email",
+        "X-Name",
+        "X-Language"
+    ],
+    
+    "output_encoding": "no-op",
+    "extra_config": {
+      "qos/ratelimit/router": {
+    "max_rate": 50,
+    "client_max_rate": 10,
+    "strategy": "ip"
+}
+    },
+    "backend": [
+      {
+        "url_pattern": "/user/{userId}",
+        "method": "GET",
+        "encoding": "no-op",
+        "host": ["http://user"],
+        "extra_config": {
+          
+        }
+      }
+    ]},
+    {
+    "endpoint": "/pocket-list",
+    "method": "GET",
+    "input_headers": [
+        "User-Agent",
+        "Authorization",
+        "Content-Type",
+        "Host",
+        "Connection",
+        "X-User",
+        "X-Userid",
+        "X-Email",
+        "X-Name",
+        "X-Language"
+    ],
+    
+    "output_encoding": "no-op",
+    "extra_config": {
+      "qos/ratelimit/router": {
+    "max_rate": 50,
+    "client_max_rate": 10,
+    "strategy": "ip"
+}
+    },
+    "backend": [
+      {
+        "url_pattern": "/pocket-list",
+        "method": "GET",
+        "encoding": "no-op",
+        "host": ["http://oosa_rewild:6080"],
+        "extra_config": {
+          
+        }
+      }
+    ]},
+    {
+    "endpoint": "/pocket-list",
+    "method": "POST",
+    "input_headers": [
+        "User-Agent",
+        "Authorization",
+        "Content-Type",
+        "Host",
+        "Connection",
+        "X-User",
+        "X-Userid",
+        "X-Email",
+        "X-Name",
+        "X-Language"
+    ],
+    
+    "output_encoding": "no-op",
+    "extra_config": {
+      "qos/ratelimit/router": {
+    "max_rate": 50,
+    "client_max_rate": 10,
+    "strategy": "ip"
+}
+    },
+    "backend": [
+      {
+        "url_pattern": "/pocket-list",
+        "method": "POST",
+        "encoding": "no-op",
+        "host": ["http://oosa_rewild:6080"],
+        "extra_config": {
+          
+        }
+      }
+    ]},
+    {
+    "endpoint": "/event/{eventId}/message-board/{messageBoardId}/pin",
+    "method": "POST",
+    "input_headers": [
+        "User-Agent",
+        "Authorization",
+        "Content-Type",
+        "Host",
+        "Connection",
+        "X-User",
+        "X-Userid",
+        "X-Email",
+        "X-Name",
+        "X-Language"
+    ],
+    
+    "output_encoding": "no-op",
+    "extra_config": {
+      "qos/ratelimit/router": {
+    "max_rate": 50,
+    "client_max_rate": 10,
+    "strategy": "ip"
+}
+    },
+    "backend": [
+      {
+        "url_pattern": "/event/{eventId}/message-board/{messageBoardId}/pin",
+        "method": "POST",
+        "encoding": "no-op",
+        "host": ["http://oosa_rewild:6080"],
+        "extra_config": {
+          
+        }
+      }
+    ]},
+    {
+    "endpoint": "/test-auth",
+    "method": "GET",
+    "input_headers": [
+        "User-Agent",
+        "Authorization",
+        "Content-Type",
+        "Host",
+        "Connection",
+        "X-User",
+        "X-Userid",
+        "X-Email",
+        "X-Name",
+        "X-Language"
+    ],
+    
+    "output_encoding": "no-op",
+    "extra_config": {
+      "qos/ratelimit/router": {
+    "max_rate": 50,
+    "client_max_rate": 10,
+    "strategy": "ip"
+}
+    },
+    "backend": [
+      {
+        "url_pattern": "/test-auth",
+        "method": "GET",
+        "encoding": "no-op",
+        "host": ["http://oosa_auth_test:6080"],
+        "extra_config": {
+          
+        }
+      }
+    ]},
+    {
+    "endpoint": "/user-following",
+    "method": "GET",
+    "input_headers": [
+        "User-Agent",
+        "Authorization",
+        "Content-Type",
+        "Host",
+        "Connection",
+        "X-User",
+        "X-Userid",
+        "X-Email",
+        "X-Name",
+        "X-Language"
+    ],
+    
+    "output_encoding": "no-op",
+    "extra_config": {
+      "qos/ratelimit/router": {
+    "max_rate": 50,
+    "client_max_rate": 10,
+    "strategy": "ip"
+}
+    },
+    "backend": [
+      {
+        "url_pattern": "/user-following",
+        "method": "GET",
+        "encoding": "no-op",
+        "host": ["http://user"],
+        "extra_config": {
+          
+        }
+      }
+    ]},
+    {
+    "endpoint": "/user-following",
+    "method": "POST",
+    "input_headers": [
+        "User-Agent",
+        "Authorization",
+        "Content-Type",
+        "Host",
+        "Connection",
+        "X-User",
+        "X-Userid",
+        "X-Email",
+        "X-Name",
+        "X-Language"
+    ],
+    
+    "output_encoding": "no-op",
+    "extra_config": {
+      "qos/ratelimit/router": {
+    "max_rate": 50,
+    "client_max_rate": 10,
+    "strategy": "ip"
+}
+    },
+    "backend": [
+      {
+        "url_pattern": "/user-following",
         "method": "POST",
         "encoding": "no-op",
         "host": ["http://user"],
@@ -3472,7 +3577,7 @@
       }
     ]},
     {
-    "endpoint": "/event/{eventId}/announcement",
+    "endpoint": "/event/{eventId}/participants",
     "method": "GET",
     "input_headers": [
         "User-Agent",
@@ -3486,7 +3591,7 @@
         "X-Name",
         "X-Language"
     ],
-    "input_query_strings": ["category"],
+    
     "output_encoding": "no-op",
     "extra_config": {
       "qos/ratelimit/router": {
@@ -3497,7 +3602,7 @@
     },
     "backend": [
       {
-        "url_pattern": "/event/{eventId}/announcement",
+        "url_pattern": "/event/{eventId}/participants",
         "method": "GET",
         "encoding": "no-op",
         "host": ["http://oosa_rewild:6080"],
@@ -3507,7 +3612,7 @@
       }
     ]},
     {
-    "endpoint": "/event/{eventId}/announcement",
+    "endpoint": "/event/{eventId}/participants",
     "method": "POST",
     "input_headers": [
         "User-Agent",
@@ -3532,7 +3637,7 @@
     },
     "backend": [
       {
-        "url_pattern": "/event/{eventId}/announcement",
+        "url_pattern": "/event/{eventId}/participants",
         "method": "POST",
         "encoding": "no-op",
         "host": ["http://oosa_rewild:6080"],
@@ -3542,8 +3647,43 @@
       }
     ]},
     {
-    "endpoint": "/event/{eventId}/invitation",
-    "method": "PUT",
+    "endpoint": "/rewilding-searchText",
+    "method": "GET",
+    "input_headers": [
+        "User-Agent",
+        "Authorization",
+        "Content-Type",
+        "Host",
+        "Connection",
+        "X-User",
+        "X-Userid",
+        "X-Email",
+        "X-Name",
+        "X-Language"
+    ],
+    "input_query_strings": ["keyword","rectangle_low_lat","rectangle_low_lng","rectangle_hight_lat","rectangle_hight_lng","language"],
+    "output_encoding": "no-op",
+    "extra_config": {
+      "qos/ratelimit/router": {
+    "max_rate": 50,
+    "client_max_rate": 10,
+    "strategy": "ip"
+}
+    },
+    "backend": [
+      {
+        "url_pattern": "/rewilding-searchText",
+        "method": "GET",
+        "encoding": "no-op",
+        "host": ["http://oosa_rewild:6080"],
+        "extra_config": {
+          
+        }
+      }
+    ]},
+    {
+    "endpoint": "/auth/avatar",
+    "method": "POST",
     "input_headers": [
         "User-Agent",
         "Authorization",
@@ -3567,10 +3707,45 @@
     },
     "backend": [
       {
-        "url_pattern": "/event/{eventId}/invitation",
-        "method": "PUT",
+        "url_pattern": "/auth/avatar",
+        "method": "POST",
         "encoding": "no-op",
-        "host": ["http://oosa_rewild:6080"],
+        "host": ["http://user"],
+        "extra_config": {
+          
+        }
+      }
+    ]},
+    {
+    "endpoint": "/forget-password/{token}",
+    "method": "POST",
+    "input_headers": [
+        "User-Agent",
+        "Authorization",
+        "Content-Type",
+        "Host",
+        "Connection",
+        "X-User",
+        "X-Userid",
+        "X-Email",
+        "X-Name",
+        "X-Language"
+    ],
+    
+    "output_encoding": "no-op",
+    "extra_config": {
+      "qos/ratelimit/router": {
+    "max_rate": 50,
+    "client_max_rate": 10,
+    "strategy": "ip"
+}
+    },
+    "backend": [
+      {
+        "url_pattern": "/forget-password/{token}",
+        "method": "POST",
+        "encoding": "no-op",
+        "host": ["http://user"],
         "extra_config": {
           
         }
@@ -3647,41 +3822,6 @@
       }
     ]},
     {
-    "endpoint": "/rewilding-register/references",
-    "method": "GET",
-    "input_headers": [
-        "User-Agent",
-        "Authorization",
-        "Content-Type",
-        "Host",
-        "Connection",
-        "X-User",
-        "X-Userid",
-        "X-Email",
-        "X-Name",
-        "X-Language"
-    ],
-    
-    "output_encoding": "no-op",
-    "extra_config": {
-      "qos/ratelimit/router": {
-    "max_rate": 50,
-    "client_max_rate": 10,
-    "strategy": "ip"
-}
-    },
-    "backend": [
-      {
-        "url_pattern": "/rewilding-register/references",
-        "method": "GET",
-        "encoding": "no-op",
-        "host": ["http://oosa_rewild:6080"],
-        "extra_config": {
-          
-        }
-      }
-    ]},
-    {
     "endpoint": "/user/statistics",
     "method": "GET",
     "input_headers": [
@@ -3717,42 +3857,7 @@
       }
     ]},
     {
-    "endpoint": "/auth/profile-picture",
-    "method": "POST",
-    "input_headers": [
-        "User-Agent",
-        "Authorization",
-        "Content-Type",
-        "Host",
-        "Connection",
-        "X-User",
-        "X-Userid",
-        "X-Email",
-        "X-Name",
-        "X-Language"
-    ],
-    
-    "output_encoding": "no-op",
-    "extra_config": {
-      "qos/ratelimit/router": {
-    "max_rate": 50,
-    "client_max_rate": 10,
-    "strategy": "ip"
-}
-    },
-    "backend": [
-      {
-        "url_pattern": "/auth/profile-picture",
-        "method": "POST",
-        "encoding": "no-op",
-        "host": ["http://user"],
-        "extra_config": {
-          
-        }
-      }
-    ]},
-    {
-    "endpoint": "/test-no-auth",
+    "endpoint": "/world/statistics",
     "method": "GET",
     "input_headers": [
         "User-Agent",
@@ -3777,18 +3882,18 @@
     },
     "backend": [
       {
-        "url_pattern": "/test-no-auth",
+        "url_pattern": "/world/statistics",
         "method": "GET",
         "encoding": "no-op",
-        "host": ["http://oosa_auth_test:6080"],
+        "host": ["http://user"],
         "extra_config": {
           
         }
       }
     ]},
     {
-    "endpoint": "/user/{userId}/badges",
-    "method": "GET",
+    "endpoint": "/auth/setting",
+    "method": "PUT",
     "input_headers": [
         "User-Agent",
         "Authorization",
@@ -3812,8 +3917,8 @@
     },
     "backend": [
       {
-        "url_pattern": "/user/{userId}/badges",
-        "method": "GET",
+        "url_pattern": "/auth/setting",
+        "method": "PUT",
         "encoding": "no-op",
         "host": ["http://user"],
         "extra_config": {
@@ -3822,7 +3927,7 @@
       }
     ]},
     {
-    "endpoint": "/collaborative-log/{eventId}/experience",
+    "endpoint": "/auth/google",
     "method": "POST",
     "input_headers": [
         "User-Agent",
@@ -3847,8 +3952,43 @@
     },
     "backend": [
       {
-        "url_pattern": "/collaborative-log/{eventId}/experience",
+        "url_pattern": "/auth/google",
         "method": "POST",
+        "encoding": "no-op",
+        "host": ["http://user"],
+        "extra_config": {
+          
+        }
+      }
+    ]},
+    {
+    "endpoint": "/pocket-list/{pocketListId}/items/{pocketListItemsId}",
+    "method": "DELETE",
+    "input_headers": [
+        "User-Agent",
+        "Authorization",
+        "Content-Type",
+        "Host",
+        "Connection",
+        "X-User",
+        "X-Userid",
+        "X-Email",
+        "X-Name",
+        "X-Language"
+    ],
+    
+    "output_encoding": "no-op",
+    "extra_config": {
+      "qos/ratelimit/router": {
+    "max_rate": 50,
+    "client_max_rate": 10,
+    "strategy": "ip"
+}
+    },
+    "backend": [
+      {
+        "url_pattern": "/pocket-list/{pocketListId}/items/{pocketListItemsId}",
+        "method": "DELETE",
         "encoding": "no-op",
         "host": ["http://oosa_rewild:6080"],
         "extra_config": {
@@ -3857,7 +3997,7 @@
       }
     ]},
     {
-    "endpoint": "/test-auth",
+    "endpoint": "/pocket-list/{pocketListId}/items/{pocketListItemsId}",
     "method": "GET",
     "input_headers": [
         "User-Agent",
@@ -3882,42 +4022,7 @@
     },
     "backend": [
       {
-        "url_pattern": "/test-auth",
-        "method": "GET",
-        "encoding": "no-op",
-        "host": ["http://oosa_auth_test:6080"],
-        "extra_config": {
-          
-        }
-      }
-    ]},
-    {
-    "endpoint": "/references",
-    "method": "GET",
-    "input_headers": [
-        "User-Agent",
-        "Authorization",
-        "Content-Type",
-        "Host",
-        "Connection",
-        "X-User",
-        "X-Userid",
-        "X-Email",
-        "X-Name",
-        "X-Language"
-    ],
-    
-    "output_encoding": "no-op",
-    "extra_config": {
-      "qos/ratelimit/router": {
-    "max_rate": 50,
-    "client_max_rate": 10,
-    "strategy": "ip"
-}
-    },
-    "backend": [
-      {
-        "url_pattern": "/references",
+        "url_pattern": "/pocket-list/{pocketListId}/items/{pocketListItemsId}",
         "method": "GET",
         "encoding": "no-op",
         "host": ["http://oosa_rewild:6080"],
@@ -3927,8 +4032,8 @@
       }
     ]},
     {
-    "endpoint": "/user-following",
-    "method": "GET",
+    "endpoint": "/pocket-list/{pocketListId}/items/{pocketListItemsId}",
+    "method": "PUT",
     "input_headers": [
         "User-Agent",
         "Authorization",
@@ -3952,113 +4057,8 @@
     },
     "backend": [
       {
-        "url_pattern": "/user-following",
-        "method": "GET",
-        "encoding": "no-op",
-        "host": ["http://user"],
-        "extra_config": {
-          
-        }
-      }
-    ]},
-    {
-    "endpoint": "/user-following",
-    "method": "POST",
-    "input_headers": [
-        "User-Agent",
-        "Authorization",
-        "Content-Type",
-        "Host",
-        "Connection",
-        "X-User",
-        "X-Userid",
-        "X-Email",
-        "X-Name",
-        "X-Language"
-    ],
-    
-    "output_encoding": "no-op",
-    "extra_config": {
-      "qos/ratelimit/router": {
-    "max_rate": 50,
-    "client_max_rate": 10,
-    "strategy": "ip"
-}
-    },
-    "backend": [
-      {
-        "url_pattern": "/user-following",
-        "method": "POST",
-        "encoding": "no-op",
-        "host": ["http://user"],
-        "extra_config": {
-          
-        }
-      }
-    ]},
-    {
-    "endpoint": "/pocket-list",
-    "method": "GET",
-    "input_headers": [
-        "User-Agent",
-        "Authorization",
-        "Content-Type",
-        "Host",
-        "Connection",
-        "X-User",
-        "X-Userid",
-        "X-Email",
-        "X-Name",
-        "X-Language"
-    ],
-    
-    "output_encoding": "no-op",
-    "extra_config": {
-      "qos/ratelimit/router": {
-    "max_rate": 50,
-    "client_max_rate": 10,
-    "strategy": "ip"
-}
-    },
-    "backend": [
-      {
-        "url_pattern": "/pocket-list",
-        "method": "GET",
-        "encoding": "no-op",
-        "host": ["http://oosa_rewild:6080"],
-        "extra_config": {
-          
-        }
-      }
-    ]},
-    {
-    "endpoint": "/pocket-list",
-    "method": "POST",
-    "input_headers": [
-        "User-Agent",
-        "Authorization",
-        "Content-Type",
-        "Host",
-        "Connection",
-        "X-User",
-        "X-Userid",
-        "X-Email",
-        "X-Name",
-        "X-Language"
-    ],
-    
-    "output_encoding": "no-op",
-    "extra_config": {
-      "qos/ratelimit/router": {
-    "max_rate": 50,
-    "client_max_rate": 10,
-    "strategy": "ip"
-}
-    },
-    "backend": [
-      {
-        "url_pattern": "/pocket-list",
-        "method": "POST",
+        "url_pattern": "/pocket-list/{pocketListId}/items/{pocketListItemsId}",
+        "method": "PUT",
         "encoding": "no-op",
         "host": ["http://oosa_rewild:6080"],
         "extra_config": {

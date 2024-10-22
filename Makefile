@@ -25,18 +25,18 @@ gen-conf:
 merge-spec:
 	docker run -i \
 	-v $$PWD:/workdir 94peter/openapi-cli:v1.11 /main ms \
-	-main /workdir/main_spec.yml \
+	-main /workdir/${ENV}_main_spec.yml \
 	-mergeDir /workdir/all_spec/ \
-	-output /workdir/doc/oosa.yml \
+	-output /workdir/doc/${ENV}_oosa.yml \
 
 gen-setting-json:
 	docker run -i \
 	-v $$PWD:/workdir 94peter/openapi-cli:v1.11 /main togs \
-	-spec /workdir/doc/oosa.yml \
+	-spec /workdir/doc/${ENV}_oosa.yml \
 	-output /workdir/settings/endpoint.json
 
 gen-oath-rule: 
 	docker run -i \
 	-v $$PWD:/workdir 94peter/openapi-cli:v1.11 /main tar \
-	-spec /workdir/doc/oosa.yml \
-	-output /workdir/doc/rules.json
+	-spec /workdir/doc/${ENV}_oosa.yml \
+	-output /workdir/doc/${ENV}_rules.json

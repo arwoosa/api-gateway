@@ -1195,5 +1195,5 @@ components:
       type: http
       scheme: bearer
 servers:
-- url: http://oosa_user:6080
+- url: http://user
   description: OOSA_USER_SERVICE
