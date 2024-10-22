@@ -10,13 +10,13 @@ platform:
 steps:
 - name: merge api spec
   commands:
-  - make merge-spec
+  - make merge-spec ENV=test
 - name: generate setting endpoint
   commands:
-  - make gen-setting-json
+  - make gen-setting-json ENV=test
 - name: generate oath rules
   commands:
-  - make gen-oath-rule
+  - make gen-oath-rule ENV=test
 - name: build image
   commands:
   - docker build -t oosa-gw:dev .
