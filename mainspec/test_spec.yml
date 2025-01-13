@@ -1,0 +1,17 @@
+openapi: 3.0.3
+info:
+  title: OOSA API
+  description: This is OOSA's API
+  version: "1.0.0"
+servers:
+  - url: https://dev.oosa.life/api
+    description: OOSA's Dev API
+  - url: https://dev-auth.oosa.life/api
+    description: OOSA's Dev-Auth API
+
+components:
+  securitySchemes:
+    Bearer:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
