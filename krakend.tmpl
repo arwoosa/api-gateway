@@ -1,12 +1,12 @@
 {
   "version": 3,
-  "name": "tv-gateway",
+  "name": "oosa-api-gateway",
   "port": 8080,
   "cache_ttl": "3600s",
   "timeout": "3s",
   "plugin": {
     "pattern": ".so",
-    "folder": "./plugin/"
+    "folder": "/etc/krakend/plugins/"
   },
   "extra_config": {
     "telemetry/logging": {
@@ -14,13 +14,6 @@
       "prefix": "[KRAKEND]",
       "syslog": false,
       "stdout": true
-    },
-    "security/cors": {
-      "allow_origins": [ "*" ],
-      "allow_methods": [ "GET", "POST", "PUT", "DELETE" ],
-      "allow_headers": [ "Origin", "Authorization", "Content-Type" ],
-      "expose_headers": [ "Content-Length" ],
-      "max_age": "12h"
     },
     "plugin/http-server": {
       "name": ["static-filesystem"],
@@ -48,7 +41,14 @@
         "User-Agent",
         "Authorization",
         "Content-Type",
-        "X-Channel"
+        "Host",
+        "Connection",
+        "Cookie",
+        "X-User-Account",
+        "X-User-Id",
+        "X-User-Email",
+        "X-User-Name",
+        "X-User-Language"
     ],
     {{if $endpoint.input_querys}}"input_query_strings": {{ marshal $endpoint.input_querys }},{{end}}
     "output_encoding": "no-op",
@@ -61,7 +61,10 @@
         "url_pattern": "{{ $endpoint.backend }}",
         "method": "{{ $endpoint.method }}",
         "encoding": "no-op",
-        "host": {{ marshal $endpoint.host }}
+        "host": {{ marshal $endpoint.host }},
+        "extra_config": {
+          {{if $endpoint.no_redirect}}"plugin/http-client":{"name": "no-redirect"} {{end}}
+        }
       }
     ]}{{ end }}
 	]
