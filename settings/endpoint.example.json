@@ -1,0 +1,53 @@
+{
+    "group": [
+        {
+            "description": "auth",
+            "endpoint": "/auth",
+            "method": "GET",
+            "backend": "/auth",
+            "host": ["http://oosa_user:6080","http://oosa_rewild:6080"]
+        },
+        {
+            "description": "google auth",
+            "endpoint": "/auth/google",
+            "method": "POST",
+            "backend": "/auth/google",
+            "host": ["http://oosa_user:6080"]     
+        },
+        {
+            "description": "facebook auth",
+            "endpoint": "/auth/facebook",
+            "method": "POST",
+            "backend": "/auth/facebook",
+            "host": ["http://oosa_user:6080"]     
+        },
+        {
+            "description": "line auth",
+            "endpoint": "/auth/line",
+            "method": "POST",
+            "backend": "/auth/line",
+            "host": ["http://oosa_user:6080"]     
+        },
+        {
+            "description": "apple auth",
+            "endpoint": "/auth/apple",
+            "method": "POST",
+            "backend": "/auth/apple",
+            "host": ["http://oosa_user:6080"]     
+        },
+        {
+            "description": "email auth",
+            "endpoint": "/auth/email",
+            "method": "POST",
+            "backend": "/auth/email",
+            "host": ["http://oosa_user:6080"]     
+        },
+        {
+            "description": "User register",
+            "endpoint": "/register",
+            "method": "POST",
+            "backend": "/register",
+            "host": ["http://oosa_user:6080"]     
+        }
+    ]
+}
