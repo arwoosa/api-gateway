@@ -1,7 +1,7 @@
 servers:
 - url: http://oosa_user:6080
   description: OOSA_USER_SERVICE
-openapi: 3.1.0
+opopenapi: 3.0.1
 info:
   title: User
   description: ''
@@ -210,7 +210,7 @@ paths:
   /auth/apple:
     post:
       summary: Auth Apple
-      deprecated: false
+      deprecated: true
       description: Use this endpoint to login/register using Apple
       operationId: authByApple
       tags:
@@ -228,12 +228,12 @@ paths:
           x-apidog-name: Login object
       security: []
       x-apidog-folder: OOSA_USER_SERVICE/U > Auth
-      x-apidog-status: released
+      x-apidog-status: deprecated
       x-run-in-apidog: https://apidog.com/web/project/607604/apis/api-8862643-run
   /auth/avatar:
     post:
       summary: Update User Avatar
-      deprecated: false
+      deprecated: true
       description: Update user avatar
       operationId: updateAvatarUseDefault
       tags:
@@ -285,12 +285,12 @@ paths:
       security:
         - bearer: []
       x-apidog-folder: OOSA_USER_SERVICE/U > Auth
-      x-apidog-status: released
+      x-apidog-status: deprecated
       x-run-in-apidog: https://apidog.com/web/project/607604/apis/api-8862644-run
   /auth/change-password:
     put:
       summary: Update Password
-      deprecated: false
+      deprecated: true
       description: Update the authenticated user password
       operationId: updatePassword
       tags:
@@ -321,12 +321,12 @@ paths:
           x-apidog-name: User object
       security: []
       x-apidog-folder: OOSA_USER_SERVICE/U > Auth
-      x-apidog-status: released
+      x-apidog-status: deprecated
       x-run-in-apidog: https://apidog.com/web/project/607604/apis/api-8862646-run
   /auth/email:
     post:
       summary: Auth Email
-      deprecated: false
+      deprecated: true
       description: Use this endpoint to login using email
       operationId: authByEmail
       tags:
@@ -376,13 +376,13 @@ paths:
           x-apidog-name: Record not found
       security: []
       x-apidog-folder: OOSA_USER_SERVICE/U > Auth
-      x-apidog-status: released
+      x-apidog-status: deprecated
       x-apidog-maintainer: 陳文晟
       x-run-in-apidog: https://apidog.com/web/project/607604/apis/api-8862647-run
   /auth/facebook:
     post:
       summary: Auth Facebook
-      deprecated: false
+      deprecated: true
       description: Use this endpoint to login/register using Facebook
       operationId: authByFacebook
       tags:
@@ -403,12 +403,12 @@ paths:
           x-apidog-name: Login object
       security: []
       x-apidog-folder: OOSA_USER_SERVICE/U > Auth
-      x-apidog-status: released
+      x-apidog-status: deprecated
       x-run-in-apidog: https://apidog.com/web/project/607604/apis/api-8862648-run
   /auth/google:
     post:
       summary: Auth Google
-      deprecated: false
+      deprecated: true
       description: Use this endpoint to login/register using google
       operationId: authByGoogle
       tags:
@@ -434,12 +434,12 @@ paths:
           x-apidog-name: Login object
       security: []
       x-apidog-folder: OOSA_USER_SERVICE/U > Auth
-      x-apidog-status: released
+      x-apidog-status: deprecated
       x-run-in-apidog: https://apidog.com/web/project/607604/apis/api-8862649-run
   /auth/line:
     get:
       summary: Auth Line
-      deprecated: false
+      deprecated: true
       description: Use this endpoint to login/register using Line
       operationId: getAuthByLine
       tags:
@@ -478,12 +478,12 @@ paths:
           x-apidog-name: Validation Error
       security: []
       x-apidog-folder: OOSA_USER_SERVICE/U > Auth
-      x-apidog-status: released
+      x-apidog-status: deprecated
       x-run-in-apidog: https://apidog.com/web/project/607604/apis/api-8862650-run
   /forget-password:
     post:
       summary: Forget Password
-      deprecated: false
+      deprecated: true
       description: Forget Password Request
       operationId: forgetPassword
       tags:
@@ -508,12 +508,12 @@ paths:
           x-apidog-name: User object
       security: []
       x-apidog-folder: OOSA_USER_SERVICE/U > Auth
-      x-apidog-status: released
+      x-apidog-status: deprecated
       x-run-in-apidog: https://apidog.com/web/project/607604/apis/api-8862653-run
   /register:
     post:
       summary: Email - Register
-      deprecated: false
+      deprecated: true
       description: Use this endpoint to register using email
       operationId: emailRegister
       tags:
@@ -546,7 +546,7 @@ paths:
           x-apidog-name: If user exists
       security: []
       x-apidog-folder: OOSA_USER_SERVICE/U > Auth
-      x-apidog-status: released
+      x-apidog-status: deprecated
       x-run-in-apidog: https://apidog.com/web/project/607604/apis/api-8862654-run
   /auth:
     get:
@@ -635,7 +635,7 @@ paths:
   /forget-password/{token}:
     post:
       summary: Forget Password - Updated
-      deprecated: false
+      deprecated: true
       description: Update password from forget password
       operationId: forgetPasswordUpdated
       tags:
@@ -672,12 +672,12 @@ paths:
           x-apidog-name: User object
       security: []
       x-apidog-folder: OOSA_USER_SERVICE/U > Auth
-      x-apidog-status: released
+      x-apidog-status: deprecated
       x-run-in-apidog: https://apidog.com/web/project/607604/apis/api-8862659-run
   /auth/profile-picture:
     post:
       summary: Update User Profile Picture
-      deprecated: false
+      deprecated: true
       description: Update profile picture
       operationId: updateAvatarUsePicture
       tags:
@@ -708,7 +708,7 @@ paths:
       security:
         - bearer: []
       x-apidog-folder: OOSA_USER_SERVICE/U > Auth
-      x-apidog-status: released
+      x-apidog-status: deprecated
       x-run-in-apidog: https://apidog.com/web/project/607604/apis/api-8862664-run
   /oosa-daily:
     post:
@@ -795,7 +795,7 @@ paths:
           x-apidog-name: No Content
       security: []
       x-apidog-folder: OOSA_USER_SERVICE/U > User
-      x-apidog-status: designing
+      x-apidog-status: released
       x-run-in-apidog: https://apidog.com/web/project/607604/apis/api-10057831-run
   /users:
     get:
@@ -876,7 +876,7 @@ paths:
       security:
         - bearer: []
       x-apidog-folder: OOSA_USER_SERVICE/U > User Badges
-      x-apidog-status: developing
+      x-apidog-status: released
       x-run-in-apidog: https://apidog.com/web/project/607604/apis/api-8862645-run
   /user/{userId}/badges:
     get:
@@ -915,7 +915,7 @@ paths:
       security:
         - bearer: []
       x-apidog-folder: OOSA_USER_SERVICE/U > User Badges
-      x-apidog-status: designing
+      x-apidog-status: released
       x-run-in-apidog: https://apidog.com/web/project/607604/apis/api-10058173-run
   /auth/badges/{userBadgeId}:
     get:
@@ -944,7 +944,7 @@ paths:
                 x-apidog-orders:
                   - 01JB8S9XAGGG6688VJ3E7M7T97
                 properties:
-                  user_badges_detail: &ref_9
+                  user_badges_detail: &ref_8
                     $ref: '#/components/schemas/UserBadgesDetail'
                   user_badges_badge:
                     type: string
@@ -965,7 +965,7 @@ paths:
       security:
         - bearer: []
       x-apidog-folder: OOSA_USER_SERVICE/U > User Badges
-      x-apidog-status: designing
+      x-apidog-status: released
       x-run-in-apidog: https://apidog.com/web/project/607604/apis/api-11115779-run
   /user/friends:
     get:
@@ -1021,21 +1021,63 @@ paths:
                 type: array
                 items:
                   type: object
-                  x-apidog-refs:
-                    01JBE8W8W82814RG96JF716C6Q: &ref_6
-                      x-apidog-overrides:
-                        user_friends_created_at: null
-                        user_friends_user_2: null
-                        user_friends_user_1: null
-                        user_friends_id: null
+                  properties:
+                    user_friends_id:
+                      type: string
+                    user_friends_status:
+                      type: integer
+                    user_friends_user_1:
+                      type: string
+                    user_friends_user_2:
+                      type: string
+                    user_friends_created_at:
+                      type: string
+                    user_friends_is_official:
+                      type: 'null'
+                    rewilding_activity_status:
+                      type: integer
+                    user_friends_detail:
                       type: object
-                      properties: {}
-                  x-apidog-orders:
-                    - 01JBE8W8W82814RG96JF716C6Q
-                  properties: {}
+                      properties:
+                        user_id:
+                          type: string
+                        user_name:
+                          type: string
+                        user_username:
+                          type: string
+                        user_avatar:
+                          type: string
+                        user_breathing_status:
+                          type: integer
+                        user_take_me_status:
+                          type: boolean
+                      required:
+                        - user_id
+                        - user_name
+                        - user_username
+                        - user_avatar
+                        - user_breathing_status
+                        - user_take_me_status
+                      x-apidog-ignore-properties: []
+                      x-apidog-orders:
+                        - user_id
+                        - user_name
+                        - user_username
+                        - user_avatar
+                        - user_breathing_status
+                        - user_take_me_status
                   x-apidog-ignore-properties: []
+                  x-apidog-orders:
+                    - user_friends_id
+                    - user_friends_status
+                    - user_friends_user_1
+                    - user_friends_user_2
+                    - user_friends_created_at
+                    - user_friends_is_official
+                    - rewilding_activity_status
+                    - user_friends_detail
           headers: {}
-          x-apidog-name: User friends
+          x-apidog-name: User Friends
         '204':
           description: ''
           content:
@@ -1215,7 +1257,7 @@ paths:
                     user_friends_created_at:
                       type: string
                     user_friends_is_official:
-                      type: 'null'
+                      type: string
                     rewilding_activity_status:
                       type: integer
                     user_friends_detail:
@@ -1240,7 +1282,6 @@ paths:
                         - user_avatar
                         - user_breathing_status
                         - user_take_me_status
-                      x-apidog-ignore-properties: []
                       x-apidog-orders:
                         - user_id
                         - user_name
@@ -1248,7 +1289,7 @@ paths:
                         - user_avatar
                         - user_breathing_status
                         - user_take_me_status
-                  x-apidog-ignore-properties: []
+                      x-apidog-ignore-properties: []
                   x-apidog-orders:
                     - user_friends_id
                     - user_friends_status
@@ -1258,6 +1299,7 @@ paths:
                     - user_friends_is_official
                     - rewilding_activity_status
                     - user_friends_detail
+                  x-apidog-ignore-properties: []
           headers: {}
           x-apidog-name: OK
       security:
@@ -1296,7 +1338,7 @@ paths:
       security:
         - bearer: []
       x-apidog-folder: OOSA_USER_SERVICE/U > User Friends
-      x-apidog-status: designing
+      x-apidog-status: released
       x-run-in-apidog: https://apidog.com/web/project/607604/apis/api-11113821-run
     put:
       summary: 'Agree User Friend '
@@ -1332,7 +1374,7 @@ paths:
       security:
         - bearer: []
       x-apidog-folder: OOSA_USER_SERVICE/U > User Friends
-      x-apidog-status: designing
+      x-apidog-status: released
       x-run-in-apidog: https://apidog.com/web/project/607604/apis/api-11114593-run
   /auth/friends:
     get:
@@ -1370,7 +1412,14 @@ paths:
                 items:
                   type: object
                   x-apidog-refs:
-                    01JBE8W8W82814RG96JF716C6Q: *ref_6
+                    01JBE8W8W82814RG96JF716C6Q:
+                      x-apidog-overrides:
+                        user_friends_created_at: null
+                        user_friends_user_2: null
+                        user_friends_user_1: null
+                        user_friends_status: null
+                      type: object
+                      properties: {}
                   x-apidog-orders:
                     - 01JBE8W8W82814RG96JF716C6Q
                   properties: {}
@@ -1417,100 +1466,66 @@ paths:
           content:
             application/json:
               schema:
-                type: object
-                x-apidog-refs:
-                  01JBK34TN0ST0FQ1YEBC51R0J8: *ref_3
-                x-apidog-orders:
-                  - 01JBK34TN0ST0FQ1YEBC51R0J8
-                properties:
-                  users_avatar:
-                    type: string
-                  users_created_at:
-                    type: string
-                    format: int32
-                  users_email:
-                    type: string
-                  users_id:
-                    type: string
-                  users_is_business:
-                    type: boolean
-                    default: false
-                  users_is_subscribed:
-                    type: boolean
-                    default: false
-                  users_name:
-                    type: string
-                  users_object:
-                    type: string
-                  users_password:
-                    type: string
-                  users_setting_friend_auto_add:
-                    type: integer
-                    format: int32
-                  users_setting_is_visible_friends:
-                    type: integer
-                    format: int32
-                  users_setting_is_visible_statistics:
-                    type: integer
-                    format: int32
-                  users_setting_language:
-                    type: string
-                  users_setting_visibility_activity_summary:
-                    type: integer
-                    format: int32
-                  users_source:
-                    type: integer
-                    format: int32
-                  users_source_id:
-                    type: string
-                  users_username:
-                    type: string
-                  users_breathing_points:
-                    type: integer
-                  users_following_count:
-                    type: integer
-                  users_follower_count:
-                    type: integer
-                required:
-                  - users_avatar
-                  - users_created_at
-                  - users_email
-                  - users_id
-                  - users_is_business
-                  - users_is_subscribed
-                  - users_name
-                  - users_object
-                  - users_setting_friend_auto_add
-                  - users_setting_is_visible_friends
-                  - users_setting_is_visible_statistics
-                  - users_setting_language
-                  - users_setting_visibility_activity_summary
-                  - users_source
-                  - users_source_id
-                  - users_username
-                x-apidog-ignore-properties:
-                  - users_avatar
-                  - users_created_at
-                  - users_email
-                  - users_id
-                  - users_is_business
-                  - users_is_subscribed
-                  - users_name
-                  - users_object
-                  - users_password
-                  - users_setting_friend_auto_add
-                  - users_setting_is_visible_friends
-                  - users_setting_is_visible_statistics
-                  - users_setting_language
-                  - users_setting_visibility_activity_summary
-                  - users_source
-                  - users_source_id
-                  - users_username
-                  - users_breathing_points
-                  - users_following_count
-                  - users_follower_count
+                type: array
+                items:
+                  type: object
+                  properties:
+                    user_friends_id:
+                      type: string
+                    user_friends_status:
+                      type: integer
+                    user_friends_user_1:
+                      type: string
+                    user_friends_user_2:
+                      type: string
+                    user_friends_created_at:
+                      type: string
+                    user_friends_is_official:
+                      type: 'null'
+                    rewilding_activity_status:
+                      type: integer
+                    user_friends_detail:
+                      type: object
+                      properties:
+                        user_id:
+                          type: string
+                        user_name:
+                          type: string
+                        user_username:
+                          type: string
+                        user_avatar:
+                          type: string
+                        user_breathing_status:
+                          type: integer
+                        user_take_me_status:
+                          type: boolean
+                      required:
+                        - user_id
+                        - user_name
+                        - user_username
+                        - user_avatar
+                        - user_breathing_status
+                        - user_take_me_status
+                      x-apidog-ignore-properties: []
+                      x-apidog-orders:
+                        - user_id
+                        - user_name
+                        - user_username
+                        - user_avatar
+                        - user_breathing_status
+                        - user_take_me_status
+                  x-apidog-ignore-properties: []
+                  x-apidog-orders:
+                    - user_friends_id
+                    - user_friends_status
+                    - user_friends_user_1
+                    - user_friends_user_2
+                    - user_friends_created_at
+                    - user_friends_is_official
+                    - rewilding_activity_status
+                    - user_friends_detail
           headers: {}
-          x-apidog-name: Array of EventReferenceLinks Object
+          x-apidog-name: OK
         '204':
           description: ''
           content:
@@ -1523,7 +1538,7 @@ paths:
       security:
         - bearer: []
       x-apidog-folder: OOSA_USER_SERVICE/U > User Friends
-      x-apidog-status: designing
+      x-apidog-status: released
       x-run-in-apidog: https://apidog.com/web/project/607604/apis/api-11302396-run
   /auth/notifications:
     get:
@@ -1579,7 +1594,7 @@ paths:
       security:
         - bearer: []
       x-apidog-folder: OOSA_USER_SERVICE/U > User Notifications
-      x-apidog-status: designing
+      x-apidog-status: released
       x-run-in-apidog: https://apidog.com/web/project/607604/apis/api-11244731-run
   /users/statistics:
     get:
@@ -1653,9 +1668,7 @@ paths:
                         total_star:
                           type: integer
                         average_star:
-                          type:
-                            - integer
-                            - number
+                          type: integer
                       required:
                         - user_period
                         - user_count
@@ -1923,7 +1936,7 @@ paths:
           description: ''
           content:
             application/json:
-              schema: &ref_7
+              schema: &ref_6
                 $ref: '#/components/schemas/UserFollowings'
           headers: {}
           x-apidog-name: User following
@@ -1935,7 +1948,7 @@ paths:
     post:
       summary: Create User Following
       deprecated: true
-      description: Create user following
+      description: Create user following request testt
       operationId: createUserFollowing
       tags:
         - OOSA_USER_SERVICE
@@ -1984,7 +1997,7 @@ paths:
             application/json:
               schema:
                 type: array
-                items: *ref_7
+                items: *ref_6
           headers: {}
           x-apidog-name: User following
       security: []
@@ -1995,7 +2008,7 @@ paths:
     get:
       summary: Statistics
       deprecated: false
-      description: Retrieve an authenticated user events
+      description: Retrieve World Statistics
       operationId: getUserWorldStat
       tags:
         - OOSA_REWILD_SERVICE
@@ -2082,7 +2095,7 @@ paths:
             application/json:
               schema:
                 type: array
-                items: &ref_8
+                items: &ref_7
                   $ref: '#/components/schemas/RankingRewilding'
           headers: {}
           x-apidog-name: Array of EventReferenceLinks Object
@@ -2118,7 +2131,7 @@ paths:
             application/json:
               schema:
                 type: array
-                items: *ref_8
+                items: *ref_7
           headers: {}
           x-apidog-name: Array of EventReferenceLinks Object
         '204':
@@ -2201,9 +2214,8 @@ components:
           items:
             type: string
         rewilding_participants_experience_count:
-          type:
-            - integer
-            - 'null'
+          type: integer
+          nullable: true
       x-apidog-orders:
         - rewilding_id
         - rewilding_name
@@ -2267,7 +2279,7 @@ components:
           type: integer
         users_follower_count:
           type: integer
-        users_followings: *ref_7
+        users_followings: *ref_6
       x-apidog-orders:
         - users_avatar
         - users_created_at
@@ -2737,7 +2749,7 @@ components:
     UserBadges:
       type: object
       properties:
-        user_badges_detail: *ref_9
+        user_badges_detail: *ref_8
         user_badges_badge:
           type: string
           default: 6695534c1da4d6fee70fc3e4

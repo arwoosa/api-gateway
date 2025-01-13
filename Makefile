@@ -24,7 +24,7 @@ gen-conf:
 
 merge-spec:
 	docker run --rm \
-	-v $$PWD:/workdir 94peter/openapi-cli:v1.13 /main ms \
+	-v $$PWD:/workdir 94peter/openapi-cli:v1.18 /main ms \
 	-main /workdir/mainspec/${ENV}_spec.yml \
 	-mergeDir /workdir/all_spec/ \
 	-output /workdir/doc/${ENV}_oosa.yml \

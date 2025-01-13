@@ -1,2 +1,8 @@
 test
 dev test
+
+http://oosa_user:6080 =>
+http://user.oosa-app-staging.svc.cluster.local:8080
+
+http://oosa_rewild:6080 =>
+http://rewild.oosa-app-staging.svc.cluster.local:8080

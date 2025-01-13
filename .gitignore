@@ -50,6 +50,9 @@ Thumbs.db
 
 krakend_pretty.json
 krakend.json
+!argocd/overlays/*/cfg/krakend.json
 compiled.json
 doc/*
 !doc/README
+settings/*
+!settings/endpoint.example.json
