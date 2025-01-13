@@ -8,13 +8,24 @@ platform:
   arch: amd64
 
 steps:
-- name: dev-build-docker-image
+- name: merge api spec
   commands:
-  - openapi-cli ms --main main_spec.yml --mergeDir all_spec/ --output doc/oosa.yml
-  - openapi-cli togs --spec doc/oosa.yml --output settings/endpoint.json
-  - docker build --platform linux/amd64 -t oosa-gw:dev .
-  - restart_arwoosa.sh
-  when:
-    branch:
-    - dev
+  - make merge-spec ENV=test
+- name: generate setting endpoint
+  commands:
+  - make gen-setting-json ENV=test
+- name: generate oath rules
+  commands:
+  - make gen-oath-rule ENV=test
+- name: build image
+  commands:
+  - docker build -f ./.docker/Dockerfile -t oosa-gw:dev .
+- name: restart service
+  commands:
+  - docker compose -f ./.docker-compose/docker-test.yml down
+  - docker compose -f ./.docker-compose/docker-test.yml up -d
+
+trigger:
+  branch:
+  - test
 ...
