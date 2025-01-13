@@ -1,0 +1,33 @@
+services:
+  api-gateway:
+    image: devopsfaith/krakend:2.7.2-watch
+    labels:
+    - traefik.enable=true
+    - traefik.http.routers.dev-api-gateway.rule=Host(`oosa.docker.localhost`)
+    - traefik.http.routers.dev-api-gateway.entrypoints=web
+    - traefik.http.services.dev-api-gateway.loadbalancer.server.port=8000
+    - traefik.http.routers.dev-api-gateway.service=dev-api-gateway
+    - traefik.http.routers.dev-api-gateway.middlewares=dev-api-oathkeeper, api
+    env_file:
+    - ./.env.${ENV}
+    command: ["run", "-c", "/etc/krakend/krakend.tmpl"]
+    volumes:
+    - ../:/etc/krakend
+    networks:
+    - ${NETWORK_NAME}
+  api-oathkeeper:
+    image: oryd/oathkeeper:v0.40.7-distroless
+    depends_on:
+    - api-gateway
+    labels:
+    - traefik.http.middlewares.dev-api-oathkeeper.forwardauth.address=http://api-oathkeeper:4456/decisions
+    - traefik.http.middlewares.dev-api-oathkeeper.forwardauth.authResponseHeaders=Authorization
+    - traefik.http.middlewares.dev-api-oathkeeper.forwardauth.authResponseHeadersRegex=^X-
+    command: serve --config=/etc/config/oathkeeper/config-dev.yaml
+    volumes:
+      - type: bind
+        source: ../oathkeeper
+        target: /etc/config/oathkeeper
+    restart: on-failure
+    networks:
+    - ${NETWORK_NAME}
