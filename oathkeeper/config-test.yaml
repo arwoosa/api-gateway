@@ -6,8 +6,7 @@ serve:
 
 access_rules:
   repositories:
-    - http://api-gateway-auth:8000/doc/test_rules.json
-    # - file:///etc/config/oathkeeper/test_rules.json
+    - file:///etc/config/oathkeeper/test_rules.json
 errors:
   fallback:
     - json

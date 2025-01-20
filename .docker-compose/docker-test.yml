@@ -55,7 +55,7 @@ services:
     - TRACING_PROVIDER=jaeger
     - TRACING_PROVIDERS_JAEGER_SAMPLING_SERVER_URL=http://jaeger:5778/sampling
     - TRACING_PROVIDERS_JAEGER_LOCAL_AGENT_ADDRESS=jaeger:6831
-    command: serve --config=/etc/config/oathkeeper/config-dev.yaml
+    command: serve --config=/etc/config/oathkeeper/config-test.yaml
     restart: always
     networks:
       - oosa-network
