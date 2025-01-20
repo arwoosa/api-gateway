@@ -3,7 +3,7 @@ servers:
   description: OOSA_REWILD_SERVICE
 openapi: 3.1.0
 info:
-  title: Rewild
+  title: OOSA
   description: ''
   version: 1.0.0
 tags:
@@ -13,6 +13,7 @@ tags:
   - name: _R 野放點細節 R/S Details
   - name: '1.1'
   - name: _R1
+  - name: guest
   - name: ✅ Rewilding
   - name: 1.4.1
   - name: 1.4.1a
@@ -185,6 +186,7 @@ paths:
         - _R 野放點細節 R/S Details
         - '1.1'
         - _R1
+        - guest
       parameters:
         - name: rewildingId
           in: path
@@ -302,8 +304,7 @@ paths:
                   - rewilding_created_at
           headers: {}
           x-apidog-name: OK
-      security:
-        - bearer: []
+      security: []
       x-apidog-folder: OOSA_REWILD_SERVICE/R > Rewilding
       x-apidog-status: released
       x-run-in-apidog: https://apidog.com/web/project/607604/apis/api-8862671-run
@@ -639,6 +640,7 @@ paths:
         - '3.0'
         - 3.0a
         - 3.0b
+        - guest
       parameters:
         - name: owner
           in: query
@@ -809,8 +811,7 @@ paths:
                 properties: {}
           headers: {}
           x-apidog-name: No Content
-      security:
-        - bearer: []
+      security: []
       x-apidog-folder: OOSA_REWILD_SERVICE/R > Rewilding
       x-apidog-status: released
       x-apidog-maintainer: developer.sophistec
@@ -1749,13 +1750,14 @@ paths:
     get:
       summary: Read Event
       deprecated: false
-      description: Retrieve an event
+      description: Read an Event
       operationId: getEventByEventId
       tags:
         - OOSA_REWILD_SERVICE
         - Event
         - _E 活動 Event
         - _E1
+        - guest
       parameters:
         - name: eventId
           in: path
@@ -2171,6 +2173,7 @@ paths:
         - '2.0'
         - 2.0a
         - '2.2'
+        - guest
       parameters:
         - name: event_period_begin
           in: query
@@ -2334,6 +2337,7 @@ paths:
       operationId: getNewsbyId
       tags:
         - OOSA_REWILD_SERVICE
+        - guest
       parameters:
         - name: id
           in: path
@@ -2647,6 +2651,7 @@ paths:
         - T5 個人 My
         - 5.3.1
         - 5.3.1a
+        - guest
       parameters:
         - name: eventInvitationId
           in: path
@@ -3250,6 +3255,7 @@ paths:
         - OOSA_REWILD_SERVICE
         - _E 活動 Event
         - ✅Event Announcement
+        - guest
       parameters:
         - name: eventId
           in: path
@@ -3554,6 +3560,7 @@ paths:
         - ✅ Event Message Board
         - _E 活動 Event
         - _E1
+        - guest
       parameters:
         - name: eventId
           in: path
@@ -4017,6 +4024,7 @@ paths:
         - _E 活動 Event
         - Event Reference Links
         - _E1
+        - guest
       parameters:
         - name: eventId
           in: path
@@ -4177,7 +4185,7 @@ paths:
     get:
       summary: Other User Event
       deprecated: false
-      description: Retrieve an authenticated user events
+      description: Retrieve other users events
       operationId: getUserEventbyId
       tags:
         - OOSA_REWILD_SERVICE
@@ -4360,6 +4368,7 @@ paths:
         - ✅ Event Schedule
         - _E 活動 Event
         - _E1
+        - guest
       parameters:
         - name: eventId
           in: path

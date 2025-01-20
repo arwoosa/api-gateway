@@ -1,13 +1,14 @@
 servers:
 - url: http://oosa_user:6080
   description: OOSA_USER_SERVICE
-opopenapi: 3.0.1
+openapi: 3.1.0
 info:
-  title: User
+  title: OOSA
   description: ''
   version: 1.0.0
 tags:
   - name: noRedirect
+  - name: guest
   - name: OOSA_USER_SERVICE
   - name: Authentication
   - name: T5 個人 My
@@ -115,6 +116,7 @@ paths:
       operationId: startSsoRegister
       tags:
         - noRedirect
+        - guest
       parameters:
         - name: return_to
           in: query
@@ -326,7 +328,7 @@ paths:
   /auth/email:
     post:
       summary: Auth Email
-      deprecated: true
+      deprecated: false
       description: Use this endpoint to login using email
       operationId: authByEmail
       tags:
@@ -376,7 +378,7 @@ paths:
           x-apidog-name: Record not found
       security: []
       x-apidog-folder: OOSA_USER_SERVICE/U > Auth
-      x-apidog-status: deprecated
+      x-apidog-status: released
       x-apidog-maintainer: 陳文晟
       x-run-in-apidog: https://apidog.com/web/project/607604/apis/api-8862647-run
   /auth/facebook:
@@ -757,7 +759,7 @@ paths:
     get:
       summary: Read User
       deprecated: false
-      description: Retrieve an authenticated user events
+      description: API 回傳指定會員的公開資料
       operationId: getUser
       tags:
         - OOSA_REWILD_SERVICE
@@ -767,6 +769,7 @@ paths:
         - _O1.1
         - _O1.1a
         - _O1.1b
+        - guest
       parameters:
         - name: userId
           in: path
@@ -793,7 +796,8 @@ paths:
                 properties: {}
           headers: {}
           x-apidog-name: No Content
-      security: []
+      security:
+        - bearer: []
       x-apidog-folder: OOSA_USER_SERVICE/U > User
       x-apidog-status: released
       x-run-in-apidog: https://apidog.com/web/project/607604/apis/api-10057831-run
@@ -882,11 +886,12 @@ paths:
     get:
       summary: User Badges
       deprecated: false
-      description: Retrieve an authenticated user events
+      description: 預期會回傳指定會員的所有公開徽章
       operationId: getUserBadges
       tags:
         - OOSA_REWILD_SERVICE
         - User Event
+        - guest
       parameters:
         - name: userId
           in: path
@@ -1257,7 +1262,14 @@ paths:
                     user_friends_created_at:
                       type: string
                     user_friends_is_official:
-                      type: string
+                      type:
+                        - string
+                        - integer
+                        - boolean
+                        - array
+                        - object
+                        - number
+                        - 'null'
                     rewilding_activity_status:
                       type: integer
                     user_friends_detail:
@@ -1668,7 +1680,9 @@ paths:
                         total_star:
                           type: integer
                         average_star:
-                          type: integer
+                          type:
+                            - integer
+                            - number
                       required:
                         - user_period
                         - user_count
@@ -2015,6 +2029,7 @@ paths:
         - User Event
         - T4 世界 World
         - '4.0'
+        - guest
       parameters: []
       responses:
         '200':
@@ -2079,6 +2094,7 @@ paths:
         - User Event
         - T4 世界 World
         - '4.3'
+        - guest
       parameters:
         - name: feelings
           in: query
@@ -2123,6 +2139,7 @@ paths:
         - User Event
         - T4 世界 World
         - '4.3'
+        - guest
       parameters: []
       responses:
         '200':
@@ -2214,8 +2231,9 @@ components:
           items:
             type: string
         rewilding_participants_experience_count:
-          type: integer
-          nullable: true
+          type:
+            - integer
+            - 'null'
       x-apidog-orders:
         - rewilding_id
         - rewilding_name
