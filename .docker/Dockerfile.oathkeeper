@@ -1,0 +1,7 @@
+FROM oryd/oathkeeper:v0.40.7-distroless
+
+WORKDIR /etc/config/oathkeeper
+
+COPY oathkeeper/config-test.yaml \
+     doc/test_rules.json \
+     ./

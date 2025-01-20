@@ -6,7 +6,7 @@ networks:
 name: oosa-gateway
 services:
   api-gateway:
-    image: oosa-gw:dev
+    image: oosa-app-gw:test
     restart: always
     labels:
       - traefik.enable=true
@@ -25,7 +25,7 @@ services:
     networks:
       - oosa-network
   api-gateway-auth:
-    image: oosa-gw:dev
+    image: oosa-app-gw:test
     restart: always
     labels:
       - traefik.enable=true
@@ -36,7 +36,7 @@ services:
     networks:
       - oosa-network
   api-oathkeeper:
-    image: oryd/oathkeeper:v0.40.7-distroless
+    image: oosa-app-gatewayoathkeeper:test
     depends_on:
     - api-gateway-auth
     ports:
@@ -56,10 +56,6 @@ services:
     - TRACING_PROVIDERS_JAEGER_SAMPLING_SERVER_URL=http://jaeger:5778/sampling
     - TRACING_PROVIDERS_JAEGER_LOCAL_AGENT_ADDRESS=jaeger:6831
     command: serve --config=/etc/config/oathkeeper/config-dev.yaml
-    volumes:
-    - type: bind
-      source: ../oathkeeper
-      target: /etc/config/oathkeeper
-    restart: on-failure
+    restart: always
     networks:
       - oosa-network
