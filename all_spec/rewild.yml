@@ -351,6 +351,7 @@ paths:
       tags:
         - OOSA_REWILD_SERVICE
         - ✅ Rewilding
+        - guest
       parameters:
         - name: rewildingId
           in: path
@@ -374,8 +375,7 @@ paths:
             Array of Rewilding Photo ID<br>If rewilding_photos_path is available
             use URL else access photo through
             /rewilding/{rewildingId}/photos/{photoId}
-      security:
-        - bearer: []
+      security: []
       x-apidog-folder: OOSA_REWILD_SERVICE/R > Rewilding
       x-apidog-status: released
       x-run-in-apidog: https://apidog.com/web/project/607604/apis/api-8862702-run
@@ -388,6 +388,7 @@ paths:
       tags:
         - OOSA_REWILD_SERVICE
         - ✅ Rewilding
+        - guest
       parameters:
         - name: rewildingId
           in: path
@@ -417,8 +418,7 @@ paths:
                 x-apidog-ignore-properties: []
           headers: {}
           x-apidog-name: Array of Rewilding Photo ID
-      security:
-        - bearer: []
+      security: []
       x-apidog-folder: OOSA_REWILD_SERVICE/R > Rewilding
       x-apidog-status: released
       x-run-in-apidog: https://apidog.com/web/project/607604/apis/api-8862703-run
@@ -4232,7 +4232,8 @@ paths:
                 properties: {}
           headers: {}
           x-apidog-name: No Content
-      security: []
+      security:
+        - bearer: []
       x-apidog-folder: OOSA_REWILD_SERVICE/R > User Events
       x-apidog-status: released
       x-apidog-maintainer: developer.sophistec

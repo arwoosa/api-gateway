@@ -925,7 +925,7 @@ paths:
   /auth/badges/{userBadgeId}:
     get:
       summary: Retrieve Badge
-      deprecated: false
+      deprecated: true
       description: ''
       operationId: getBadgeById
       tags: []
@@ -970,7 +970,7 @@ paths:
       security:
         - bearer: []
       x-apidog-folder: OOSA_USER_SERVICE/U > User Badges
-      x-apidog-status: released
+      x-apidog-status: deprecated
       x-run-in-apidog: https://apidog.com/web/project/607604/apis/api-11115779-run
   /user/friends:
     get:
@@ -1583,7 +1583,7 @@ paths:
   /auth/notifications/{notificationId}:
     put:
       summary: Read User Notification
-      deprecated: false
+      deprecated: true
       description: ''
       operationId: isReadNotificationById
       tags: []
@@ -1606,7 +1606,7 @@ paths:
       security:
         - bearer: []
       x-apidog-folder: OOSA_USER_SERVICE/U > User Notifications
-      x-apidog-status: released
+      x-apidog-status: deprecated
       x-run-in-apidog: https://apidog.com/web/project/607604/apis/api-11244731-run
   /users/statistics:
     get:
@@ -1821,8 +1821,7 @@ paths:
               schema: *ref_1
           headers: {}
           x-apidog-name: Validation Error
-      security:
-        - bearer: []
+      security: []
       x-apidog-folder: OOSA_USER_SERVICE/U > Contact Us
       x-apidog-status: released
       x-run-in-apidog: https://apidog.com/web/project/607604/apis/api-8862652-run
