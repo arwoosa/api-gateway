@@ -1787,8 +1787,7 @@ paths:
                 x-apidog-ignore-properties: []
           headers: {}
           x-apidog-name: No event found
-      security:
-        - bearer: []
+      security: []
       x-apidog-folder: OOSA_REWILD_SERVICE/R > Events
       x-apidog-status: released
       x-run-in-apidog: https://apidog.com/web/project/607604/apis/api-8862688-run
