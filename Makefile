@@ -38,7 +38,7 @@ gen-setting-json:
 
 gen-oath-rule: 
 	docker run --rm \
-	-v $$PWD:/workdir 94peter/openapi-cli:v1.19 /main tar \
+	-v $$PWD:/workdir 94peter/openapi-cli:v1.20 /main tar \
 	-spec /workdir/doc/${ENV}_oosa.yml \
 	-output /workdir/doc/${ENV}_rules.json
 
