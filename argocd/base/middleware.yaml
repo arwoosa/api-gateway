@@ -1,0 +1,20 @@
+apiVersion: traefik.io/v1alpha1
+kind: Middleware
+metadata:
+  name: stripprefix-gateway
+spec:
+  stripPrefix:
+    prefixes:
+      - /api
+---
+apiVersion: traefik.io/v1alpha1
+kind: Middleware
+metadata:
+  name: oathkeeper
+spec:
+  forwardAuth:
+    address: http://oathkeeper:8056/decisions
+    authResponseHeaders:
+      - Authorization
+    authResponseHeadersRegex: ^X-User-
+

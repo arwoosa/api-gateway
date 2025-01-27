@@ -1,0 +1,59 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  creationTimestamp: null
+  labels:
+    app: oathkeeper
+  name: oathkeeper-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: oathkeeper
+  strategy: {}
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        app: oathkeeper
+    spec:
+      containers:
+      - image: oryd/oathkeeper:v0.40.7-distroless
+        name: oathkeeper
+        command: [ "oathkeeper" ]
+        args: [ "serve", "--config=/etc/oathkeeper/config.yaml" ]
+        livenessProbe:
+          httpGet:
+            path: /health/alive
+            port: 4456
+          initialDelaySeconds: 30
+          periodSeconds: 30
+          timeoutSeconds: 5
+          successThreshold: 1
+          failureThreshold: 6
+        readinessProbe:
+          httpGet:
+            path: /health/ready
+            port: 4456
+          initialDelaySeconds: 30
+          periodSeconds: 10
+          timeoutSeconds: 5
+          successThreshold: 1
+          failureThreshold: 6
+        volumeMounts:
+          - name: oathkeeper-cfg
+            mountPath: /etc/oathkeeper/config.yaml
+            subPath: oathkeeper.yaml
+          - name: oathkeeper-cfg
+            mountPath: /etc/oathkeeper/rules/api.json
+            subPath: doc-api_rules.json
+      volumes:
+        - name: oathkeeper-cfg
+          configMap: 
+            name: gateway-configmap
+            items:
+              - key: oathkeeper.yaml
+                path: oathkeeper.yaml
+              - key: doc-api_rules.json
+                path: doc-api_rules.json
+              

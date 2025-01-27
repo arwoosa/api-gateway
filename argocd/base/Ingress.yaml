@@ -1,0 +1,18 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: gateway
+  annotations:
+    ingress.kubernetes.io/ssl-redirect: "false"
+    traefik.ingress.kubernetes.io/router.entrypoints: web
+spec:
+  rules:
+  - http:
+      paths:
+      - path: /api/
+        pathType: Prefix
+        backend:
+          service:
+            name: gateway
+            port:
+              number: 8080

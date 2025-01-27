@@ -1,0 +1,12 @@
+[
+  {
+    "op": "replace",
+    "path": "/spec/rules/0/host",
+    "value": "app-staging.oosa.life"
+  },
+  {
+    "op": "add",
+    "path": "/metadata/annotations/traefik.ingress.kubernetes.io~1router.middlewares",
+    "value": "oosa-app-staging-stripprefix-gateway@kubernetescrd,oosa-app-staging-oathkeeper@kubernetescrd"
+  }
+]

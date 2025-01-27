@@ -1,0 +1,7 @@
+[
+  {
+    "op": "replace",
+    "path": "/spec/template/spec/containers/0/image",
+    "value": "oryd/oathkeeper:v0.40.7-distroless"
+  }
+]
