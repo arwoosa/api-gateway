@@ -1,23 +1,5 @@
-FROM devopsfaith/krakend:2.7.2 AS builder
-
-WORKDIR /krakend/config
-COPY . .
-
-RUN FC_ENABLE=1 \
-    FC_OUT=/krakend/config/krakend_pretty.json \
-    FC_PARTIALS="/krakend/config/partials" \
-    FC_SETTINGS="/krakend/config/settings" \
-    krakend check -d -t -c /krakend/config/krakend.tmpl
-
-FROM isaackuang/tools:latest AS minifier
-WORKDIR /krakend/config
-COPY --from=builder --chown=1000 /krakend/config .
-RUN jq --compact-output <krakend_pretty.json '.' > krakend.json
-
-
 FROM sjc.vultrcr.com/oosa/api-gateway:v1.0.2
-COPY --from=minifier --chown=1000 /krakend/config/krakend.json /etc/krakend/krakend.json
-COPY --from=builder --chown=1000 /krakend/config/krakend_pretty.json /etc/krakend/krakend_pretty.json
-COPY --from=minifier --chown=1000 /krakend/config/doc/ /doc/
-# COPY --from=minifier --chown=1000 /krakend/config/plugins/ ./plugins/
-# COPY --from=minifier --chown=1000 /krakend/config/script/ ./script/
+
+COPY --chown=1000 ./krakend.json /etc/krakend/krakend.json
+COPY --chown=1000 ./krakend_pretty.json /etc/krakend/krakend_pretty.json
+COPY --chown=1000 ./doc/ /doc/
