@@ -5,6 +5,8 @@ metadata:
   labels:
     app: oathkeeper
   name: oathkeeper-deployment
+  annotations:
+    reloader.stakater.com/auto: "true"
 spec:
   replicas: 1
   selector:
