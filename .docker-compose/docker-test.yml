@@ -21,7 +21,9 @@ services:
       - traefik.http.middlewares.corsheader.headers.accesscontrolexposeheaders=Content-Length,Set-Cookie,Content-Type
       - traefik.http.middlewares.corsheader.headers.accesscontrolmaxage=3600
       - traefik.http.middlewares.corsheader.headers.addvaryheader=true
-      - traefik.http.routers.api-gateway.middlewares=corsheader,api
+      - traefik.http.middlewares.app-header2post.plugin.header2post.notifyheader=X-Notify
+      - traefik.http.middlewares.app-header2post.plugin.header2post.notifyurl=http://oosa_notify:9080/notification
+      - traefik.http.routers.api-gateway.middlewares=corsheader,app-header2post,api
     networks:
       - oosa-network
   api-gateway-auth:
@@ -32,7 +34,9 @@ services:
       - traefik.http.routers.api-gateway-auth.entrypoints=web
       - traefik.http.routers.api-gateway-auth.rule= (Host(`dev-auth.oosa.docker`) || Host(`dev-auth.oosa.life`)) && PathPrefix(`/api`)
       - traefik.http.services.api-gateway-auth.loadbalancer.server.port=8080
-      - traefik.http.routers.api-gateway-auth.middlewares=corsheader,api,api-oathkeeper
+      - traefik.http.middlewares.app-auth-header2post.plugin.header2post.notifyheader=X-Notify
+      - traefik.http.middlewares.app-auth-header2post.plugin.header2post.notifyurl=http://oosa_notify:9080/notification
+      - traefik.http.routers.api-gateway-auth.middlewares=corsheader,app-auth-header2post,api,api-oathkeeper
     networks:
       - oosa-network
   api-oathkeeper:
