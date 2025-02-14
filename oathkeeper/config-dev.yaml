@@ -31,6 +31,7 @@ mutators:
         X-User-Email: "{{ print .Extra.email}}"
         X-User-Language: "{{ print .Extra.language}}"
         X-User-Name: "{{ print .Extra.name}}"
+        X-User-Avatar: "{{ print .Extra.picture}}"
   noop:
     enabled: true
 
