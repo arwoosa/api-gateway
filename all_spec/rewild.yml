@@ -6059,6 +6059,35 @@ paths:
       x-apidog-folder: OOSA_REWILD_SERVICE/[TBC] Rewilding Search
       x-apidog-status: released
       x-run-in-apidog: https://apidog.com/web/project/607604/apis/api-10286507-run
+  /rewilding/places/{place_id}/photos/{photo_id}:
+    get:
+      summary: 從google detail取得野放點照片
+      deprecated: false
+      description: ''
+      operationId: rewildGooglePhoto
+      tags:
+        - OOSA_REWILD_SERVICE
+        - Rewilding Search
+        - T1 探索 Discover
+        - _R1
+      parameters:
+        - name: place_id
+          in: path
+          description: ''
+          required: true
+          schema:
+            type: string
+        - name: photo_id
+          in: path
+          description: ''
+          required: true
+          schema:
+            type: string
+      responses:
+        '303':
+          description: ''
+        '404':
+          description: 'photo not found'
 components:
   schemas:
     RewildingDetail:
