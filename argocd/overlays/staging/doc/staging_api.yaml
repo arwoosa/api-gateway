@@ -4854,6 +4854,35 @@ paths:
       externalDocs:
         description: OOSA_REWILD_SERVICE
         url: http://oosa_rewild:6080
+  /rewilding/places/{place_id}/photos/{photo_id}:
+    get:
+      tags:
+      - OOSA_REWILD_SERVICE
+      - Rewilding Search
+      - T1 探索 Discover
+      - _R1
+      - OOSA
+      summary: 從google detail取得野放點照片
+      operationId: rewildGooglePhoto
+      parameters:
+      - name: place_id
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: photo_id
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        "303":
+          description: ""
+        "404":
+          description: photo not found
+      externalDocs:
+        description: OOSA_REWILD_SERVICE
+        url: http://oosa_rewild:6080
   /sso/register:
     get:
       tags:
