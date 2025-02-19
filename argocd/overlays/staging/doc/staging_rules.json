@@ -46,54 +46,6 @@
     }
   },
   {
-    "id": "rule-rewildGooglePhoto",
-    "version": "",
-    "description": "",
-    "match": {
-      "methods": [
-        "GET"
-      ],
-      "url": "\u003chttps|http\u003e://\u003capp-staging.oosa.life\u003e/rewilding/places/\u003c(?!.*/).*/photos/(?!.*/).*\u003e"
-    },
-    "authenticators": [
-      {
-        "handler": "cookie_session",
-        "config": {}
-      },
-      {
-        "handler": "bearer_token",
-        "config": {}
-      },
-      {
-        "handler": "anonymous",
-        "config": {
-          "subject": "guest"
-        }
-      }
-    ],
-    "authorizer": {
-      "handler": "allow",
-      "config": {}
-    },
-    "mutators": [
-      {
-        "handler": "header",
-        "config": {}
-      }
-    ],
-    "errors": [
-      {
-        "handler": "json",
-        "config": {}
-      }
-    ],
-    "upstream": {
-      "preserve_host": false,
-      "strip_path": "",
-      "url": ""
-    }
-  },
-  {
     "id": "rule-rewildGoogle",
     "version": "",
     "description": "",
@@ -101,7 +53,7 @@
       "methods": [
         "GET"
       ],
-      "url": "\u003chttps|http\u003e://\u003capp-staging.oosa.life\u003e/rewilding/places/\u003c(?!.*/).*\u003e"
+      "url": "\u003chttps|http\u003e://\u003capp-staging.oosa.life\u003e/rewilding/places/\u003c(?!.*/).*|(?!.*/).*/photos/(?!.*/).*\u003e"
     },
     "authenticators": [
       {
