@@ -53,7 +53,7 @@
       "methods": [
         "GET"
       ],
-      "url": "\u003chttps|http\u003e://\u003capp-staging.oosa.life\u003e/rewilding/places/\u003c(?!.*/).*\u003e/photos/\u003c(?!.*/).*\u003e"
+      "url": "\u003chttps|http\u003e://\u003capp-staging.oosa.life\u003e/rewilding/places/\u003c(?!.*/).*/photos/(?!.*/).*\u003e"
     },
     "authenticators": [
       {
