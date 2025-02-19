@@ -1,59 +1,13 @@
 [
   {
-    "id": "rule-createEventAnnounce",
-    "version": "",
-    "description": "",
-    "match": {
-      "methods": [
-        "POST"
-      ],
-      "url": "\u003chttps|http\u003e://\u003capp-staging.oosa.life\u003e/event/\u003c[0-9a-fA-F]{24}\u003e/announcement"
-    },
-    "authenticators": [
-      {
-        "handler": "cookie_session",
-        "config": {}
-      },
-      {
-        "handler": "bearer_token",
-        "config": {}
-      },
-      {
-        "handler": "unauthorized",
-        "config": null
-      }
-    ],
-    "authorizer": {
-      "handler": "allow",
-      "config": {}
-    },
-    "mutators": [
-      {
-        "handler": "header",
-        "config": {}
-      }
-    ],
-    "errors": [
-      {
-        "handler": "json",
-        "config": {}
-      }
-    ],
-    "upstream": {
-      "preserve_host": false,
-      "strip_path": "",
-      "url": ""
-    }
-  },
-  {
-    "id": "rule-getEventAnnounce",
+    "id": "rule-getOtherUserFriends",
     "version": "",
     "description": "",
     "match": {
       "methods": [
         "GET"
       ],
-      "url": "\u003chttps|http\u003e://\u003capp-staging.oosa.life\u003e/event/\u003c[0-9a-fA-F]{24}\u003e/announcement"
+      "url": "\u003chttps|http\u003e://\u003capp-staging.oosa.life\u003e/user/\u003c[0-9a-fA-F]{24}\u003e/friends"
     },
     "authenticators": [
       {
@@ -92,14 +46,14 @@
     }
   },
   {
-    "id": "rule-getRandomCount",
+    "id": "rule-rewildGooglePhoto",
     "version": "",
     "description": "",
     "match": {
       "methods": [
         "GET"
       ],
-      "url": "\u003chttps|http\u003e://\u003capp-staging.oosa.life\u003e/collaborative-log/\u003c[0-9a-fA-F]{24}\u003e/random-count"
+      "url": "\u003chttps|http\u003e://\u003capp-staging.oosa.life\u003e/rewilding/places/\u003c(?!.*/).*\u003e/photos/\u003c(?!.*/).*\u003e"
     },
     "authenticators": [
       {
@@ -111,54 +65,10 @@
         "config": {}
       },
       {
-        "handler": "unauthorized",
-        "config": null
-      }
-    ],
-    "authorizer": {
-      "handler": "allow",
-      "config": {}
-    },
-    "mutators": [
-      {
-        "handler": "header",
-        "config": {}
-      }
-    ],
-    "errors": [
-      {
-        "handler": "json",
-        "config": {}
-      }
-    ],
-    "upstream": {
-      "preserve_host": false,
-      "strip_path": "",
-      "url": ""
-    }
-  },
-  {
-    "id": "rule-updateRandomCount",
-    "version": "",
-    "description": "",
-    "match": {
-      "methods": [
-        "PUT"
-      ],
-      "url": "\u003chttps|http\u003e://\u003capp-staging.oosa.life\u003e/collaborative-log/\u003c[0-9a-fA-F]{24}\u003e/random-count"
-    },
-    "authenticators": [
-      {
-        "handler": "cookie_session",
-        "config": {}
-      },
-      {
-        "handler": "bearer_token",
-        "config": {}
-      },
-      {
-        "handler": "unauthorized",
-        "config": null
+        "handler": "anonymous",
+        "config": {
+          "subject": "guest"
+        }
       }
     ],
     "authorizer": {
@@ -207,6 +117,240 @@
         "config": {
           "subject": "guest"
         }
+      }
+    ],
+    "authorizer": {
+      "handler": "allow",
+      "config": {}
+    },
+    "mutators": [
+      {
+        "handler": "header",
+        "config": {}
+      }
+    ],
+    "errors": [
+      {
+        "handler": "json",
+        "config": {}
+      }
+    ],
+    "upstream": {
+      "preserve_host": false,
+      "strip_path": "",
+      "url": ""
+    }
+  },
+  {
+    "id": "rule-rewildSearchNearby",
+    "version": "",
+    "description": "",
+    "match": {
+      "methods": [
+        "GET"
+      ],
+      "url": "\u003chttps|http\u003e://\u003capp-staging.oosa.life\u003e/rewilding-searchNearby"
+    },
+    "authenticators": [
+      {
+        "handler": "cookie_session",
+        "config": {}
+      },
+      {
+        "handler": "bearer_token",
+        "config": {}
+      },
+      {
+        "handler": "anonymous",
+        "config": {
+          "subject": "guest"
+        }
+      }
+    ],
+    "authorizer": {
+      "handler": "allow",
+      "config": {}
+    },
+    "mutators": [
+      {
+        "handler": "header",
+        "config": {}
+      }
+    ],
+    "errors": [
+      {
+        "handler": "json",
+        "config": {}
+      }
+    ],
+    "upstream": {
+      "preserve_host": false,
+      "strip_path": "",
+      "url": ""
+    }
+  },
+  {
+    "id": "rule-getPolaroids",
+    "version": "",
+    "description": "",
+    "match": {
+      "methods": [
+        "GET"
+      ],
+      "url": "\u003chttps|http\u003e://\u003capp-staging.oosa.life\u003e/collaborative-log/\u003c[0-9a-fA-F]{24}\u003e/polaroids"
+    },
+    "authenticators": [
+      {
+        "handler": "cookie_session",
+        "config": {}
+      },
+      {
+        "handler": "bearer_token",
+        "config": {}
+      },
+      {
+        "handler": "unauthorized",
+        "config": null
+      }
+    ],
+    "authorizer": {
+      "handler": "allow",
+      "config": {}
+    },
+    "mutators": [
+      {
+        "handler": "header",
+        "config": {}
+      }
+    ],
+    "errors": [
+      {
+        "handler": "json",
+        "config": {}
+      }
+    ],
+    "upstream": {
+      "preserve_host": false,
+      "strip_path": "",
+      "url": ""
+    }
+  },
+  {
+    "id": "rule-createPolaroid",
+    "version": "",
+    "description": "",
+    "match": {
+      "methods": [
+        "POST"
+      ],
+      "url": "\u003chttps|http\u003e://\u003capp-staging.oosa.life\u003e/collaborative-log/\u003c[0-9a-fA-F]{24}\u003e/polaroids"
+    },
+    "authenticators": [
+      {
+        "handler": "cookie_session",
+        "config": {}
+      },
+      {
+        "handler": "bearer_token",
+        "config": {}
+      },
+      {
+        "handler": "unauthorized",
+        "config": null
+      }
+    ],
+    "authorizer": {
+      "handler": "allow",
+      "config": {}
+    },
+    "mutators": [
+      {
+        "handler": "header",
+        "config": {}
+      }
+    ],
+    "errors": [
+      {
+        "handler": "json",
+        "config": {}
+      }
+    ],
+    "upstream": {
+      "preserve_host": false,
+      "strip_path": "",
+      "url": ""
+    }
+  },
+  {
+    "id": "rule-getReferences",
+    "version": "",
+    "description": "",
+    "match": {
+      "methods": [
+        "GET"
+      ],
+      "url": "\u003chttps|http\u003e://\u003capp-staging.oosa.life\u003e/references"
+    },
+    "authenticators": [
+      {
+        "handler": "cookie_session",
+        "config": {}
+      },
+      {
+        "handler": "bearer_token",
+        "config": {}
+      },
+      {
+        "handler": "anonymous",
+        "config": {
+          "subject": "guest"
+        }
+      }
+    ],
+    "authorizer": {
+      "handler": "allow",
+      "config": {}
+    },
+    "mutators": [
+      {
+        "handler": "header",
+        "config": {}
+      }
+    ],
+    "errors": [
+      {
+        "handler": "json",
+        "config": {}
+      }
+    ],
+    "upstream": {
+      "preserve_host": false,
+      "strip_path": "",
+      "url": ""
+    }
+  },
+  {
+    "id": "rule-deletePocketList",
+    "version": "",
+    "description": "",
+    "match": {
+      "methods": [
+        "DELETE"
+      ],
+      "url": "\u003chttps|http\u003e://\u003capp-staging.oosa.life\u003e/pocket-list/\u003c[0-9a-fA-F]{24}\u003e"
+    },
+    "authenticators": [
+      {
+        "handler": "cookie_session",
+        "config": {}
+      },
+      {
+        "handler": "bearer_token",
+        "config": {}
+      },
+      {
+        "handler": "unauthorized",
+        "config": null
       }
     ],
     "authorizer": {
@@ -324,60 +468,14 @@
     }
   },
   {
-    "id": "rule-deletePocketList",
-    "version": "",
-    "description": "",
-    "match": {
-      "methods": [
-        "DELETE"
-      ],
-      "url": "\u003chttps|http\u003e://\u003capp-staging.oosa.life\u003e/pocket-list/\u003c[0-9a-fA-F]{24}\u003e"
-    },
-    "authenticators": [
-      {
-        "handler": "cookie_session",
-        "config": {}
-      },
-      {
-        "handler": "bearer_token",
-        "config": {}
-      },
-      {
-        "handler": "unauthorized",
-        "config": null
-      }
-    ],
-    "authorizer": {
-      "handler": "allow",
-      "config": {}
-    },
-    "mutators": [
-      {
-        "handler": "header",
-        "config": {}
-      }
-    ],
-    "errors": [
-      {
-        "handler": "json",
-        "config": {}
-      }
-    ],
-    "upstream": {
-      "preserve_host": false,
-      "strip_path": "",
-      "url": ""
-    }
-  },
-  {
-    "id": "rule-getUserFriends",
+    "id": "rule-getEventParticipant",
     "version": "",
     "description": "",
     "match": {
       "methods": [
         "GET"
       ],
-      "url": "\u003chttps|http\u003e://\u003capp-staging.oosa.life\u003e/user/friends"
+      "url": "\u003chttps|http\u003e://\u003capp-staging.oosa.life\u003e/event/\u003c[0-9a-fA-F]{24}\u003e/participants"
     },
     "authenticators": [
       {
@@ -416,14 +514,14 @@
     }
   },
   {
-    "id": "rule-createUserFriendById",
+    "id": "rule-createEventParticipant",
     "version": "",
     "description": "",
     "match": {
       "methods": [
         "POST"
       ],
-      "url": "\u003chttps|http\u003e://\u003capp-staging.oosa.life\u003e/user/friends"
+      "url": "\u003chttps|http\u003e://\u003capp-staging.oosa.life\u003e/event/\u003c[0-9a-fA-F]{24}\u003e/participants"
     },
     "authenticators": [
       {
@@ -462,60 +560,14 @@
     }
   },
   {
-    "id": "rule-getAchievement",
+    "id": "rule-getEvents",
     "version": "",
     "description": "",
     "match": {
       "methods": [
         "GET"
       ],
-      "url": "\u003chttps|http\u003e://\u003capp-staging.oosa.life\u003e/user/\u003c[0-9a-fA-F]{24}\u003e/achievement"
-    },
-    "authenticators": [
-      {
-        "handler": "cookie_session",
-        "config": {}
-      },
-      {
-        "handler": "bearer_token",
-        "config": {}
-      },
-      {
-        "handler": "unauthorized",
-        "config": null
-      }
-    ],
-    "authorizer": {
-      "handler": "allow",
-      "config": {}
-    },
-    "mutators": [
-      {
-        "handler": "header",
-        "config": {}
-      }
-    ],
-    "errors": [
-      {
-        "handler": "json",
-        "config": {}
-      }
-    ],
-    "upstream": {
-      "preserve_host": false,
-      "strip_path": "",
-      "url": ""
-    }
-  },
-  {
-    "id": "rule-rewildSearchNearby",
-    "version": "",
-    "description": "",
-    "match": {
-      "methods": [
-        "GET"
-      ],
-      "url": "\u003chttps|http\u003e://\u003capp-staging.oosa.life\u003e/rewilding-searchNearby"
+      "url": "\u003chttps|http\u003e://\u003capp-staging.oosa.life\u003e/event"
     },
     "authenticators": [
       {
@@ -556,152 +608,14 @@
     }
   },
   {
-    "id": "rule-getUserEventbyId",
-    "version": "",
-    "description": "",
-    "match": {
-      "methods": [
-        "GET"
-      ],
-      "url": "\u003chttps|http\u003e://\u003capp-staging.oosa.life\u003e/user/\u003c[0-9a-fA-F]{24}\u003e/events"
-    },
-    "authenticators": [
-      {
-        "handler": "cookie_session",
-        "config": {}
-      },
-      {
-        "handler": "bearer_token",
-        "config": {}
-      },
-      {
-        "handler": "unauthorized",
-        "config": null
-      }
-    ],
-    "authorizer": {
-      "handler": "allow",
-      "config": {}
-    },
-    "mutators": [
-      {
-        "handler": "header",
-        "config": {}
-      }
-    ],
-    "errors": [
-      {
-        "handler": "json",
-        "config": {}
-      }
-    ],
-    "upstream": {
-      "preserve_host": false,
-      "strip_path": "",
-      "url": ""
-    }
-  },
-  {
-    "id": "rule-deleteEventParticipant",
-    "version": "",
-    "description": "",
-    "match": {
-      "methods": [
-        "DELETE"
-      ],
-      "url": "\u003chttps|http\u003e://\u003capp-staging.oosa.life\u003e/event/\u003c[0-9a-fA-F]{24}\u003e/participants/\u003c[0-9a-fA-F]{24}\u003e"
-    },
-    "authenticators": [
-      {
-        "handler": "cookie_session",
-        "config": {}
-      },
-      {
-        "handler": "bearer_token",
-        "config": {}
-      },
-      {
-        "handler": "unauthorized",
-        "config": null
-      }
-    ],
-    "authorizer": {
-      "handler": "allow",
-      "config": {}
-    },
-    "mutators": [
-      {
-        "handler": "header",
-        "config": {}
-      }
-    ],
-    "errors": [
-      {
-        "handler": "json",
-        "config": {}
-      }
-    ],
-    "upstream": {
-      "preserve_host": false,
-      "strip_path": "",
-      "url": ""
-    }
-  },
-  {
-    "id": "rule-getOtherUserFriends",
-    "version": "",
-    "description": "",
-    "match": {
-      "methods": [
-        "GET"
-      ],
-      "url": "\u003chttps|http\u003e://\u003capp-staging.oosa.life\u003e/user/\u003c[0-9a-fA-F]{24}\u003e/friends"
-    },
-    "authenticators": [
-      {
-        "handler": "cookie_session",
-        "config": {}
-      },
-      {
-        "handler": "bearer_token",
-        "config": {}
-      },
-      {
-        "handler": "unauthorized",
-        "config": null
-      }
-    ],
-    "authorizer": {
-      "handler": "allow",
-      "config": {}
-    },
-    "mutators": [
-      {
-        "handler": "header",
-        "config": {}
-      }
-    ],
-    "errors": [
-      {
-        "handler": "json",
-        "config": {}
-      }
-    ],
-    "upstream": {
-      "preserve_host": false,
-      "strip_path": "",
-      "url": ""
-    }
-  },
-  {
-    "id": "rule-getUrlInfo",
+    "id": "rule-createEvent",
     "version": "",
     "description": "",
     "match": {
       "methods": [
         "POST"
       ],
-      "url": "\u003chttps|http\u003e://\u003capp-staging.oosa.life\u003e/link-query"
+      "url": "\u003chttps|http\u003e://\u003capp-staging.oosa.life\u003e/event"
     },
     "authenticators": [
       {
@@ -713,10 +627,8 @@
         "config": {}
       },
       {
-        "handler": "anonymous",
-        "config": {
-          "subject": "guest"
-        }
+        "handler": "unauthorized",
+        "config": null
       }
     ],
     "authorizer": {
@@ -742,14 +654,14 @@
     }
   },
   {
-    "id": "rule-deleteMessageBoard",
+    "id": "rule-deleteEventAccounting",
     "version": "",
     "description": "",
     "match": {
       "methods": [
         "DELETE"
       ],
-      "url": "\u003chttps|http\u003e://\u003capp-staging.oosa.life\u003e/event/\u003c[0-9a-fA-F]{24}\u003e/message-board/\u003c[0-9a-fA-F]{24}\u003e"
+      "url": "\u003chttps|http\u003e://\u003capp-staging.oosa.life\u003e/event/\u003c[0-9a-fA-F]{24}\u003e/accounting/\u003c[0-9a-fA-F]{24}\u003e"
     },
     "authenticators": [
       {
@@ -788,14 +700,14 @@
     }
   },
   {
-    "id": "rule-getMessageBoard",
+    "id": "rule-getEventAccounting",
     "version": "",
     "description": "",
     "match": {
       "methods": [
         "GET"
       ],
-      "url": "\u003chttps|http\u003e://\u003capp-staging.oosa.life\u003e/event/\u003c[0-9a-fA-F]{24}\u003e/message-board/\u003c[0-9a-fA-F]{24}\u003e"
+      "url": "\u003chttps|http\u003e://\u003capp-staging.oosa.life\u003e/event/\u003c[0-9a-fA-F]{24}\u003e/accounting/\u003c[0-9a-fA-F]{24}\u003e"
     },
     "authenticators": [
       {
@@ -834,14 +746,14 @@
     }
   },
   {
-    "id": "rule-updateMessageBoard",
+    "id": "rule-updateEventAccounting",
     "version": "",
     "description": "",
     "match": {
       "methods": [
         "PUT"
       ],
-      "url": "\u003chttps|http\u003e://\u003capp-staging.oosa.life\u003e/event/\u003c[0-9a-fA-F]{24}\u003e/message-board/\u003c[0-9a-fA-F]{24}\u003e"
+      "url": "\u003chttps|http\u003e://\u003capp-staging.oosa.life\u003e/event/\u003c[0-9a-fA-F]{24}\u003e/accounting/\u003c[0-9a-fA-F]{24}\u003e"
     },
     "authenticators": [
       {
@@ -880,200 +792,14 @@
     }
   },
   {
-    "id": "rule-rewildSearchText",
+    "id": "rule-getAllPhotos",
     "version": "",
     "description": "",
     "match": {
       "methods": [
         "GET"
       ],
-      "url": "\u003chttps|http\u003e://\u003capp-staging.oosa.life\u003e/rewilding-searchText"
-    },
-    "authenticators": [
-      {
-        "handler": "cookie_session",
-        "config": {}
-      },
-      {
-        "handler": "bearer_token",
-        "config": {}
-      },
-      {
-        "handler": "anonymous",
-        "config": {
-          "subject": "guest"
-        }
-      }
-    ],
-    "authorizer": {
-      "handler": "allow",
-      "config": {}
-    },
-    "mutators": [
-      {
-        "handler": "header",
-        "config": {}
-      }
-    ],
-    "errors": [
-      {
-        "handler": "json",
-        "config": {}
-      }
-    ],
-    "upstream": {
-      "preserve_host": false,
-      "strip_path": "",
-      "url": ""
-    }
-  },
-  {
-    "id": "rule-getUserBadges",
-    "version": "",
-    "description": "",
-    "match": {
-      "methods": [
-        "GET"
-      ],
-      "url": "\u003chttps|http\u003e://\u003capp-staging.oosa.life\u003e/user/\u003c[0-9a-fA-F]{24}\u003e/badges"
-    },
-    "authenticators": [
-      {
-        "handler": "cookie_session",
-        "config": {}
-      },
-      {
-        "handler": "bearer_token",
-        "config": {}
-      },
-      {
-        "handler": "unauthorized",
-        "config": null
-      }
-    ],
-    "authorizer": {
-      "handler": "allow",
-      "config": {}
-    },
-    "mutators": [
-      {
-        "handler": "header",
-        "config": {}
-      }
-    ],
-    "errors": [
-      {
-        "handler": "json",
-        "config": {}
-      }
-    ],
-    "upstream": {
-      "preserve_host": false,
-      "strip_path": "",
-      "url": ""
-    }
-  },
-  {
-    "id": "rule-getAchievements",
-    "version": "",
-    "description": "",
-    "match": {
-      "methods": [
-        "GET"
-      ],
-      "url": "\u003chttps|http\u003e://\u003capp-staging.oosa.life\u003e/achievement/places"
-    },
-    "authenticators": [
-      {
-        "handler": "cookie_session",
-        "config": {}
-      },
-      {
-        "handler": "bearer_token",
-        "config": {}
-      },
-      {
-        "handler": "unauthorized",
-        "config": null
-      }
-    ],
-    "authorizer": {
-      "handler": "allow",
-      "config": {}
-    },
-    "mutators": [
-      {
-        "handler": "header",
-        "config": {}
-      }
-    ],
-    "errors": [
-      {
-        "handler": "json",
-        "config": {}
-      }
-    ],
-    "upstream": {
-      "preserve_host": false,
-      "strip_path": "",
-      "url": ""
-    }
-  },
-  {
-    "id": "rule-CheckUserDailyVideo",
-    "version": "",
-    "description": "",
-    "match": {
-      "methods": [
-        "POST"
-      ],
-      "url": "\u003chttps|http\u003e://\u003capp-staging.oosa.life\u003e/oosa-daily"
-    },
-    "authenticators": [
-      {
-        "handler": "cookie_session",
-        "config": {}
-      },
-      {
-        "handler": "bearer_token",
-        "config": {}
-      },
-      {
-        "handler": "unauthorized",
-        "config": null
-      }
-    ],
-    "authorizer": {
-      "handler": "allow",
-      "config": {}
-    },
-    "mutators": [
-      {
-        "handler": "header",
-        "config": {}
-      }
-    ],
-    "errors": [
-      {
-        "handler": "json",
-        "config": {}
-      }
-    ],
-    "upstream": {
-      "preserve_host": false,
-      "strip_path": "",
-      "url": ""
-    }
-  },
-  {
-    "id": "rule-getReferences",
-    "version": "",
-    "description": "",
-    "match": {
-      "methods": [
-        "GET"
-      ],
-      "url": "\u003chttps|http\u003e://\u003capp-staging.oosa.life\u003e/references"
+      "url": "\u003chttps|http\u003e://\u003capp-staging.oosa.life\u003e/rewilding/\u003c[0-9a-fA-F]{24}\u003e/photos"
     },
     "authenticators": [
       {
@@ -1162,292 +888,14 @@
     }
   },
   {
-    "id": "rule-updateUser",
-    "version": "",
-    "description": "",
-    "match": {
-      "methods": [
-        "PUT"
-      ],
-      "url": "\u003chttps|http\u003e://\u003capp-staging.oosa.life\u003e/auth"
-    },
-    "authenticators": [
-      {
-        "handler": "cookie_session",
-        "config": {}
-      },
-      {
-        "handler": "bearer_token",
-        "config": {}
-      },
-      {
-        "handler": "unauthorized",
-        "config": null
-      }
-    ],
-    "authorizer": {
-      "handler": "allow",
-      "config": {}
-    },
-    "mutators": [
-      {
-        "handler": "header",
-        "config": {}
-      }
-    ],
-    "errors": [
-      {
-        "handler": "json",
-        "config": {}
-      }
-    ],
-    "upstream": {
-      "preserve_host": false,
-      "strip_path": "",
-      "url": ""
-    }
-  },
-  {
-    "id": "rule-getAuthInfo",
-    "version": "",
-    "description": "",
-    "match": {
-      "methods": [
-        "GET"
-      ],
-      "url": "\u003chttps|http\u003e://\u003capp-staging.oosa.life\u003e/auth"
-    },
-    "authenticators": [
-      {
-        "handler": "cookie_session",
-        "config": {}
-      },
-      {
-        "handler": "bearer_token",
-        "config": {}
-      },
-      {
-        "handler": "unauthorized",
-        "config": null
-      }
-    ],
-    "authorizer": {
-      "handler": "allow",
-      "config": {}
-    },
-    "mutators": [
-      {
-        "handler": "header",
-        "config": {}
-      }
-    ],
-    "errors": [
-      {
-        "handler": "json",
-        "config": {}
-      }
-    ],
-    "upstream": {
-      "preserve_host": false,
-      "strip_path": "",
-      "url": ""
-    }
-  },
-  {
-    "id": "rule-delete-picket-list-item",
-    "version": "",
-    "description": "",
-    "match": {
-      "methods": [
-        "DELETE"
-      ],
-      "url": "\u003chttps|http\u003e://\u003capp-staging.oosa.life\u003e/pocket-list/\u003c[0-9a-fA-F]{24}\u003e/items/\u003c[0-9a-fA-F]{24}\u003e"
-    },
-    "authenticators": [
-      {
-        "handler": "cookie_session",
-        "config": {}
-      },
-      {
-        "handler": "bearer_token",
-        "config": {}
-      },
-      {
-        "handler": "unauthorized",
-        "config": null
-      }
-    ],
-    "authorizer": {
-      "handler": "allow",
-      "config": {}
-    },
-    "mutators": [
-      {
-        "handler": "header",
-        "config": {}
-      }
-    ],
-    "errors": [
-      {
-        "handler": "json",
-        "config": {}
-      }
-    ],
-    "upstream": {
-      "preserve_host": false,
-      "strip_path": "",
-      "url": ""
-    }
-  },
-  {
-    "id": "rule-getPocketListItem",
-    "version": "",
-    "description": "",
-    "match": {
-      "methods": [
-        "GET"
-      ],
-      "url": "\u003chttps|http\u003e://\u003capp-staging.oosa.life\u003e/pocket-list/\u003c[0-9a-fA-F]{24}\u003e/items/\u003c[0-9a-fA-F]{24}\u003e"
-    },
-    "authenticators": [
-      {
-        "handler": "cookie_session",
-        "config": {}
-      },
-      {
-        "handler": "bearer_token",
-        "config": {}
-      },
-      {
-        "handler": "unauthorized",
-        "config": null
-      }
-    ],
-    "authorizer": {
-      "handler": "allow",
-      "config": {}
-    },
-    "mutators": [
-      {
-        "handler": "header",
-        "config": {}
-      }
-    ],
-    "errors": [
-      {
-        "handler": "json",
-        "config": {}
-      }
-    ],
-    "upstream": {
-      "preserve_host": false,
-      "strip_path": "",
-      "url": ""
-    }
-  },
-  {
-    "id": "rule-update-pocket-list-item",
-    "version": "",
-    "description": "",
-    "match": {
-      "methods": [
-        "PUT"
-      ],
-      "url": "\u003chttps|http\u003e://\u003capp-staging.oosa.life\u003e/pocket-list/\u003c[0-9a-fA-F]{24}\u003e/items/\u003c[0-9a-fA-F]{24}\u003e"
-    },
-    "authenticators": [
-      {
-        "handler": "cookie_session",
-        "config": {}
-      },
-      {
-        "handler": "bearer_token",
-        "config": {}
-      },
-      {
-        "handler": "unauthorized",
-        "config": null
-      }
-    ],
-    "authorizer": {
-      "handler": "allow",
-      "config": {}
-    },
-    "mutators": [
-      {
-        "handler": "header",
-        "config": {}
-      }
-    ],
-    "errors": [
-      {
-        "handler": "json",
-        "config": {}
-      }
-    ],
-    "upstream": {
-      "preserve_host": false,
-      "strip_path": "",
-      "url": ""
-    }
-  },
-  {
-    "id": "rule-getRewilds",
-    "version": "",
-    "description": "",
-    "match": {
-      "methods": [
-        "GET"
-      ],
-      "url": "\u003chttps|http\u003e://\u003capp-staging.oosa.life\u003e/rewilding"
-    },
-    "authenticators": [
-      {
-        "handler": "cookie_session",
-        "config": {}
-      },
-      {
-        "handler": "bearer_token",
-        "config": {}
-      },
-      {
-        "handler": "anonymous",
-        "config": {
-          "subject": "guest"
-        }
-      }
-    ],
-    "authorizer": {
-      "handler": "allow",
-      "config": {}
-    },
-    "mutators": [
-      {
-        "handler": "header",
-        "config": {}
-      }
-    ],
-    "errors": [
-      {
-        "handler": "json",
-        "config": {}
-      }
-    ],
-    "upstream": {
-      "preserve_host": false,
-      "strip_path": "",
-      "url": ""
-    }
-  },
-  {
-    "id": "rule-createRewild",
+    "id": "rule-createCollabQuestionnaire",
     "version": "",
     "description": "",
     "match": {
       "methods": [
         "POST"
       ],
-      "url": "\u003chttps|http\u003e://\u003capp-staging.oosa.life\u003e/rewilding"
+      "url": "\u003chttps|http\u003e://\u003capp-staging.oosa.life\u003e/collaborative-log/\u003c[0-9a-fA-F]{24}\u003e/questionnaire"
     },
     "authenticators": [
       {
@@ -1486,14 +934,520 @@
     }
   },
   {
-    "id": "rule-updateUserSet",
+    "id": "rule-getUser",
+    "version": "",
+    "description": "",
+    "match": {
+      "methods": [
+        "GET"
+      ],
+      "url": "\u003chttps|http\u003e://\u003capp-staging.oosa.life\u003e/user/\u003c[0-9a-fA-F]{24}\u003e"
+    },
+    "authenticators": [
+      {
+        "handler": "cookie_session",
+        "config": {}
+      },
+      {
+        "handler": "bearer_token",
+        "config": {}
+      },
+      {
+        "handler": "unauthorized",
+        "config": null
+      }
+    ],
+    "authorizer": {
+      "handler": "allow",
+      "config": {}
+    },
+    "mutators": [
+      {
+        "handler": "header",
+        "config": {}
+      }
+    ],
+    "errors": [
+      {
+        "handler": "json",
+        "config": {}
+      }
+    ],
+    "upstream": {
+      "preserve_host": false,
+      "strip_path": "",
+      "url": ""
+    }
+  },
+  {
+    "id": "rule-getUserBadges",
+    "version": "",
+    "description": "",
+    "match": {
+      "methods": [
+        "GET"
+      ],
+      "url": "\u003chttps|http\u003e://\u003capp-staging.oosa.life\u003e/user/\u003c[0-9a-fA-F]{24}\u003e/badges"
+    },
+    "authenticators": [
+      {
+        "handler": "cookie_session",
+        "config": {}
+      },
+      {
+        "handler": "bearer_token",
+        "config": {}
+      },
+      {
+        "handler": "unauthorized",
+        "config": null
+      }
+    ],
+    "authorizer": {
+      "handler": "allow",
+      "config": {}
+    },
+    "mutators": [
+      {
+        "handler": "header",
+        "config": {}
+      }
+    ],
+    "errors": [
+      {
+        "handler": "json",
+        "config": {}
+      }
+    ],
+    "upstream": {
+      "preserve_host": false,
+      "strip_path": "",
+      "url": ""
+    }
+  },
+  {
+    "id": "rule-getEventAnnounce",
+    "version": "",
+    "description": "",
+    "match": {
+      "methods": [
+        "GET"
+      ],
+      "url": "\u003chttps|http\u003e://\u003capp-staging.oosa.life\u003e/event/\u003c[0-9a-fA-F]{24}\u003e/announcement"
+    },
+    "authenticators": [
+      {
+        "handler": "cookie_session",
+        "config": {}
+      },
+      {
+        "handler": "bearer_token",
+        "config": {}
+      },
+      {
+        "handler": "unauthorized",
+        "config": null
+      }
+    ],
+    "authorizer": {
+      "handler": "allow",
+      "config": {}
+    },
+    "mutators": [
+      {
+        "handler": "header",
+        "config": {}
+      }
+    ],
+    "errors": [
+      {
+        "handler": "json",
+        "config": {}
+      }
+    ],
+    "upstream": {
+      "preserve_host": false,
+      "strip_path": "",
+      "url": ""
+    }
+  },
+  {
+    "id": "rule-createEventAnnounce",
+    "version": "",
+    "description": "",
+    "match": {
+      "methods": [
+        "POST"
+      ],
+      "url": "\u003chttps|http\u003e://\u003capp-staging.oosa.life\u003e/event/\u003c[0-9a-fA-F]{24}\u003e/announcement"
+    },
+    "authenticators": [
+      {
+        "handler": "cookie_session",
+        "config": {}
+      },
+      {
+        "handler": "bearer_token",
+        "config": {}
+      },
+      {
+        "handler": "unauthorized",
+        "config": null
+      }
+    ],
+    "authorizer": {
+      "handler": "allow",
+      "config": {}
+    },
+    "mutators": [
+      {
+        "handler": "header",
+        "config": {}
+      }
+    ],
+    "errors": [
+      {
+        "handler": "json",
+        "config": {}
+      }
+    ],
+    "upstream": {
+      "preserve_host": false,
+      "strip_path": "",
+      "url": ""
+    }
+  },
+  {
+    "id": "rule-getEventSchedule",
+    "version": "",
+    "description": "",
+    "match": {
+      "methods": [
+        "GET"
+      ],
+      "url": "\u003chttps|http\u003e://\u003capp-staging.oosa.life\u003e/event/\u003c[0-9a-fA-F]{24}\u003e/schedule"
+    },
+    "authenticators": [
+      {
+        "handler": "cookie_session",
+        "config": {}
+      },
+      {
+        "handler": "bearer_token",
+        "config": {}
+      },
+      {
+        "handler": "unauthorized",
+        "config": null
+      }
+    ],
+    "authorizer": {
+      "handler": "allow",
+      "config": {}
+    },
+    "mutators": [
+      {
+        "handler": "header",
+        "config": {}
+      }
+    ],
+    "errors": [
+      {
+        "handler": "json",
+        "config": {}
+      }
+    ],
+    "upstream": {
+      "preserve_host": false,
+      "strip_path": "",
+      "url": ""
+    }
+  },
+  {
+    "id": "rule-createEventSchedule",
+    "version": "",
+    "description": "",
+    "match": {
+      "methods": [
+        "POST"
+      ],
+      "url": "\u003chttps|http\u003e://\u003capp-staging.oosa.life\u003e/event/\u003c[0-9a-fA-F]{24}\u003e/schedule"
+    },
+    "authenticators": [
+      {
+        "handler": "cookie_session",
+        "config": {}
+      },
+      {
+        "handler": "bearer_token",
+        "config": {}
+      },
+      {
+        "handler": "unauthorized",
+        "config": null
+      }
+    ],
+    "authorizer": {
+      "handler": "allow",
+      "config": {}
+    },
+    "mutators": [
+      {
+        "handler": "header",
+        "config": {}
+      }
+    ],
+    "errors": [
+      {
+        "handler": "json",
+        "config": {}
+      }
+    ],
+    "upstream": {
+      "preserve_host": false,
+      "strip_path": "",
+      "url": ""
+    }
+  },
+  {
+    "id": "rule-deleteEventSchedule",
+    "version": "",
+    "description": "",
+    "match": {
+      "methods": [
+        "DELETE"
+      ],
+      "url": "\u003chttps|http\u003e://\u003capp-staging.oosa.life\u003e/event/\u003c[0-9a-fA-F]{24}\u003e/schedule"
+    },
+    "authenticators": [
+      {
+        "handler": "cookie_session",
+        "config": {}
+      },
+      {
+        "handler": "bearer_token",
+        "config": {}
+      },
+      {
+        "handler": "unauthorized",
+        "config": null
+      }
+    ],
+    "authorizer": {
+      "handler": "allow",
+      "config": {}
+    },
+    "mutators": [
+      {
+        "handler": "header",
+        "config": {}
+      }
+    ],
+    "errors": [
+      {
+        "handler": "json",
+        "config": {}
+      }
+    ],
+    "upstream": {
+      "preserve_host": false,
+      "strip_path": "",
+      "url": ""
+    }
+  },
+  {
+    "id": "rule-getBadge",
+    "version": "",
+    "description": "",
+    "match": {
+      "methods": [
+        "GET"
+      ],
+      "url": "\u003chttps|http\u003e://\u003capp-staging.oosa.life\u003e/auth/badges"
+    },
+    "authenticators": [
+      {
+        "handler": "cookie_session",
+        "config": {}
+      },
+      {
+        "handler": "bearer_token",
+        "config": {}
+      },
+      {
+        "handler": "unauthorized",
+        "config": null
+      }
+    ],
+    "authorizer": {
+      "handler": "allow",
+      "config": {}
+    },
+    "mutators": [
+      {
+        "handler": "header",
+        "config": {}
+      }
+    ],
+    "errors": [
+      {
+        "handler": "json",
+        "config": {}
+      }
+    ],
+    "upstream": {
+      "preserve_host": false,
+      "strip_path": "",
+      "url": ""
+    }
+  },
+  {
+    "id": "rule-getEventInvitation",
+    "version": "",
+    "description": "",
+    "match": {
+      "methods": [
+        "GET"
+      ],
+      "url": "\u003chttps|http\u003e://\u003capp-staging.oosa.life\u003e/event-invitations/\u003c[0-9a-fA-F]{24}\u003e"
+    },
+    "authenticators": [
+      {
+        "handler": "cookie_session",
+        "config": {}
+      },
+      {
+        "handler": "bearer_token",
+        "config": {}
+      },
+      {
+        "handler": "unauthorized",
+        "config": null
+      }
+    ],
+    "authorizer": {
+      "handler": "allow",
+      "config": {}
+    },
+    "mutators": [
+      {
+        "handler": "header",
+        "config": {}
+      }
+    ],
+    "errors": [
+      {
+        "handler": "json",
+        "config": {}
+      }
+    ],
+    "upstream": {
+      "preserve_host": false,
+      "strip_path": "",
+      "url": ""
+    }
+  },
+  {
+    "id": "rule-changeEventInvitationStat",
     "version": "",
     "description": "",
     "match": {
       "methods": [
         "PUT"
       ],
-      "url": "\u003chttps|http\u003e://\u003capp-staging.oosa.life\u003e/auth/setting"
+      "url": "\u003chttps|http\u003e://\u003capp-staging.oosa.life\u003e/event-invitations/\u003c[0-9a-fA-F]{24}\u003e"
+    },
+    "authenticators": [
+      {
+        "handler": "cookie_session",
+        "config": {}
+      },
+      {
+        "handler": "bearer_token",
+        "config": {}
+      },
+      {
+        "handler": "unauthorized",
+        "config": null
+      }
+    ],
+    "authorizer": {
+      "handler": "allow",
+      "config": {}
+    },
+    "mutators": [
+      {
+        "handler": "header",
+        "config": {}
+      }
+    ],
+    "errors": [
+      {
+        "handler": "json",
+        "config": {}
+      }
+    ],
+    "upstream": {
+      "preserve_host": false,
+      "strip_path": "",
+      "url": ""
+    }
+  },
+  {
+    "id": "rule-deleteUserFriendById",
+    "version": "",
+    "description": "",
+    "match": {
+      "methods": [
+        "DELETE"
+      ],
+      "url": "\u003chttps|http\u003e://\u003capp-staging.oosa.life\u003e/user/friends/\u003c[0-9a-fA-F]{24}\u003e"
+    },
+    "authenticators": [
+      {
+        "handler": "cookie_session",
+        "config": {}
+      },
+      {
+        "handler": "bearer_token",
+        "config": {}
+      },
+      {
+        "handler": "unauthorized",
+        "config": null
+      }
+    ],
+    "authorizer": {
+      "handler": "allow",
+      "config": {}
+    },
+    "mutators": [
+      {
+        "handler": "header",
+        "config": {}
+      }
+    ],
+    "errors": [
+      {
+        "handler": "json",
+        "config": {}
+      }
+    ],
+    "upstream": {
+      "preserve_host": false,
+      "strip_path": "",
+      "url": ""
+    }
+  },
+  {
+    "id": "rule-agreeUserFriendById",
+    "version": "",
+    "description": "",
+    "match": {
+      "methods": [
+        "PUT"
+      ],
+      "url": "\u003chttps|http\u003e://\u003capp-staging.oosa.life\u003e/user/friends/\u003c[0-9a-fA-F]{24}\u003e"
     },
     "authenticators": [
       {
@@ -1578,14 +1532,14 @@
     }
   },
   {
-    "id": "rule-getUserStat",
+    "id": "rule-getAllEventsInvitations",
     "version": "",
     "description": "",
     "match": {
       "methods": [
         "GET"
       ],
-      "url": "\u003chttps|http\u003e://\u003capp-staging.oosa.life\u003e/users/statistics"
+      "url": "\u003chttps|http\u003e://\u003capp-staging.oosa.life\u003e/event-invitations"
     },
     "authenticators": [
       {
@@ -1624,14 +1578,14 @@
     }
   },
   {
-    "id": "rule-getUsers",
+    "id": "rule-getRankRewild",
     "version": "",
     "description": "",
     "match": {
       "methods": [
         "GET"
       ],
-      "url": "\u003chttps|http\u003e://\u003capp-staging.oosa.life\u003e/users"
+      "url": "\u003chttps|http\u003e://\u003capp-staging.oosa.life\u003e/world/ranking-rewilding"
     },
     "authenticators": [
       {
@@ -1643,146 +1597,10 @@
         "config": {}
       },
       {
-        "handler": "unauthorized",
-        "config": null
-      }
-    ],
-    "authorizer": {
-      "handler": "allow",
-      "config": {}
-    },
-    "mutators": [
-      {
-        "handler": "header",
-        "config": {}
-      }
-    ],
-    "errors": [
-      {
-        "handler": "json",
-        "config": {}
-      }
-    ],
-    "upstream": {
-      "preserve_host": false,
-      "strip_path": "",
-      "url": ""
-    }
-  },
-  {
-    "id": "rule-getCollaborativeAlbumLinks",
-    "version": "",
-    "description": "",
-    "match": {
-      "methods": [
-        "GET"
-      ],
-      "url": "\u003chttps|http\u003e://\u003capp-staging.oosa.life\u003e/collaborative-log/\u003c[0-9a-fA-F]{24}\u003e/album-link"
-    },
-    "authenticators": [
-      {
-        "handler": "cookie_session",
-        "config": {}
-      },
-      {
-        "handler": "bearer_token",
-        "config": {}
-      },
-      {
-        "handler": "unauthorized",
-        "config": null
-      }
-    ],
-    "authorizer": {
-      "handler": "allow",
-      "config": {}
-    },
-    "mutators": [
-      {
-        "handler": "header",
-        "config": {}
-      }
-    ],
-    "errors": [
-      {
-        "handler": "json",
-        "config": {}
-      }
-    ],
-    "upstream": {
-      "preserve_host": false,
-      "strip_path": "",
-      "url": ""
-    }
-  },
-  {
-    "id": "rule-createCollaborativeAlbumLink",
-    "version": "",
-    "description": "",
-    "match": {
-      "methods": [
-        "POST"
-      ],
-      "url": "\u003chttps|http\u003e://\u003capp-staging.oosa.life\u003e/collaborative-log/\u003c[0-9a-fA-F]{24}\u003e/album-link"
-    },
-    "authenticators": [
-      {
-        "handler": "cookie_session",
-        "config": {}
-      },
-      {
-        "handler": "bearer_token",
-        "config": {}
-      },
-      {
-        "handler": "unauthorized",
-        "config": null
-      }
-    ],
-    "authorizer": {
-      "handler": "allow",
-      "config": {}
-    },
-    "mutators": [
-      {
-        "handler": "header",
-        "config": {}
-      }
-    ],
-    "errors": [
-      {
-        "handler": "json",
-        "config": {}
-      }
-    ],
-    "upstream": {
-      "preserve_host": false,
-      "strip_path": "",
-      "url": ""
-    }
-  },
-  {
-    "id": "rule-createCollabQuestionnaire",
-    "version": "",
-    "description": "",
-    "match": {
-      "methods": [
-        "POST"
-      ],
-      "url": "\u003chttps|http\u003e://\u003capp-staging.oosa.life\u003e/collaborative-log/\u003c[0-9a-fA-F]{24}\u003e/questionnaire"
-    },
-    "authenticators": [
-      {
-        "handler": "cookie_session",
-        "config": {}
-      },
-      {
-        "handler": "bearer_token",
-        "config": {}
-      },
-      {
-        "handler": "unauthorized",
-        "config": null
+        "handler": "anonymous",
+        "config": {
+          "subject": "guest"
+        }
       }
     ],
     "authorizer": {
@@ -1946,14 +1764,152 @@
     }
   },
   {
-    "id": "rule-createContactUs",
+    "id": "rule-finishSsoRegister",
+    "version": "",
+    "description": "",
+    "match": {
+      "methods": [
+        "GET"
+      ],
+      "url": "\u003chttps|http\u003e://\u003capp-staging.oosa.life\u003e/sso/register/finish"
+    },
+    "authenticators": [
+      {
+        "handler": "cookie_session",
+        "config": {}
+      },
+      {
+        "handler": "bearer_token",
+        "config": {}
+      },
+      {
+        "handler": "unauthorized",
+        "config": null
+      }
+    ],
+    "authorizer": {
+      "handler": "allow",
+      "config": {}
+    },
+    "mutators": [
+      {
+        "handler": "header",
+        "config": {}
+      }
+    ],
+    "errors": [
+      {
+        "handler": "json",
+        "config": {}
+      }
+    ],
+    "upstream": {
+      "preserve_host": false,
+      "strip_path": "",
+      "url": ""
+    }
+  },
+  {
+    "id": "rule-getAchievements",
+    "version": "",
+    "description": "",
+    "match": {
+      "methods": [
+        "GET"
+      ],
+      "url": "\u003chttps|http\u003e://\u003capp-staging.oosa.life\u003e/achievement"
+    },
+    "authenticators": [
+      {
+        "handler": "cookie_session",
+        "config": {}
+      },
+      {
+        "handler": "bearer_token",
+        "config": {}
+      },
+      {
+        "handler": "unauthorized",
+        "config": null
+      }
+    ],
+    "authorizer": {
+      "handler": "allow",
+      "config": {}
+    },
+    "mutators": [
+      {
+        "handler": "header",
+        "config": {}
+      }
+    ],
+    "errors": [
+      {
+        "handler": "json",
+        "config": {}
+      }
+    ],
+    "upstream": {
+      "preserve_host": false,
+      "strip_path": "",
+      "url": ""
+    }
+  },
+  {
+    "id": "rule-getAchievement",
+    "version": "",
+    "description": "",
+    "match": {
+      "methods": [
+        "GET"
+      ],
+      "url": "\u003chttps|http\u003e://\u003capp-staging.oosa.life\u003e/user/\u003c[0-9a-fA-F]{24}\u003e/achievement"
+    },
+    "authenticators": [
+      {
+        "handler": "cookie_session",
+        "config": {}
+      },
+      {
+        "handler": "bearer_token",
+        "config": {}
+      },
+      {
+        "handler": "unauthorized",
+        "config": null
+      }
+    ],
+    "authorizer": {
+      "handler": "allow",
+      "config": {}
+    },
+    "mutators": [
+      {
+        "handler": "header",
+        "config": {}
+      }
+    ],
+    "errors": [
+      {
+        "handler": "json",
+        "config": {}
+      }
+    ],
+    "upstream": {
+      "preserve_host": false,
+      "strip_path": "",
+      "url": ""
+    }
+  },
+  {
+    "id": "rule-authByEmail",
     "version": "",
     "description": "",
     "match": {
       "methods": [
         "POST"
       ],
-      "url": "\u003chttps|http\u003e://\u003capp-staging.oosa.life\u003e/contact-us"
+      "url": "\u003chttps|http\u003e://\u003capp-staging.oosa.life\u003e/auth/email"
     },
     "authenticators": [
       {
@@ -1994,14 +1950,60 @@
     }
   },
   {
-    "id": "rule-getEventInvitation",
+    "id": "rule-deleteReferenceLink",
+    "version": "",
+    "description": "",
+    "match": {
+      "methods": [
+        "DELETE"
+      ],
+      "url": "\u003chttps|http\u003e://\u003capp-staging.oosa.life\u003e/event/\u003c[0-9a-fA-F]{24}\u003e/reference-links/\u003c[0-9a-fA-F]{24}\u003e"
+    },
+    "authenticators": [
+      {
+        "handler": "cookie_session",
+        "config": {}
+      },
+      {
+        "handler": "bearer_token",
+        "config": {}
+      },
+      {
+        "handler": "unauthorized",
+        "config": null
+      }
+    ],
+    "authorizer": {
+      "handler": "allow",
+      "config": {}
+    },
+    "mutators": [
+      {
+        "handler": "header",
+        "config": {}
+      }
+    ],
+    "errors": [
+      {
+        "handler": "json",
+        "config": {}
+      }
+    ],
+    "upstream": {
+      "preserve_host": false,
+      "strip_path": "",
+      "url": ""
+    }
+  },
+  {
+    "id": "rule-getReferenceLink",
     "version": "",
     "description": "",
     "match": {
       "methods": [
         "GET"
       ],
-      "url": "\u003chttps|http\u003e://\u003capp-staging.oosa.life\u003e/event-invitations/\u003c[0-9a-fA-F]{24}\u003e"
+      "url": "\u003chttps|http\u003e://\u003capp-staging.oosa.life\u003e/event/\u003c[0-9a-fA-F]{24}\u003e/reference-links/\u003c[0-9a-fA-F]{24}\u003e"
     },
     "authenticators": [
       {
@@ -2040,14 +2042,14 @@
     }
   },
   {
-    "id": "rule-changeEventInvitationStat",
+    "id": "rule-updateReferenceLink",
     "version": "",
     "description": "",
     "match": {
       "methods": [
         "PUT"
       ],
-      "url": "\u003chttps|http\u003e://\u003capp-staging.oosa.life\u003e/event-invitations/\u003c[0-9a-fA-F]{24}\u003e"
+      "url": "\u003chttps|http\u003e://\u003capp-staging.oosa.life\u003e/event/\u003c[0-9a-fA-F]{24}\u003e/reference-links/\u003c[0-9a-fA-F]{24}\u003e"
     },
     "authenticators": [
       {
@@ -2086,14 +2088,14 @@
     }
   },
   {
-    "id": "rule-getUserNotifications",
+    "id": "rule-getRankFeel",
     "version": "",
     "description": "",
     "match": {
       "methods": [
         "GET"
       ],
-      "url": "\u003chttps|http\u003e://\u003capp-staging.oosa.life\u003e/auth/notifications"
+      "url": "\u003chttps|http\u003e://\u003capp-staging.oosa.life\u003e/world/ranking-feelings"
     },
     "authenticators": [
       {
@@ -2105,8 +2107,10 @@
         "config": {}
       },
       {
-        "handler": "unauthorized",
-        "config": null
+        "handler": "anonymous",
+        "config": {
+          "subject": "guest"
+        }
       }
     ],
     "authorizer": {
@@ -2132,14 +2136,14 @@
     }
   },
   {
-    "id": "rule-updateEventInvitation",
+    "id": "rule-getUsers",
     "version": "",
     "description": "",
     "match": {
       "methods": [
-        "PUT"
+        "GET"
       ],
-      "url": "\u003chttps|http\u003e://\u003capp-staging.oosa.life\u003e/event/\u003c[0-9a-fA-F]{24}\u003e/invitation"
+      "url": "\u003chttps|http\u003e://\u003capp-staging.oosa.life\u003e/users"
     },
     "authenticators": [
       {
@@ -2224,14 +2228,1174 @@
     }
   },
   {
-    "id": "rule-getUserEventbyCode",
+    "id": "rule-getUserNotifications",
     "version": "",
     "description": "",
     "match": {
       "methods": [
         "GET"
       ],
-      "url": "\u003chttps|http\u003e://\u003capp-staging.oosa.life\u003e/my/event"
+      "url": "\u003chttps|http\u003e://\u003capp-staging.oosa.life\u003e/auth/notifications"
+    },
+    "authenticators": [
+      {
+        "handler": "cookie_session",
+        "config": {}
+      },
+      {
+        "handler": "bearer_token",
+        "config": {}
+      },
+      {
+        "handler": "unauthorized",
+        "config": null
+      }
+    ],
+    "authorizer": {
+      "handler": "allow",
+      "config": {}
+    },
+    "mutators": [
+      {
+        "handler": "header",
+        "config": {}
+      }
+    ],
+    "errors": [
+      {
+        "handler": "json",
+        "config": {}
+      }
+    ],
+    "upstream": {
+      "preserve_host": false,
+      "strip_path": "",
+      "url": ""
+    }
+  },
+  {
+    "id": "rule-getUserFriends",
+    "version": "",
+    "description": "",
+    "match": {
+      "methods": [
+        "GET"
+      ],
+      "url": "\u003chttps|http\u003e://\u003capp-staging.oosa.life\u003e/user/friends"
+    },
+    "authenticators": [
+      {
+        "handler": "cookie_session",
+        "config": {}
+      },
+      {
+        "handler": "bearer_token",
+        "config": {}
+      },
+      {
+        "handler": "unauthorized",
+        "config": null
+      }
+    ],
+    "authorizer": {
+      "handler": "allow",
+      "config": {}
+    },
+    "mutators": [
+      {
+        "handler": "header",
+        "config": {}
+      }
+    ],
+    "errors": [
+      {
+        "handler": "json",
+        "config": {}
+      }
+    ],
+    "upstream": {
+      "preserve_host": false,
+      "strip_path": "",
+      "url": ""
+    }
+  },
+  {
+    "id": "rule-createUserFriendById",
+    "version": "",
+    "description": "",
+    "match": {
+      "methods": [
+        "POST"
+      ],
+      "url": "\u003chttps|http\u003e://\u003capp-staging.oosa.life\u003e/user/friends"
+    },
+    "authenticators": [
+      {
+        "handler": "cookie_session",
+        "config": {}
+      },
+      {
+        "handler": "bearer_token",
+        "config": {}
+      },
+      {
+        "handler": "unauthorized",
+        "config": null
+      }
+    ],
+    "authorizer": {
+      "handler": "allow",
+      "config": {}
+    },
+    "mutators": [
+      {
+        "handler": "header",
+        "config": {}
+      }
+    ],
+    "errors": [
+      {
+        "handler": "json",
+        "config": {}
+      }
+    ],
+    "upstream": {
+      "preserve_host": false,
+      "strip_path": "",
+      "url": ""
+    }
+  },
+  {
+    "id": "rule-startSsoRegister",
+    "version": "",
+    "description": "",
+    "match": {
+      "methods": [
+        "GET"
+      ],
+      "url": "\u003chttps|http\u003e://\u003capp-staging.oosa.life\u003e/sso/register"
+    },
+    "authenticators": [
+      {
+        "handler": "cookie_session",
+        "config": {}
+      },
+      {
+        "handler": "bearer_token",
+        "config": {}
+      },
+      {
+        "handler": "anonymous",
+        "config": {
+          "subject": "guest"
+        }
+      }
+    ],
+    "authorizer": {
+      "handler": "allow",
+      "config": {}
+    },
+    "mutators": [
+      {
+        "handler": "header",
+        "config": {}
+      }
+    ],
+    "errors": [
+      {
+        "handler": "json",
+        "config": {}
+      }
+    ],
+    "upstream": {
+      "preserve_host": false,
+      "strip_path": "",
+      "url": ""
+    }
+  },
+  {
+    "id": "rule-getCoverImage",
+    "version": "",
+    "description": "",
+    "match": {
+      "methods": [
+        "GET"
+      ],
+      "url": "\u003chttps|http\u003e://\u003capp-staging.oosa.life\u003e/event/cover/\u003c(?!.*/).*\u003e"
+    },
+    "authenticators": [
+      {
+        "handler": "cookie_session",
+        "config": {}
+      },
+      {
+        "handler": "bearer_token",
+        "config": {}
+      },
+      {
+        "handler": "anonymous",
+        "config": {
+          "subject": "guest"
+        }
+      }
+    ],
+    "authorizer": {
+      "handler": "allow",
+      "config": {}
+    },
+    "mutators": [
+      {
+        "handler": "header",
+        "config": {}
+      }
+    ],
+    "errors": [
+      {
+        "handler": "json",
+        "config": {}
+      }
+    ],
+    "upstream": {
+      "preserve_host": false,
+      "strip_path": "",
+      "url": ""
+    }
+  },
+  {
+    "id": "rule-getEventMessageBoard",
+    "version": "",
+    "description": "",
+    "match": {
+      "methods": [
+        "GET"
+      ],
+      "url": "\u003chttps|http\u003e://\u003capp-staging.oosa.life\u003e/event/\u003c[0-9a-fA-F]{24}\u003e/message-board"
+    },
+    "authenticators": [
+      {
+        "handler": "cookie_session",
+        "config": {}
+      },
+      {
+        "handler": "bearer_token",
+        "config": {}
+      },
+      {
+        "handler": "unauthorized",
+        "config": null
+      }
+    ],
+    "authorizer": {
+      "handler": "allow",
+      "config": {}
+    },
+    "mutators": [
+      {
+        "handler": "header",
+        "config": {}
+      }
+    ],
+    "errors": [
+      {
+        "handler": "json",
+        "config": {}
+      }
+    ],
+    "upstream": {
+      "preserve_host": false,
+      "strip_path": "",
+      "url": ""
+    }
+  },
+  {
+    "id": "rule-createMessageBoard",
+    "version": "",
+    "description": "",
+    "match": {
+      "methods": [
+        "POST"
+      ],
+      "url": "\u003chttps|http\u003e://\u003capp-staging.oosa.life\u003e/event/\u003c[0-9a-fA-F]{24}\u003e/message-board"
+    },
+    "authenticators": [
+      {
+        "handler": "cookie_session",
+        "config": {}
+      },
+      {
+        "handler": "bearer_token",
+        "config": {}
+      },
+      {
+        "handler": "unauthorized",
+        "config": null
+      }
+    ],
+    "authorizer": {
+      "handler": "allow",
+      "config": {}
+    },
+    "mutators": [
+      {
+        "handler": "header",
+        "config": {}
+      }
+    ],
+    "errors": [
+      {
+        "handler": "json",
+        "config": {}
+      }
+    ],
+    "upstream": {
+      "preserve_host": false,
+      "strip_path": "",
+      "url": ""
+    }
+  },
+  {
+    "id": "rule-deleteEventParticipant",
+    "version": "",
+    "description": "",
+    "match": {
+      "methods": [
+        "DELETE"
+      ],
+      "url": "\u003chttps|http\u003e://\u003capp-staging.oosa.life\u003e/event/\u003c[0-9a-fA-F]{24}\u003e/participants/\u003c[0-9a-fA-F]{24}\u003e"
+    },
+    "authenticators": [
+      {
+        "handler": "cookie_session",
+        "config": {}
+      },
+      {
+        "handler": "bearer_token",
+        "config": {}
+      },
+      {
+        "handler": "unauthorized",
+        "config": null
+      }
+    ],
+    "authorizer": {
+      "handler": "allow",
+      "config": {}
+    },
+    "mutators": [
+      {
+        "handler": "header",
+        "config": {}
+      }
+    ],
+    "errors": [
+      {
+        "handler": "json",
+        "config": {}
+      }
+    ],
+    "upstream": {
+      "preserve_host": false,
+      "strip_path": "",
+      "url": ""
+    }
+  },
+  {
+    "id": "rule-updateEventInvitation",
+    "version": "",
+    "description": "",
+    "match": {
+      "methods": [
+        "PUT"
+      ],
+      "url": "\u003chttps|http\u003e://\u003capp-staging.oosa.life\u003e/event/\u003c[0-9a-fA-F]{24}\u003e/invitation"
+    },
+    "authenticators": [
+      {
+        "handler": "cookie_session",
+        "config": {}
+      },
+      {
+        "handler": "bearer_token",
+        "config": {}
+      },
+      {
+        "handler": "unauthorized",
+        "config": null
+      }
+    ],
+    "authorizer": {
+      "handler": "allow",
+      "config": {}
+    },
+    "mutators": [
+      {
+        "handler": "header",
+        "config": {}
+      }
+    ],
+    "errors": [
+      {
+        "handler": "json",
+        "config": {}
+      }
+    ],
+    "upstream": {
+      "preserve_host": false,
+      "strip_path": "",
+      "url": ""
+    }
+  },
+  {
+    "id": "rule-createContactUs",
+    "version": "",
+    "description": "",
+    "match": {
+      "methods": [
+        "POST"
+      ],
+      "url": "\u003chttps|http\u003e://\u003capp-staging.oosa.life\u003e/contact-us"
+    },
+    "authenticators": [
+      {
+        "handler": "cookie_session",
+        "config": {}
+      },
+      {
+        "handler": "bearer_token",
+        "config": {}
+      },
+      {
+        "handler": "anonymous",
+        "config": {
+          "subject": "guest"
+        }
+      }
+    ],
+    "authorizer": {
+      "handler": "allow",
+      "config": {}
+    },
+    "mutators": [
+      {
+        "handler": "header",
+        "config": {}
+      }
+    ],
+    "errors": [
+      {
+        "handler": "json",
+        "config": {}
+      }
+    ],
+    "upstream": {
+      "preserve_host": false,
+      "strip_path": "",
+      "url": ""
+    }
+  },
+  {
+    "id": "rule-getUserWorldStat",
+    "version": "",
+    "description": "",
+    "match": {
+      "methods": [
+        "GET"
+      ],
+      "url": "\u003chttps|http\u003e://\u003capp-staging.oosa.life\u003e/world/statistics"
+    },
+    "authenticators": [
+      {
+        "handler": "cookie_session",
+        "config": {}
+      },
+      {
+        "handler": "bearer_token",
+        "config": {}
+      },
+      {
+        "handler": "anonymous",
+        "config": {
+          "subject": "guest"
+        }
+      }
+    ],
+    "authorizer": {
+      "handler": "allow",
+      "config": {}
+    },
+    "mutators": [
+      {
+        "handler": "header",
+        "config": {}
+      }
+    ],
+    "errors": [
+      {
+        "handler": "json",
+        "config": {}
+      }
+    ],
+    "upstream": {
+      "preserve_host": false,
+      "strip_path": "",
+      "url": ""
+    }
+  },
+  {
+    "id": "rule-getAchievements",
+    "version": "",
+    "description": "",
+    "match": {
+      "methods": [
+        "GET"
+      ],
+      "url": "\u003chttps|http\u003e://\u003capp-staging.oosa.life\u003e/achievement/places"
+    },
+    "authenticators": [
+      {
+        "handler": "cookie_session",
+        "config": {}
+      },
+      {
+        "handler": "bearer_token",
+        "config": {}
+      },
+      {
+        "handler": "unauthorized",
+        "config": null
+      }
+    ],
+    "authorizer": {
+      "handler": "allow",
+      "config": {}
+    },
+    "mutators": [
+      {
+        "handler": "header",
+        "config": {}
+      }
+    ],
+    "errors": [
+      {
+        "handler": "json",
+        "config": {}
+      }
+    ],
+    "upstream": {
+      "preserve_host": false,
+      "strip_path": "",
+      "url": ""
+    }
+  },
+  {
+    "id": "rule-getCollaborativeAlbumLinks",
+    "version": "",
+    "description": "",
+    "match": {
+      "methods": [
+        "GET"
+      ],
+      "url": "\u003chttps|http\u003e://\u003capp-staging.oosa.life\u003e/collaborative-log/\u003c[0-9a-fA-F]{24}\u003e/album-link"
+    },
+    "authenticators": [
+      {
+        "handler": "cookie_session",
+        "config": {}
+      },
+      {
+        "handler": "bearer_token",
+        "config": {}
+      },
+      {
+        "handler": "unauthorized",
+        "config": null
+      }
+    ],
+    "authorizer": {
+      "handler": "allow",
+      "config": {}
+    },
+    "mutators": [
+      {
+        "handler": "header",
+        "config": {}
+      }
+    ],
+    "errors": [
+      {
+        "handler": "json",
+        "config": {}
+      }
+    ],
+    "upstream": {
+      "preserve_host": false,
+      "strip_path": "",
+      "url": ""
+    }
+  },
+  {
+    "id": "rule-createCollaborativeAlbumLink",
+    "version": "",
+    "description": "",
+    "match": {
+      "methods": [
+        "POST"
+      ],
+      "url": "\u003chttps|http\u003e://\u003capp-staging.oosa.life\u003e/collaborative-log/\u003c[0-9a-fA-F]{24}\u003e/album-link"
+    },
+    "authenticators": [
+      {
+        "handler": "cookie_session",
+        "config": {}
+      },
+      {
+        "handler": "bearer_token",
+        "config": {}
+      },
+      {
+        "handler": "unauthorized",
+        "config": null
+      }
+    ],
+    "authorizer": {
+      "handler": "allow",
+      "config": {}
+    },
+    "mutators": [
+      {
+        "handler": "header",
+        "config": {}
+      }
+    ],
+    "errors": [
+      {
+        "handler": "json",
+        "config": {}
+      }
+    ],
+    "upstream": {
+      "preserve_host": false,
+      "strip_path": "",
+      "url": ""
+    }
+  },
+  {
+    "id": "rule-updateUser",
+    "version": "",
+    "description": "",
+    "match": {
+      "methods": [
+        "PUT"
+      ],
+      "url": "\u003chttps|http\u003e://\u003capp-staging.oosa.life\u003e/auth/take-me"
+    },
+    "authenticators": [
+      {
+        "handler": "cookie_session",
+        "config": {}
+      },
+      {
+        "handler": "bearer_token",
+        "config": {}
+      },
+      {
+        "handler": "unauthorized",
+        "config": null
+      }
+    ],
+    "authorizer": {
+      "handler": "allow",
+      "config": {}
+    },
+    "mutators": [
+      {
+        "handler": "header",
+        "config": {}
+      }
+    ],
+    "errors": [
+      {
+        "handler": "json",
+        "config": {}
+      }
+    ],
+    "upstream": {
+      "preserve_host": false,
+      "strip_path": "",
+      "url": ""
+    }
+  },
+  {
+    "id": "rule-deleteRewild",
+    "version": "",
+    "description": "",
+    "match": {
+      "methods": [
+        "DELETE"
+      ],
+      "url": "\u003chttps|http\u003e://\u003capp-staging.oosa.life\u003e/rewilding/\u003c[0-9a-fA-F]{24}\u003e"
+    },
+    "authenticators": [
+      {
+        "handler": "cookie_session",
+        "config": {}
+      },
+      {
+        "handler": "bearer_token",
+        "config": {}
+      },
+      {
+        "handler": "unauthorized",
+        "config": null
+      }
+    ],
+    "authorizer": {
+      "handler": "allow",
+      "config": {}
+    },
+    "mutators": [
+      {
+        "handler": "header",
+        "config": {}
+      }
+    ],
+    "errors": [
+      {
+        "handler": "json",
+        "config": {}
+      }
+    ],
+    "upstream": {
+      "preserve_host": false,
+      "strip_path": "",
+      "url": ""
+    }
+  },
+  {
+    "id": "rule-getRewild",
+    "version": "",
+    "description": "",
+    "match": {
+      "methods": [
+        "GET"
+      ],
+      "url": "\u003chttps|http\u003e://\u003capp-staging.oosa.life\u003e/rewilding/\u003c[0-9a-fA-F]{24}\u003e"
+    },
+    "authenticators": [
+      {
+        "handler": "cookie_session",
+        "config": {}
+      },
+      {
+        "handler": "bearer_token",
+        "config": {}
+      },
+      {
+        "handler": "anonymous",
+        "config": {
+          "subject": "guest"
+        }
+      }
+    ],
+    "authorizer": {
+      "handler": "allow",
+      "config": {}
+    },
+    "mutators": [
+      {
+        "handler": "header",
+        "config": {}
+      }
+    ],
+    "errors": [
+      {
+        "handler": "json",
+        "config": {}
+      }
+    ],
+    "upstream": {
+      "preserve_host": false,
+      "strip_path": "",
+      "url": ""
+    }
+  },
+  {
+    "id": "rule-getUserEventbyId",
+    "version": "",
+    "description": "",
+    "match": {
+      "methods": [
+        "GET"
+      ],
+      "url": "\u003chttps|http\u003e://\u003capp-staging.oosa.life\u003e/user/\u003c[0-9a-fA-F]{24}\u003e/events"
+    },
+    "authenticators": [
+      {
+        "handler": "cookie_session",
+        "config": {}
+      },
+      {
+        "handler": "bearer_token",
+        "config": {}
+      },
+      {
+        "handler": "unauthorized",
+        "config": null
+      }
+    ],
+    "authorizer": {
+      "handler": "allow",
+      "config": {}
+    },
+    "mutators": [
+      {
+        "handler": "header",
+        "config": {}
+      }
+    ],
+    "errors": [
+      {
+        "handler": "json",
+        "config": {}
+      }
+    ],
+    "upstream": {
+      "preserve_host": false,
+      "strip_path": "",
+      "url": ""
+    }
+  },
+  {
+    "id": "rule-getRandomCount",
+    "version": "",
+    "description": "",
+    "match": {
+      "methods": [
+        "GET"
+      ],
+      "url": "\u003chttps|http\u003e://\u003capp-staging.oosa.life\u003e/collaborative-log/\u003c[0-9a-fA-F]{24}\u003e/random-count"
+    },
+    "authenticators": [
+      {
+        "handler": "cookie_session",
+        "config": {}
+      },
+      {
+        "handler": "bearer_token",
+        "config": {}
+      },
+      {
+        "handler": "unauthorized",
+        "config": null
+      }
+    ],
+    "authorizer": {
+      "handler": "allow",
+      "config": {}
+    },
+    "mutators": [
+      {
+        "handler": "header",
+        "config": {}
+      }
+    ],
+    "errors": [
+      {
+        "handler": "json",
+        "config": {}
+      }
+    ],
+    "upstream": {
+      "preserve_host": false,
+      "strip_path": "",
+      "url": ""
+    }
+  },
+  {
+    "id": "rule-updateRandomCount",
+    "version": "",
+    "description": "",
+    "match": {
+      "methods": [
+        "PUT"
+      ],
+      "url": "\u003chttps|http\u003e://\u003capp-staging.oosa.life\u003e/collaborative-log/\u003c[0-9a-fA-F]{24}\u003e/random-count"
+    },
+    "authenticators": [
+      {
+        "handler": "cookie_session",
+        "config": {}
+      },
+      {
+        "handler": "bearer_token",
+        "config": {}
+      },
+      {
+        "handler": "unauthorized",
+        "config": null
+      }
+    ],
+    "authorizer": {
+      "handler": "allow",
+      "config": {}
+    },
+    "mutators": [
+      {
+        "handler": "header",
+        "config": {}
+      }
+    ],
+    "errors": [
+      {
+        "handler": "json",
+        "config": {}
+      }
+    ],
+    "upstream": {
+      "preserve_host": false,
+      "strip_path": "",
+      "url": ""
+    }
+  },
+  {
+    "id": "rule-getRecommendedFriendsForUser",
+    "version": "",
+    "description": "",
+    "match": {
+      "methods": [
+        "GET"
+      ],
+      "url": "\u003chttps|http\u003e://\u003capp-staging.oosa.life\u003e/user/friends/recommended"
+    },
+    "authenticators": [
+      {
+        "handler": "cookie_session",
+        "config": {}
+      },
+      {
+        "handler": "bearer_token",
+        "config": {}
+      },
+      {
+        "handler": "unauthorized",
+        "config": null
+      }
+    ],
+    "authorizer": {
+      "handler": "allow",
+      "config": {}
+    },
+    "mutators": [
+      {
+        "handler": "header",
+        "config": {}
+      }
+    ],
+    "errors": [
+      {
+        "handler": "json",
+        "config": {}
+      }
+    ],
+    "upstream": {
+      "preserve_host": false,
+      "strip_path": "",
+      "url": ""
+    }
+  },
+  {
+    "id": "rule-getEventReferenceLink",
+    "version": "",
+    "description": "",
+    "match": {
+      "methods": [
+        "GET"
+      ],
+      "url": "\u003chttps|http\u003e://\u003capp-staging.oosa.life\u003e/event/\u003c[0-9a-fA-F]{24}\u003e/reference-links"
+    },
+    "authenticators": [
+      {
+        "handler": "cookie_session",
+        "config": {}
+      },
+      {
+        "handler": "bearer_token",
+        "config": {}
+      },
+      {
+        "handler": "unauthorized",
+        "config": null
+      }
+    ],
+    "authorizer": {
+      "handler": "allow",
+      "config": {}
+    },
+    "mutators": [
+      {
+        "handler": "header",
+        "config": {}
+      }
+    ],
+    "errors": [
+      {
+        "handler": "json",
+        "config": {}
+      }
+    ],
+    "upstream": {
+      "preserve_host": false,
+      "strip_path": "",
+      "url": ""
+    }
+  },
+  {
+    "id": "rule-createReferenceLink",
+    "version": "",
+    "description": "",
+    "match": {
+      "methods": [
+        "POST"
+      ],
+      "url": "\u003chttps|http\u003e://\u003capp-staging.oosa.life\u003e/event/\u003c[0-9a-fA-F]{24}\u003e/reference-links"
+    },
+    "authenticators": [
+      {
+        "handler": "cookie_session",
+        "config": {}
+      },
+      {
+        "handler": "bearer_token",
+        "config": {}
+      },
+      {
+        "handler": "unauthorized",
+        "config": null
+      }
+    ],
+    "authorizer": {
+      "handler": "allow",
+      "config": {}
+    },
+    "mutators": [
+      {
+        "handler": "header",
+        "config": {}
+      }
+    ],
+    "errors": [
+      {
+        "handler": "json",
+        "config": {}
+      }
+    ],
+    "upstream": {
+      "preserve_host": false,
+      "strip_path": "",
+      "url": ""
+    }
+  },
+  {
+    "id": "rule-deleteMessageBoard",
+    "version": "",
+    "description": "",
+    "match": {
+      "methods": [
+        "DELETE"
+      ],
+      "url": "\u003chttps|http\u003e://\u003capp-staging.oosa.life\u003e/event/\u003c[0-9a-fA-F]{24}\u003e/message-board/\u003c[0-9a-fA-F]{24}\u003e"
+    },
+    "authenticators": [
+      {
+        "handler": "cookie_session",
+        "config": {}
+      },
+      {
+        "handler": "bearer_token",
+        "config": {}
+      },
+      {
+        "handler": "unauthorized",
+        "config": null
+      }
+    ],
+    "authorizer": {
+      "handler": "allow",
+      "config": {}
+    },
+    "mutators": [
+      {
+        "handler": "header",
+        "config": {}
+      }
+    ],
+    "errors": [
+      {
+        "handler": "json",
+        "config": {}
+      }
+    ],
+    "upstream": {
+      "preserve_host": false,
+      "strip_path": "",
+      "url": ""
+    }
+  },
+  {
+    "id": "rule-getMessageBoard",
+    "version": "",
+    "description": "",
+    "match": {
+      "methods": [
+        "GET"
+      ],
+      "url": "\u003chttps|http\u003e://\u003capp-staging.oosa.life\u003e/event/\u003c[0-9a-fA-F]{24}\u003e/message-board/\u003c[0-9a-fA-F]{24}\u003e"
+    },
+    "authenticators": [
+      {
+        "handler": "cookie_session",
+        "config": {}
+      },
+      {
+        "handler": "bearer_token",
+        "config": {}
+      },
+      {
+        "handler": "unauthorized",
+        "config": null
+      }
+    ],
+    "authorizer": {
+      "handler": "allow",
+      "config": {}
+    },
+    "mutators": [
+      {
+        "handler": "header",
+        "config": {}
+      }
+    ],
+    "errors": [
+      {
+        "handler": "json",
+        "config": {}
+      }
+    ],
+    "upstream": {
+      "preserve_host": false,
+      "strip_path": "",
+      "url": ""
+    }
+  },
+  {
+    "id": "rule-updateMessageBoard",
+    "version": "",
+    "description": "",
+    "match": {
+      "methods": [
+        "PUT"
+      ],
+      "url": "\u003chttps|http\u003e://\u003capp-staging.oosa.life\u003e/event/\u003c[0-9a-fA-F]{24}\u003e/message-board/\u003c[0-9a-fA-F]{24}\u003e"
     },
     "authenticators": [
       {
@@ -2316,14 +3480,152 @@
     }
   },
   {
-    "id": "rule-getUser",
+    "id": "rule-getAuthInfo",
     "version": "",
     "description": "",
     "match": {
       "methods": [
         "GET"
       ],
-      "url": "\u003chttps|http\u003e://\u003capp-staging.oosa.life\u003e/user/\u003c[0-9a-fA-F]{24}\u003e"
+      "url": "\u003chttps|http\u003e://\u003capp-staging.oosa.life\u003e/auth"
+    },
+    "authenticators": [
+      {
+        "handler": "cookie_session",
+        "config": {}
+      },
+      {
+        "handler": "bearer_token",
+        "config": {}
+      },
+      {
+        "handler": "unauthorized",
+        "config": null
+      }
+    ],
+    "authorizer": {
+      "handler": "allow",
+      "config": {}
+    },
+    "mutators": [
+      {
+        "handler": "header",
+        "config": {}
+      }
+    ],
+    "errors": [
+      {
+        "handler": "json",
+        "config": {}
+      }
+    ],
+    "upstream": {
+      "preserve_host": false,
+      "strip_path": "",
+      "url": ""
+    }
+  },
+  {
+    "id": "rule-updateUser",
+    "version": "",
+    "description": "",
+    "match": {
+      "methods": [
+        "PUT"
+      ],
+      "url": "\u003chttps|http\u003e://\u003capp-staging.oosa.life\u003e/auth"
+    },
+    "authenticators": [
+      {
+        "handler": "cookie_session",
+        "config": {}
+      },
+      {
+        "handler": "bearer_token",
+        "config": {}
+      },
+      {
+        "handler": "unauthorized",
+        "config": null
+      }
+    ],
+    "authorizer": {
+      "handler": "allow",
+      "config": {}
+    },
+    "mutators": [
+      {
+        "handler": "header",
+        "config": {}
+      }
+    ],
+    "errors": [
+      {
+        "handler": "json",
+        "config": {}
+      }
+    ],
+    "upstream": {
+      "preserve_host": false,
+      "strip_path": "",
+      "url": ""
+    }
+  },
+  {
+    "id": "rule-CheckUserDailyVideo",
+    "version": "",
+    "description": "",
+    "match": {
+      "methods": [
+        "POST"
+      ],
+      "url": "\u003chttps|http\u003e://\u003capp-staging.oosa.life\u003e/oosa-daily"
+    },
+    "authenticators": [
+      {
+        "handler": "cookie_session",
+        "config": {}
+      },
+      {
+        "handler": "bearer_token",
+        "config": {}
+      },
+      {
+        "handler": "unauthorized",
+        "config": null
+      }
+    ],
+    "authorizer": {
+      "handler": "allow",
+      "config": {}
+    },
+    "mutators": [
+      {
+        "handler": "header",
+        "config": {}
+      }
+    ],
+    "errors": [
+      {
+        "handler": "json",
+        "config": {}
+      }
+    ],
+    "upstream": {
+      "preserve_host": false,
+      "strip_path": "",
+      "url": ""
+    }
+  },
+  {
+    "id": "rule-pinMessageBoard",
+    "version": "",
+    "description": "",
+    "match": {
+      "methods": [
+        "POST"
+      ],
+      "url": "\u003chttps|http\u003e://\u003capp-staging.oosa.life\u003e/event/\u003c[0-9a-fA-F]{24}\u003e/message-board/\u003c[0-9a-fA-F]{24}\u003e/pin"
     },
     "authenticators": [
       {
@@ -2502,430 +3804,14 @@
     }
   },
   {
-    "id": "rule-createPolaroid",
+    "id": "rule-createNews",
     "version": "",
     "description": "",
     "match": {
       "methods": [
         "POST"
       ],
-      "url": "\u003chttps|http\u003e://\u003capp-staging.oosa.life\u003e/collaborative-log/\u003c[0-9a-fA-F]{24}\u003e/polaroids"
-    },
-    "authenticators": [
-      {
-        "handler": "cookie_session",
-        "config": {}
-      },
-      {
-        "handler": "bearer_token",
-        "config": {}
-      },
-      {
-        "handler": "unauthorized",
-        "config": null
-      }
-    ],
-    "authorizer": {
-      "handler": "allow",
-      "config": {}
-    },
-    "mutators": [
-      {
-        "handler": "header",
-        "config": {}
-      }
-    ],
-    "errors": [
-      {
-        "handler": "json",
-        "config": {}
-      }
-    ],
-    "upstream": {
-      "preserve_host": false,
-      "strip_path": "",
-      "url": ""
-    }
-  },
-  {
-    "id": "rule-getPolaroids",
-    "version": "",
-    "description": "",
-    "match": {
-      "methods": [
-        "GET"
-      ],
-      "url": "\u003chttps|http\u003e://\u003capp-staging.oosa.life\u003e/collaborative-log/\u003c[0-9a-fA-F]{24}\u003e/polaroids"
-    },
-    "authenticators": [
-      {
-        "handler": "cookie_session",
-        "config": {}
-      },
-      {
-        "handler": "bearer_token",
-        "config": {}
-      },
-      {
-        "handler": "unauthorized",
-        "config": null
-      }
-    ],
-    "authorizer": {
-      "handler": "allow",
-      "config": {}
-    },
-    "mutators": [
-      {
-        "handler": "header",
-        "config": {}
-      }
-    ],
-    "errors": [
-      {
-        "handler": "json",
-        "config": {}
-      }
-    ],
-    "upstream": {
-      "preserve_host": false,
-      "strip_path": "",
-      "url": ""
-    }
-  },
-  {
-    "id": "rule-deleteEventAccounting",
-    "version": "",
-    "description": "",
-    "match": {
-      "methods": [
-        "DELETE"
-      ],
-      "url": "\u003chttps|http\u003e://\u003capp-staging.oosa.life\u003e/event/\u003c[0-9a-fA-F]{24}\u003e/accounting/\u003c[0-9a-fA-F]{24}\u003e"
-    },
-    "authenticators": [
-      {
-        "handler": "cookie_session",
-        "config": {}
-      },
-      {
-        "handler": "bearer_token",
-        "config": {}
-      },
-      {
-        "handler": "unauthorized",
-        "config": null
-      }
-    ],
-    "authorizer": {
-      "handler": "allow",
-      "config": {}
-    },
-    "mutators": [
-      {
-        "handler": "header",
-        "config": {}
-      }
-    ],
-    "errors": [
-      {
-        "handler": "json",
-        "config": {}
-      }
-    ],
-    "upstream": {
-      "preserve_host": false,
-      "strip_path": "",
-      "url": ""
-    }
-  },
-  {
-    "id": "rule-getEventAccounting",
-    "version": "",
-    "description": "",
-    "match": {
-      "methods": [
-        "GET"
-      ],
-      "url": "\u003chttps|http\u003e://\u003capp-staging.oosa.life\u003e/event/\u003c[0-9a-fA-F]{24}\u003e/accounting/\u003c[0-9a-fA-F]{24}\u003e"
-    },
-    "authenticators": [
-      {
-        "handler": "cookie_session",
-        "config": {}
-      },
-      {
-        "handler": "bearer_token",
-        "config": {}
-      },
-      {
-        "handler": "unauthorized",
-        "config": null
-      }
-    ],
-    "authorizer": {
-      "handler": "allow",
-      "config": {}
-    },
-    "mutators": [
-      {
-        "handler": "header",
-        "config": {}
-      }
-    ],
-    "errors": [
-      {
-        "handler": "json",
-        "config": {}
-      }
-    ],
-    "upstream": {
-      "preserve_host": false,
-      "strip_path": "",
-      "url": ""
-    }
-  },
-  {
-    "id": "rule-updateEventAccounting",
-    "version": "",
-    "description": "",
-    "match": {
-      "methods": [
-        "PUT"
-      ],
-      "url": "\u003chttps|http\u003e://\u003capp-staging.oosa.life\u003e/event/\u003c[0-9a-fA-F]{24}\u003e/accounting/\u003c[0-9a-fA-F]{24}\u003e"
-    },
-    "authenticators": [
-      {
-        "handler": "cookie_session",
-        "config": {}
-      },
-      {
-        "handler": "bearer_token",
-        "config": {}
-      },
-      {
-        "handler": "unauthorized",
-        "config": null
-      }
-    ],
-    "authorizer": {
-      "handler": "allow",
-      "config": {}
-    },
-    "mutators": [
-      {
-        "handler": "header",
-        "config": {}
-      }
-    ],
-    "errors": [
-      {
-        "handler": "json",
-        "config": {}
-      }
-    ],
-    "upstream": {
-      "preserve_host": false,
-      "strip_path": "",
-      "url": ""
-    }
-  },
-  {
-    "id": "rule-deleteReferenceLink",
-    "version": "",
-    "description": "",
-    "match": {
-      "methods": [
-        "DELETE"
-      ],
-      "url": "\u003chttps|http\u003e://\u003capp-staging.oosa.life\u003e/event/\u003c[0-9a-fA-F]{24}\u003e/reference-links/\u003c[0-9a-fA-F]{24}\u003e"
-    },
-    "authenticators": [
-      {
-        "handler": "cookie_session",
-        "config": {}
-      },
-      {
-        "handler": "bearer_token",
-        "config": {}
-      },
-      {
-        "handler": "unauthorized",
-        "config": null
-      }
-    ],
-    "authorizer": {
-      "handler": "allow",
-      "config": {}
-    },
-    "mutators": [
-      {
-        "handler": "header",
-        "config": {}
-      }
-    ],
-    "errors": [
-      {
-        "handler": "json",
-        "config": {}
-      }
-    ],
-    "upstream": {
-      "preserve_host": false,
-      "strip_path": "",
-      "url": ""
-    }
-  },
-  {
-    "id": "rule-getReferenceLink",
-    "version": "",
-    "description": "",
-    "match": {
-      "methods": [
-        "GET"
-      ],
-      "url": "\u003chttps|http\u003e://\u003capp-staging.oosa.life\u003e/event/\u003c[0-9a-fA-F]{24}\u003e/reference-links/\u003c[0-9a-fA-F]{24}\u003e"
-    },
-    "authenticators": [
-      {
-        "handler": "cookie_session",
-        "config": {}
-      },
-      {
-        "handler": "bearer_token",
-        "config": {}
-      },
-      {
-        "handler": "unauthorized",
-        "config": null
-      }
-    ],
-    "authorizer": {
-      "handler": "allow",
-      "config": {}
-    },
-    "mutators": [
-      {
-        "handler": "header",
-        "config": {}
-      }
-    ],
-    "errors": [
-      {
-        "handler": "json",
-        "config": {}
-      }
-    ],
-    "upstream": {
-      "preserve_host": false,
-      "strip_path": "",
-      "url": ""
-    }
-  },
-  {
-    "id": "rule-updateReferenceLink",
-    "version": "",
-    "description": "",
-    "match": {
-      "methods": [
-        "PUT"
-      ],
-      "url": "\u003chttps|http\u003e://\u003capp-staging.oosa.life\u003e/event/\u003c[0-9a-fA-F]{24}\u003e/reference-links/\u003c[0-9a-fA-F]{24}\u003e"
-    },
-    "authenticators": [
-      {
-        "handler": "cookie_session",
-        "config": {}
-      },
-      {
-        "handler": "bearer_token",
-        "config": {}
-      },
-      {
-        "handler": "unauthorized",
-        "config": null
-      }
-    ],
-    "authorizer": {
-      "handler": "allow",
-      "config": {}
-    },
-    "mutators": [
-      {
-        "handler": "header",
-        "config": {}
-      }
-    ],
-    "errors": [
-      {
-        "handler": "json",
-        "config": {}
-      }
-    ],
-    "upstream": {
-      "preserve_host": false,
-      "strip_path": "",
-      "url": ""
-    }
-  },
-  {
-    "id": "rule-getCoverImage",
-    "version": "",
-    "description": "",
-    "match": {
-      "methods": [
-        "GET"
-      ],
-      "url": "\u003chttps|http\u003e://\u003capp-staging.oosa.life\u003e/event/cover/\u003c(?!.*/).*\u003e"
-    },
-    "authenticators": [
-      {
-        "handler": "cookie_session",
-        "config": {}
-      },
-      {
-        "handler": "bearer_token",
-        "config": {}
-      },
-      {
-        "handler": "anonymous",
-        "config": {
-          "subject": "guest"
-        }
-      }
-    ],
-    "authorizer": {
-      "handler": "allow",
-      "config": {}
-    },
-    "mutators": [
-      {
-        "handler": "header",
-        "config": {}
-      }
-    ],
-    "errors": [
-      {
-        "handler": "json",
-        "config": {}
-      }
-    ],
-    "upstream": {
-      "preserve_host": false,
-      "strip_path": "",
-      "url": ""
-    }
-  },
-  {
-    "id": "rule-updateUser",
-    "version": "",
-    "description": "",
-    "match": {
-      "methods": [
-        "PUT"
-      ],
-      "url": "\u003chttps|http\u003e://\u003capp-staging.oosa.life\u003e/auth/take-me"
+      "url": "\u003chttps|http\u003e://\u003capp-staging.oosa.life\u003e/news"
     },
     "authenticators": [
       {
@@ -3056,14 +3942,14 @@
     }
   },
   {
-    "id": "rule-deleteRewild",
+    "id": "rule-getUserEventbyCode",
     "version": "",
     "description": "",
     "match": {
       "methods": [
-        "DELETE"
+        "GET"
       ],
-      "url": "\u003chttps|http\u003e://\u003capp-staging.oosa.life\u003e/rewilding/\u003c[0-9a-fA-F]{24}\u003e"
+      "url": "\u003chttps|http\u003e://\u003capp-staging.oosa.life\u003e/my/event"
     },
     "authenticators": [
       {
@@ -3102,14 +3988,14 @@
     }
   },
   {
-    "id": "rule-getRewild",
+    "id": "rule-getRewilds",
     "version": "",
     "description": "",
     "match": {
       "methods": [
         "GET"
       ],
-      "url": "\u003chttps|http\u003e://\u003capp-staging.oosa.life\u003e/rewilding/\u003c[0-9a-fA-F]{24}\u003e"
+      "url": "\u003chttps|http\u003e://\u003capp-staging.oosa.life\u003e/rewilding"
     },
     "authenticators": [
       {
@@ -3125,6 +4011,330 @@
         "config": {
           "subject": "guest"
         }
+      }
+    ],
+    "authorizer": {
+      "handler": "allow",
+      "config": {}
+    },
+    "mutators": [
+      {
+        "handler": "header",
+        "config": {}
+      }
+    ],
+    "errors": [
+      {
+        "handler": "json",
+        "config": {}
+      }
+    ],
+    "upstream": {
+      "preserve_host": false,
+      "strip_path": "",
+      "url": ""
+    }
+  },
+  {
+    "id": "rule-createRewild",
+    "version": "",
+    "description": "",
+    "match": {
+      "methods": [
+        "POST"
+      ],
+      "url": "\u003chttps|http\u003e://\u003capp-staging.oosa.life\u003e/rewilding"
+    },
+    "authenticators": [
+      {
+        "handler": "cookie_session",
+        "config": {}
+      },
+      {
+        "handler": "bearer_token",
+        "config": {}
+      },
+      {
+        "handler": "unauthorized",
+        "config": null
+      }
+    ],
+    "authorizer": {
+      "handler": "allow",
+      "config": {}
+    },
+    "mutators": [
+      {
+        "handler": "header",
+        "config": {}
+      }
+    ],
+    "errors": [
+      {
+        "handler": "json",
+        "config": {}
+      }
+    ],
+    "upstream": {
+      "preserve_host": false,
+      "strip_path": "",
+      "url": ""
+    }
+  },
+  {
+    "id": "rule-updateUserSet",
+    "version": "",
+    "description": "",
+    "match": {
+      "methods": [
+        "PUT"
+      ],
+      "url": "\u003chttps|http\u003e://\u003capp-staging.oosa.life\u003e/auth/setting"
+    },
+    "authenticators": [
+      {
+        "handler": "cookie_session",
+        "config": {}
+      },
+      {
+        "handler": "bearer_token",
+        "config": {}
+      },
+      {
+        "handler": "unauthorized",
+        "config": null
+      }
+    ],
+    "authorizer": {
+      "handler": "allow",
+      "config": {}
+    },
+    "mutators": [
+      {
+        "handler": "header",
+        "config": {}
+      }
+    ],
+    "errors": [
+      {
+        "handler": "json",
+        "config": {}
+      }
+    ],
+    "upstream": {
+      "preserve_host": false,
+      "strip_path": "",
+      "url": ""
+    }
+  },
+  {
+    "id": "rule-updateEventInvitationJoin",
+    "version": "",
+    "description": "",
+    "match": {
+      "methods": [
+        "POST"
+      ],
+      "url": "\u003chttps|http\u003e://\u003capp-staging.oosa.life\u003e/event/\u003c[0-9a-fA-F]{24}\u003e/join"
+    },
+    "authenticators": [
+      {
+        "handler": "cookie_session",
+        "config": {}
+      },
+      {
+        "handler": "bearer_token",
+        "config": {}
+      },
+      {
+        "handler": "unauthorized",
+        "config": null
+      }
+    ],
+    "authorizer": {
+      "handler": "allow",
+      "config": {}
+    },
+    "mutators": [
+      {
+        "handler": "header",
+        "config": {}
+      }
+    ],
+    "errors": [
+      {
+        "handler": "json",
+        "config": {}
+      }
+    ],
+    "upstream": {
+      "preserve_host": false,
+      "strip_path": "",
+      "url": ""
+    }
+  },
+  {
+    "id": "rule-getUserStat",
+    "version": "",
+    "description": "",
+    "match": {
+      "methods": [
+        "GET"
+      ],
+      "url": "\u003chttps|http\u003e://\u003capp-staging.oosa.life\u003e/users/statistics"
+    },
+    "authenticators": [
+      {
+        "handler": "cookie_session",
+        "config": {}
+      },
+      {
+        "handler": "bearer_token",
+        "config": {}
+      },
+      {
+        "handler": "unauthorized",
+        "config": null
+      }
+    ],
+    "authorizer": {
+      "handler": "allow",
+      "config": {}
+    },
+    "mutators": [
+      {
+        "handler": "header",
+        "config": {}
+      }
+    ],
+    "errors": [
+      {
+        "handler": "json",
+        "config": {}
+      }
+    ],
+    "upstream": {
+      "preserve_host": false,
+      "strip_path": "",
+      "url": ""
+    }
+  },
+  {
+    "id": "rule-rewildSearchText",
+    "version": "",
+    "description": "",
+    "match": {
+      "methods": [
+        "GET"
+      ],
+      "url": "\u003chttps|http\u003e://\u003capp-staging.oosa.life\u003e/rewilding-searchText"
+    },
+    "authenticators": [
+      {
+        "handler": "cookie_session",
+        "config": {}
+      },
+      {
+        "handler": "bearer_token",
+        "config": {}
+      },
+      {
+        "handler": "anonymous",
+        "config": {
+          "subject": "guest"
+        }
+      }
+    ],
+    "authorizer": {
+      "handler": "allow",
+      "config": {}
+    },
+    "mutators": [
+      {
+        "handler": "header",
+        "config": {}
+      }
+    ],
+    "errors": [
+      {
+        "handler": "json",
+        "config": {}
+      }
+    ],
+    "upstream": {
+      "preserve_host": false,
+      "strip_path": "",
+      "url": ""
+    }
+  },
+  {
+    "id": "rule-getPocketLists",
+    "version": "",
+    "description": "",
+    "match": {
+      "methods": [
+        "GET"
+      ],
+      "url": "\u003chttps|http\u003e://\u003capp-staging.oosa.life\u003e/pocket-list"
+    },
+    "authenticators": [
+      {
+        "handler": "cookie_session",
+        "config": {}
+      },
+      {
+        "handler": "bearer_token",
+        "config": {}
+      },
+      {
+        "handler": "unauthorized",
+        "config": null
+      }
+    ],
+    "authorizer": {
+      "handler": "allow",
+      "config": {}
+    },
+    "mutators": [
+      {
+        "handler": "header",
+        "config": {}
+      }
+    ],
+    "errors": [
+      {
+        "handler": "json",
+        "config": {}
+      }
+    ],
+    "upstream": {
+      "preserve_host": false,
+      "strip_path": "",
+      "url": ""
+    }
+  },
+  {
+    "id": "rule-createPocketList",
+    "version": "",
+    "description": "",
+    "match": {
+      "methods": [
+        "POST"
+      ],
+      "url": "\u003chttps|http\u003e://\u003capp-staging.oosa.life\u003e/pocket-list"
+    },
+    "authenticators": [
+      {
+        "handler": "cookie_session",
+        "config": {}
+      },
+      {
+        "handler": "bearer_token",
+        "config": {}
+      },
+      {
+        "handler": "unauthorized",
+        "config": null
       }
     ],
     "authorizer": {
@@ -3382,106 +4592,14 @@
     }
   },
   {
-    "id": "rule-finishSsoRegister",
-    "version": "",
-    "description": "",
-    "match": {
-      "methods": [
-        "GET"
-      ],
-      "url": "\u003chttps|http\u003e://\u003capp-staging.oosa.life\u003e/sso/register/finish"
-    },
-    "authenticators": [
-      {
-        "handler": "cookie_session",
-        "config": {}
-      },
-      {
-        "handler": "bearer_token",
-        "config": {}
-      },
-      {
-        "handler": "unauthorized",
-        "config": null
-      }
-    ],
-    "authorizer": {
-      "handler": "allow",
-      "config": {}
-    },
-    "mutators": [
-      {
-        "handler": "header",
-        "config": {}
-      }
-    ],
-    "errors": [
-      {
-        "handler": "json",
-        "config": {}
-      }
-    ],
-    "upstream": {
-      "preserve_host": false,
-      "strip_path": "",
-      "url": ""
-    }
-  },
-  {
-    "id": "rule-createNews",
+    "id": "rule-getUrlInfo",
     "version": "",
     "description": "",
     "match": {
       "methods": [
         "POST"
       ],
-      "url": "\u003chttps|http\u003e://\u003capp-staging.oosa.life\u003e/news"
-    },
-    "authenticators": [
-      {
-        "handler": "cookie_session",
-        "config": {}
-      },
-      {
-        "handler": "bearer_token",
-        "config": {}
-      },
-      {
-        "handler": "unauthorized",
-        "config": null
-      }
-    ],
-    "authorizer": {
-      "handler": "allow",
-      "config": {}
-    },
-    "mutators": [
-      {
-        "handler": "header",
-        "config": {}
-      }
-    ],
-    "errors": [
-      {
-        "handler": "json",
-        "config": {}
-      }
-    ],
-    "upstream": {
-      "preserve_host": false,
-      "strip_path": "",
-      "url": ""
-    }
-  },
-  {
-    "id": "rule-getEvents",
-    "version": "",
-    "description": "",
-    "match": {
-      "methods": [
-        "GET"
-      ],
-      "url": "\u003chttps|http\u003e://\u003capp-staging.oosa.life\u003e/event"
+      "url": "\u003chttps|http\u003e://\u003capp-staging.oosa.life\u003e/link-query"
     },
     "authenticators": [
       {
@@ -3522,14 +4640,14 @@
     }
   },
   {
-    "id": "rule-createEvent",
+    "id": "rule-getPocketListItem",
     "version": "",
     "description": "",
     "match": {
       "methods": [
-        "POST"
+        "GET"
       ],
-      "url": "\u003chttps|http\u003e://\u003capp-staging.oosa.life\u003e/event"
+      "url": "\u003chttps|http\u003e://\u003capp-staging.oosa.life\u003e/pocket-list/\u003c[0-9a-fA-F]{24}\u003e/items/\u003c[0-9a-fA-F]{24}\u003e"
     },
     "authenticators": [
       {
@@ -3568,530 +4686,14 @@
     }
   },
   {
-    "id": "rule-getAllPhotos",
-    "version": "",
-    "description": "",
-    "match": {
-      "methods": [
-        "GET"
-      ],
-      "url": "\u003chttps|http\u003e://\u003capp-staging.oosa.life\u003e/rewilding/\u003c[0-9a-fA-F]{24}\u003e/photos"
-    },
-    "authenticators": [
-      {
-        "handler": "cookie_session",
-        "config": {}
-      },
-      {
-        "handler": "bearer_token",
-        "config": {}
-      },
-      {
-        "handler": "anonymous",
-        "config": {
-          "subject": "guest"
-        }
-      }
-    ],
-    "authorizer": {
-      "handler": "allow",
-      "config": {}
-    },
-    "mutators": [
-      {
-        "handler": "header",
-        "config": {}
-      }
-    ],
-    "errors": [
-      {
-        "handler": "json",
-        "config": {}
-      }
-    ],
-    "upstream": {
-      "preserve_host": false,
-      "strip_path": "",
-      "url": ""
-    }
-  },
-  {
-    "id": "rule-getEventMessageBoard",
-    "version": "",
-    "description": "",
-    "match": {
-      "methods": [
-        "GET"
-      ],
-      "url": "\u003chttps|http\u003e://\u003capp-staging.oosa.life\u003e/event/\u003c[0-9a-fA-F]{24}\u003e/message-board"
-    },
-    "authenticators": [
-      {
-        "handler": "cookie_session",
-        "config": {}
-      },
-      {
-        "handler": "bearer_token",
-        "config": {}
-      },
-      {
-        "handler": "unauthorized",
-        "config": null
-      }
-    ],
-    "authorizer": {
-      "handler": "allow",
-      "config": {}
-    },
-    "mutators": [
-      {
-        "handler": "header",
-        "config": {}
-      }
-    ],
-    "errors": [
-      {
-        "handler": "json",
-        "config": {}
-      }
-    ],
-    "upstream": {
-      "preserve_host": false,
-      "strip_path": "",
-      "url": ""
-    }
-  },
-  {
-    "id": "rule-createMessageBoard",
-    "version": "",
-    "description": "",
-    "match": {
-      "methods": [
-        "POST"
-      ],
-      "url": "\u003chttps|http\u003e://\u003capp-staging.oosa.life\u003e/event/\u003c[0-9a-fA-F]{24}\u003e/message-board"
-    },
-    "authenticators": [
-      {
-        "handler": "cookie_session",
-        "config": {}
-      },
-      {
-        "handler": "bearer_token",
-        "config": {}
-      },
-      {
-        "handler": "unauthorized",
-        "config": null
-      }
-    ],
-    "authorizer": {
-      "handler": "allow",
-      "config": {}
-    },
-    "mutators": [
-      {
-        "handler": "header",
-        "config": {}
-      }
-    ],
-    "errors": [
-      {
-        "handler": "json",
-        "config": {}
-      }
-    ],
-    "upstream": {
-      "preserve_host": false,
-      "strip_path": "",
-      "url": ""
-    }
-  },
-  {
-    "id": "rule-authByEmail",
-    "version": "",
-    "description": "",
-    "match": {
-      "methods": [
-        "POST"
-      ],
-      "url": "\u003chttps|http\u003e://\u003capp-staging.oosa.life\u003e/auth/email"
-    },
-    "authenticators": [
-      {
-        "handler": "cookie_session",
-        "config": {}
-      },
-      {
-        "handler": "bearer_token",
-        "config": {}
-      },
-      {
-        "handler": "anonymous",
-        "config": {
-          "subject": "guest"
-        }
-      }
-    ],
-    "authorizer": {
-      "handler": "allow",
-      "config": {}
-    },
-    "mutators": [
-      {
-        "handler": "header",
-        "config": {}
-      }
-    ],
-    "errors": [
-      {
-        "handler": "json",
-        "config": {}
-      }
-    ],
-    "upstream": {
-      "preserve_host": false,
-      "strip_path": "",
-      "url": ""
-    }
-  },
-  {
-    "id": "rule-getRankFeel",
-    "version": "",
-    "description": "",
-    "match": {
-      "methods": [
-        "GET"
-      ],
-      "url": "\u003chttps|http\u003e://\u003capp-staging.oosa.life\u003e/world/ranking-feelings"
-    },
-    "authenticators": [
-      {
-        "handler": "cookie_session",
-        "config": {}
-      },
-      {
-        "handler": "bearer_token",
-        "config": {}
-      },
-      {
-        "handler": "anonymous",
-        "config": {
-          "subject": "guest"
-        }
-      }
-    ],
-    "authorizer": {
-      "handler": "allow",
-      "config": {}
-    },
-    "mutators": [
-      {
-        "handler": "header",
-        "config": {}
-      }
-    ],
-    "errors": [
-      {
-        "handler": "json",
-        "config": {}
-      }
-    ],
-    "upstream": {
-      "preserve_host": false,
-      "strip_path": "",
-      "url": ""
-    }
-  },
-  {
-    "id": "rule-getAchievements",
-    "version": "",
-    "description": "",
-    "match": {
-      "methods": [
-        "GET"
-      ],
-      "url": "\u003chttps|http\u003e://\u003capp-staging.oosa.life\u003e/achievement"
-    },
-    "authenticators": [
-      {
-        "handler": "cookie_session",
-        "config": {}
-      },
-      {
-        "handler": "bearer_token",
-        "config": {}
-      },
-      {
-        "handler": "unauthorized",
-        "config": null
-      }
-    ],
-    "authorizer": {
-      "handler": "allow",
-      "config": {}
-    },
-    "mutators": [
-      {
-        "handler": "header",
-        "config": {}
-      }
-    ],
-    "errors": [
-      {
-        "handler": "json",
-        "config": {}
-      }
-    ],
-    "upstream": {
-      "preserve_host": false,
-      "strip_path": "",
-      "url": ""
-    }
-  },
-  {
-    "id": "rule-getRankRewild",
-    "version": "",
-    "description": "",
-    "match": {
-      "methods": [
-        "GET"
-      ],
-      "url": "\u003chttps|http\u003e://\u003capp-staging.oosa.life\u003e/world/ranking-rewilding"
-    },
-    "authenticators": [
-      {
-        "handler": "cookie_session",
-        "config": {}
-      },
-      {
-        "handler": "bearer_token",
-        "config": {}
-      },
-      {
-        "handler": "anonymous",
-        "config": {
-          "subject": "guest"
-        }
-      }
-    ],
-    "authorizer": {
-      "handler": "allow",
-      "config": {}
-    },
-    "mutators": [
-      {
-        "handler": "header",
-        "config": {}
-      }
-    ],
-    "errors": [
-      {
-        "handler": "json",
-        "config": {}
-      }
-    ],
-    "upstream": {
-      "preserve_host": false,
-      "strip_path": "",
-      "url": ""
-    }
-  },
-  {
-    "id": "rule-rewildGooglePhoto",
-    "version": "",
-    "description": "",
-    "match": {
-      "methods": [
-        "GET"
-      ],
-      "url": "\u003chttps|http\u003e://\u003capp-staging.oosa.life\u003e/rewilding/places/\u003c(?!.*/).*\u003e/photos/\u003c(?!.*/).*\u003e"
-    },
-    "authenticators": [
-      {
-        "handler": "cookie_session",
-        "config": {}
-      },
-      {
-        "handler": "bearer_token",
-        "config": {}
-      },
-      {
-        "handler": "anonymous",
-        "config": {
-          "subject": "guest"
-        }
-      }
-    ],
-    "authorizer": {
-      "handler": "allow",
-      "config": {}
-    },
-    "mutators": [
-      {
-        "handler": "header",
-        "config": {}
-      }
-    ],
-    "errors": [
-      {
-        "handler": "json",
-        "config": {}
-      }
-    ],
-    "upstream": {
-      "preserve_host": false,
-      "strip_path": "",
-      "url": ""
-    }
-  },
-  {
-    "id": "rule-getEventReferenceLink",
-    "version": "",
-    "description": "",
-    "match": {
-      "methods": [
-        "GET"
-      ],
-      "url": "\u003chttps|http\u003e://\u003capp-staging.oosa.life\u003e/event/\u003c[0-9a-fA-F]{24}\u003e/reference-links"
-    },
-    "authenticators": [
-      {
-        "handler": "cookie_session",
-        "config": {}
-      },
-      {
-        "handler": "bearer_token",
-        "config": {}
-      },
-      {
-        "handler": "unauthorized",
-        "config": null
-      }
-    ],
-    "authorizer": {
-      "handler": "allow",
-      "config": {}
-    },
-    "mutators": [
-      {
-        "handler": "header",
-        "config": {}
-      }
-    ],
-    "errors": [
-      {
-        "handler": "json",
-        "config": {}
-      }
-    ],
-    "upstream": {
-      "preserve_host": false,
-      "strip_path": "",
-      "url": ""
-    }
-  },
-  {
-    "id": "rule-createReferenceLink",
-    "version": "",
-    "description": "",
-    "match": {
-      "methods": [
-        "POST"
-      ],
-      "url": "\u003chttps|http\u003e://\u003capp-staging.oosa.life\u003e/event/\u003c[0-9a-fA-F]{24}\u003e/reference-links"
-    },
-    "authenticators": [
-      {
-        "handler": "cookie_session",
-        "config": {}
-      },
-      {
-        "handler": "bearer_token",
-        "config": {}
-      },
-      {
-        "handler": "unauthorized",
-        "config": null
-      }
-    ],
-    "authorizer": {
-      "handler": "allow",
-      "config": {}
-    },
-    "mutators": [
-      {
-        "handler": "header",
-        "config": {}
-      }
-    ],
-    "errors": [
-      {
-        "handler": "json",
-        "config": {}
-      }
-    ],
-    "upstream": {
-      "preserve_host": false,
-      "strip_path": "",
-      "url": ""
-    }
-  },
-  {
-    "id": "rule-deleteUserFriendById",
-    "version": "",
-    "description": "",
-    "match": {
-      "methods": [
-        "DELETE"
-      ],
-      "url": "\u003chttps|http\u003e://\u003capp-staging.oosa.life\u003e/user/friends/\u003c[0-9a-fA-F]{24}\u003e"
-    },
-    "authenticators": [
-      {
-        "handler": "cookie_session",
-        "config": {}
-      },
-      {
-        "handler": "bearer_token",
-        "config": {}
-      },
-      {
-        "handler": "unauthorized",
-        "config": null
-      }
-    ],
-    "authorizer": {
-      "handler": "allow",
-      "config": {}
-    },
-    "mutators": [
-      {
-        "handler": "header",
-        "config": {}
-      }
-    ],
-    "errors": [
-      {
-        "handler": "json",
-        "config": {}
-      }
-    ],
-    "upstream": {
-      "preserve_host": false,
-      "strip_path": "",
-      "url": ""
-    }
-  },
-  {
-    "id": "rule-agreeUserFriendById",
+    "id": "rule-update-pocket-list-item",
     "version": "",
     "description": "",
     "match": {
       "methods": [
         "PUT"
       ],
-      "url": "\u003chttps|http\u003e://\u003capp-staging.oosa.life\u003e/user/friends/\u003c[0-9a-fA-F]{24}\u003e"
+      "url": "\u003chttps|http\u003e://\u003capp-staging.oosa.life\u003e/pocket-list/\u003c[0-9a-fA-F]{24}\u003e/items/\u003c[0-9a-fA-F]{24}\u003e"
     },
     "authenticators": [
       {
@@ -4130,152 +4732,14 @@
     }
   },
   {
-    "id": "rule-getPocketLists",
-    "version": "",
-    "description": "",
-    "match": {
-      "methods": [
-        "GET"
-      ],
-      "url": "\u003chttps|http\u003e://\u003capp-staging.oosa.life\u003e/pocket-list"
-    },
-    "authenticators": [
-      {
-        "handler": "cookie_session",
-        "config": {}
-      },
-      {
-        "handler": "bearer_token",
-        "config": {}
-      },
-      {
-        "handler": "unauthorized",
-        "config": null
-      }
-    ],
-    "authorizer": {
-      "handler": "allow",
-      "config": {}
-    },
-    "mutators": [
-      {
-        "handler": "header",
-        "config": {}
-      }
-    ],
-    "errors": [
-      {
-        "handler": "json",
-        "config": {}
-      }
-    ],
-    "upstream": {
-      "preserve_host": false,
-      "strip_path": "",
-      "url": ""
-    }
-  },
-  {
-    "id": "rule-createPocketList",
-    "version": "",
-    "description": "",
-    "match": {
-      "methods": [
-        "POST"
-      ],
-      "url": "\u003chttps|http\u003e://\u003capp-staging.oosa.life\u003e/pocket-list"
-    },
-    "authenticators": [
-      {
-        "handler": "cookie_session",
-        "config": {}
-      },
-      {
-        "handler": "bearer_token",
-        "config": {}
-      },
-      {
-        "handler": "unauthorized",
-        "config": null
-      }
-    ],
-    "authorizer": {
-      "handler": "allow",
-      "config": {}
-    },
-    "mutators": [
-      {
-        "handler": "header",
-        "config": {}
-      }
-    ],
-    "errors": [
-      {
-        "handler": "json",
-        "config": {}
-      }
-    ],
-    "upstream": {
-      "preserve_host": false,
-      "strip_path": "",
-      "url": ""
-    }
-  },
-  {
-    "id": "rule-getBadge",
-    "version": "",
-    "description": "",
-    "match": {
-      "methods": [
-        "GET"
-      ],
-      "url": "\u003chttps|http\u003e://\u003capp-staging.oosa.life\u003e/auth/badges"
-    },
-    "authenticators": [
-      {
-        "handler": "cookie_session",
-        "config": {}
-      },
-      {
-        "handler": "bearer_token",
-        "config": {}
-      },
-      {
-        "handler": "unauthorized",
-        "config": null
-      }
-    ],
-    "authorizer": {
-      "handler": "allow",
-      "config": {}
-    },
-    "mutators": [
-      {
-        "handler": "header",
-        "config": {}
-      }
-    ],
-    "errors": [
-      {
-        "handler": "json",
-        "config": {}
-      }
-    ],
-    "upstream": {
-      "preserve_host": false,
-      "strip_path": "",
-      "url": ""
-    }
-  },
-  {
-    "id": "rule-deleteEventSchedule",
+    "id": "rule-delete-picket-list-item",
     "version": "",
     "description": "",
     "match": {
       "methods": [
         "DELETE"
       ],
-      "url": "\u003chttps|http\u003e://\u003capp-staging.oosa.life\u003e/event/\u003c[0-9a-fA-F]{24}\u003e/schedule"
+      "url": "\u003chttps|http\u003e://\u003capp-staging.oosa.life\u003e/pocket-list/\u003c[0-9a-fA-F]{24}\u003e/items/\u003c[0-9a-fA-F]{24}\u003e"
     },
     "authenticators": [
       {
@@ -4289,470 +4753,6 @@
       {
         "handler": "unauthorized",
         "config": null
-      }
-    ],
-    "authorizer": {
-      "handler": "allow",
-      "config": {}
-    },
-    "mutators": [
-      {
-        "handler": "header",
-        "config": {}
-      }
-    ],
-    "errors": [
-      {
-        "handler": "json",
-        "config": {}
-      }
-    ],
-    "upstream": {
-      "preserve_host": false,
-      "strip_path": "",
-      "url": ""
-    }
-  },
-  {
-    "id": "rule-getEventSchedule",
-    "version": "",
-    "description": "",
-    "match": {
-      "methods": [
-        "GET"
-      ],
-      "url": "\u003chttps|http\u003e://\u003capp-staging.oosa.life\u003e/event/\u003c[0-9a-fA-F]{24}\u003e/schedule"
-    },
-    "authenticators": [
-      {
-        "handler": "cookie_session",
-        "config": {}
-      },
-      {
-        "handler": "bearer_token",
-        "config": {}
-      },
-      {
-        "handler": "unauthorized",
-        "config": null
-      }
-    ],
-    "authorizer": {
-      "handler": "allow",
-      "config": {}
-    },
-    "mutators": [
-      {
-        "handler": "header",
-        "config": {}
-      }
-    ],
-    "errors": [
-      {
-        "handler": "json",
-        "config": {}
-      }
-    ],
-    "upstream": {
-      "preserve_host": false,
-      "strip_path": "",
-      "url": ""
-    }
-  },
-  {
-    "id": "rule-createEventSchedule",
-    "version": "",
-    "description": "",
-    "match": {
-      "methods": [
-        "POST"
-      ],
-      "url": "\u003chttps|http\u003e://\u003capp-staging.oosa.life\u003e/event/\u003c[0-9a-fA-F]{24}\u003e/schedule"
-    },
-    "authenticators": [
-      {
-        "handler": "cookie_session",
-        "config": {}
-      },
-      {
-        "handler": "bearer_token",
-        "config": {}
-      },
-      {
-        "handler": "unauthorized",
-        "config": null
-      }
-    ],
-    "authorizer": {
-      "handler": "allow",
-      "config": {}
-    },
-    "mutators": [
-      {
-        "handler": "header",
-        "config": {}
-      }
-    ],
-    "errors": [
-      {
-        "handler": "json",
-        "config": {}
-      }
-    ],
-    "upstream": {
-      "preserve_host": false,
-      "strip_path": "",
-      "url": ""
-    }
-  },
-  {
-    "id": "rule-getRecommendedFriendsForUser",
-    "version": "",
-    "description": "",
-    "match": {
-      "methods": [
-        "GET"
-      ],
-      "url": "\u003chttps|http\u003e://\u003capp-staging.oosa.life\u003e/user/friends/recommended"
-    },
-    "authenticators": [
-      {
-        "handler": "cookie_session",
-        "config": {}
-      },
-      {
-        "handler": "bearer_token",
-        "config": {}
-      },
-      {
-        "handler": "unauthorized",
-        "config": null
-      }
-    ],
-    "authorizer": {
-      "handler": "allow",
-      "config": {}
-    },
-    "mutators": [
-      {
-        "handler": "header",
-        "config": {}
-      }
-    ],
-    "errors": [
-      {
-        "handler": "json",
-        "config": {}
-      }
-    ],
-    "upstream": {
-      "preserve_host": false,
-      "strip_path": "",
-      "url": ""
-    }
-  },
-  {
-    "id": "rule-pinMessageBoard",
-    "version": "",
-    "description": "",
-    "match": {
-      "methods": [
-        "POST"
-      ],
-      "url": "\u003chttps|http\u003e://\u003capp-staging.oosa.life\u003e/event/\u003c[0-9a-fA-F]{24}\u003e/message-board/\u003c[0-9a-fA-F]{24}\u003e/pin"
-    },
-    "authenticators": [
-      {
-        "handler": "cookie_session",
-        "config": {}
-      },
-      {
-        "handler": "bearer_token",
-        "config": {}
-      },
-      {
-        "handler": "unauthorized",
-        "config": null
-      }
-    ],
-    "authorizer": {
-      "handler": "allow",
-      "config": {}
-    },
-    "mutators": [
-      {
-        "handler": "header",
-        "config": {}
-      }
-    ],
-    "errors": [
-      {
-        "handler": "json",
-        "config": {}
-      }
-    ],
-    "upstream": {
-      "preserve_host": false,
-      "strip_path": "",
-      "url": ""
-    }
-  },
-  {
-    "id": "rule-startSsoRegister",
-    "version": "",
-    "description": "",
-    "match": {
-      "methods": [
-        "GET"
-      ],
-      "url": "\u003chttps|http\u003e://\u003capp-staging.oosa.life\u003e/sso/register"
-    },
-    "authenticators": [
-      {
-        "handler": "cookie_session",
-        "config": {}
-      },
-      {
-        "handler": "bearer_token",
-        "config": {}
-      },
-      {
-        "handler": "anonymous",
-        "config": {
-          "subject": "guest"
-        }
-      }
-    ],
-    "authorizer": {
-      "handler": "allow",
-      "config": {}
-    },
-    "mutators": [
-      {
-        "handler": "header",
-        "config": {}
-      }
-    ],
-    "errors": [
-      {
-        "handler": "json",
-        "config": {}
-      }
-    ],
-    "upstream": {
-      "preserve_host": false,
-      "strip_path": "",
-      "url": ""
-    }
-  },
-  {
-    "id": "rule-updateEventInvitationJoin",
-    "version": "",
-    "description": "",
-    "match": {
-      "methods": [
-        "POST"
-      ],
-      "url": "\u003chttps|http\u003e://\u003capp-staging.oosa.life\u003e/event/\u003c[0-9a-fA-F]{24}\u003e/join"
-    },
-    "authenticators": [
-      {
-        "handler": "cookie_session",
-        "config": {}
-      },
-      {
-        "handler": "bearer_token",
-        "config": {}
-      },
-      {
-        "handler": "unauthorized",
-        "config": null
-      }
-    ],
-    "authorizer": {
-      "handler": "allow",
-      "config": {}
-    },
-    "mutators": [
-      {
-        "handler": "header",
-        "config": {}
-      }
-    ],
-    "errors": [
-      {
-        "handler": "json",
-        "config": {}
-      }
-    ],
-    "upstream": {
-      "preserve_host": false,
-      "strip_path": "",
-      "url": ""
-    }
-  },
-  {
-    "id": "rule-getEventParticipant",
-    "version": "",
-    "description": "",
-    "match": {
-      "methods": [
-        "GET"
-      ],
-      "url": "\u003chttps|http\u003e://\u003capp-staging.oosa.life\u003e/event/\u003c[0-9a-fA-F]{24}\u003e/participants"
-    },
-    "authenticators": [
-      {
-        "handler": "cookie_session",
-        "config": {}
-      },
-      {
-        "handler": "bearer_token",
-        "config": {}
-      },
-      {
-        "handler": "unauthorized",
-        "config": null
-      }
-    ],
-    "authorizer": {
-      "handler": "allow",
-      "config": {}
-    },
-    "mutators": [
-      {
-        "handler": "header",
-        "config": {}
-      }
-    ],
-    "errors": [
-      {
-        "handler": "json",
-        "config": {}
-      }
-    ],
-    "upstream": {
-      "preserve_host": false,
-      "strip_path": "",
-      "url": ""
-    }
-  },
-  {
-    "id": "rule-createEventParticipant",
-    "version": "",
-    "description": "",
-    "match": {
-      "methods": [
-        "POST"
-      ],
-      "url": "\u003chttps|http\u003e://\u003capp-staging.oosa.life\u003e/event/\u003c[0-9a-fA-F]{24}\u003e/participants"
-    },
-    "authenticators": [
-      {
-        "handler": "cookie_session",
-        "config": {}
-      },
-      {
-        "handler": "bearer_token",
-        "config": {}
-      },
-      {
-        "handler": "unauthorized",
-        "config": null
-      }
-    ],
-    "authorizer": {
-      "handler": "allow",
-      "config": {}
-    },
-    "mutators": [
-      {
-        "handler": "header",
-        "config": {}
-      }
-    ],
-    "errors": [
-      {
-        "handler": "json",
-        "config": {}
-      }
-    ],
-    "upstream": {
-      "preserve_host": false,
-      "strip_path": "",
-      "url": ""
-    }
-  },
-  {
-    "id": "rule-getAllEventsInvitations",
-    "version": "",
-    "description": "",
-    "match": {
-      "methods": [
-        "GET"
-      ],
-      "url": "\u003chttps|http\u003e://\u003capp-staging.oosa.life\u003e/event-invitations"
-    },
-    "authenticators": [
-      {
-        "handler": "cookie_session",
-        "config": {}
-      },
-      {
-        "handler": "bearer_token",
-        "config": {}
-      },
-      {
-        "handler": "unauthorized",
-        "config": null
-      }
-    ],
-    "authorizer": {
-      "handler": "allow",
-      "config": {}
-    },
-    "mutators": [
-      {
-        "handler": "header",
-        "config": {}
-      }
-    ],
-    "errors": [
-      {
-        "handler": "json",
-        "config": {}
-      }
-    ],
-    "upstream": {
-      "preserve_host": false,
-      "strip_path": "",
-      "url": ""
-    }
-  },
-  {
-    "id": "rule-getUserWorldStat",
-    "version": "",
-    "description": "",
-    "match": {
-      "methods": [
-        "GET"
-      ],
-      "url": "\u003chttps|http\u003e://\u003capp-staging.oosa.life\u003e/world/statistics"
-    },
-    "authenticators": [
-      {
-        "handler": "cookie_session",
-        "config": {}
-      },
-      {
-        "handler": "bearer_token",
-        "config": {}
-      },
-      {
-        "handler": "anonymous",
-        "config": {
-          "subject": "guest"
-        }
       }
     ],
     "authorizer": {
