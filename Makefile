@@ -24,7 +24,7 @@ gen-conf:
 
 merge-spec:
 	docker run --rm \
-	-v $$PWD:/workdir 94peter/openapi-cli:v1.21 /main ms \
+	-v $$PWD:/workdir 94peter/openapi-cli:v1.22 /main ms \
 	-main /workdir/mainspec/${ENV}_spec.yml \
 	-mergeDir /workdir/all_spec/ \
 	-output /workdir/doc/${ENV}_oosa.yml \
@@ -32,14 +32,14 @@ merge-spec:
 
 gen-setting-json:
 	docker run --rm \
-	-v $$PWD:/workdir 94peter/openapi-cli:v1.21 /main togs \
+	-v $$PWD:/workdir 94peter/openapi-cli:v1.22 /main togs \
 	-spec /workdir/doc/${ENV}_oosa.yml \
 	-output /workdir/settings/endpoint.json \
 	-no-redirect-tag noRedirect
 
 gen-oath-rule: 
 	docker run --rm \
-	-v $$PWD:/workdir 94peter/openapi-cli:v1.21 /main tar \
+	-v $$PWD:/workdir 94peter/openapi-cli:v1.22 /main tar \
 	-spec /workdir/doc/${ENV}_oosa.yml \
 	-output /workdir/doc/${ENV}_rules.json
 
