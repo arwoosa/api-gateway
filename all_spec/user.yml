@@ -1339,6 +1339,12 @@ paths:
           schema:
             type: string
             format: objectId
+        - name: Notification_Id
+          in: query
+          description: ''
+          required: false
+          schema:
+            type: string
       responses:
         '200':
           description: ''
@@ -1369,6 +1375,12 @@ paths:
           schema:
             type: string
             format: objectId
+        - name: Notification_Id
+          in: query
+          description: ''
+          required: false
+          schema:
+            type: string
       requestBody:
         content:
           multipart/form-data:
