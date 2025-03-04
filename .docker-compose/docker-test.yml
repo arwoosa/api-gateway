@@ -23,6 +23,7 @@ services:
       - traefik.http.middlewares.corsheader.headers.addvaryheader=true
       - traefik.http.middlewares.app-header2post.plugin.header2post.notifyheader=X-Notify
       - traefik.http.middlewares.app-header2post.plugin.header2post.notifyurl=http://oosa_notify:9080/notification
+      - traefik.http.middlewares.app-header2post.plugin.header2post.forwardheaders=X-Forwarded-Host
       - traefik.http.routers.api-gateway.middlewares=corsheader,app-header2post,api
     networks:
       - oosa-network
@@ -36,6 +37,7 @@ services:
       - traefik.http.services.api-gateway-auth.loadbalancer.server.port=8080
       - traefik.http.middlewares.app-auth-header2post.plugin.header2post.notifyheader=X-Notify
       - traefik.http.middlewares.app-auth-header2post.plugin.header2post.notifyurl=http://oosa_notify:9080/notification
+      - traefik.http.middlewares.app-auth-header2post.plugin.header2post.forwardheaders=X-Forwarded-Host
       - traefik.http.routers.api-gateway-auth.middlewares=corsheader,app-auth-header2post,api,api-oathkeeper
     networks:
       - oosa-network
