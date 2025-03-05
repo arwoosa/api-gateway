@@ -23,6 +23,8 @@ kind: Middleware
 metadata:
   name: notify
 spec:
-  notifyurl: http://oosa_notify:9080/notification
-  forwardheaders: X-Forwarded-Host
-  notifyheader: X-Notify
+  plugin:
+    header2post:
+      notifyurl: http://oosa_notify:9080/notification
+      forwardheaders: X-Forwarded-Host
+      notifyheader: X-Notify
