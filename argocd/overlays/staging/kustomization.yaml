@@ -26,6 +26,10 @@ patches:
     name: oathkeeper
   path: middleware-patch.json
 - target:
+    kind: Middleware
+    name: notify
+  path: notify-middleware-patch.json
+- target:
     kind: Deployment
     name: gateway-deployment
   path: deploy_patch.json
