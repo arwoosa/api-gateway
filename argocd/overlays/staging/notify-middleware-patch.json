@@ -1,7 +1,7 @@
 [
     {
         "op": "replace",
-        "path": "/spec/notifyurl",
+        "path": "/spec/plugin/header2post",
         "value": "http://notifaction.oosa-app-staging.svc.cluster.local:8080/notification"
     }
 ]
