@@ -48,8 +48,8 @@ gen-all: merge-spec gen-setting-json gen-oath-rule gen-conf
 
 gen-staging:
 	$(MAKE) gen-all ENV=staging
-	@sed -i '' 's/oosa_rewild:6080/rewild.oosa-app-staging.svc.cluster.local:8080/g' krakend.json
-	@sed -i '' 's/oosa_user:6080/user.oosa-app-staging.svc.cluster.local:8080/g' krakend.json
+	@sed -i '' 's/oosa_rewild:6080/rewild.oosa-app.svc.cluster.local:8080/g' krakend.json
+	@sed -i '' 's/oosa_user:6080/user.oosa-app.svc.cluster.local:8080/g' krakend.json
 	@cp krakend.json argocd/overlays/staging/cfg/krakend.json
 	@cp doc/staging_oosa.yml argocd/overlays/staging/doc/staging_api.yaml
 	@cp doc/staging_rules.json argocd/overlays/staging/doc/staging_rules.json
