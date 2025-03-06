@@ -1,7 +1,0 @@
-[
-  {
-    "op": "replace",
-    "path": "/spec/forwardAuth/address",
-    "value": "http://oathkeeper.oosa-app-staging.svc.cluster.local:8056/decisions"
-  }
-]

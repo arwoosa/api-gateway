@@ -13,7 +13,7 @@ metadata:
   name: oathkeeper
 spec:
   forwardAuth:
-    address: http://oathkeeper:8056/decisions
+    address: http://oathkeeper.oosa-app.svc.cluster.local:8056/decisions
     authResponseHeaders:
       - Authorization
     authResponseHeadersRegex: ^X-User-
@@ -25,6 +25,6 @@ metadata:
 spec:
   plugin:
     header2post:
-      notifyurl: http://oosa_notify:9080/notification
+      notifyurl: http://notifaction.oosa-app.svc.cluster.local:8080/notification
       forwardheaders: X-Forwarded-Host
       notifyheader: X-Notify
