@@ -15,6 +15,10 @@ configMapGenerator:
     
 
 patches:
+- target:
+    kind: ConfigMap
+    name: gateway-configmap
+  path: cm_patch.json
 - path: deploy_service.yaml
 - path: deploy_oathkeeper.yaml
 - target:

@@ -1,0 +1,7 @@
+[
+    {
+        "op": "replace",
+        "path": "/metadata/resourceVersion",
+        "value": "0.0.2"
+    }
+]
