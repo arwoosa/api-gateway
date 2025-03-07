@@ -50,7 +50,7 @@ authenticators:
   bearer_token:
     enabled: true
     config:
-      check_session_url: http://identity.oosa-sso-staging.svc.cluster.local:8033/sessions/whoami
+      check_session_url: http://identity.oosa-sso.svc.cluster.local:8033/sessions/whoami
       preserve_path: true
       preserve_query: false
       subject_from: identity.id
@@ -59,7 +59,7 @@ authenticators:
     # Set enabled to true if the authenticator should be enabled and false to disable the authenticator. Defaults to false.
     enabled: true
     config:
-      check_session_url: http://identity.oosa-sso-staging.svc.cluster.local:8033/sessions/whoami
+      check_session_url: http://identity.oosa-sso.svc.cluster.local:8033/sessions/whoami
       only:
       - oosa_sso_staging_session
       preserve_path: true
