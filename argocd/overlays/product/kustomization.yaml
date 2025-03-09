@@ -1,0 +1,35 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+
+resources:
+  - ../../base
+
+configMapGenerator:
+- name: gateway-configmap
+  behavior: merge
+  files:
+    - doc-api.yaml=doc/staging_api.yaml
+    - doc-api_rules.json=doc/staging_rules.json
+    - krakend.json=cfg/krakend.json
+    - oathkeeper.yaml=cfg/oathkeeper.yaml
+    
+
+patches:
+- target:
+    kind: ConfigMap
+    name: gateway-configmap
+  path: cm_patch.json
+- path: deploy_service.yaml
+- path: deploy_oathkeeper.yaml
+- target:
+    kind: Ingress
+    name: gateway
+  path: ingress-patch.json
+- target:
+    kind: Deployment
+    name: gateway-deployment
+  path: deploy_patch.json
+- target:
+    kind: Deployment
+    name: oathkeeper-deployment
+  path: deploy_oathkeeper_patch.json

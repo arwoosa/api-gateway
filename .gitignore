@@ -49,7 +49,7 @@ Thumbs.db
 *.wmv
 
 krakend_pretty.json
-krakend.json
+/krakend.json
 !argocd/overlays/*/cfg/krakend.json
 compiled.json
 doc/*

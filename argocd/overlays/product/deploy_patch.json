@@ -1,0 +1,12 @@
+[
+  {
+    "op": "replace",
+    "path": "/spec/template/spec/containers/0/image",
+    "value": "sjc.vultrcr.com/oosa/api-gateway:v1.0.2"
+  },
+  {
+    "op": "replace",
+    "path": "/spec/replicas",
+    "value": 2
+  }
+]
