@@ -796,8 +796,7 @@ paths:
                 properties: {}
           headers: {}
           x-apidog-name: No Content
-      security:
-        - bearer: []
+      security: []
       x-apidog-folder: OOSA_USER_SERVICE/U > User
       x-apidog-status: released
       x-run-in-apidog: https://apidog.com/web/project/607604/apis/api-10057831-run
@@ -917,8 +916,7 @@ paths:
                 properties: {}
           headers: {}
           x-apidog-name: No Content
-      security:
-        - bearer: []
+      security: []
       x-apidog-folder: OOSA_USER_SERVICE/U > User Badges
       x-apidog-status: released
       x-run-in-apidog: https://apidog.com/web/project/607604/apis/api-10058173-run
