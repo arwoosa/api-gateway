@@ -1,0 +1,67 @@
+serve:
+  proxy:
+    port: 4455 # run the proxy at port 4455
+  api:
+    port: 4456 # run the api at port 4456
+
+access_rules:
+  repositories:
+    - file:///etc/oathkeeper/rules/api.json
+errors:
+  fallback:
+    - json
+  handlers:
+    json:
+      enabled: true
+      config:
+        verbose: true
+    redirect:
+      enabled: true
+      config:
+        to: https://www.ory.sh/docs
+
+mutators:
+  header:
+    enabled: true
+    config:
+      headers:
+        X-User-Id: "{{ print .Subject }}"
+        X-User-Account: "{{ print .Extra.username}}"
+        X-User-Email: "{{ print .Extra.email}}"
+        X-User-Language: "{{ print .Extra.language}}"
+        X-User-Name: "{{ print .Extra.name}}"
+        X-User-Avatar: "{{ print .Extra.picture}}"
+  noop:
+    enabled: true
+
+authorizers:
+  allow:
+    enabled: true
+  deny:
+    enabled: true
+
+authenticators:
+  unauthorized:
+    enabled: true
+  anonymous:
+    enabled: true
+    config:
+      subject: guest
+  bearer_token:
+    enabled: true
+    config:
+      check_session_url: http://identity:4433/sessions/whoami
+      preserve_path: true
+      preserve_query: false
+      subject_from: identity.id
+      extra_from: "@this"
+  cookie_session:
+    # Set enabled to true if the authenticator should be enabled and false to disable the authenticator. Defaults to false.
+    enabled: true
+    config:
+      check_session_url: http://identity:4433/sessions/whoami
+      only:
+      - oosa_sso_session
+      preserve_path: true
+      subject_from: identity.id
+      extra_from: "identity.traits"

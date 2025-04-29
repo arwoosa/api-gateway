@@ -1,0 +1,54 @@
+networks:
+  default:
+    external: true
+    name: oosa-network
+
+name: oosa-gateway
+services:
+  api-gateway:
+    image: sjc.vultrcr.com/oosa/api-gateway:v1.0.0
+    container_name: api-gateway
+    restart: always
+    labels:
+      - traefik.enable=true
+      - traefik.http.routers.api-gateway.entrypoints=web
+      - traefik.http.routers.api-gateway.rule= Host(`dev.oosa.life`) && PathPrefix(`/api`)
+      - traefik.http.services.api-gateway.loadbalancer.server.port=8080
+      - traefik.http.routers.api-gateway.middlewares=corsheader@file,notify-header2post@file,stripprefix-api@file
+    volumes:
+      - ./cfg/krakend.json:/etc/krakend/krakend.json:ro
+      - ./doc:/doc:ro
+  api-gateway-oathkeeper:
+    image: sjc.vultrcr.com/oosa/api-gateway:v1.0.0
+    container_name: api-gateway-oathkeeper
+    restart: always
+    labels:
+      - traefik.enable=true
+      - traefik.http.routers.api-gateway-auth.entrypoints=web
+      - traefik.http.routers.api-gateway-auth.rule= Host(`app-dev.oosa.life`) && PathPrefix(`/api`)
+      - traefik.http.services.api-gateway-auth.loadbalancer.server.port=8080
+      - traefik.http.routers.api-gateway-auth.middlewares=corsheader@file,app-auth-notify-header2post@file,stripprefix-api@file,api-oathkeeper
+    volumes:
+      - ./cfg/krakend.json:/etc/krakend/krakend.json:ro
+      - ./doc:/doc:ro
+  api-oathkeeper:
+    image: oryd/oathkeeper:v0.40.7-distroless
+    container_name: api-oathkeeper
+    ports:
+    - 4456:4456
+    labels:
+    - traefik.enable=true
+    - traefik.http.middlewares.api-oathkeeper.forwardauth.address=http://api-oathkeeper:4456/decisions
+    - traefik.http.middlewares.api-oathkeeper.forwardauth.authResponseHeaders=Authorization
+    - traefik.http.middlewares.api-oathkeeper.forwardauth.authResponseHeadersRegex=^X-User-
+    - traefik.http.routers.api-oathkeeper.entrypoints=web
+    - traefik.http.routers.api-oathkeeper.rule= Host(`oathkeeper-dev.oosa.life`)
+    - traefik.http.services.api-oathkeeper.loadbalancer.server.port=4456
+    volumes:
+    - ./cfg/oathkeeper.yaml:/etc/config/oathkeeper/config.yaml:ro
+    # environment:
+    # - TRACING_PROVIDER=jaeger
+    # - TRACING_PROVIDERS_JAEGER_SAMPLING_SERVER_URL=http://jaeger:5778/sampling
+    # - TRACING_PROVIDERS_JAEGER_LOCAL_AGENT_ADDRESS=jaeger:6831
+    command: serve --config=/etc/config/oathkeeper/config.yaml
+    restart: always
