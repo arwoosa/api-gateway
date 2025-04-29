@@ -6,7 +6,7 @@ networks:
 name: oosa-gateway
 services:
   api-gateway:
-    image: sjc.vultrcr.com/oosa/api-gateway:v1.0.0
+    image: sjc.vultrcr.com/oosa/api-gateway:v1.0.2
     container_name: api-gateway
     restart: always
     labels:
@@ -19,7 +19,7 @@ services:
       - ./cfg/krakend.json:/etc/krakend/krakend.json:ro
       - ./doc:/doc:ro
   api-gateway-oathkeeper:
-    image: sjc.vultrcr.com/oosa/api-gateway:v1.0.0
+    image: sjc.vultrcr.com/oosa/api-gateway:v1.0.2
     container_name: api-gateway-oathkeeper
     restart: always
     labels:
