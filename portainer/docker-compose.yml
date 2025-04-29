@@ -46,6 +46,7 @@ services:
     - traefik.http.services.api-oathkeeper.loadbalancer.server.port=4456
     volumes:
     - ./cfg/oathkeeper.yaml:/etc/config/oathkeeper/config.yaml:ro
+    - ./doc/rules.json:/etc/oathkeeper/rules/api.json:ro
     # environment:
     # - TRACING_PROVIDER=jaeger
     # - TRACING_PROVIDERS_JAEGER_SAMPLING_SERVER_URL=http://jaeger:5778/sampling
