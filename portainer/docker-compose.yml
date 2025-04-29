@@ -27,7 +27,7 @@ services:
       - traefik.http.routers.api-gateway-auth.entrypoints=web
       - traefik.http.routers.api-gateway-auth.rule= Host(`app-dev.oosa.life`) && PathPrefix(`/api`)
       - traefik.http.services.api-gateway-auth.loadbalancer.server.port=8080
-      - traefik.http.routers.api-gateway-auth.middlewares=corsheader@file,app-auth-notify-header2post@file,stripprefix-api@file,api-oathkeeper
+      - traefik.http.routers.api-gateway-auth.middlewares=corsheader@file,notify-header2post@file,stripprefix-api@file,api-oathkeeper
     volumes:
       - ./cfg/krakend.json:/etc/krakend/krakend.json:ro
       - ./doc:/doc:ro
