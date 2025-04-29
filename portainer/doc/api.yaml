@@ -4991,8 +4991,7 @@ paths:
             '*/*':
               schema:
                 type: object
-      security:
-      - Bearer: []
+      security: []
       externalDocs:
         description: OOSA_USER_SERVICE
         url: http://oosa_user:6080
@@ -5063,8 +5062,7 @@ paths:
             '*/*':
               schema:
                 type: object
-      security:
-      - Bearer: []
+      security: []
       externalDocs:
         description: OOSA_USER_SERVICE
         url: http://oosa_user:6080
