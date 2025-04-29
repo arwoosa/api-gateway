@@ -53,3 +53,11 @@ gen-staging:
 	@cp krakend.json argocd/overlays/staging/cfg/krakend.json
 	@cp doc/staging_oosa.yml argocd/overlays/staging/doc/staging_api.yaml
 	@cp doc/staging_rules.json argocd/overlays/staging/doc/staging_rules.json
+
+
+gen-dev:
+	$(MAKE) gen-all ENV=dev
+	@mkdir -p ".generated/dev"
+	@cp krakend.json .generated/dev/krakend.json
+	@cp doc/dev_oosa.yml .generated/dev/api.yaml
+	@cp doc/dev_rules.json .generated/dev/rules.json
