@@ -1,5 +1,0 @@
-FROM sjc.vultrcr.com/oosa/api-gateway:v1.0.2
-
-COPY --chown=1000 ./krakend.json /etc/krakend/krakend.json
-COPY --chown=1000 ./krakend_pretty.json /etc/krakend/krakend_pretty.json
-COPY --chown=1000 ./doc/ /doc/
