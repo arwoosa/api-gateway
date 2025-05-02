@@ -4,7 +4,7 @@ info:
   description: This is OOSA's API
   version: 1.0.0
 servers:
-- url: http://oosa.docker.localhost/api
+- url: http://app-dev.oosa.life/api
   description: OOSA's Dev API
 tags:
 - name: OOSA
@@ -13,6 +13,7 @@ paths:
   /achievement:
     get:
       tags:
+      - OOSA_REWILD_SERVICE/R > User Achievement
       - OOSA_REWILD_SERVICE
       - T1 探索 Discover
       - Event
@@ -42,6 +43,18 @@ paths:
         in: query
         schema:
           type: string
+      - name: CF-Access-Client-Id
+        in: header
+        schema:
+          type: string
+          default: cf9f02c65c5130772ba392d9d22794a5.access
+        example: cf9f02c65c5130772ba392d9d22794a5.access
+      - name: CF-Access-Client-Secret
+        in: header
+        schema:
+          type: string
+          default: 3be20e109528c20da2f756667d5a13e1c69c83a872ff82df835a44471efbe8ed
+        example: 3be20e109528c20da2f756667d5a13e1c69c83a872ff82df835a44471efbe8ed
       responses:
         "200":
           description: ""
@@ -65,6 +78,7 @@ paths:
   /achievement/places:
     get:
       tags:
+      - OOSA_REWILD_SERVICE/R > User Achievement
       - OOSA_REWILD_SERVICE
       - T1 探索 Discover
       - Event
@@ -81,6 +95,18 @@ paths:
         in: query
         schema:
           type: string
+      - name: CF-Access-Client-Id
+        in: header
+        schema:
+          type: string
+          default: cf9f02c65c5130772ba392d9d22794a5.access
+        example: cf9f02c65c5130772ba392d9d22794a5.access
+      - name: CF-Access-Client-Secret
+        in: header
+        schema:
+          type: string
+          default: 3be20e109528c20da2f756667d5a13e1c69c83a872ff82df835a44471efbe8ed
+        example: 3be20e109528c20da2f756667d5a13e1c69c83a872ff82df835a44471efbe8ed
       responses:
         "200":
           description: ""
@@ -104,6 +130,7 @@ paths:
   /auth:
     get:
       tags:
+      - OOSA_USER_SERVICE/U > Auth
       - OOSA_USER_SERVICE
       - Authentication
       - T5 個人 My
@@ -113,6 +140,19 @@ paths:
       description: Retrieve the authenticated user detail. <br/>1. Google<br/>2. Line<br/>3.
         Email<br/>4. Facebook
       operationId: getAuthInfo
+      parameters:
+      - name: CF-Access-Client-Id
+        in: header
+        schema:
+          type: string
+          default: cf9f02c65c5130772ba392d9d22794a5.access
+        example: cf9f02c65c5130772ba392d9d22794a5.access
+      - name: CF-Access-Client-Secret
+        in: header
+        schema:
+          type: string
+          default: 3be20e109528c20da2f756667d5a13e1c69c83a872ff82df835a44471efbe8ed
+        example: 3be20e109528c20da2f756667d5a13e1c69c83a872ff82df835a44471efbe8ed
       responses:
         "200":
           description: ""
@@ -139,6 +179,7 @@ paths:
         url: http://oosa_user:6080
     put:
       tags:
+      - OOSA_USER_SERVICE/U > User Settings
       - OOSA_USER_SERVICE
       - Authentication
       - T5 個人 My
@@ -160,12 +201,24 @@ paths:
       summary: Update User
       description: Update the authenticated user detail
       operationId: updateUser
+      parameters:
+      - name: CF-Access-Client-Id
+        in: header
+        schema:
+          type: string
+          default: cf9f02c65c5130772ba392d9d22794a5.access
+        example: cf9f02c65c5130772ba392d9d22794a5.access
+      - name: CF-Access-Client-Secret
+        in: header
+        schema:
+          type: string
+          default: 3be20e109528c20da2f756667d5a13e1c69c83a872ff82df835a44471efbe8ed
+        example: 3be20e109528c20da2f756667d5a13e1c69c83a872ff82df835a44471efbe8ed
       requestBody:
         content:
           application/json:
             schema:
               $ref: '#/components/schemas/RequestUsersUpdate'
-            example: ""
       responses:
         "200":
           description: ""
@@ -181,6 +234,7 @@ paths:
   /auth/badges:
     get:
       tags:
+      - OOSA_USER_SERVICE/U > User Badges
       - OOSA_USER_SERVICE
       - User Badges
       - T5 個人 My
@@ -195,6 +249,18 @@ paths:
         schema:
           type: boolean
           default: true
+      - name: CF-Access-Client-Id
+        in: header
+        schema:
+          type: string
+          default: cf9f02c65c5130772ba392d9d22794a5.access
+        example: cf9f02c65c5130772ba392d9d22794a5.access
+      - name: CF-Access-Client-Secret
+        in: header
+        schema:
+          type: string
+          default: 3be20e109528c20da2f756667d5a13e1c69c83a872ff82df835a44471efbe8ed
+        example: 3be20e109528c20da2f756667d5a13e1c69c83a872ff82df835a44471efbe8ed
       responses:
         "200":
           description: ""
@@ -210,6 +276,7 @@ paths:
   /auth/email:
     post:
       tags:
+      - OOSA_USER_SERVICE/U > Auth
       - OOSA_USER_SERVICE
       - Authentication
       - _註冊與登入 Register and Sign in
@@ -218,12 +285,24 @@ paths:
       summary: Auth Email
       description: Use this endpoint to login using email
       operationId: authByEmail
+      parameters:
+      - name: CF-Access-Client-Id
+        in: header
+        schema:
+          type: string
+          default: cf9f02c65c5130772ba392d9d22794a5.access
+        example: cf9f02c65c5130772ba392d9d22794a5.access
+      - name: CF-Access-Client-Secret
+        in: header
+        schema:
+          type: string
+          default: 3be20e109528c20da2f756667d5a13e1c69c83a872ff82df835a44471efbe8ed
+        example: 3be20e109528c20da2f756667d5a13e1c69c83a872ff82df835a44471efbe8ed
       requestBody:
         content:
           application/json:
             schema:
               $ref: '#/components/schemas/RequestUserLoginEmail'
-            example: ""
       responses:
         "200":
           description: ""
@@ -256,6 +335,7 @@ paths:
   /auth/notifications:
     get:
       tags:
+      - OOSA_USER_SERVICE/U > User Notifications
       - OOSA_USER_SERVICE
       - User Notifications
       - T5 個人 My
@@ -264,6 +344,19 @@ paths:
       summary: Retrieve User Notifications
       description: Retrieve notifications
       operationId: getUserNotifications
+      parameters:
+      - name: CF-Access-Client-Id
+        in: header
+        schema:
+          type: string
+          default: cf9f02c65c5130772ba392d9d22794a5.access
+        example: cf9f02c65c5130772ba392d9d22794a5.access
+      - name: CF-Access-Client-Secret
+        in: header
+        schema:
+          type: string
+          default: 3be20e109528c20da2f756667d5a13e1c69c83a872ff82df835a44471efbe8ed
+        example: 3be20e109528c20da2f756667d5a13e1c69c83a872ff82df835a44471efbe8ed
       responses:
         "200":
           description: ""
@@ -281,6 +374,7 @@ paths:
   /auth/setting:
     put:
       tags:
+      - OOSA_USER_SERVICE/U > User Settings
       - OOSA_USER_SERVICE
       - Authentication
       - T5 個人 My
@@ -290,12 +384,24 @@ paths:
       summary: Update User Setting
       description: Update settings<br/>1 - True (On)<br />0 - False (Off)
       operationId: updateUserSet
+      parameters:
+      - name: CF-Access-Client-Id
+        in: header
+        schema:
+          type: string
+          default: cf9f02c65c5130772ba392d9d22794a5.access
+        example: cf9f02c65c5130772ba392d9d22794a5.access
+      - name: CF-Access-Client-Secret
+        in: header
+        schema:
+          type: string
+          default: 3be20e109528c20da2f756667d5a13e1c69c83a872ff82df835a44471efbe8ed
+        example: 3be20e109528c20da2f756667d5a13e1c69c83a872ff82df835a44471efbe8ed
       requestBody:
         content:
           application/json:
             schema:
               $ref: '#/components/schemas/RequestAuthUpdateSetting'
-            example: ""
       responses:
         "200":
           description: ""
@@ -311,6 +417,7 @@ paths:
   /auth/take-me:
     put:
       tags:
+      - OOSA_USER_SERVICE/U > User Settings
       - OOSA_USER_SERVICE
       - Authentication
       - T5 個人 My
@@ -320,6 +427,19 @@ paths:
       summary: Update User Take Me
       description: Update the authenticated user detail
       operationId: updateUser
+      parameters:
+      - name: CF-Access-Client-Id
+        in: header
+        schema:
+          type: string
+          default: cf9f02c65c5130772ba392d9d22794a5.access
+        example: cf9f02c65c5130772ba392d9d22794a5.access
+      - name: CF-Access-Client-Secret
+        in: header
+        schema:
+          type: string
+          default: 3be20e109528c20da2f756667d5a13e1c69c83a872ff82df835a44471efbe8ed
+        example: 3be20e109528c20da2f756667d5a13e1c69c83a872ff82df835a44471efbe8ed
       requestBody:
         content:
           application/json:
@@ -331,7 +451,6 @@ paths:
                 users_take_me_status:
                   type: integer
                   description: '1: Take Me, 0: Don''t take me'
-            example: ""
       responses:
         "200":
           description: ""
@@ -347,6 +466,7 @@ paths:
   /collaborative-log:
     get:
       tags:
+      - OOSA_REWILD_SERVICE/R > Collaborative Logs
       - OOSA_REWILD_SERVICE
       - ✅ Event Collaborate
       - T3 野放成就 Achievement
@@ -361,6 +481,18 @@ paths:
         in: query
         schema:
           type: string
+      - name: CF-Access-Client-Id
+        in: header
+        schema:
+          type: string
+          default: cf9f02c65c5130772ba392d9d22794a5.access
+        example: cf9f02c65c5130772ba392d9d22794a5.access
+      - name: CF-Access-Client-Secret
+        in: header
+        schema:
+          type: string
+          default: 3be20e109528c20da2f756667d5a13e1c69c83a872ff82df835a44471efbe8ed
+        example: 3be20e109528c20da2f756667d5a13e1c69c83a872ff82df835a44471efbe8ed
       responses:
         "200":
           description: ""
@@ -384,6 +516,7 @@ paths:
   /collaborative-log/{eventId}/album-link:
     get:
       tags:
+      - OOSA_REWILD_SERVICE/R > Collaborative Logs - Album Links
       - OOSA_REWILD_SERVICE
       - ✅ Event Collaborate
       - T3 野放成就 Achievement
@@ -401,6 +534,18 @@ paths:
           type: string
           format: objectId
         example: ""
+      - name: CF-Access-Client-Id
+        in: header
+        schema:
+          type: string
+          default: cf9f02c65c5130772ba392d9d22794a5.access
+        example: cf9f02c65c5130772ba392d9d22794a5.access
+      - name: CF-Access-Client-Secret
+        in: header
+        schema:
+          type: string
+          default: 3be20e109528c20da2f756667d5a13e1c69c83a872ff82df835a44471efbe8ed
+        example: 3be20e109528c20da2f756667d5a13e1c69c83a872ff82df835a44471efbe8ed
       responses:
         "200":
           description: ""
@@ -423,6 +568,7 @@ paths:
         url: http://oosa_rewild:6080
     post:
       tags:
+      - OOSA_REWILD_SERVICE/R > Collaborative Logs - Album Links
       - OOSA_REWILD_SERVICE
       - ✅ Event Collaborate
       - T3 野放成就 Achievement
@@ -442,12 +588,23 @@ paths:
           type: string
           format: objectId
         example: ""
+      - name: CF-Access-Client-Id
+        in: header
+        schema:
+          type: string
+          default: cf9f02c65c5130772ba392d9d22794a5.access
+        example: cf9f02c65c5130772ba392d9d22794a5.access
+      - name: CF-Access-Client-Secret
+        in: header
+        schema:
+          type: string
+          default: 3be20e109528c20da2f756667d5a13e1c69c83a872ff82df835a44471efbe8ed
+        example: 3be20e109528c20da2f756667d5a13e1c69c83a872ff82df835a44471efbe8ed
       requestBody:
         content:
           application/json:
             schema:
               $ref: '#/components/schemas/RequestEventAlbumLinks'
-            example: ""
       responses:
         "200":
           description: ""
@@ -475,6 +632,7 @@ paths:
   /collaborative-log/{eventId}/album-link/{albumLinkId}:
     put:
       tags:
+      - OOSA_REWILD_SERVICE/R > Collaborative Logs - Album Links
       - OOSA_REWILD_SERVICE
       - ✅ Event Collaborate
       - T3 野放成就 Achievement
@@ -501,12 +659,23 @@ paths:
         schema:
           type: string
           format: objectId
+      - name: CF-Access-Client-Id
+        in: header
+        schema:
+          type: string
+          default: cf9f02c65c5130772ba392d9d22794a5.access
+        example: cf9f02c65c5130772ba392d9d22794a5.access
+      - name: CF-Access-Client-Secret
+        in: header
+        schema:
+          type: string
+          default: 3be20e109528c20da2f756667d5a13e1c69c83a872ff82df835a44471efbe8ed
+        example: 3be20e109528c20da2f756667d5a13e1c69c83a872ff82df835a44471efbe8ed
       requestBody:
         content:
           application/json:
             schema:
               $ref: '#/components/schemas/RequestEventAlbumLinks'
-            example: ""
       responses:
         "200":
           description: ""
@@ -534,6 +703,7 @@ paths:
   /collaborative-log/{eventId}/experience:
     post:
       tags:
+      - OOSA_REWILD_SERVICE/R > Collaborative Logs - Experience
       - OOSA_REWILD_SERVICE
       - ✅ Event Collaborate
       - T3 野放成就 Achievement
@@ -553,6 +723,18 @@ paths:
           type: string
           format: objectId
         example: ""
+      - name: CF-Access-Client-Id
+        in: header
+        schema:
+          type: string
+          default: cf9f02c65c5130772ba392d9d22794a5.access
+        example: cf9f02c65c5130772ba392d9d22794a5.access
+      - name: CF-Access-Client-Secret
+        in: header
+        schema:
+          type: string
+          default: 3be20e109528c20da2f756667d5a13e1c69c83a872ff82df835a44471efbe8ed
+        example: 3be20e109528c20da2f756667d5a13e1c69c83a872ff82df835a44471efbe8ed
       requestBody:
         content:
           application/json:
@@ -592,6 +774,7 @@ paths:
   /collaborative-log/{eventId}/polaroids:
     get:
       tags:
+      - OOSA_REWILD_SERVICE/R > Collaborative Logs - Polaroid
       - OOSA_REWILD_SERVICE
       - ✅ Event Collaborate
       - T3 野放成就 Achievement
@@ -610,6 +793,18 @@ paths:
           type: string
           format: objectId
         example: ""
+      - name: CF-Access-Client-Id
+        in: header
+        schema:
+          type: string
+          default: cf9f02c65c5130772ba392d9d22794a5.access
+        example: cf9f02c65c5130772ba392d9d22794a5.access
+      - name: CF-Access-Client-Secret
+        in: header
+        schema:
+          type: string
+          default: 3be20e109528c20da2f756667d5a13e1c69c83a872ff82df835a44471efbe8ed
+        example: 3be20e109528c20da2f756667d5a13e1c69c83a872ff82df835a44471efbe8ed
       responses:
         "200":
           description: ""
@@ -618,65 +813,7 @@ paths:
               schema:
                 type: array
                 items:
-                  type: object
-                  required:
-                  - event_polaroids_id
-                  - event_polaroids_event
-                  - event_polaroids_url
-                  - event_polaroids_lat
-                  - event_polaroids_lng
-                  - event_polaroids_radius_from_event
-                  - event_polaroids_achievement_eligible
-                  - event_polaroids_message
-                  - event_polaroids_tag
-                  - event_polaroids_is_event_period
-                  - event_polaroids_star_type
-                  - event_polaroids_created_by
-                  - event_polaroids_created_at
-                  - event_polaroids_created_by_user
-                  properties:
-                    event_polaroids_achievement_eligible:
-                      type: boolean
-                    event_polaroids_created_at:
-                      type: string
-                    event_polaroids_created_by:
-                      type: string
-                    event_polaroids_created_by_user:
-                      type: object
-                      required:
-                      - user_id
-                      - user_name
-                      - user_email
-                      - user_avatar
-                      properties:
-                        user_avatar:
-                          type: string
-                        user_email:
-                          type: string
-                        user_id:
-                          type: string
-                        user_name:
-                          type: string
-                    event_polaroids_event:
-                      type: string
-                    event_polaroids_id:
-                      type: string
-                    event_polaroids_is_event_period:
-                      type: boolean
-                    event_polaroids_lat:
-                      type: number
-                    event_polaroids_lng:
-                      type: number
-                    event_polaroids_message:
-                      type: string
-                    event_polaroids_radius_from_event:
-                      type: number
-                    event_polaroids_star_type:
-                      type: integer
-                    event_polaroids_tag:
-                      type: string
-                    event_polaroids_url:
-                      type: string
+                  $ref: '#/components/schemas/EventPolaroids'
         "204":
           description: ""
           content:
@@ -690,6 +827,7 @@ paths:
         url: http://oosa_rewild:6080
     post:
       tags:
+      - OOSA_REWILD_SERVICE/R > Collaborative Logs - Polaroid
       - OOSA_REWILD_SERVICE
       - ✅ Event Collaborate
       - T3 野放成就 Achievement
@@ -725,6 +863,18 @@ paths:
         description: Do not pass in this parameter for upload
         schema:
           type: boolean
+      - name: CF-Access-Client-Id
+        in: header
+        schema:
+          type: string
+          default: cf9f02c65c5130772ba392d9d22794a5.access
+        example: cf9f02c65c5130772ba392d9d22794a5.access
+      - name: CF-Access-Client-Secret
+        in: header
+        schema:
+          type: string
+          default: 3be20e109528c20da2f756667d5a13e1c69c83a872ff82df835a44471efbe8ed
+        example: 3be20e109528c20da2f756667d5a13e1c69c83a872ff82df835a44471efbe8ed
       requestBody:
         content:
           multipart/form-data:
@@ -747,7 +897,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/EventPolaroidsSimple'
+                $ref: '#/components/schemas/EventPolaroids'
         "204":
           description: ""
           content:
@@ -773,6 +923,7 @@ paths:
   /collaborative-log/{eventId}/questionnaire:
     post:
       tags:
+      - OOSA_REWILD_SERVICE/R > Collaborative Logs - Questionnaire
       - OOSA_REWILD_SERVICE
       - ✅ Event Collaborate
       - T3 野放成就 Achievement
@@ -793,12 +944,23 @@ paths:
           type: string
           format: objectId
         example: ""
+      - name: CF-Access-Client-Id
+        in: header
+        schema:
+          type: string
+          default: cf9f02c65c5130772ba392d9d22794a5.access
+        example: cf9f02c65c5130772ba392d9d22794a5.access
+      - name: CF-Access-Client-Secret
+        in: header
+        schema:
+          type: string
+          default: 3be20e109528c20da2f756667d5a13e1c69c83a872ff82df835a44471efbe8ed
+        example: 3be20e109528c20da2f756667d5a13e1c69c83a872ff82df835a44471efbe8ed
       requestBody:
         content:
           application/json:
             schema:
               $ref: '#/components/schemas/RequestCollaborativeLogQuestionnaire'
-            example: ""
       responses:
         "200":
           description: ""
@@ -820,6 +982,7 @@ paths:
   /collaborative-log/{eventId}/random-count:
     get:
       tags:
+      - OOSA_REWILD_SERVICE/R > Collaborative Logs - Random Count
       - OOSA_REWILD_SERVICE
       - ✅ Event Collaborate
       - T3 野放成就 Achievement
@@ -839,12 +1002,23 @@ paths:
           type: string
           format: objectId
         example: ""
+      - name: CF-Access-Client-Id
+        in: header
+        schema:
+          type: string
+          default: cf9f02c65c5130772ba392d9d22794a5.access
+        example: cf9f02c65c5130772ba392d9d22794a5.access
+      - name: CF-Access-Client-Secret
+        in: header
+        schema:
+          type: string
+          default: 3be20e109528c20da2f756667d5a13e1c69c83a872ff82df835a44471efbe8ed
+        example: 3be20e109528c20da2f756667d5a13e1c69c83a872ff82df835a44471efbe8ed
       requestBody:
         content:
           application/json:
             schema:
               $ref: '#/components/schemas/RequestCollaborativeLogQuestionnaire'
-            example: ""
       responses:
         "200":
           description: ""
@@ -865,6 +1039,7 @@ paths:
         url: http://oosa_rewild:6080
     put:
       tags:
+      - OOSA_REWILD_SERVICE/R > Collaborative Logs - Random Count
       - OOSA_REWILD_SERVICE
       - ✅ Event Collaborate
       - T3 野放成就 Achievement
@@ -884,12 +1059,23 @@ paths:
           type: string
           format: objectId
         example: ""
+      - name: CF-Access-Client-Id
+        in: header
+        schema:
+          type: string
+          default: cf9f02c65c5130772ba392d9d22794a5.access
+        example: cf9f02c65c5130772ba392d9d22794a5.access
+      - name: CF-Access-Client-Secret
+        in: header
+        schema:
+          type: string
+          default: 3be20e109528c20da2f756667d5a13e1c69c83a872ff82df835a44471efbe8ed
+        example: 3be20e109528c20da2f756667d5a13e1c69c83a872ff82df835a44471efbe8ed
       requestBody:
         content:
           application/json:
             schema:
               $ref: '#/components/schemas/RequestCollaborativeLogQuestionnaire'
-            example: ""
       responses:
         "200":
           description: ""
@@ -911,6 +1097,7 @@ paths:
   /contact-us:
     post:
       tags:
+      - OOSA_USER_SERVICE/U > Contact Us
       - OOSA_USER_SERVICE
       - Contact Us
       - T5 個人 My
@@ -922,12 +1109,24 @@ paths:
       summary: Create Contact Us
       description: Create contact us record
       operationId: createContactUs
+      parameters:
+      - name: CF-Access-Client-Id
+        in: header
+        schema:
+          type: string
+          default: cf9f02c65c5130772ba392d9d22794a5.access
+        example: cf9f02c65c5130772ba392d9d22794a5.access
+      - name: CF-Access-Client-Secret
+        in: header
+        schema:
+          type: string
+          default: 3be20e109528c20da2f756667d5a13e1c69c83a872ff82df835a44471efbe8ed
+        example: 3be20e109528c20da2f756667d5a13e1c69c83a872ff82df835a44471efbe8ed
       requestBody:
         content:
           application/json:
             schema:
               $ref: '#/components/schemas/RequestContactUs'
-            example: ""
       responses:
         "200":
           description: ""
@@ -948,6 +1147,7 @@ paths:
   /event:
     get:
       tags:
+      - OOSA_REWILD_SERVICE/R > Events
       - OOSA_REWILD_SERVICE
       - T1 探索 Discover
       - Event
@@ -979,6 +1179,18 @@ paths:
         description: 為1時獲取過去event
         schema:
           type: string
+      - name: CF-Access-Client-Id
+        in: header
+        schema:
+          type: string
+          default: cf9f02c65c5130772ba392d9d22794a5.access
+        example: cf9f02c65c5130772ba392d9d22794a5.access
+      - name: CF-Access-Client-Secret
+        in: header
+        schema:
+          type: string
+          default: 3be20e109528c20da2f756667d5a13e1c69c83a872ff82df835a44471efbe8ed
+        example: 3be20e109528c20da2f756667d5a13e1c69c83a872ff82df835a44471efbe8ed
       responses:
         "200":
           description: ""
@@ -1000,6 +1212,7 @@ paths:
         url: http://oosa_rewild:6080
     post:
       tags:
+      - OOSA_REWILD_SERVICE/R > Events
       - OOSA_REWILD_SERVICE
       - Event
       - _R 野放點細節 R/S Details
@@ -1027,6 +1240,19 @@ paths:
       summary: Create Event
       description: Create new event
       operationId: createEvent
+      parameters:
+      - name: CF-Access-Client-Id
+        in: header
+        schema:
+          type: string
+          default: cf9f02c65c5130772ba392d9d22794a5.access
+        example: cf9f02c65c5130772ba392d9d22794a5.access
+      - name: CF-Access-Client-Secret
+        in: header
+        schema:
+          type: string
+          default: 3be20e109528c20da2f756667d5a13e1c69c83a872ff82df835a44471efbe8ed
+        example: 3be20e109528c20da2f756667d5a13e1c69c83a872ff82df835a44471efbe8ed
       requestBody:
         content:
           multipart/form-data:
@@ -1170,6 +1396,7 @@ paths:
   /event-invitations:
     get:
       tags:
+      - OOSA_REWILD_SERVICE/R > Event - Invitations
       - OOSA_REWILD_SERVICE
       - ✅ Event Invitation
       - T5 個人 My
@@ -1185,6 +1412,18 @@ paths:
         schema:
           type: boolean
         example: "true"
+      - name: CF-Access-Client-Id
+        in: header
+        schema:
+          type: string
+          default: cf9f02c65c5130772ba392d9d22794a5.access
+        example: cf9f02c65c5130772ba392d9d22794a5.access
+      - name: CF-Access-Client-Secret
+        in: header
+        schema:
+          type: string
+          default: 3be20e109528c20da2f756667d5a13e1c69c83a872ff82df835a44471efbe8ed
+        example: 3be20e109528c20da2f756667d5a13e1c69c83a872ff82df835a44471efbe8ed
       responses:
         "200":
           description: ""
@@ -1295,6 +1534,7 @@ paths:
   /event-invitations/{eventInvitationId}:
     get:
       tags:
+      - OOSA_REWILD_SERVICE/R > Event - Invitations
       - OOSA_REWILD_SERVICE
       - ✅ Event Invitation
       - T5 個人 My
@@ -1314,6 +1554,18 @@ paths:
           type: string
           format: objectId
         example: ""
+      - name: CF-Access-Client-Id
+        in: header
+        schema:
+          type: string
+          default: cf9f02c65c5130772ba392d9d22794a5.access
+        example: cf9f02c65c5130772ba392d9d22794a5.access
+      - name: CF-Access-Client-Secret
+        in: header
+        schema:
+          type: string
+          default: 3be20e109528c20da2f756667d5a13e1c69c83a872ff82df835a44471efbe8ed
+        example: 3be20e109528c20da2f756667d5a13e1c69c83a872ff82df835a44471efbe8ed
       responses:
         "200":
           description: ""
@@ -1334,6 +1586,7 @@ paths:
         url: http://oosa_rewild:6080
     put:
       tags:
+      - OOSA_REWILD_SERVICE/R > Event - Invitation Message
       - OOSA_REWILD_SERVICE
       - ✅ Event Invitation
       - T5 個人 My
@@ -1358,12 +1611,23 @@ paths:
         schema:
           type: boolean
         example: "true"
+      - name: CF-Access-Client-Id
+        in: header
+        schema:
+          type: string
+          default: cf9f02c65c5130772ba392d9d22794a5.access
+        example: cf9f02c65c5130772ba392d9d22794a5.access
+      - name: CF-Access-Client-Secret
+        in: header
+        schema:
+          type: string
+          default: 3be20e109528c20da2f756667d5a13e1c69c83a872ff82df835a44471efbe8ed
+        example: 3be20e109528c20da2f756667d5a13e1c69c83a872ff82df835a44471efbe8ed
       requestBody:
         content:
           application/json:
             schema:
               $ref: '#/components/schemas/RequestEventInvitationUpdate'
-            example: ""
       responses:
         "200":
           description: ""
@@ -1452,6 +1716,7 @@ paths:
   /event/{eventId}:
     delete:
       tags:
+      - OOSA_REWILD_SERVICE/R > Events
       - OOSA_REWILD_SERVICE
       - ✅ Event
       - OOSA
@@ -1467,6 +1732,18 @@ paths:
           type: string
           format: objectId
         example: ""
+      - name: CF-Access-Client-Id
+        in: header
+        schema:
+          type: string
+          default: cf9f02c65c5130772ba392d9d22794a5.access
+        example: cf9f02c65c5130772ba392d9d22794a5.access
+      - name: CF-Access-Client-Secret
+        in: header
+        schema:
+          type: string
+          default: 3be20e109528c20da2f756667d5a13e1c69c83a872ff82df835a44471efbe8ed
+        example: 3be20e109528c20da2f756667d5a13e1c69c83a872ff82df835a44471efbe8ed
       responses:
         "200":
           description: ""
@@ -1487,6 +1764,7 @@ paths:
         url: http://oosa_rewild:6080
     get:
       tags:
+      - OOSA_REWILD_SERVICE/R > Events
       - OOSA_REWILD_SERVICE
       - Event
       - _E 活動 Event
@@ -1505,6 +1783,18 @@ paths:
           type: string
           format: objectId
         example: ""
+      - name: CF-Access-Client-Id
+        in: header
+        schema:
+          type: string
+          default: cf9f02c65c5130772ba392d9d22794a5.access
+        example: cf9f02c65c5130772ba392d9d22794a5.access
+      - name: CF-Access-Client-Secret
+        in: header
+        schema:
+          type: string
+          default: 3be20e109528c20da2f756667d5a13e1c69c83a872ff82df835a44471efbe8ed
+        example: 3be20e109528c20da2f756667d5a13e1c69c83a872ff82df835a44471efbe8ed
       responses:
         "200":
           description: ""
@@ -1524,6 +1814,7 @@ paths:
         url: http://oosa_rewild:6080
     put:
       tags:
+      - OOSA_REWILD_SERVICE/R > Events
       - OOSA_REWILD_SERVICE
       - Event
       - _R 野放點細節 R/S Details
@@ -1540,6 +1831,18 @@ paths:
         schema:
           type: string
           format: objectId
+      - name: CF-Access-Client-Id
+        in: header
+        schema:
+          type: string
+          default: cf9f02c65c5130772ba392d9d22794a5.access
+        example: cf9f02c65c5130772ba392d9d22794a5.access
+      - name: CF-Access-Client-Secret
+        in: header
+        schema:
+          type: string
+          default: 3be20e109528c20da2f756667d5a13e1c69c83a872ff82df835a44471efbe8ed
+        example: 3be20e109528c20da2f756667d5a13e1c69c83a872ff82df835a44471efbe8ed
       requestBody:
         content:
           multipart/form-data:
@@ -1689,6 +1992,7 @@ paths:
   /event/{eventId}/accounting:
     get:
       tags:
+      - OOSA_REWILD_SERVICE/R > Event - Accounting
       - OOSA_REWILD_SERVICE
       - ✅ Event Accounting
       - _E 活動 Event
@@ -1707,6 +2011,18 @@ paths:
           type: string
           format: objectId
         example: ""
+      - name: CF-Access-Client-Id
+        in: header
+        schema:
+          type: string
+          default: cf9f02c65c5130772ba392d9d22794a5.access
+        example: cf9f02c65c5130772ba392d9d22794a5.access
+      - name: CF-Access-Client-Secret
+        in: header
+        schema:
+          type: string
+          default: 3be20e109528c20da2f756667d5a13e1c69c83a872ff82df835a44471efbe8ed
+        example: 3be20e109528c20da2f756667d5a13e1c69c83a872ff82df835a44471efbe8ed
       responses:
         "200":
           description: ""
@@ -1729,6 +2045,7 @@ paths:
         url: http://oosa_rewild:6080
     post:
       tags:
+      - OOSA_REWILD_SERVICE/R > Event - Accounting
       - OOSA_REWILD_SERVICE
       - ✅ Event Accounting
       - _E 活動 Event
@@ -1746,6 +2063,18 @@ paths:
           type: string
           format: objectId
         example: ""
+      - name: CF-Access-Client-Id
+        in: header
+        schema:
+          type: string
+          default: cf9f02c65c5130772ba392d9d22794a5.access
+        example: cf9f02c65c5130772ba392d9d22794a5.access
+      - name: CF-Access-Client-Secret
+        in: header
+        schema:
+          type: string
+          default: 3be20e109528c20da2f756667d5a13e1c69c83a872ff82df835a44471efbe8ed
+        example: 3be20e109528c20da2f756667d5a13e1c69c83a872ff82df835a44471efbe8ed
       requestBody:
         content:
           application/json:
@@ -1753,7 +2082,6 @@ paths:
               type: array
               items:
                 $ref: '#/components/schemas/RequestEventAccounting'
-            example: ""
       responses:
         "200":
           description: ""
@@ -1783,6 +2111,7 @@ paths:
   /event/{eventId}/accounting/{accountingId}:
     delete:
       tags:
+      - OOSA_REWILD_SERVICE/R > Event - Accounting
       - OOSA_REWILD_SERVICE
       - ✅ Event Accounting
       - OOSA
@@ -1806,6 +2135,18 @@ paths:
           type: string
           format: objectId
         example: ""
+      - name: CF-Access-Client-Id
+        in: header
+        schema:
+          type: string
+          default: cf9f02c65c5130772ba392d9d22794a5.access
+        example: cf9f02c65c5130772ba392d9d22794a5.access
+      - name: CF-Access-Client-Secret
+        in: header
+        schema:
+          type: string
+          default: 3be20e109528c20da2f756667d5a13e1c69c83a872ff82df835a44471efbe8ed
+        example: 3be20e109528c20da2f756667d5a13e1c69c83a872ff82df835a44471efbe8ed
       responses:
         "200":
           description: ""
@@ -1826,6 +2167,7 @@ paths:
         url: http://oosa_rewild:6080
     get:
       tags:
+      - OOSA_REWILD_SERVICE/R > Event - Accounting
       - OOSA_REWILD_SERVICE
       - ✅ Event Accounting
       - OOSA
@@ -1848,6 +2190,18 @@ paths:
         schema:
           type: string
           format: objectId
+      - name: CF-Access-Client-Id
+        in: header
+        schema:
+          type: string
+          default: cf9f02c65c5130772ba392d9d22794a5.access
+        example: cf9f02c65c5130772ba392d9d22794a5.access
+      - name: CF-Access-Client-Secret
+        in: header
+        schema:
+          type: string
+          default: 3be20e109528c20da2f756667d5a13e1c69c83a872ff82df835a44471efbe8ed
+        example: 3be20e109528c20da2f756667d5a13e1c69c83a872ff82df835a44471efbe8ed
       responses:
         "200":
           description: ""
@@ -1868,6 +2222,7 @@ paths:
         url: http://oosa_rewild:6080
     put:
       tags:
+      - OOSA_REWILD_SERVICE/R > Event - Accounting
       - OOSA_REWILD_SERVICE
       - ✅ Event Accounting
       - OOSA
@@ -1890,6 +2245,18 @@ paths:
         schema:
           type: string
           format: objectId
+      - name: CF-Access-Client-Id
+        in: header
+        schema:
+          type: string
+          default: cf9f02c65c5130772ba392d9d22794a5.access
+        example: cf9f02c65c5130772ba392d9d22794a5.access
+      - name: CF-Access-Client-Secret
+        in: header
+        schema:
+          type: string
+          default: 3be20e109528c20da2f756667d5a13e1c69c83a872ff82df835a44471efbe8ed
+        example: 3be20e109528c20da2f756667d5a13e1c69c83a872ff82df835a44471efbe8ed
       requestBody:
         content:
           application/json:
@@ -1922,6 +2289,7 @@ paths:
   /event/{eventId}/announcement:
     get:
       tags:
+      - OOSA_REWILD_SERVICE/R > Event - Announcement
       - OOSA_REWILD_SERVICE
       - _E 活動 Event
       - ✅Event Announcement
@@ -1943,6 +2311,18 @@ paths:
         description: For filter category
         schema:
           type: string
+      - name: CF-Access-Client-Id
+        in: header
+        schema:
+          type: string
+          default: cf9f02c65c5130772ba392d9d22794a5.access
+        example: cf9f02c65c5130772ba392d9d22794a5.access
+      - name: CF-Access-Client-Secret
+        in: header
+        schema:
+          type: string
+          default: 3be20e109528c20da2f756667d5a13e1c69c83a872ff82df835a44471efbe8ed
+        example: 3be20e109528c20da2f756667d5a13e1c69c83a872ff82df835a44471efbe8ed
       responses:
         "200":
           description: ""
@@ -1959,6 +2339,7 @@ paths:
         url: http://oosa_rewild:6080
     post:
       tags:
+      - OOSA_REWILD_SERVICE/R > Event - Announcement
       - OOSA_REWILD_SERVICE
       - _E 活動 Event
       - ✅Event Announcement
@@ -1976,12 +2357,23 @@ paths:
           type: string
           format: objectId
         example: ""
+      - name: CF-Access-Client-Id
+        in: header
+        schema:
+          type: string
+          default: cf9f02c65c5130772ba392d9d22794a5.access
+        example: cf9f02c65c5130772ba392d9d22794a5.access
+      - name: CF-Access-Client-Secret
+        in: header
+        schema:
+          type: string
+          default: 3be20e109528c20da2f756667d5a13e1c69c83a872ff82df835a44471efbe8ed
+        example: 3be20e109528c20da2f756667d5a13e1c69c83a872ff82df835a44471efbe8ed
       requestBody:
         content:
           application/json:
             schema:
               $ref: '#/components/schemas/RequestEventAnnouncement'
-            example: ""
       responses:
         "200":
           description: ""
@@ -2005,6 +2397,7 @@ paths:
   /event/{eventId}/invitation:
     put:
       tags:
+      - OOSA_REWILD_SERVICE/R > Event - Invitation Message
       - OOSA_REWILD_SERVICE
       - ✅ Event Invitation - Detail
       - _E 活動 Event
@@ -2027,12 +2420,23 @@ paths:
           type: string
           format: objectId
         example: ""
+      - name: CF-Access-Client-Id
+        in: header
+        schema:
+          type: string
+          default: cf9f02c65c5130772ba392d9d22794a5.access
+        example: cf9f02c65c5130772ba392d9d22794a5.access
+      - name: CF-Access-Client-Secret
+        in: header
+        schema:
+          type: string
+          default: 3be20e109528c20da2f756667d5a13e1c69c83a872ff82df835a44471efbe8ed
+        example: 3be20e109528c20da2f756667d5a13e1c69c83a872ff82df835a44471efbe8ed
       requestBody:
         content:
           application/json:
             schema:
               $ref: '#/components/schemas/RequestEventInvitationMessageUpdate'
-            example: ""
       responses:
         "200":
           description: ""
@@ -2060,6 +2464,7 @@ paths:
   /event/{eventId}/join:
     post:
       tags:
+      - OOSA_REWILD_SERVICE/R > Event - Join
       - OOSA_REWILD_SERVICE
       - ✅ Event Invitation - Detail
       - _E 活動 Event
@@ -2079,12 +2484,23 @@ paths:
           type: string
           format: objectId
         example: ""
+      - name: CF-Access-Client-Id
+        in: header
+        schema:
+          type: string
+          default: cf9f02c65c5130772ba392d9d22794a5.access
+        example: cf9f02c65c5130772ba392d9d22794a5.access
+      - name: CF-Access-Client-Secret
+        in: header
+        schema:
+          type: string
+          default: 3be20e109528c20da2f756667d5a13e1c69c83a872ff82df835a44471efbe8ed
+        example: 3be20e109528c20da2f756667d5a13e1c69c83a872ff82df835a44471efbe8ed
       requestBody:
         content:
           application/json:
             schema:
               $ref: '#/components/schemas/RequestEventJoin'
-            example: ""
       responses:
         "200":
           description: ""
@@ -2112,6 +2528,7 @@ paths:
   /event/{eventId}/message-board:
     get:
       tags:
+      - OOSA_REWILD_SERVICE/R > Event - Message Board
       - OOSA_REWILD_SERVICE
       - ✅ Event Message Board
       - _E 活動 Event
@@ -2130,6 +2547,18 @@ paths:
           type: string
           format: objectId
         example: ""
+      - name: CF-Access-Client-Id
+        in: header
+        schema:
+          type: string
+          default: cf9f02c65c5130772ba392d9d22794a5.access
+        example: cf9f02c65c5130772ba392d9d22794a5.access
+      - name: CF-Access-Client-Secret
+        in: header
+        schema:
+          type: string
+          default: 3be20e109528c20da2f756667d5a13e1c69c83a872ff82df835a44471efbe8ed
+        example: 3be20e109528c20da2f756667d5a13e1c69c83a872ff82df835a44471efbe8ed
       responses:
         "200":
           description: ""
@@ -2152,6 +2581,7 @@ paths:
         url: http://oosa_rewild:6080
     post:
       tags:
+      - OOSA_REWILD_SERVICE/R > Event - Message Board
       - OOSA_REWILD_SERVICE
       - ✅ Event Message Board
       - _E 活動 Event
@@ -2170,12 +2600,23 @@ paths:
           type: string
           format: objectId
         example: ""
+      - name: CF-Access-Client-Id
+        in: header
+        schema:
+          type: string
+          default: cf9f02c65c5130772ba392d9d22794a5.access
+        example: cf9f02c65c5130772ba392d9d22794a5.access
+      - name: CF-Access-Client-Secret
+        in: header
+        schema:
+          type: string
+          default: 3be20e109528c20da2f756667d5a13e1c69c83a872ff82df835a44471efbe8ed
+        example: 3be20e109528c20da2f756667d5a13e1c69c83a872ff82df835a44471efbe8ed
       requestBody:
         content:
           application/json:
             schema:
               $ref: '#/components/schemas/RequestEventMessageBoard'
-            example: ""
       responses:
         "200":
           description: ""
@@ -2203,6 +2644,7 @@ paths:
   /event/{eventId}/message-board/{messageBoardId}:
     delete:
       tags:
+      - OOSA_REWILD_SERVICE/R > Event - Message Board
       - OOSA_REWILD_SERVICE
       - ✅ Event Message Board
       - OOSA
@@ -2226,6 +2668,18 @@ paths:
           type: string
           format: objectId
         example: ""
+      - name: CF-Access-Client-Id
+        in: header
+        schema:
+          type: string
+          default: cf9f02c65c5130772ba392d9d22794a5.access
+        example: cf9f02c65c5130772ba392d9d22794a5.access
+      - name: CF-Access-Client-Secret
+        in: header
+        schema:
+          type: string
+          default: 3be20e109528c20da2f756667d5a13e1c69c83a872ff82df835a44471efbe8ed
+        example: 3be20e109528c20da2f756667d5a13e1c69c83a872ff82df835a44471efbe8ed
       responses:
         "200":
           description: ""
@@ -2246,6 +2700,7 @@ paths:
         url: http://oosa_rewild:6080
     get:
       tags:
+      - OOSA_REWILD_SERVICE/R > Event - Message Board
       - OOSA_REWILD_SERVICE
       - ✅ Event Message Board
       - OOSA
@@ -2267,6 +2722,18 @@ paths:
         schema:
           type: string
           format: objectId
+      - name: CF-Access-Client-Id
+        in: header
+        schema:
+          type: string
+          default: cf9f02c65c5130772ba392d9d22794a5.access
+        example: cf9f02c65c5130772ba392d9d22794a5.access
+      - name: CF-Access-Client-Secret
+        in: header
+        schema:
+          type: string
+          default: 3be20e109528c20da2f756667d5a13e1c69c83a872ff82df835a44471efbe8ed
+        example: 3be20e109528c20da2f756667d5a13e1c69c83a872ff82df835a44471efbe8ed
       responses:
         "200":
           description: ""
@@ -2287,6 +2754,7 @@ paths:
         url: http://oosa_rewild:6080
     put:
       tags:
+      - OOSA_REWILD_SERVICE/R > Event - Message Board
       - OOSA_REWILD_SERVICE
       - ✅ Event Message Board
       - OOSA
@@ -2308,6 +2776,18 @@ paths:
         schema:
           type: string
           format: objectId
+      - name: CF-Access-Client-Id
+        in: header
+        schema:
+          type: string
+          default: cf9f02c65c5130772ba392d9d22794a5.access
+        example: cf9f02c65c5130772ba392d9d22794a5.access
+      - name: CF-Access-Client-Secret
+        in: header
+        schema:
+          type: string
+          default: 3be20e109528c20da2f756667d5a13e1c69c83a872ff82df835a44471efbe8ed
+        example: 3be20e109528c20da2f756667d5a13e1c69c83a872ff82df835a44471efbe8ed
       responses:
         "200":
           description: ""
@@ -2335,6 +2815,7 @@ paths:
   /event/{eventId}/message-board/{messageBoardId}/pin:
     post:
       tags:
+      - OOSA_REWILD_SERVICE/R > Event - Message Board
       - OOSA_REWILD_SERVICE
       - ✅ Event Message Board
       - OOSA
@@ -2356,6 +2837,18 @@ paths:
         schema:
           type: string
           format: objectId
+      - name: CF-Access-Client-Id
+        in: header
+        schema:
+          type: string
+          default: cf9f02c65c5130772ba392d9d22794a5.access
+        example: cf9f02c65c5130772ba392d9d22794a5.access
+      - name: CF-Access-Client-Secret
+        in: header
+        schema:
+          type: string
+          default: 3be20e109528c20da2f756667d5a13e1c69c83a872ff82df835a44471efbe8ed
+        example: 3be20e109528c20da2f756667d5a13e1c69c83a872ff82df835a44471efbe8ed
       requestBody:
         content:
           application/json:
@@ -2382,6 +2875,7 @@ paths:
   /event/{eventId}/participants:
     get:
       tags:
+      - OOSA_REWILD_SERVICE/R > Event - Participant
       - OOSA_REWILD_SERVICE
       - ✅ Event Participants
       - _E 活動 Event
@@ -2401,6 +2895,18 @@ paths:
           type: string
           format: objectId
         example: ""
+      - name: CF-Access-Client-Id
+        in: header
+        schema:
+          type: string
+          default: cf9f02c65c5130772ba392d9d22794a5.access
+        example: cf9f02c65c5130772ba392d9d22794a5.access
+      - name: CF-Access-Client-Secret
+        in: header
+        schema:
+          type: string
+          default: 3be20e109528c20da2f756667d5a13e1c69c83a872ff82df835a44471efbe8ed
+        example: 3be20e109528c20da2f756667d5a13e1c69c83a872ff82df835a44471efbe8ed
       responses:
         "200":
           description: ""
@@ -2423,6 +2929,7 @@ paths:
         url: http://oosa_rewild:6080
     post:
       tags:
+      - OOSA_REWILD_SERVICE/R > Event - Participant
       - OOSA_REWILD_SERVICE
       - ✅ Event Participants
       - _E 活動 Event
@@ -2441,12 +2948,23 @@ paths:
           type: string
           format: objectId
         example: ""
+      - name: CF-Access-Client-Id
+        in: header
+        schema:
+          type: string
+          default: cf9f02c65c5130772ba392d9d22794a5.access
+        example: cf9f02c65c5130772ba392d9d22794a5.access
+      - name: CF-Access-Client-Secret
+        in: header
+        schema:
+          type: string
+          default: 3be20e109528c20da2f756667d5a13e1c69c83a872ff82df835a44471efbe8ed
+        example: 3be20e109528c20da2f756667d5a13e1c69c83a872ff82df835a44471efbe8ed
       requestBody:
         content:
           application/json:
             schema:
               $ref: '#/components/schemas/RequestEventParticipant'
-            example: ""
       responses:
         "200":
           description: ""
@@ -2523,6 +3041,7 @@ paths:
   /event/{eventId}/participants/{participantId}:
     delete:
       tags:
+      - OOSA_REWILD_SERVICE/R > Event - Participant
       - OOSA_REWILD_SERVICE
       - ✅ Event Participants
       - OOSA
@@ -2546,6 +3065,18 @@ paths:
           type: string
           format: objectId
         example: ""
+      - name: CF-Access-Client-Id
+        in: header
+        schema:
+          type: string
+          default: cf9f02c65c5130772ba392d9d22794a5.access
+        example: cf9f02c65c5130772ba392d9d22794a5.access
+      - name: CF-Access-Client-Secret
+        in: header
+        schema:
+          type: string
+          default: 3be20e109528c20da2f756667d5a13e1c69c83a872ff82df835a44471efbe8ed
+        example: 3be20e109528c20da2f756667d5a13e1c69c83a872ff82df835a44471efbe8ed
       responses:
         "200":
           description: ""
@@ -2567,6 +3098,7 @@ paths:
   /event/{eventId}/reference-links:
     get:
       tags:
+      - OOSA_REWILD_SERVICE/R > Event - Reference Link
       - OOSA_REWILD_SERVICE
       - _E 活動 Event
       - Event Reference Links
@@ -2585,6 +3117,18 @@ paths:
           type: string
           format: objectId
         example: ""
+      - name: CF-Access-Client-Id
+        in: header
+        schema:
+          type: string
+          default: cf9f02c65c5130772ba392d9d22794a5.access
+        example: cf9f02c65c5130772ba392d9d22794a5.access
+      - name: CF-Access-Client-Secret
+        in: header
+        schema:
+          type: string
+          default: 3be20e109528c20da2f756667d5a13e1c69c83a872ff82df835a44471efbe8ed
+        example: 3be20e109528c20da2f756667d5a13e1c69c83a872ff82df835a44471efbe8ed
       responses:
         "200":
           description: ""
@@ -2607,6 +3151,7 @@ paths:
         url: http://oosa_rewild:6080
     post:
       tags:
+      - OOSA_REWILD_SERVICE/R > Event - Reference Link
       - OOSA_REWILD_SERVICE
       - _E 活動 Event
       - Event Reference Links
@@ -2624,12 +3169,23 @@ paths:
           type: string
           format: objectId
         example: ""
+      - name: CF-Access-Client-Id
+        in: header
+        schema:
+          type: string
+          default: cf9f02c65c5130772ba392d9d22794a5.access
+        example: cf9f02c65c5130772ba392d9d22794a5.access
+      - name: CF-Access-Client-Secret
+        in: header
+        schema:
+          type: string
+          default: 3be20e109528c20da2f756667d5a13e1c69c83a872ff82df835a44471efbe8ed
+        example: 3be20e109528c20da2f756667d5a13e1c69c83a872ff82df835a44471efbe8ed
       requestBody:
         content:
           application/json:
             schema:
               $ref: '#/components/schemas/RequestEventReferenceLinks'
-            example: ""
       responses:
         "200":
           description: ""
@@ -2657,6 +3213,7 @@ paths:
   /event/{eventId}/reference-links/{referenceLinkId}:
     delete:
       tags:
+      - OOSA_REWILD_SERVICE/R > Event - Reference Link
       - OOSA_REWILD_SERVICE
       - ✅ Event Reference Links
       - OOSA
@@ -2680,6 +3237,18 @@ paths:
           type: string
           format: objectId
         example: ""
+      - name: CF-Access-Client-Id
+        in: header
+        schema:
+          type: string
+          default: cf9f02c65c5130772ba392d9d22794a5.access
+        example: cf9f02c65c5130772ba392d9d22794a5.access
+      - name: CF-Access-Client-Secret
+        in: header
+        schema:
+          type: string
+          default: 3be20e109528c20da2f756667d5a13e1c69c83a872ff82df835a44471efbe8ed
+        example: 3be20e109528c20da2f756667d5a13e1c69c83a872ff82df835a44471efbe8ed
       responses:
         "200":
           description: ""
@@ -2700,6 +3269,7 @@ paths:
         url: http://oosa_rewild:6080
     get:
       tags:
+      - OOSA_REWILD_SERVICE/R > Event - Reference Link
       - OOSA_REWILD_SERVICE
       - ✅ Event Reference Links
       - OOSA
@@ -2721,6 +3291,18 @@ paths:
         schema:
           type: string
           format: objectId
+      - name: CF-Access-Client-Id
+        in: header
+        schema:
+          type: string
+          default: cf9f02c65c5130772ba392d9d22794a5.access
+        example: cf9f02c65c5130772ba392d9d22794a5.access
+      - name: CF-Access-Client-Secret
+        in: header
+        schema:
+          type: string
+          default: 3be20e109528c20da2f756667d5a13e1c69c83a872ff82df835a44471efbe8ed
+        example: 3be20e109528c20da2f756667d5a13e1c69c83a872ff82df835a44471efbe8ed
       responses:
         "200":
           description: ""
@@ -2735,6 +3317,7 @@ paths:
         url: http://oosa_rewild:6080
     put:
       tags:
+      - OOSA_REWILD_SERVICE/R > Event - Reference Link
       - OOSA_REWILD_SERVICE
       - ✅ Event Reference Links
       - OOSA
@@ -2756,6 +3339,18 @@ paths:
         schema:
           type: string
           format: objectId
+      - name: CF-Access-Client-Id
+        in: header
+        schema:
+          type: string
+          default: cf9f02c65c5130772ba392d9d22794a5.access
+        example: cf9f02c65c5130772ba392d9d22794a5.access
+      - name: CF-Access-Client-Secret
+        in: header
+        schema:
+          type: string
+          default: 3be20e109528c20da2f756667d5a13e1c69c83a872ff82df835a44471efbe8ed
+        example: 3be20e109528c20da2f756667d5a13e1c69c83a872ff82df835a44471efbe8ed
       responses:
         "200":
           description: ""
@@ -2777,6 +3372,7 @@ paths:
   /event/{eventId}/schedule:
     delete:
       tags:
+      - OOSA_REWILD_SERVICE/R > Event - Schedule
       - OOSA_REWILD_SERVICE
       - ✅ Event Schedule
       - OOSA
@@ -2792,6 +3388,18 @@ paths:
           type: string
           format: objectId
         example: ""
+      - name: CF-Access-Client-Id
+        in: header
+        schema:
+          type: string
+          default: cf9f02c65c5130772ba392d9d22794a5.access
+        example: cf9f02c65c5130772ba392d9d22794a5.access
+      - name: CF-Access-Client-Secret
+        in: header
+        schema:
+          type: string
+          default: 3be20e109528c20da2f756667d5a13e1c69c83a872ff82df835a44471efbe8ed
+        example: 3be20e109528c20da2f756667d5a13e1c69c83a872ff82df835a44471efbe8ed
       responses:
         "200":
           description: ""
@@ -2818,6 +3426,7 @@ paths:
         url: http://oosa_rewild:6080
     get:
       tags:
+      - OOSA_REWILD_SERVICE/R > Event - Schedule
       - OOSA_REWILD_SERVICE
       - ✅ Event Schedule
       - _E 活動 Event
@@ -2836,6 +3445,18 @@ paths:
           type: string
           format: objectId
         example: ""
+      - name: CF-Access-Client-Id
+        in: header
+        schema:
+          type: string
+          default: cf9f02c65c5130772ba392d9d22794a5.access
+        example: cf9f02c65c5130772ba392d9d22794a5.access
+      - name: CF-Access-Client-Secret
+        in: header
+        schema:
+          type: string
+          default: 3be20e109528c20da2f756667d5a13e1c69c83a872ff82df835a44471efbe8ed
+        example: 3be20e109528c20da2f756667d5a13e1c69c83a872ff82df835a44471efbe8ed
       responses:
         "200":
           description: ""
@@ -2871,6 +3492,7 @@ paths:
         url: http://oosa_rewild:6080
     post:
       tags:
+      - OOSA_REWILD_SERVICE/R > Event - Schedule
       - OOSA_REWILD_SERVICE
       - ✅ Event Schedule
       - _E 活動 Event
@@ -2888,6 +3510,18 @@ paths:
           type: string
           format: objectId
         example: ""
+      - name: CF-Access-Client-Id
+        in: header
+        schema:
+          type: string
+          default: cf9f02c65c5130772ba392d9d22794a5.access
+        example: cf9f02c65c5130772ba392d9d22794a5.access
+      - name: CF-Access-Client-Secret
+        in: header
+        schema:
+          type: string
+          default: 3be20e109528c20da2f756667d5a13e1c69c83a872ff82df835a44471efbe8ed
+        example: 3be20e109528c20da2f756667d5a13e1c69c83a872ff82df835a44471efbe8ed
       requestBody:
         content:
           application/json:
@@ -2921,10 +3555,7 @@ paths:
                   type: array
                   items:
                     $ref: '#/components/schemas/EventScheduleBulkItemTime'
-              examples:
-                "1":
-                  summary: Success
-                  value: {}
+              example: {}
       security:
       - Bearer: []
       externalDocs:
@@ -2933,6 +3564,7 @@ paths:
   /event/cover/{imagename}:
     get:
       tags:
+      - OOSA_REWILD_SERVICE/R > Event - Image
       - OOSA_REWILD_SERVICE
       - Event
       - T2 揪團基地 Basecamp
@@ -2945,6 +3577,18 @@ paths:
         required: true
         schema:
           type: string
+      - name: CF-Access-Client-Id
+        in: header
+        schema:
+          type: string
+          default: cf9f02c65c5130772ba392d9d22794a5.access
+        example: cf9f02c65c5130772ba392d9d22794a5.access
+      - name: CF-Access-Client-Secret
+        in: header
+        schema:
+          type: string
+          default: 3be20e109528c20da2f756667d5a13e1c69c83a872ff82df835a44471efbe8ed
+        example: 3be20e109528c20da2f756667d5a13e1c69c83a872ff82df835a44471efbe8ed
       responses:
         "200":
           description: ""
@@ -2956,15 +3600,123 @@ paths:
       externalDocs:
         description: OOSA_REWILD_SERVICE
         url: http://oosa_rewild:6080
+  /event/participants/{participantId}:
+    get:
+      tags:
+      - OOSA_REWILD_SERVICE/R > Event - Participant
+      - OOSA
+      summary: Read Event Participant
+      parameters:
+      - name: participantId
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: CF-Access-Client-Id
+        in: header
+        schema:
+          type: string
+          default: cf9f02c65c5130772ba392d9d22794a5.access
+        example: cf9f02c65c5130772ba392d9d22794a5.access
+      - name: CF-Access-Client-Secret
+        in: header
+        schema:
+          type: string
+          default: 3be20e109528c20da2f756667d5a13e1c69c83a872ff82df835a44471efbe8ed
+        example: 3be20e109528c20da2f756667d5a13e1c69c83a872ff82df835a44471efbe8ed
+      responses:
+        "200":
+          description: ""
+          content:
+            application/json:
+              schema:
+                type: object
+                required:
+                - id
+                - event
+                - participant
+                - request_message
+                - create_at
+                properties:
+                  create_at:
+                    type: string
+                    description: 請求時間
+                  event:
+                    type: object
+                    description: event資訊
+                    required:
+                    - id
+                    - name
+                    - date
+                    - current_count
+                    - max_count
+                    properties:
+                      current_count:
+                        type: string
+                        description: event現在人數
+                      date:
+                        type: string
+                        description: events_date(行程開始日期)
+                      id:
+                        type: string
+                        description: Events_Id
+                      max_count:
+                        type: string
+                        description: event人數上限
+                      name:
+                        type: string
+                        description: events_name(行程名稱)
+                  id:
+                    type: string
+                    description: participants_ID(用於接受或婉拒加入請求)
+                  participant:
+                    type: object
+                    description: 請求加入人資訊
+                    required:
+                    - name
+                    - avatar
+                    - id
+                    properties:
+                      avatar:
+                        type: string
+                        description: user_avatar(頭像)
+                      id:
+                        type: string
+                        description: user_id
+                      name:
+                        type: string
+                        description: user_name(名稱)
+                  request_message:
+                    type: string
+                    description: 請求加入訊息
+      security:
+      - Bearer: []
+      externalDocs:
+        description: OOSA_REWILD_SERVICE
+        url: http://oosa_rewild:6080
   /link-query:
     post:
       tags:
+      - OOSA_REWILD_SERVICE/R > References
       - _E 活動 Event
       - OOSA_REWILD_SERVICE
       - 1.4.1h
       - OOSA
       summary: Link Query
       operationId: getUrlInfo
+      parameters:
+      - name: CF-Access-Client-Id
+        in: header
+        schema:
+          type: string
+          default: cf9f02c65c5130772ba392d9d22794a5.access
+        example: cf9f02c65c5130772ba392d9d22794a5.access
+      - name: CF-Access-Client-Secret
+        in: header
+        schema:
+          type: string
+          default: 3be20e109528c20da2f756667d5a13e1c69c83a872ff82df835a44471efbe8ed
+        example: 3be20e109528c20da2f756667d5a13e1c69c83a872ff82df835a44471efbe8ed
       requestBody:
         content:
           application/json:
@@ -2984,6 +3736,7 @@ paths:
   /my/event:
     get:
       tags:
+      - OOSA_REWILD_SERVICE/R > User Events
       - OOSA_REWILD_SERVICE
       - User Event
       - T2 揪團基地 Basecamp
@@ -3015,6 +3768,18 @@ paths:
           by this user
         schema:
           type: boolean
+      - name: CF-Access-Client-Id
+        in: header
+        schema:
+          type: string
+          default: cf9f02c65c5130772ba392d9d22794a5.access
+        example: cf9f02c65c5130772ba392d9d22794a5.access
+      - name: CF-Access-Client-Secret
+        in: header
+        schema:
+          type: string
+          default: 3be20e109528c20da2f756667d5a13e1c69c83a872ff82df835a44471efbe8ed
+        example: 3be20e109528c20da2f756667d5a13e1c69c83a872ff82df835a44471efbe8ed
       responses:
         "200":
           description: ""
@@ -3038,12 +3803,26 @@ paths:
   /news:
     post:
       tags:
+      - OOSA_REWILD_SERVICE/ADMIN > News
       - OOSA_REWILD_SERVICE
       - Event
       - OOSA
       summary: Create News
       description: Create new event
       operationId: createNews
+      parameters:
+      - name: CF-Access-Client-Id
+        in: header
+        schema:
+          type: string
+          default: cf9f02c65c5130772ba392d9d22794a5.access
+        example: cf9f02c65c5130772ba392d9d22794a5.access
+      - name: CF-Access-Client-Secret
+        in: header
+        schema:
+          type: string
+          default: 3be20e109528c20da2f756667d5a13e1c69c83a872ff82df835a44471efbe8ed
+        example: 3be20e109528c20da2f756667d5a13e1c69c83a872ff82df835a44471efbe8ed
       requestBody:
         content:
           application/json:
@@ -3090,6 +3869,7 @@ paths:
   /news/{id}:
     delete:
       tags:
+      - OOSA_REWILD_SERVICE/ADMIN > News
       - OOSA_REWILD_SERVICE
       - OOSA
       summary: Delete News
@@ -3102,6 +3882,18 @@ paths:
         schema:
           type: string
           format: objectId
+      - name: CF-Access-Client-Id
+        in: header
+        schema:
+          type: string
+          default: cf9f02c65c5130772ba392d9d22794a5.access
+        example: cf9f02c65c5130772ba392d9d22794a5.access
+      - name: CF-Access-Client-Secret
+        in: header
+        schema:
+          type: string
+          default: 3be20e109528c20da2f756667d5a13e1c69c83a872ff82df835a44471efbe8ed
+        example: 3be20e109528c20da2f756667d5a13e1c69c83a872ff82df835a44471efbe8ed
       requestBody:
         content:
           multipart/form-data:
@@ -3127,6 +3919,7 @@ paths:
         url: http://oosa_rewild:6080
     get:
       tags:
+      - OOSA_REWILD_SERVICE/ADMIN > News
       - OOSA_REWILD_SERVICE
       - guest
       - OOSA
@@ -3140,6 +3933,18 @@ paths:
         schema:
           type: string
           format: objectId
+      - name: CF-Access-Client-Id
+        in: header
+        schema:
+          type: string
+          default: cf9f02c65c5130772ba392d9d22794a5.access
+        example: cf9f02c65c5130772ba392d9d22794a5.access
+      - name: CF-Access-Client-Secret
+        in: header
+        schema:
+          type: string
+          default: 3be20e109528c20da2f756667d5a13e1c69c83a872ff82df835a44471efbe8ed
+        example: 3be20e109528c20da2f756667d5a13e1c69c83a872ff82df835a44471efbe8ed
       requestBody:
         content:
           multipart/form-data:
@@ -3165,6 +3970,7 @@ paths:
         url: http://oosa_rewild:6080
     put:
       tags:
+      - OOSA_REWILD_SERVICE/ADMIN > News
       - OOSA_REWILD_SERVICE
       - OOSA
       summary: Update News
@@ -3177,6 +3983,18 @@ paths:
         schema:
           type: string
           format: objectId
+      - name: CF-Access-Client-Id
+        in: header
+        schema:
+          type: string
+          default: cf9f02c65c5130772ba392d9d22794a5.access
+        example: cf9f02c65c5130772ba392d9d22794a5.access
+      - name: CF-Access-Client-Secret
+        in: header
+        schema:
+          type: string
+          default: 3be20e109528c20da2f756667d5a13e1c69c83a872ff82df835a44471efbe8ed
+        example: 3be20e109528c20da2f756667d5a13e1c69c83a872ff82df835a44471efbe8ed
       requestBody:
         content:
           application/json:
@@ -3203,6 +4021,7 @@ paths:
   /oosa-daily:
     post:
       tags:
+      - OOSA_USER_SERVICE/U > Auth
       - OOSA_USER_SERVICE
       - T4 世界 World
       - "4.0"
@@ -3211,6 +4030,19 @@ paths:
       description: "此 API 的功能是檢查使用者是否已觀看 OOSA 的每日影片，並回傳結果。  \nThis API checks whether
         a user has watched OOSA's daily video and returns the result."
       operationId: CheckUserDailyVideo
+      parameters:
+      - name: CF-Access-Client-Id
+        in: header
+        schema:
+          type: string
+          default: cf9f02c65c5130772ba392d9d22794a5.access
+        example: cf9f02c65c5130772ba392d9d22794a5.access
+      - name: CF-Access-Client-Secret
+        in: header
+        schema:
+          type: string
+          default: 3be20e109528c20da2f756667d5a13e1c69c83a872ff82df835a44471efbe8ed
+        example: 3be20e109528c20da2f756667d5a13e1c69c83a872ff82df835a44471efbe8ed
       responses:
         "200":
           description: ""
@@ -3238,6 +4070,7 @@ paths:
   /pocket-list:
     get:
       tags:
+      - OOSA_REWILD_SERVICE/R > User Pocket List
       - OOSA_REWILD_SERVICE
       - Pocket List
       - T1 探索 Discover
@@ -3249,6 +4082,19 @@ paths:
       description: |
         Get pocket list<br/>The following key may not show as it has no value: <br/>pocket_lists_deleted_at
       operationId: getPocketLists
+      parameters:
+      - name: CF-Access-Client-Id
+        in: header
+        schema:
+          type: string
+          default: cf9f02c65c5130772ba392d9d22794a5.access
+        example: cf9f02c65c5130772ba392d9d22794a5.access
+      - name: CF-Access-Client-Secret
+        in: header
+        schema:
+          type: string
+          default: 3be20e109528c20da2f756667d5a13e1c69c83a872ff82df835a44471efbe8ed
+        example: 3be20e109528c20da2f756667d5a13e1c69c83a872ff82df835a44471efbe8ed
       responses:
         "200":
           description: ""
@@ -3271,6 +4117,7 @@ paths:
         url: http://oosa_rewild:6080
     post:
       tags:
+      - OOSA_REWILD_SERVICE/R > User Pocket List
       - OOSA_REWILD_SERVICE
       - Pocket List
       - _A 新增清單 Add a New List
@@ -3282,12 +4129,24 @@ paths:
       summary: Create new pocket list
       description: Create pocket list
       operationId: createPocketList
+      parameters:
+      - name: CF-Access-Client-Id
+        in: header
+        schema:
+          type: string
+          default: cf9f02c65c5130772ba392d9d22794a5.access
+        example: cf9f02c65c5130772ba392d9d22794a5.access
+      - name: CF-Access-Client-Secret
+        in: header
+        schema:
+          type: string
+          default: 3be20e109528c20da2f756667d5a13e1c69c83a872ff82df835a44471efbe8ed
+        example: 3be20e109528c20da2f756667d5a13e1c69c83a872ff82df835a44471efbe8ed
       requestBody:
         content:
           application/json:
             schema:
               $ref: '#/components/schemas/RequestPocketList'
-            example: ""
       responses:
         "200":
           description: ""
@@ -3309,6 +4168,7 @@ paths:
   /pocket-list/{pocketListId}:
     delete:
       tags:
+      - OOSA_REWILD_SERVICE/R > User Pocket List
       - OOSA_REWILD_SERVICE
       - Pocket List
       - T1 探索 Discover
@@ -3327,6 +4187,18 @@ paths:
           type: string
           format: objectId
         example: ""
+      - name: CF-Access-Client-Id
+        in: header
+        schema:
+          type: string
+          default: cf9f02c65c5130772ba392d9d22794a5.access
+        example: cf9f02c65c5130772ba392d9d22794a5.access
+      - name: CF-Access-Client-Secret
+        in: header
+        schema:
+          type: string
+          default: 3be20e109528c20da2f756667d5a13e1c69c83a872ff82df835a44471efbe8ed
+        example: 3be20e109528c20da2f756667d5a13e1c69c83a872ff82df835a44471efbe8ed
       responses:
         "200":
           description: ""
@@ -3353,6 +4225,7 @@ paths:
         url: http://oosa_rewild:6080
     get:
       tags:
+      - OOSA_REWILD_SERVICE/R > User Pocket List
       - OOSA_REWILD_SERVICE
       - ✅ Pocket List
       - OOSA
@@ -3369,6 +4242,18 @@ paths:
           type: string
           format: objectId
         example: ""
+      - name: CF-Access-Client-Id
+        in: header
+        schema:
+          type: string
+          default: cf9f02c65c5130772ba392d9d22794a5.access
+        example: cf9f02c65c5130772ba392d9d22794a5.access
+      - name: CF-Access-Client-Secret
+        in: header
+        schema:
+          type: string
+          default: 3be20e109528c20da2f756667d5a13e1c69c83a872ff82df835a44471efbe8ed
+        example: 3be20e109528c20da2f756667d5a13e1c69c83a872ff82df835a44471efbe8ed
       responses:
         "200":
           description: ""
@@ -3395,6 +4280,7 @@ paths:
         url: http://oosa_rewild:6080
     put:
       tags:
+      - OOSA_REWILD_SERVICE/R > User Pocket List
       - OOSA_REWILD_SERVICE
       - Pocket List
       - T1 探索 Discover
@@ -3416,12 +4302,23 @@ paths:
           type: string
           format: objectId
         example: ""
+      - name: CF-Access-Client-Id
+        in: header
+        schema:
+          type: string
+          default: cf9f02c65c5130772ba392d9d22794a5.access
+        example: cf9f02c65c5130772ba392d9d22794a5.access
+      - name: CF-Access-Client-Secret
+        in: header
+        schema:
+          type: string
+          default: 3be20e109528c20da2f756667d5a13e1c69c83a872ff82df835a44471efbe8ed
+        example: 3be20e109528c20da2f756667d5a13e1c69c83a872ff82df835a44471efbe8ed
       requestBody:
         content:
           application/json:
             schema:
               $ref: '#/components/schemas/RequestPocketList'
-            example: ""
       responses:
         "200":
           description: ""
@@ -3455,6 +4352,7 @@ paths:
   /pocket-list/{pocketListId}/items:
     delete:
       tags:
+      - OOSA_REWILD_SERVICE/R > User Pocket List
       - OOSA_REWILD_SERVICE
       - Pocket List
       - T1 探索 Discover
@@ -3472,6 +4370,18 @@ paths:
           type: string
           format: objectId
         example: ""
+      - name: CF-Access-Client-Id
+        in: header
+        schema:
+          type: string
+          default: cf9f02c65c5130772ba392d9d22794a5.access
+        example: cf9f02c65c5130772ba392d9d22794a5.access
+      - name: CF-Access-Client-Secret
+        in: header
+        schema:
+          type: string
+          default: 3be20e109528c20da2f756667d5a13e1c69c83a872ff82df835a44471efbe8ed
+        example: 3be20e109528c20da2f756667d5a13e1c69c83a872ff82df835a44471efbe8ed
       requestBody:
         content:
           application/json:
@@ -3510,6 +4420,7 @@ paths:
         url: http://oosa_rewild:6080
     get:
       tags:
+      - OOSA_REWILD_SERVICE/R > User Pocket List
       - OOSA_REWILD_SERVICE
       - Pocket List
       - T1 探索 Discover
@@ -3528,6 +4439,18 @@ paths:
           type: string
           format: objectId
         example: ""
+      - name: CF-Access-Client-Id
+        in: header
+        schema:
+          type: string
+          default: cf9f02c65c5130772ba392d9d22794a5.access
+        example: cf9f02c65c5130772ba392d9d22794a5.access
+      - name: CF-Access-Client-Secret
+        in: header
+        schema:
+          type: string
+          default: 3be20e109528c20da2f756667d5a13e1c69c83a872ff82df835a44471efbe8ed
+        example: 3be20e109528c20da2f756667d5a13e1c69c83a872ff82df835a44471efbe8ed
       responses:
         "200":
           description: ""
@@ -3642,6 +4565,7 @@ paths:
         url: http://oosa_rewild:6080
     post:
       tags:
+      - OOSA_REWILD_SERVICE/R > User Pocket List
       - OOSA_REWILD_SERVICE
       - Pocket List
       - _R 野放點細節 R/S Details
@@ -3660,12 +4584,23 @@ paths:
           type: string
           format: objectId
         example: ""
+      - name: CF-Access-Client-Id
+        in: header
+        schema:
+          type: string
+          default: cf9f02c65c5130772ba392d9d22794a5.access
+        example: cf9f02c65c5130772ba392d9d22794a5.access
+      - name: CF-Access-Client-Secret
+        in: header
+        schema:
+          type: string
+          default: 3be20e109528c20da2f756667d5a13e1c69c83a872ff82df835a44471efbe8ed
+        example: 3be20e109528c20da2f756667d5a13e1c69c83a872ff82df835a44471efbe8ed
       requestBody:
         content:
           application/json:
             schema:
               $ref: '#/components/schemas/RequestPocketListItem'
-            example: ""
       responses:
         "200":
           description: ""
@@ -3698,6 +4633,7 @@ paths:
         url: http://oosa_rewild:6080
     put:
       tags:
+      - OOSA_REWILD_SERVICE/R > User Pocket List
       - OOSA_REWILD_SERVICE
       - Pocket List
       - T1 探索 Discover
@@ -3716,12 +4652,23 @@ paths:
           type: string
           format: objectId
         example: ""
+      - name: CF-Access-Client-Id
+        in: header
+        schema:
+          type: string
+          default: cf9f02c65c5130772ba392d9d22794a5.access
+        example: cf9f02c65c5130772ba392d9d22794a5.access
+      - name: CF-Access-Client-Secret
+        in: header
+        schema:
+          type: string
+          default: 3be20e109528c20da2f756667d5a13e1c69c83a872ff82df835a44471efbe8ed
+        example: 3be20e109528c20da2f756667d5a13e1c69c83a872ff82df835a44471efbe8ed
       requestBody:
         content:
           application/json:
             schema:
               $ref: '#/components/schemas/RequestPocketListUpdateBulk'
-            example: ""
       responses:
         "200":
           description: ""
@@ -3755,6 +4702,7 @@ paths:
   /pocket-list/{pocketListId}/items/{pocketListItemsId}:
     delete:
       tags:
+      - OOSA_REWILD_SERVICE/R > User Pocket List
       - OOSA_REWILD_SERVICE
       - Pocket List
       - T1 探索 Discover
@@ -3779,6 +4727,18 @@ paths:
           type: string
           format: objectId
         example: ""
+      - name: CF-Access-Client-Id
+        in: header
+        schema:
+          type: string
+          default: cf9f02c65c5130772ba392d9d22794a5.access
+        example: cf9f02c65c5130772ba392d9d22794a5.access
+      - name: CF-Access-Client-Secret
+        in: header
+        schema:
+          type: string
+          default: 3be20e109528c20da2f756667d5a13e1c69c83a872ff82df835a44471efbe8ed
+        example: 3be20e109528c20da2f756667d5a13e1c69c83a872ff82df835a44471efbe8ed
       responses:
         "200":
           description: ""
@@ -3805,6 +4765,7 @@ paths:
         url: http://oosa_rewild:6080
     get:
       tags:
+      - OOSA_REWILD_SERVICE/R > User Pocket List
       - OOSA_REWILD_SERVICE
       - ✅ Pocket List
       - OOSA
@@ -3828,6 +4789,18 @@ paths:
           type: string
           format: objectId
         example: ""
+      - name: CF-Access-Client-Id
+        in: header
+        schema:
+          type: string
+          default: cf9f02c65c5130772ba392d9d22794a5.access
+        example: cf9f02c65c5130772ba392d9d22794a5.access
+      - name: CF-Access-Client-Secret
+        in: header
+        schema:
+          type: string
+          default: 3be20e109528c20da2f756667d5a13e1c69c83a872ff82df835a44471efbe8ed
+        example: 3be20e109528c20da2f756667d5a13e1c69c83a872ff82df835a44471efbe8ed
       responses:
         "200":
           description: ""
@@ -3871,6 +4844,7 @@ paths:
         url: http://oosa_rewild:6080
     put:
       tags:
+      - OOSA_REWILD_SERVICE/R > User Pocket List
       - OOSA_REWILD_SERVICE
       - Pocket List
       - T1 探索 Discover
@@ -3895,12 +4869,23 @@ paths:
           type: string
           format: objectId
         example: ""
+      - name: CF-Access-Client-Id
+        in: header
+        schema:
+          type: string
+          default: cf9f02c65c5130772ba392d9d22794a5.access
+        example: cf9f02c65c5130772ba392d9d22794a5.access
+      - name: CF-Access-Client-Secret
+        in: header
+        schema:
+          type: string
+          default: 3be20e109528c20da2f756667d5a13e1c69c83a872ff82df835a44471efbe8ed
+        example: 3be20e109528c20da2f756667d5a13e1c69c83a872ff82df835a44471efbe8ed
       requestBody:
         content:
           application/json:
             schema:
               $ref: '#/components/schemas/RequestPocketListUpdate'
-            example: ""
       responses:
         "200":
           description: ""
@@ -3934,6 +4919,7 @@ paths:
   /references:
     get:
       tags:
+      - OOSA_REWILD_SERVICE/R > References
       - T2 揪團基地 Basecamp
       - OOSA_REWILD_SERVICE
       - 2.1c.1.2
@@ -3942,6 +4928,19 @@ paths:
       - OOSA
       summary: Retrieve
       operationId: getReferences
+      parameters:
+      - name: CF-Access-Client-Id
+        in: header
+        schema:
+          type: string
+          default: cf9f02c65c5130772ba392d9d22794a5.access
+        example: cf9f02c65c5130772ba392d9d22794a5.access
+      - name: CF-Access-Client-Secret
+        in: header
+        schema:
+          type: string
+          default: 3be20e109528c20da2f756667d5a13e1c69c83a872ff82df835a44471efbe8ed
+        example: 3be20e109528c20da2f756667d5a13e1c69c83a872ff82df835a44471efbe8ed
       responses:
         "200":
           description: ""
@@ -3956,6 +4955,7 @@ paths:
   /rewilding:
     get:
       tags:
+      - OOSA_REWILD_SERVICE/R > Rewilding
       - OOSA_REWILD_SERVICE
       - Rewilding
       - T1 探索 Discover
@@ -3977,6 +4977,18 @@ paths:
         in: query
         schema:
           type: boolean
+      - name: CF-Access-Client-Id
+        in: header
+        schema:
+          type: string
+          default: cf9f02c65c5130772ba392d9d22794a5.access
+        example: cf9f02c65c5130772ba392d9d22794a5.access
+      - name: CF-Access-Client-Secret
+        in: header
+        schema:
+          type: string
+          default: 3be20e109528c20da2f756667d5a13e1c69c83a872ff82df835a44471efbe8ed
+        example: 3be20e109528c20da2f756667d5a13e1c69c83a872ff82df835a44471efbe8ed
       responses:
         "200":
           description: ""
@@ -4102,6 +5114,7 @@ paths:
         url: http://oosa_rewild:6080
     post:
       tags:
+      - OOSA_REWILD_SERVICE/R > Rewilding
       - OOSA_REWILD_SERVICE
       - ✅ Rewilding
       - T1 探索 Discover
@@ -4124,6 +5137,19 @@ paths:
       summary: Create rewilding spot
       description: Create rewilding spot by user
       operationId: createRewild
+      parameters:
+      - name: CF-Access-Client-Id
+        in: header
+        schema:
+          type: string
+          default: cf9f02c65c5130772ba392d9d22794a5.access
+        example: cf9f02c65c5130772ba392d9d22794a5.access
+      - name: CF-Access-Client-Secret
+        in: header
+        schema:
+          type: string
+          default: 3be20e109528c20da2f756667d5a13e1c69c83a872ff82df835a44471efbe8ed
+        example: 3be20e109528c20da2f756667d5a13e1c69c83a872ff82df835a44471efbe8ed
       requestBody:
         content:
           multipart/form-data:
@@ -4266,6 +5292,7 @@ paths:
   /rewilding-autocomplete:
     get:
       tags:
+      - OOSA_REWILD_SERVICE/[TBC] Rewilding Search
       - T1 探索 Discover
       - T2 揪團基地 Basecamp
       - OOSA_REWILD_SERVICE
@@ -4291,6 +5318,18 @@ paths:
           - en
           - zh-TW
         example: en
+      - name: CF-Access-Client-Id
+        in: header
+        schema:
+          type: string
+          default: cf9f02c65c5130772ba392d9d22794a5.access
+        example: cf9f02c65c5130772ba392d9d22794a5.access
+      - name: CF-Access-Client-Secret
+        in: header
+        schema:
+          type: string
+          default: 3be20e109528c20da2f756667d5a13e1c69c83a872ff82df835a44471efbe8ed
+        example: 3be20e109528c20da2f756667d5a13e1c69c83a872ff82df835a44471efbe8ed
       responses:
         "200":
           description: ""
@@ -4323,6 +5362,7 @@ paths:
   /rewilding-searchNearby:
     get:
       tags:
+      - OOSA_REWILD_SERVICE/[TBC] Rewilding Search
       - OOSA_REWILD_SERVICE
       - Rewilding Search
       - T1 探索 Discover
@@ -4371,6 +5411,18 @@ paths:
           - en
           - zh-TW
         example: en
+      - name: CF-Access-Client-Id
+        in: header
+        schema:
+          type: string
+          default: cf9f02c65c5130772ba392d9d22794a5.access
+        example: cf9f02c65c5130772ba392d9d22794a5.access
+      - name: CF-Access-Client-Secret
+        in: header
+        schema:
+          type: string
+          default: 3be20e109528c20da2f756667d5a13e1c69c83a872ff82df835a44471efbe8ed
+        example: 3be20e109528c20da2f756667d5a13e1c69c83a872ff82df835a44471efbe8ed
       responses:
         "200":
           description: ""
@@ -4452,6 +5504,7 @@ paths:
   /rewilding-searchText:
     get:
       tags:
+      - OOSA_REWILD_SERVICE/[TBC] Rewilding Search
       - OOSA_REWILD_SERVICE
       - Rewilding Search
       - T1 探索 Discover
@@ -4495,6 +5548,18 @@ paths:
           - zh-TW
           - en
         example: zh-TW
+      - name: CF-Access-Client-Id
+        in: header
+        schema:
+          type: string
+          default: cf9f02c65c5130772ba392d9d22794a5.access
+        example: cf9f02c65c5130772ba392d9d22794a5.access
+      - name: CF-Access-Client-Secret
+        in: header
+        schema:
+          type: string
+          default: 3be20e109528c20da2f756667d5a13e1c69c83a872ff82df835a44471efbe8ed
+        example: 3be20e109528c20da2f756667d5a13e1c69c83a872ff82df835a44471efbe8ed
       responses:
         "200":
           description: ""
@@ -4558,6 +5623,7 @@ paths:
   /rewilding/{rewildingId}:
     delete:
       tags:
+      - OOSA_REWILD_SERVICE/R > Rewilding
       - OOSA_REWILD_SERVICE
       - Rewilding
       - T1 探索 Discover
@@ -4574,6 +5640,18 @@ paths:
         schema:
           type: string
           format: objectId
+      - name: CF-Access-Client-Id
+        in: header
+        schema:
+          type: string
+          default: cf9f02c65c5130772ba392d9d22794a5.access
+        example: cf9f02c65c5130772ba392d9d22794a5.access
+      - name: CF-Access-Client-Secret
+        in: header
+        schema:
+          type: string
+          default: 3be20e109528c20da2f756667d5a13e1c69c83a872ff82df835a44471efbe8ed
+        example: 3be20e109528c20da2f756667d5a13e1c69c83a872ff82df835a44471efbe8ed
       responses:
         "200":
           description: ""
@@ -4588,6 +5666,7 @@ paths:
         url: http://oosa_rewild:6080
     get:
       tags:
+      - OOSA_REWILD_SERVICE/R > Rewilding
       - OOSA_REWILD_SERVICE
       - Rewilding Register
       - T1 探索 Discover
@@ -4608,6 +5687,18 @@ paths:
           type: string
           format: objectId
         example: ""
+      - name: CF-Access-Client-Id
+        in: header
+        schema:
+          type: string
+          default: cf9f02c65c5130772ba392d9d22794a5.access
+        example: cf9f02c65c5130772ba392d9d22794a5.access
+      - name: CF-Access-Client-Secret
+        in: header
+        schema:
+          type: string
+          default: 3be20e109528c20da2f756667d5a13e1c69c83a872ff82df835a44471efbe8ed
+        example: 3be20e109528c20da2f756667d5a13e1c69c83a872ff82df835a44471efbe8ed
       responses:
         "200":
           description: ""
@@ -4633,6 +5724,7 @@ paths:
                 - rewilding_apply_official
                 - rewilding_created_by
                 - rewilding_created_at
+                - rewilding_isbookmarked
                 properties:
                   rewilding_achievement_type:
                     type: string
@@ -4652,6 +5744,8 @@ paths:
                     type: number
                   rewilding_id:
                     type: string
+                  rewilding_isbookmarked:
+                    type: boolean
                   rewilding_lat:
                     type: number
                   rewilding_lng:
@@ -4694,6 +5788,7 @@ paths:
   /rewilding/{rewildingId}/photos:
     get:
       tags:
+      - OOSA_REWILD_SERVICE/R > Rewilding
       - OOSA_REWILD_SERVICE
       - ✅ Rewilding
       - guest
@@ -4710,6 +5805,18 @@ paths:
           type: string
           format: objectId
         example: ""
+      - name: CF-Access-Client-Id
+        in: header
+        schema:
+          type: string
+          default: cf9f02c65c5130772ba392d9d22794a5.access
+        example: cf9f02c65c5130772ba392d9d22794a5.access
+      - name: CF-Access-Client-Secret
+        in: header
+        schema:
+          type: string
+          default: 3be20e109528c20da2f756667d5a13e1c69c83a872ff82df835a44471efbe8ed
+        example: 3be20e109528c20da2f756667d5a13e1c69c83a872ff82df835a44471efbe8ed
       responses:
         "200":
           description: ""
@@ -4726,6 +5833,7 @@ paths:
   /rewilding/{rewildingId}/photos/{photoId}:
     get:
       tags:
+      - OOSA_REWILD_SERVICE/R > Rewilding
       - OOSA_REWILD_SERVICE
       - ✅ Rewilding
       - guest
@@ -4750,6 +5858,18 @@ paths:
           type: string
           format: objectId
         example: ""
+      - name: CF-Access-Client-Id
+        in: header
+        schema:
+          type: string
+          default: cf9f02c65c5130772ba392d9d22794a5.access
+        example: cf9f02c65c5130772ba392d9d22794a5.access
+      - name: CF-Access-Client-Secret
+        in: header
+        schema:
+          type: string
+          default: 3be20e109528c20da2f756667d5a13e1c69c83a872ff82df835a44471efbe8ed
+        example: 3be20e109528c20da2f756667d5a13e1c69c83a872ff82df835a44471efbe8ed
       responses:
         "200":
           description: ""
@@ -4761,9 +5881,67 @@ paths:
       externalDocs:
         description: OOSA_REWILD_SERVICE
         url: http://oosa_rewild:6080
-  /rewilding/places/{place_id}:
+  /rewilding/places/{placeId}/photos/{photoId}:
     get:
       tags:
+      - OOSA_REWILD_SERVICE/[TBC] Rewilding Search
+      - OOSA
+      summary: get photo url from google
+      parameters:
+      - name: placeId
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: photoId
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: CF-Access-Client-Id
+        in: header
+        schema:
+          type: string
+          default: cf9f02c65c5130772ba392d9d22794a5.access
+        example: cf9f02c65c5130772ba392d9d22794a5.access
+      - name: CF-Access-Client-Secret
+        in: header
+        schema:
+          type: string
+          default: 3be20e109528c20da2f756667d5a13e1c69c83a872ff82df835a44471efbe8ed
+        example: 3be20e109528c20da2f756667d5a13e1c69c83a872ff82df835a44471efbe8ed
+      responses:
+        "303":
+          description: ""
+          headers:
+            Location:
+              schema:
+                type: string
+              example: ""
+          content:
+            '*/*':
+              schema:
+                type: object
+        "404":
+          description: ""
+          content:
+            application/json:
+              schema:
+                type: object
+                required:
+                - message
+                properties:
+                  message:
+                    type: string
+                    description: message
+      security: []
+      externalDocs:
+        description: OOSA_REWILD_SERVICE
+        url: http://oosa_rewild:6080
+  /rewilding/places/{placeid}:
+    get:
+      tags:
+      - OOSA_REWILD_SERVICE/[TBC] Rewilding Search
       - OOSA_REWILD_SERVICE
       - Rewilding Search
       - T1 探索 Discover
@@ -4773,11 +5951,23 @@ paths:
       description: 將google place的資料轉成rewilding的格式，reference_links從google search取得前三個連結資料
       operationId: rewildGoogle
       parameters:
-      - name: place_id
+      - name: placeid
         in: path
         required: true
         schema:
           type: string
+      - name: CF-Access-Client-Id
+        in: header
+        schema:
+          type: string
+          default: cf9f02c65c5130772ba392d9d22794a5.access
+        example: cf9f02c65c5130772ba392d9d22794a5.access
+      - name: CF-Access-Client-Secret
+        in: header
+        schema:
+          type: string
+          default: 3be20e109528c20da2f756667d5a13e1c69c83a872ff82df835a44471efbe8ed
+        example: 3be20e109528c20da2f756667d5a13e1c69c83a872ff82df835a44471efbe8ed
       responses:
         "200":
           description: ""
@@ -4854,38 +6044,10 @@ paths:
       externalDocs:
         description: OOSA_REWILD_SERVICE
         url: http://oosa_rewild:6080
-  /rewilding/places/{place_id}/photos/{photo_id}:
-    get:
-      tags:
-      - OOSA_REWILD_SERVICE
-      - Rewilding Search
-      - T1 探索 Discover
-      - _R1
-      - OOSA
-      summary: 從google detail取得野放點照片
-      operationId: rewildGooglePhoto
-      parameters:
-      - name: place_id
-        in: path
-        required: true
-        schema:
-          type: string
-      - name: photo_id
-        in: path
-        required: true
-        schema:
-          type: string
-      responses:
-        "303":
-          description: ""
-        "404":
-          description: photo not found
-      externalDocs:
-        description: OOSA_REWILD_SERVICE
-        url: http://oosa_rewild:6080
   /sso/register:
     get:
       tags:
+      - OOSA_USER_SERVICE/SSO
       - noRedirect
       - guest
       - OOSA
@@ -4896,6 +6058,18 @@ paths:
         in: query
         schema:
           type: string
+      - name: CF-Access-Client-Id
+        in: header
+        schema:
+          type: string
+          default: cf9f02c65c5130772ba392d9d22794a5.access
+        example: cf9f02c65c5130772ba392d9d22794a5.access
+      - name: CF-Access-Client-Secret
+        in: header
+        schema:
+          type: string
+          default: 3be20e109528c20da2f756667d5a13e1c69c83a872ff82df835a44471efbe8ed
+        example: 3be20e109528c20da2f756667d5a13e1c69c83a872ff82df835a44471efbe8ed
       responses:
         "303":
           description: ""
@@ -4910,6 +6084,7 @@ paths:
   /sso/register/finish:
     get:
       tags:
+      - OOSA_USER_SERVICE/SSO
       - noRedirect
       - OOSA
       summary: SSO註冊使用者完成
@@ -4944,8 +6119,26 @@ paths:
         schema:
           type: string
         example: ""
+      - name: CF-Access-Client-Id
+        in: header
+        schema:
+          type: string
+          default: cf9f02c65c5130772ba392d9d22794a5.access
+        example: cf9f02c65c5130772ba392d9d22794a5.access
+      - name: CF-Access-Client-Secret
+        in: header
+        schema:
+          type: string
+          default: 3be20e109528c20da2f756667d5a13e1c69c83a872ff82df835a44471efbe8ed
+        example: 3be20e109528c20da2f756667d5a13e1c69c83a872ff82df835a44471efbe8ed
       responses:
         "200":
+          description: ""
+          content:
+            '*/*':
+              schema:
+                type: object
+        "303":
           description: ""
           content:
             '*/*':
@@ -4959,6 +6152,7 @@ paths:
   /user/{userId}:
     get:
       tags:
+      - OOSA_USER_SERVICE/U > User
       - OOSA_REWILD_SERVICE
       - User Event
       - _O1
@@ -4978,6 +6172,18 @@ paths:
         schema:
           type: string
           format: objectId
+      - name: CF-Access-Client-Id
+        in: header
+        schema:
+          type: string
+          default: cf9f02c65c5130772ba392d9d22794a5.access
+        example: cf9f02c65c5130772ba392d9d22794a5.access
+      - name: CF-Access-Client-Secret
+        in: header
+        schema:
+          type: string
+          default: 3be20e109528c20da2f756667d5a13e1c69c83a872ff82df835a44471efbe8ed
+        example: 3be20e109528c20da2f756667d5a13e1c69c83a872ff82df835a44471efbe8ed
       responses:
         "200":
           description: ""
@@ -4998,6 +6204,7 @@ paths:
   /user/{userId}/achievement:
     get:
       tags:
+      - OOSA_REWILD_SERVICE/R > User Achievement
       - OOSA_REWILD_SERVICE
       - _O1.2a
       - _O1.1.1
@@ -5012,6 +6219,18 @@ paths:
         schema:
           type: string
           format: objectId
+      - name: CF-Access-Client-Id
+        in: header
+        schema:
+          type: string
+          default: cf9f02c65c5130772ba392d9d22794a5.access
+        example: cf9f02c65c5130772ba392d9d22794a5.access
+      - name: CF-Access-Client-Secret
+        in: header
+        schema:
+          type: string
+          default: 3be20e109528c20da2f756667d5a13e1c69c83a872ff82df835a44471efbe8ed
+        example: 3be20e109528c20da2f756667d5a13e1c69c83a872ff82df835a44471efbe8ed
       responses:
         "200":
           description: ""
@@ -5035,6 +6254,7 @@ paths:
   /user/{userId}/badges:
     get:
       tags:
+      - OOSA_USER_SERVICE/U > User Badges
       - OOSA_REWILD_SERVICE
       - User Event
       - guest
@@ -5049,6 +6269,18 @@ paths:
         schema:
           type: string
           format: objectId
+      - name: CF-Access-Client-Id
+        in: header
+        schema:
+          type: string
+          default: cf9f02c65c5130772ba392d9d22794a5.access
+        example: cf9f02c65c5130772ba392d9d22794a5.access
+      - name: CF-Access-Client-Secret
+        in: header
+        schema:
+          type: string
+          default: 3be20e109528c20da2f756667d5a13e1c69c83a872ff82df835a44471efbe8ed
+        example: 3be20e109528c20da2f756667d5a13e1c69c83a872ff82df835a44471efbe8ed
       responses:
         "200":
           description: ""
@@ -5062,13 +6294,15 @@ paths:
             '*/*':
               schema:
                 type: object
-      security: []
+      security:
+      - Bearer: []
       externalDocs:
         description: OOSA_USER_SERVICE
         url: http://oosa_user:6080
   /user/{userId}/events:
     get:
       tags:
+      - OOSA_REWILD_SERVICE/R > User Events
       - OOSA_REWILD_SERVICE
       - User Event
       - _O1.2
@@ -5093,6 +6327,18 @@ paths:
         in: query
         schema:
           type: string
+      - name: CF-Access-Client-Id
+        in: header
+        schema:
+          type: string
+          default: cf9f02c65c5130772ba392d9d22794a5.access
+        example: cf9f02c65c5130772ba392d9d22794a5.access
+      - name: CF-Access-Client-Secret
+        in: header
+        schema:
+          type: string
+          default: 3be20e109528c20da2f756667d5a13e1c69c83a872ff82df835a44471efbe8ed
+        example: 3be20e109528c20da2f756667d5a13e1c69c83a872ff82df835a44471efbe8ed
       responses:
         "200":
           description: ""
@@ -5116,6 +6362,7 @@ paths:
   /user/{userId}/friends:
     get:
       tags:
+      - OOSA_USER_SERVICE/U > User Friends
       - OOSA_REWILD_SERVICE
       - User Event
       - _O1
@@ -5138,6 +6385,18 @@ paths:
         in: query
         schema:
           type: string
+      - name: CF-Access-Client-Id
+        in: header
+        schema:
+          type: string
+          default: cf9f02c65c5130772ba392d9d22794a5.access
+        example: cf9f02c65c5130772ba392d9d22794a5.access
+      - name: CF-Access-Client-Secret
+        in: header
+        schema:
+          type: string
+          default: 3be20e109528c20da2f756667d5a13e1c69c83a872ff82df835a44471efbe8ed
+        example: 3be20e109528c20da2f756667d5a13e1c69c83a872ff82df835a44471efbe8ed
       responses:
         "200":
           description: ""
@@ -5198,6 +6457,7 @@ paths:
   /user/friends:
     get:
       tags:
+      - OOSA_USER_SERVICE/U > User Friends
       - OOSA_USER_SERVICE
       - User - Friends
       - _E 活動 Event
@@ -5233,6 +6493,18 @@ paths:
         schema:
           type: string
           format: uuid
+      - name: CF-Access-Client-Id
+        in: header
+        schema:
+          type: string
+          default: cf9f02c65c5130772ba392d9d22794a5.access
+        example: cf9f02c65c5130772ba392d9d22794a5.access
+      - name: CF-Access-Client-Secret
+        in: header
+        schema:
+          type: string
+          default: 3be20e109528c20da2f756667d5a13e1c69c83a872ff82df835a44471efbe8ed
+        example: 3be20e109528c20da2f756667d5a13e1c69c83a872ff82df835a44471efbe8ed
       responses:
         "200":
           description: ""
@@ -5292,6 +6564,7 @@ paths:
         url: http://oosa_user:6080
     post:
       tags:
+      - OOSA_USER_SERVICE/U > User Friends
       - User - Friends
       - T4 世界 World
       - _O
@@ -5303,6 +6576,19 @@ paths:
         user_friend_status should be set to 0 upon successful API completion.
         friendship limit is 5000.
       operationId: createUserFriendById
+      parameters:
+      - name: CF-Access-Client-Id
+        in: header
+        schema:
+          type: string
+          default: cf9f02c65c5130772ba392d9d22794a5.access
+        example: cf9f02c65c5130772ba392d9d22794a5.access
+      - name: CF-Access-Client-Secret
+        in: header
+        schema:
+          type: string
+          default: 3be20e109528c20da2f756667d5a13e1c69c83a872ff82df835a44471efbe8ed
+        example: 3be20e109528c20da2f756667d5a13e1c69c83a872ff82df835a44471efbe8ed
       requestBody:
         content:
           application/json:
@@ -5375,6 +6661,7 @@ paths:
   /user/friends/{userFriendsId}:
     delete:
       tags:
+      - OOSA_USER_SERVICE/U > User Friends
       - _O
       - User - Friends
       - _O1b
@@ -5393,8 +6680,21 @@ paths:
           format: objectId
       - name: Notification_Id
         in: query
+        required: true
         schema:
           type: string
+      - name: CF-Access-Client-Id
+        in: header
+        schema:
+          type: string
+          default: cf9f02c65c5130772ba392d9d22794a5.access
+        example: cf9f02c65c5130772ba392d9d22794a5.access
+      - name: CF-Access-Client-Secret
+        in: header
+        schema:
+          type: string
+          default: 3be20e109528c20da2f756667d5a13e1c69c83a872ff82df835a44471efbe8ed
+        example: 3be20e109528c20da2f756667d5a13e1c69c83a872ff82df835a44471efbe8ed
       responses:
         "200":
           description: ""
@@ -5409,6 +6709,7 @@ paths:
         url: http://oosa_user:6080
     put:
       tags:
+      - OOSA_USER_SERVICE/U > User Friends
       - User Notifications
       - _O
       - User - Friends
@@ -5425,8 +6726,21 @@ paths:
           format: objectId
       - name: Notification_Id
         in: query
+        required: true
         schema:
           type: string
+      - name: CF-Access-Client-Id
+        in: header
+        schema:
+          type: string
+          default: cf9f02c65c5130772ba392d9d22794a5.access
+        example: cf9f02c65c5130772ba392d9d22794a5.access
+      - name: CF-Access-Client-Secret
+        in: header
+        schema:
+          type: string
+          default: 3be20e109528c20da2f756667d5a13e1c69c83a872ff82df835a44471efbe8ed
+        example: 3be20e109528c20da2f756667d5a13e1c69c83a872ff82df835a44471efbe8ed
       requestBody:
         content:
           multipart/form-data:
@@ -5447,6 +6761,7 @@ paths:
   /user/friends/recommended:
     get:
       tags:
+      - OOSA_USER_SERVICE/U > User Friends
       - OOSA_USER_SERVICE
       - User - Friends
       - T4 世界 World
@@ -5473,6 +6788,18 @@ paths:
         in: query
         schema:
           type: string
+      - name: CF-Access-Client-Id
+        in: header
+        schema:
+          type: string
+          default: cf9f02c65c5130772ba392d9d22794a5.access
+        example: cf9f02c65c5130772ba392d9d22794a5.access
+      - name: CF-Access-Client-Secret
+        in: header
+        schema:
+          type: string
+          default: 3be20e109528c20da2f756667d5a13e1c69c83a872ff82df835a44471efbe8ed
+        example: 3be20e109528c20da2f756667d5a13e1c69c83a872ff82df835a44471efbe8ed
       responses:
         "200":
           description: ""
@@ -5534,6 +6861,7 @@ paths:
   /users:
     get:
       tags:
+      - OOSA_USER_SERVICE/U > User
       - 3.3.2.1
       - 3.3.2.1a
       - 3.3.2.1b
@@ -5562,6 +6890,18 @@ paths:
         schema:
           type: string
           format: char
+      - name: CF-Access-Client-Id
+        in: header
+        schema:
+          type: string
+          default: cf9f02c65c5130772ba392d9d22794a5.access
+        example: cf9f02c65c5130772ba392d9d22794a5.access
+      - name: CF-Access-Client-Secret
+        in: header
+        schema:
+          type: string
+          default: 3be20e109528c20da2f756667d5a13e1c69c83a872ff82df835a44471efbe8ed
+        example: 3be20e109528c20da2f756667d5a13e1c69c83a872ff82df835a44471efbe8ed
       responses:
         "200":
           description: ""
@@ -5579,6 +6919,7 @@ paths:
   /users/statistics:
     get:
       tags:
+      - OOSA_USER_SERVICE/U > User Statistic
       - OOSA_REWILD_SERVICE
       - User Event
       - "5.4"
@@ -5587,6 +6928,19 @@ paths:
       summary: Statistics
       description: Retrieve an authenticated user events
       operationId: getUserStat
+      parameters:
+      - name: CF-Access-Client-Id
+        in: header
+        schema:
+          type: string
+          default: cf9f02c65c5130772ba392d9d22794a5.access
+        example: cf9f02c65c5130772ba392d9d22794a5.access
+      - name: CF-Access-Client-Secret
+        in: header
+        schema:
+          type: string
+          default: 3be20e109528c20da2f756667d5a13e1c69c83a872ff82df835a44471efbe8ed
+        example: 3be20e109528c20da2f756667d5a13e1c69c83a872ff82df835a44471efbe8ed
       responses:
         "200":
           description: ""
@@ -5685,6 +7039,7 @@ paths:
   /world/ranking-feelings:
     get:
       tags:
+      - OOSA_USER_SERVICE/R > World Statistic
       - OOSA_REWILD_SERVICE
       - User Event
       - T4 世界 World
@@ -5701,6 +7056,18 @@ paths:
           "EXPERIENCE_5", "EXPERIENCE_6"'
         schema:
           type: string
+      - name: CF-Access-Client-Id
+        in: header
+        schema:
+          type: string
+          default: cf9f02c65c5130772ba392d9d22794a5.access
+        example: cf9f02c65c5130772ba392d9d22794a5.access
+      - name: CF-Access-Client-Secret
+        in: header
+        schema:
+          type: string
+          default: 3be20e109528c20da2f756667d5a13e1c69c83a872ff82df835a44471efbe8ed
+        example: 3be20e109528c20da2f756667d5a13e1c69c83a872ff82df835a44471efbe8ed
       responses:
         "200":
           description: ""
@@ -5723,6 +7090,7 @@ paths:
   /world/ranking-rewilding:
     get:
       tags:
+      - OOSA_USER_SERVICE/R > World Statistic
       - OOSA_REWILD_SERVICE
       - User Event
       - T4 世界 World
@@ -5732,6 +7100,19 @@ paths:
       summary: Ranking Rewilding
       description: Retrieve an authenticated user events
       operationId: getRankRewild
+      parameters:
+      - name: CF-Access-Client-Id
+        in: header
+        schema:
+          type: string
+          default: cf9f02c65c5130772ba392d9d22794a5.access
+        example: cf9f02c65c5130772ba392d9d22794a5.access
+      - name: CF-Access-Client-Secret
+        in: header
+        schema:
+          type: string
+          default: 3be20e109528c20da2f756667d5a13e1c69c83a872ff82df835a44471efbe8ed
+        example: 3be20e109528c20da2f756667d5a13e1c69c83a872ff82df835a44471efbe8ed
       responses:
         "200":
           description: ""
@@ -5754,6 +7135,7 @@ paths:
   /world/statistics:
     get:
       tags:
+      - OOSA_USER_SERVICE/R > World Statistic
       - OOSA_REWILD_SERVICE
       - User Event
       - T4 世界 World
@@ -5763,6 +7145,19 @@ paths:
       summary: Statistics
       description: Retrieve World Statistics
       operationId: getUserWorldStat
+      parameters:
+      - name: CF-Access-Client-Id
+        in: header
+        schema:
+          type: string
+          default: cf9f02c65c5130772ba392d9d22794a5.access
+        example: cf9f02c65c5130772ba392d9d22794a5.access
+      - name: CF-Access-Client-Secret
+        in: header
+        schema:
+          type: string
+          default: 3be20e109528c20da2f756667d5a13e1c69c83a872ff82df835a44471efbe8ed
+        example: 3be20e109528c20da2f756667d5a13e1c69c83a872ff82df835a44471efbe8ed
       responses:
         "200":
           description: ""
@@ -5999,31 +7394,51 @@ components:
           type: string
         event_participants_user_detail:
           $ref: '#/components/schemas/UserAgg'
-    EventPolaroidsSimple:
-      type: object
-      required:
-      - event_polaroids_created_by
-      - event_polaroids_event
-      - event_polaroids_id
-      - event_polaroids_lat
-      - event_polaroids_lng
-      - event_polaroids_url
-      - event_polaroids_created_at
-      properties:
-        event_polaroids_created_at:
-          type: string
-        event_polaroids_created_by:
-          type: string
-        event_polaroids_event:
-          type: string
-        event_polaroids_id:
-          type: string
-        event_polaroids_lat:
-          type: number
-        event_polaroids_lng:
-          type: number
-        event_polaroids_url:
-          type: string
+    EventPolaroids:
+      type: array
+      items:
+        type: object
+        required:
+        - event_polaroids_event
+        - event_polaroids_url
+        - event_polaroids_lat
+        - event_polaroids_lng
+        - event_polaroids_message
+        - event_polaroids_tag
+        - event_polaroids_created_by
+        - event_polaroids_created_at
+        - event_polaroids_photo_date
+        properties:
+          event_polaroids_achievement_eligible:
+            type: boolean
+          event_polaroids_created_at:
+            type: string
+          event_polaroids_created_by:
+            type: string
+          event_polaroids_created_by_user:
+            $ref: '#/components/schemas/UserAgg'
+          event_polaroids_event:
+            type: string
+          event_polaroids_id:
+            type: string
+          event_polaroids_is_event_period:
+            type: boolean
+          event_polaroids_lat:
+            type: number
+          event_polaroids_lng:
+            type: number
+          event_polaroids_message:
+            type: string
+          event_polaroids_photo_date:
+            type: string
+          event_polaroids_radius_from_event:
+            type: number
+          event_polaroids_star_type:
+            type: integer
+          event_polaroids_tag:
+            type: string
+          event_polaroids_url:
+            type: string
     EventReferenceLinks:
       type: object
       properties:
@@ -6121,6 +7536,9 @@ components:
       - events_photo
       - events_place
       - events_meeting_point_name
+      - events_type
+      - events_invitation_template
+      - events_invitation_no
       properties:
         events_city_id:
           type: integer
@@ -6139,6 +7557,10 @@ components:
         events_id:
           type: string
         events_invitation_message:
+          type: string
+        events_invitation_no:
+          type: string
+        events_invitation_template:
           type: string
         events_lat:
           type: number
@@ -6192,6 +7614,8 @@ components:
           type: number
         events_statistic_time:
           type: number
+        events_type:
+          type: string
         events_updated_at:
           type: string
         events_updated_by:
@@ -7111,8 +8535,11 @@ components:
             message:
               type: string
               description: message
-        notifications_type:
+        notifications_state:
           type: string
+          enum:
+          - new
+          - done
           default: New
         notifications_user:
           type: string
@@ -7137,6 +8564,7 @@ components:
       - users_source_id
       - users_username
       - users_followings
+      - users_friends_info
       properties:
         users_avatar:
           type: string
@@ -7153,6 +8581,23 @@ components:
           type: integer
         users_followings:
           $ref: '#/components/schemas/UserFollowings'
+        users_friends_info:
+          type: object
+          required:
+          - status
+          - count
+          properties:
+            count:
+              type: integer
+              description: 好友數
+            status:
+              type: string
+              description: 好友狀態(查看者與被查看者的關係)
+              enum:
+              - stranger
+              - friend
+              - invited
+              - myself
         users_id:
           type: string
         users_is_business:
