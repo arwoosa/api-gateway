@@ -58,6 +58,7 @@ gen-staging:
 gen-dev:
 	$(MAKE) gen-all ENV=dev
 	@mkdir -p ".generated/dev"
+	@sed -i '' 's/app-dev.oosa.life/app-dev.oosa.life|dev.oosa.life/g' doc/dev_rules.json
 	@cp krakend.json .generated/dev/krakend.json
 	@cp doc/dev_oosa.yml .generated/dev/api.yaml
 	@cp doc/dev_rules.json .generated/dev/rules.json

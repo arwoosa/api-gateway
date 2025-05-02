@@ -7,9 +7,20 @@ info:
   description: ''
   version: 1.0.0
 tags:
+  - name: OOSA_USER_SERVICE
+  - name: OOSA_USER_SERVICE/U > User Friends
+  - name: OOSA_USER_SERVICE/[TBC]  User Following
+  - name: OOSA_USER_SERVICE/R > World Statistic
+  - name: OOSA_USER_SERVICE/SSO
+  - name: OOSA_USER_SERVICE/U > Auth
+  - name: OOSA_USER_SERVICE/U > User
+  - name: OOSA_USER_SERVICE/U > User Badges
+  - name: OOSA_USER_SERVICE/U > User Notifications
+  - name: OOSA_USER_SERVICE/U > User Statistic
+  - name: OOSA_USER_SERVICE/U > Contact Us
+  - name: OOSA_USER_SERVICE/U > User Settings
   - name: noRedirect
   - name: guest
-  - name: OOSA_USER_SERVICE
   - name: Authentication
   - name: T5 個人 My
   - name: 5.2.1.1.2
@@ -115,6 +126,7 @@ paths:
       description: ''
       operationId: startSsoRegister
       tags:
+        - OOSA_USER_SERVICE/SSO
         - noRedirect
         - guest
       parameters:
@@ -124,6 +136,20 @@ paths:
           required: false
           schema:
             type: string
+        - name: CF-Access-Client-Id
+          in: header
+          description: ''
+          example: cf9f02c65c5130772ba392d9d22794a5.access
+          schema:
+            type: string
+            default: cf9f02c65c5130772ba392d9d22794a5.access
+        - name: CF-Access-Client-Secret
+          in: header
+          description: ''
+          example: 3be20e109528c20da2f756667d5a13e1c69c83a872ff82df835a44471efbe8ed
+          schema:
+            type: string
+            default: 3be20e109528c20da2f756667d5a13e1c69c83a872ff82df835a44471efbe8ed
       responses:
         '303':
           description: ''
@@ -132,15 +158,8 @@ paths:
               schema:
                 type: object
                 properties: {}
-                x-apidog-ignore-properties: []
-                x-apidog-orders: []
           headers: {}
-          x-apidog-name: See Other
       security: []
-      x-apidog-folder: OOSA_USER_SERVICE/SSO
-      x-apidog-status: tested
-      x-apidog-maintainer: Peter Chen
-      x-run-in-apidog: https://apidog.com/web/project/607604/apis/api-10963184-run
   /sso/register/finish:
     get:
       summary: SSO註冊使用者完成
@@ -148,6 +167,7 @@ paths:
       description: ''
       operationId: finishSsoRegister
       tags:
+        - OOSA_USER_SERVICE/SSO
         - noRedirect
       parameters:
         - name: state
@@ -191,6 +211,20 @@ paths:
           example: ''
           schema:
             type: string
+        - name: CF-Access-Client-Id
+          in: header
+          description: ''
+          example: cf9f02c65c5130772ba392d9d22794a5.access
+          schema:
+            type: string
+            default: cf9f02c65c5130772ba392d9d22794a5.access
+        - name: CF-Access-Client-Secret
+          in: header
+          description: ''
+          example: 3be20e109528c20da2f756667d5a13e1c69c83a872ff82df835a44471efbe8ed
+          schema:
+            type: string
+            default: 3be20e109528c20da2f756667d5a13e1c69c83a872ff82df835a44471efbe8ed
       responses:
         '200':
           description: ''
@@ -199,16 +233,17 @@ paths:
               schema:
                 type: object
                 properties: {}
-                x-apidog-ignore-properties: []
-                x-apidog-orders: []
           headers: {}
-          x-apidog-name: Success
+        '303':
+          description: ''
+          content:
+            '*/*':
+              schema:
+                type: object
+                properties: {}
+          headers: {}
       security:
         - bearer: []
-      x-apidog-folder: OOSA_USER_SERVICE/SSO
-      x-apidog-status: developing
-      x-apidog-maintainer: Peter Chen
-      x-run-in-apidog: https://apidog.com/web/project/607604/apis/api-10963193-run
   /auth/apple:
     post:
       summary: Auth Apple
@@ -216,9 +251,24 @@ paths:
       description: Use this endpoint to login/register using Apple
       operationId: authByApple
       tags:
+        - OOSA_USER_SERVICE/U > Auth
         - OOSA_USER_SERVICE
         - Authentication
-      parameters: []
+      parameters:
+        - name: CF-Access-Client-Id
+          in: header
+          description: ''
+          example: cf9f02c65c5130772ba392d9d22794a5.access
+          schema:
+            type: string
+            default: cf9f02c65c5130772ba392d9d22794a5.access
+        - name: CF-Access-Client-Secret
+          in: header
+          description: ''
+          example: 3be20e109528c20da2f756667d5a13e1c69c83a872ff82df835a44471efbe8ed
+          schema:
+            type: string
+            default: 3be20e109528c20da2f756667d5a13e1c69c83a872ff82df835a44471efbe8ed
       responses:
         '200':
           description: ''
@@ -227,11 +277,7 @@ paths:
               schema: &ref_0
                 $ref: '#/components/schemas/UserLogin'
           headers: {}
-          x-apidog-name: Login object
       security: []
-      x-apidog-folder: OOSA_USER_SERVICE/U > Auth
-      x-apidog-status: deprecated
-      x-run-in-apidog: https://apidog.com/web/project/607604/apis/api-8862643-run
   /auth/avatar:
     post:
       summary: Update User Avatar
@@ -239,18 +285,33 @@ paths:
       description: Update user avatar
       operationId: updateAvatarUseDefault
       tags:
+        - OOSA_USER_SERVICE/U > Auth
         - OOSA_USER_SERVICE
         - Authentication
         - T5 個人 My
         - 5.2.1.1.2
         - 5.2.1.1.2a
-      parameters: []
+      parameters:
+        - name: CF-Access-Client-Id
+          in: header
+          description: ''
+          example: cf9f02c65c5130772ba392d9d22794a5.access
+          schema:
+            type: string
+            default: cf9f02c65c5130772ba392d9d22794a5.access
+        - name: CF-Access-Client-Secret
+          in: header
+          description: ''
+          example: 3be20e109528c20da2f756667d5a13e1c69c83a872ff82df835a44471efbe8ed
+          schema:
+            type: string
+            default: 3be20e109528c20da2f756667d5a13e1c69c83a872ff82df835a44471efbe8ed
       requestBody:
         content:
           application/json:
             schema:
               $ref: '#/components/schemas/RequestAuthUpdateAvatar'
-            example: ''
+            example: null
       responses:
         '200':
           description: ''
@@ -258,37 +319,9 @@ paths:
             application/json:
               schema: &ref_3
                 $ref: '#/components/schemas/User'
-                x-apidog-overrides:
-                  user_created_at: null
-                  user_avatar: null
-                  user_id: null
-                  user_is_business: null
-                  user_is_subscribed: null
-                  user_object: null
-                  user_password: null
-                  user_setting_friend_auto_add: null
-                  user_setting_is_visible_friends: null
-                  user_setting_is_visible_statistics: null
-                  user_setting_visibility_activity_summary: null
-                  user_source_code: null
-                  user_source_id: null
-                  user_breathing_points: null
-                  user_breathing_status: null
-                  user_following_count: null
-                  user_follower_count: null
-                  user_updated_at: null
-                  user_deleted_at: null
-                  user_status: null
-                  user_username_updated_at: null
-                  user_email_updated_at: null
-                  user_name_updated_at: null
           headers: {}
-          x-apidog-name: User object
       security:
         - bearer: []
-      x-apidog-folder: OOSA_USER_SERVICE/U > Auth
-      x-apidog-status: deprecated
-      x-run-in-apidog: https://apidog.com/web/project/607604/apis/api-8862644-run
   /auth/change-password:
     put:
       summary: Update Password
@@ -296,6 +329,7 @@ paths:
       description: Update the authenticated user password
       operationId: updatePassword
       tags:
+        - OOSA_USER_SERVICE/U > Auth
         - OOSA_USER_SERVICE
         - Authentication
         - T5 個人 My
@@ -305,13 +339,27 @@ paths:
         - 5.2.1.5c
         - 5.2.1.5d
         - 5.2.1.5e
-      parameters: []
+      parameters:
+        - name: CF-Access-Client-Id
+          in: header
+          description: ''
+          example: cf9f02c65c5130772ba392d9d22794a5.access
+          schema:
+            type: string
+            default: cf9f02c65c5130772ba392d9d22794a5.access
+        - name: CF-Access-Client-Secret
+          in: header
+          description: ''
+          example: 3be20e109528c20da2f756667d5a13e1c69c83a872ff82df835a44471efbe8ed
+          schema:
+            type: string
+            default: 3be20e109528c20da2f756667d5a13e1c69c83a872ff82df835a44471efbe8ed
       requestBody:
         content:
           application/json:
             schema:
               $ref: '#/components/schemas/RequestUsersUpdatePassword'
-            example: ''
+            example: null
       responses:
         '200':
           description: ''
@@ -320,11 +368,7 @@ paths:
               schema: &ref_2
                 $ref: '#/components/schemas/ResponseGeneralSuccess'
           headers: {}
-          x-apidog-name: User object
       security: []
-      x-apidog-folder: OOSA_USER_SERVICE/U > Auth
-      x-apidog-status: deprecated
-      x-run-in-apidog: https://apidog.com/web/project/607604/apis/api-8862646-run
   /auth/email:
     post:
       summary: Auth Email
@@ -332,17 +376,32 @@ paths:
       description: Use this endpoint to login using email
       operationId: authByEmail
       tags:
+        - OOSA_USER_SERVICE/U > Auth
         - OOSA_USER_SERVICE
         - Authentication
         - _註冊與登入 Register and Sign in
         - _S1.2.1a
-      parameters: []
+      parameters:
+        - name: CF-Access-Client-Id
+          in: header
+          description: ''
+          example: cf9f02c65c5130772ba392d9d22794a5.access
+          schema:
+            type: string
+            default: cf9f02c65c5130772ba392d9d22794a5.access
+        - name: CF-Access-Client-Secret
+          in: header
+          description: ''
+          example: 3be20e109528c20da2f756667d5a13e1c69c83a872ff82df835a44471efbe8ed
+          schema:
+            type: string
+            default: 3be20e109528c20da2f756667d5a13e1c69c83a872ff82df835a44471efbe8ed
       requestBody:
         content:
           application/json:
             schema:
               $ref: '#/components/schemas/RequestUserLoginEmail'
-            example: ''
+            example: null
       responses:
         '200':
           description: ''
@@ -350,7 +409,6 @@ paths:
             application/json:
               schema: *ref_0
           headers: {}
-          x-apidog-name: Login object
         '400':
           description: ''
           content:
@@ -358,7 +416,6 @@ paths:
               schema: &ref_1
                 $ref: '#/components/schemas/ResponseValidationError'
           headers: {}
-          x-apidog-name: Validation Error
         '404':
           description: ''
           content:
@@ -370,17 +427,10 @@ paths:
                     type: string
                     title: ''
                     description: message
-                x-apidog-orders:
-                  - message
                 required:
                   - message
           headers: {}
-          x-apidog-name: Record not found
       security: []
-      x-apidog-folder: OOSA_USER_SERVICE/U > Auth
-      x-apidog-status: released
-      x-apidog-maintainer: 陳文晟
-      x-run-in-apidog: https://apidog.com/web/project/607604/apis/api-8862647-run
   /auth/facebook:
     post:
       summary: Auth Facebook
@@ -388,13 +438,28 @@ paths:
       description: Use this endpoint to login/register using Facebook
       operationId: authByFacebook
       tags:
+        - OOSA_USER_SERVICE/U > Auth
         - OOSA_USER_SERVICE
         - Authentication
         - _S1.1.3
         - _S1.2.1a
         - 5.2.1.6
         - 5.2.1.6a
-      parameters: []
+      parameters:
+        - name: CF-Access-Client-Id
+          in: header
+          description: ''
+          example: cf9f02c65c5130772ba392d9d22794a5.access
+          schema:
+            type: string
+            default: cf9f02c65c5130772ba392d9d22794a5.access
+        - name: CF-Access-Client-Secret
+          in: header
+          description: ''
+          example: 3be20e109528c20da2f756667d5a13e1c69c83a872ff82df835a44471efbe8ed
+          schema:
+            type: string
+            default: 3be20e109528c20da2f756667d5a13e1c69c83a872ff82df835a44471efbe8ed
       responses:
         '200':
           description: ''
@@ -402,11 +467,7 @@ paths:
             application/json:
               schema: *ref_0
           headers: {}
-          x-apidog-name: Login object
       security: []
-      x-apidog-folder: OOSA_USER_SERVICE/U > Auth
-      x-apidog-status: deprecated
-      x-run-in-apidog: https://apidog.com/web/project/607604/apis/api-8862648-run
   /auth/google:
     post:
       summary: Auth Google
@@ -414,18 +475,33 @@ paths:
       description: Use this endpoint to login/register using google
       operationId: authByGoogle
       tags:
+        - OOSA_USER_SERVICE/U > Auth
         - Authentication
         - _註冊與登入 Register and Sign in
         - _S1.1.1
         - OOSA_USER_SERVICE
         - _S1.2
-      parameters: []
+      parameters:
+        - name: CF-Access-Client-Id
+          in: header
+          description: ''
+          example: cf9f02c65c5130772ba392d9d22794a5.access
+          schema:
+            type: string
+            default: cf9f02c65c5130772ba392d9d22794a5.access
+        - name: CF-Access-Client-Secret
+          in: header
+          description: ''
+          example: 3be20e109528c20da2f756667d5a13e1c69c83a872ff82df835a44471efbe8ed
+          schema:
+            type: string
+            default: 3be20e109528c20da2f756667d5a13e1c69c83a872ff82df835a44471efbe8ed
       requestBody:
         content:
           application/json:
             schema:
               $ref: '#/components/schemas/RequestGoogleAuth'
-            example: ''
+            example: null
       responses:
         '200':
           description: ''
@@ -433,11 +509,7 @@ paths:
             application/json:
               schema: *ref_0
           headers: {}
-          x-apidog-name: Login object
       security: []
-      x-apidog-folder: OOSA_USER_SERVICE/U > Auth
-      x-apidog-status: deprecated
-      x-run-in-apidog: https://apidog.com/web/project/607604/apis/api-8862649-run
   /auth/line:
     get:
       summary: Auth Line
@@ -445,6 +517,7 @@ paths:
       description: Use this endpoint to login/register using Line
       operationId: getAuthByLine
       tags:
+        - OOSA_USER_SERVICE/U > Auth
         - OOSA_USER_SERVICE
         - Authentication
         - _註冊與登入 Register and Sign in
@@ -463,6 +536,20 @@ paths:
           required: false
           schema:
             type: string
+        - name: CF-Access-Client-Id
+          in: header
+          description: ''
+          example: cf9f02c65c5130772ba392d9d22794a5.access
+          schema:
+            type: string
+            default: cf9f02c65c5130772ba392d9d22794a5.access
+        - name: CF-Access-Client-Secret
+          in: header
+          description: ''
+          example: 3be20e109528c20da2f756667d5a13e1c69c83a872ff82df835a44471efbe8ed
+          schema:
+            type: string
+            default: 3be20e109528c20da2f756667d5a13e1c69c83a872ff82df835a44471efbe8ed
       responses:
         '200':
           description: ''
@@ -470,18 +557,13 @@ paths:
             application/json:
               schema: *ref_0
           headers: {}
-          x-apidog-name: Login object
         '400':
           description: ''
           content:
             application/json:
               schema: *ref_1
           headers: {}
-          x-apidog-name: Validation Error
       security: []
-      x-apidog-folder: OOSA_USER_SERVICE/U > Auth
-      x-apidog-status: deprecated
-      x-run-in-apidog: https://apidog.com/web/project/607604/apis/api-8862650-run
   /forget-password:
     post:
       summary: Forget Password
@@ -489,17 +571,32 @@ paths:
       description: Forget Password Request
       operationId: forgetPassword
       tags:
+        - OOSA_USER_SERVICE/U > Auth
         - OOSA_USER_SERVICE
         - Forget Password
         - T5 個人 My
         - 5.2.1.5.1
-      parameters: []
+      parameters:
+        - name: CF-Access-Client-Id
+          in: header
+          description: ''
+          example: cf9f02c65c5130772ba392d9d22794a5.access
+          schema:
+            type: string
+            default: cf9f02c65c5130772ba392d9d22794a5.access
+        - name: CF-Access-Client-Secret
+          in: header
+          description: ''
+          example: 3be20e109528c20da2f756667d5a13e1c69c83a872ff82df835a44471efbe8ed
+          schema:
+            type: string
+            default: 3be20e109528c20da2f756667d5a13e1c69c83a872ff82df835a44471efbe8ed
       requestBody:
         content:
           application/json:
             schema:
               $ref: '#/components/schemas/RequestForgetPassword'
-            example: ''
+            example: null
       responses:
         '200':
           description: ''
@@ -507,11 +604,7 @@ paths:
             application/json:
               schema: *ref_2
           headers: {}
-          x-apidog-name: User object
       security: []
-      x-apidog-folder: OOSA_USER_SERVICE/U > Auth
-      x-apidog-status: deprecated
-      x-run-in-apidog: https://apidog.com/web/project/607604/apis/api-8862653-run
   /register:
     post:
       summary: Email - Register
@@ -519,17 +612,32 @@ paths:
       description: Use this endpoint to register using email
       operationId: emailRegister
       tags:
+        - OOSA_USER_SERVICE/U > Auth
         - OOSA_USER_SERVICE
         - Authentication
         - _註冊與登入 Register and Sign in
         - _S1.1
-      parameters: []
+      parameters:
+        - name: CF-Access-Client-Id
+          in: header
+          description: ''
+          example: cf9f02c65c5130772ba392d9d22794a5.access
+          schema:
+            type: string
+            default: cf9f02c65c5130772ba392d9d22794a5.access
+        - name: CF-Access-Client-Secret
+          in: header
+          description: ''
+          example: 3be20e109528c20da2f756667d5a13e1c69c83a872ff82df835a44471efbe8ed
+          schema:
+            type: string
+            default: 3be20e109528c20da2f756667d5a13e1c69c83a872ff82df835a44471efbe8ed
       requestBody:
         content:
           application/json:
             schema:
               $ref: '#/components/schemas/RequestUserRegisterEmail'
-            example: ''
+            example: null
       responses:
         '200':
           description: ''
@@ -537,7 +645,6 @@ paths:
             application/json:
               schema: *ref_0
           headers: {}
-          x-apidog-name: Login object
         '204':
           description: ''
           content:
@@ -545,11 +652,7 @@ paths:
               schema: &ref_4
                 $ref: '#/components/schemas/ResponseGeneralError'
           headers: {}
-          x-apidog-name: If user exists
       security: []
-      x-apidog-folder: OOSA_USER_SERVICE/U > Auth
-      x-apidog-status: deprecated
-      x-run-in-apidog: https://apidog.com/web/project/607604/apis/api-8862654-run
   /auth:
     get:
       summary: Read Authentication
@@ -559,11 +662,26 @@ paths:
         Line<br/>3. Email<br/>4. Facebook
       operationId: getAuthInfo
       tags:
+        - OOSA_USER_SERVICE/U > Auth
         - OOSA_USER_SERVICE
         - Authentication
         - T5 個人 My
         - '5.0'
-      parameters: []
+      parameters:
+        - name: CF-Access-Client-Id
+          in: header
+          description: ''
+          example: cf9f02c65c5130772ba392d9d22794a5.access
+          schema:
+            type: string
+            default: cf9f02c65c5130772ba392d9d22794a5.access
+        - name: CF-Access-Client-Secret
+          in: header
+          description: ''
+          example: 3be20e109528c20da2f756667d5a13e1c69c83a872ff82df835a44471efbe8ed
+          schema:
+            type: string
+            default: 3be20e109528c20da2f756667d5a13e1c69c83a872ff82df835a44471efbe8ed
       responses:
         '200':
           description: ''
@@ -571,32 +689,27 @@ paths:
             application/json:
               schema: *ref_3
           headers: {}
-          x-apidog-name: User object
         '400':
           description: ''
           content:
             application/json:
               schema: *ref_4
           headers: {}
-          x-apidog-name: Bad Request
         '401':
           description: ''
           content:
             application/json:
               schema: *ref_4
           headers: {}
-          x-apidog-name: Unauthorised
       security:
         - bearer: []
-      x-apidog-folder: OOSA_USER_SERVICE/U > Auth
-      x-apidog-status: released
-      x-run-in-apidog: https://apidog.com/web/project/607604/apis/api-8862658-run
     put:
       summary: Update User
       deprecated: false
       description: Update the authenticated user detail
       operationId: updateUser
       tags:
+        - OOSA_USER_SERVICE/U > User Settings
         - OOSA_USER_SERVICE
         - Authentication
         - T5 個人 My
@@ -614,13 +727,27 @@ paths:
         - 5.2.1.3e
         - 5.2.1.3f
         - 5.2.1.3g
-      parameters: []
+      parameters:
+        - name: CF-Access-Client-Id
+          in: header
+          description: ''
+          example: cf9f02c65c5130772ba392d9d22794a5.access
+          schema:
+            type: string
+            default: cf9f02c65c5130772ba392d9d22794a5.access
+        - name: CF-Access-Client-Secret
+          in: header
+          description: ''
+          example: 3be20e109528c20da2f756667d5a13e1c69c83a872ff82df835a44471efbe8ed
+          schema:
+            type: string
+            default: 3be20e109528c20da2f756667d5a13e1c69c83a872ff82df835a44471efbe8ed
       requestBody:
         content:
           application/json:
             schema:
               $ref: '#/components/schemas/RequestUsersUpdate'
-            example: ''
+            example: null
       responses:
         '200':
           description: ''
@@ -628,12 +755,8 @@ paths:
             application/json:
               schema: *ref_3
           headers: {}
-          x-apidog-name: User object
       security:
         - bearer: []
-      x-apidog-folder: OOSA_USER_SERVICE/U > User Settings
-      x-apidog-status: released
-      x-run-in-apidog: https://apidog.com/web/project/607604/apis/api-8862657-run
   /forget-password/{token}:
     post:
       summary: Forget Password - Updated
@@ -641,6 +764,7 @@ paths:
       description: Update password from forget password
       operationId: forgetPasswordUpdated
       tags:
+        - OOSA_USER_SERVICE/U > Auth
         - OOSA_USER_SERVICE
         - Forget Password
         - T5 個人 My
@@ -658,12 +782,26 @@ paths:
           example: 0
           schema:
             type: integer
+        - name: CF-Access-Client-Id
+          in: header
+          description: ''
+          example: cf9f02c65c5130772ba392d9d22794a5.access
+          schema:
+            type: string
+            default: cf9f02c65c5130772ba392d9d22794a5.access
+        - name: CF-Access-Client-Secret
+          in: header
+          description: ''
+          example: 3be20e109528c20da2f756667d5a13e1c69c83a872ff82df835a44471efbe8ed
+          schema:
+            type: string
+            default: 3be20e109528c20da2f756667d5a13e1c69c83a872ff82df835a44471efbe8ed
       requestBody:
         content:
           application/json:
             schema:
               $ref: '#/components/schemas/RequestForgetPasswordReset'
-            example: ''
+            example: null
       responses:
         '200':
           description: ''
@@ -671,11 +809,7 @@ paths:
             application/json:
               schema: *ref_2
           headers: {}
-          x-apidog-name: User object
       security: []
-      x-apidog-folder: OOSA_USER_SERVICE/U > Auth
-      x-apidog-status: deprecated
-      x-run-in-apidog: https://apidog.com/web/project/607604/apis/api-8862659-run
   /auth/profile-picture:
     post:
       summary: Update User Profile Picture
@@ -683,12 +817,27 @@ paths:
       description: Update profile picture
       operationId: updateAvatarUsePicture
       tags:
+        - OOSA_USER_SERVICE/U > Auth
         - OOSA_USER_SERVICE
         - Authentication
         - T5 個人 My
         - 5.2.1.1.1
         - 5.2.1.1.1a
-      parameters: []
+      parameters:
+        - name: CF-Access-Client-Id
+          in: header
+          description: ''
+          example: cf9f02c65c5130772ba392d9d22794a5.access
+          schema:
+            type: string
+            default: cf9f02c65c5130772ba392d9d22794a5.access
+        - name: CF-Access-Client-Secret
+          in: header
+          description: ''
+          example: 3be20e109528c20da2f756667d5a13e1c69c83a872ff82df835a44471efbe8ed
+          schema:
+            type: string
+            default: 3be20e109528c20da2f756667d5a13e1c69c83a872ff82df835a44471efbe8ed
       requestBody:
         content:
           multipart/form-data:
@@ -706,12 +855,8 @@ paths:
             application/json:
               schema: *ref_3
           headers: {}
-          x-apidog-name: User Object
       security:
         - bearer: []
-      x-apidog-folder: OOSA_USER_SERVICE/U > Auth
-      x-apidog-status: deprecated
-      x-run-in-apidog: https://apidog.com/web/project/607604/apis/api-8862664-run
   /oosa-daily:
     post:
       summary: OOSA User Daily Video Status
@@ -723,10 +868,25 @@ paths:
         returns the result.
       operationId: CheckUserDailyVideo
       tags:
+        - OOSA_USER_SERVICE/U > Auth
         - OOSA_USER_SERVICE
         - T4 世界 World
         - '4.0'
-      parameters: []
+      parameters:
+        - name: CF-Access-Client-Id
+          in: header
+          description: ''
+          example: cf9f02c65c5130772ba392d9d22794a5.access
+          schema:
+            type: string
+            default: cf9f02c65c5130772ba392d9d22794a5.access
+        - name: CF-Access-Client-Secret
+          in: header
+          description: ''
+          example: 3be20e109528c20da2f756667d5a13e1c69c83a872ff82df835a44471efbe8ed
+          schema:
+            type: string
+            default: 3be20e109528c20da2f756667d5a13e1c69c83a872ff82df835a44471efbe8ed
       responses:
         '200':
           description: ''
@@ -734,27 +894,20 @@ paths:
             application/json:
               schema: *ref_2
           headers: {}
-          x-apidog-name: OK
         '400':
           description: ''
           content:
             application/json:
               schema: *ref_4
           headers: {}
-          x-apidog-name: Bad Request
         '401':
           description: ''
           content:
             application/json:
               schema: *ref_4
           headers: {}
-          x-apidog-name: Unauthorised
       security:
         - bearer: []
-      x-apidog-folder: OOSA_USER_SERVICE/U > Auth
-      x-apidog-status: released
-      x-apidog-maintainer: 陳文晟
-      x-run-in-apidog: https://apidog.com/web/project/607604/apis/api-9216849-run
   /user/{userId}:
     get:
       summary: Read User
@@ -762,6 +915,7 @@ paths:
       description: API 回傳指定會員的公開資料
       operationId: getUser
       tags:
+        - OOSA_USER_SERVICE/U > User
         - OOSA_REWILD_SERVICE
         - User Event
         - _O1
@@ -778,6 +932,20 @@ paths:
           schema:
             type: string
             format: objectId
+        - name: CF-Access-Client-Id
+          in: header
+          description: ''
+          example: cf9f02c65c5130772ba392d9d22794a5.access
+          schema:
+            type: string
+            default: cf9f02c65c5130772ba392d9d22794a5.access
+        - name: CF-Access-Client-Secret
+          in: header
+          description: ''
+          example: 3be20e109528c20da2f756667d5a13e1c69c83a872ff82df835a44471efbe8ed
+          schema:
+            type: string
+            default: 3be20e109528c20da2f756667d5a13e1c69c83a872ff82df835a44471efbe8ed
       responses:
         '200':
           description: ''
@@ -786,7 +954,6 @@ paths:
               schema:
                 $ref: '#/components/schemas/UserOther'
           headers: {}
-          x-apidog-name: Array of EventReferenceLinks Object
         '204':
           description: ''
           content:
@@ -795,11 +962,7 @@ paths:
                 type: object
                 properties: {}
           headers: {}
-          x-apidog-name: No Content
       security: []
-      x-apidog-folder: OOSA_USER_SERVICE/U > User
-      x-apidog-status: released
-      x-run-in-apidog: https://apidog.com/web/project/607604/apis/api-10057831-run
   /users:
     get:
       summary: Retrieve Users
@@ -807,6 +970,7 @@ paths:
       description: get all users
       operationId: getUsers
       tags:
+        - OOSA_USER_SERVICE/U > User
         - 3.3.2.1
         - 3.3.2.1a
         - 3.3.2.1b
@@ -833,6 +997,20 @@ paths:
           schema:
             type: string
             format: char
+        - name: CF-Access-Client-Id
+          in: header
+          description: ''
+          example: cf9f02c65c5130772ba392d9d22794a5.access
+          schema:
+            type: string
+            default: cf9f02c65c5130772ba392d9d22794a5.access
+        - name: CF-Access-Client-Secret
+          in: header
+          description: ''
+          example: 3be20e109528c20da2f756667d5a13e1c69c83a872ff82df835a44471efbe8ed
+          schema:
+            type: string
+            default: 3be20e109528c20da2f756667d5a13e1c69c83a872ff82df835a44471efbe8ed
       responses:
         '200':
           description: ''
@@ -843,12 +1021,8 @@ paths:
                 items:
                   $ref: '#/components/schemas/UserAgg'
           headers: {}
-          x-apidog-name: Success
       security:
         - bearer: []
-      x-apidog-folder: OOSA_USER_SERVICE/U > User
-      x-apidog-status: released
-      x-run-in-apidog: https://apidog.com/web/project/607604/apis/api-11143650-run
   /auth/badges:
     get:
       summary: Retrieve Badge
@@ -856,6 +1030,7 @@ paths:
       description: Retrieve badges earned by user
       operationId: getBadge
       tags:
+        - OOSA_USER_SERVICE/U > User Badges
         - OOSA_USER_SERVICE
         - User Badges
         - T5 個人 My
@@ -867,20 +1042,30 @@ paths:
           schema:
             type: boolean
             default: true
+        - name: CF-Access-Client-Id
+          in: header
+          description: ''
+          example: cf9f02c65c5130772ba392d9d22794a5.access
+          schema:
+            type: string
+            default: cf9f02c65c5130772ba392d9d22794a5.access
+        - name: CF-Access-Client-Secret
+          in: header
+          description: ''
+          example: 3be20e109528c20da2f756667d5a13e1c69c83a872ff82df835a44471efbe8ed
+          schema:
+            type: string
+            default: 3be20e109528c20da2f756667d5a13e1c69c83a872ff82df835a44471efbe8ed
       responses:
         '200':
           description: ''
           content:
             application/json:
-              schema: &ref_5
+              schema:
                 $ref: '#/components/schemas/UserBadges'
           headers: {}
-          x-apidog-name: User badges object
       security:
         - bearer: []
-      x-apidog-folder: OOSA_USER_SERVICE/U > User Badges
-      x-apidog-status: released
-      x-run-in-apidog: https://apidog.com/web/project/607604/apis/api-8862645-run
   /user/{userId}/badges:
     get:
       summary: User Badges
@@ -888,6 +1073,7 @@ paths:
       description: 預期會回傳指定會員的所有公開徽章
       operationId: getUserBadges
       tags:
+        - OOSA_USER_SERVICE/U > User Badges
         - OOSA_REWILD_SERVICE
         - User Event
         - guest
@@ -899,6 +1085,20 @@ paths:
           schema:
             type: string
             format: objectId
+        - name: CF-Access-Client-Id
+          in: header
+          description: ''
+          example: cf9f02c65c5130772ba392d9d22794a5.access
+          schema:
+            type: string
+            default: cf9f02c65c5130772ba392d9d22794a5.access
+        - name: CF-Access-Client-Secret
+          in: header
+          description: ''
+          example: 3be20e109528c20da2f756667d5a13e1c69c83a872ff82df835a44471efbe8ed
+          schema:
+            type: string
+            default: 3be20e109528c20da2f756667d5a13e1c69c83a872ff82df835a44471efbe8ed
       responses:
         '200':
           description: ''
@@ -906,7 +1106,6 @@ paths:
             application/json:
               schema: *ref_3
           headers: {}
-          x-apidog-name: Array of EventReferenceLinks Object
         '204':
           description: ''
           content:
@@ -915,18 +1114,16 @@ paths:
                 type: object
                 properties: {}
           headers: {}
-          x-apidog-name: No Content
-      security: []
-      x-apidog-folder: OOSA_USER_SERVICE/U > User Badges
-      x-apidog-status: released
-      x-run-in-apidog: https://apidog.com/web/project/607604/apis/api-10058173-run
+      security:
+        - bearer: []
   /auth/badges/{userBadgeId}:
     get:
       summary: Retrieve Badge
       deprecated: true
       description: ''
       operationId: getBadgeById
-      tags: []
+      tags:
+        - OOSA_USER_SERVICE/U > User Badges
       parameters:
         - name: userBadgeId
           in: path
@@ -935,6 +1132,20 @@ paths:
           schema:
             type: string
             format: objectId
+        - name: CF-Access-Client-Id
+          in: header
+          description: ''
+          example: cf9f02c65c5130772ba392d9d22794a5.access
+          schema:
+            type: string
+            default: cf9f02c65c5130772ba392d9d22794a5.access
+        - name: CF-Access-Client-Secret
+          in: header
+          description: ''
+          example: 3be20e109528c20da2f756667d5a13e1c69c83a872ff82df835a44471efbe8ed
+          schema:
+            type: string
+            default: 3be20e109528c20da2f756667d5a13e1c69c83a872ff82df835a44471efbe8ed
       responses:
         '200':
           description: ''
@@ -942,12 +1153,8 @@ paths:
             application/json:
               schema:
                 type: object
-                x-apidog-refs:
-                  01JB8S9XAGGG6688VJ3E7M7T97: *ref_5
-                x-apidog-orders:
-                  - 01JB8S9XAGGG6688VJ3E7M7T97
                 properties:
-                  user_badges_detail: &ref_8
+                  user_badges_detail: &ref_7
                     $ref: '#/components/schemas/UserBadgesDetail'
                   user_badges_badge:
                     type: string
@@ -958,18 +1165,9 @@ paths:
                   user_badges_user:
                     type: string
                     default: 65f6861102948c60bcb3cb1d
-                x-apidog-ignore-properties:
-                  - user_badges_detail
-                  - user_badges_badge
-                  - user_badges_id
-                  - user_badges_user
           headers: {}
-          x-apidog-name: Success
       security:
         - bearer: []
-      x-apidog-folder: OOSA_USER_SERVICE/U > User Badges
-      x-apidog-status: deprecated
-      x-run-in-apidog: https://apidog.com/web/project/607604/apis/api-11115779-run
   /user/friends:
     get:
       summary: Retrieve User Friends
@@ -985,6 +1183,7 @@ paths:
         找到某個會員用戶的所有好友，並且可以用 name 和 username 篩選其好友列表
       operationId: getUserFriends
       tags:
+        - OOSA_USER_SERVICE/U > User Friends
         - OOSA_USER_SERVICE
         - User - Friends
         - _E 活動 Event
@@ -1015,6 +1214,20 @@ paths:
           schema:
             type: string
             format: uuid
+        - name: CF-Access-Client-Id
+          in: header
+          description: ''
+          example: cf9f02c65c5130772ba392d9d22794a5.access
+          schema:
+            type: string
+            default: cf9f02c65c5130772ba392d9d22794a5.access
+        - name: CF-Access-Client-Secret
+          in: header
+          description: ''
+          example: 3be20e109528c20da2f756667d5a13e1c69c83a872ff82df835a44471efbe8ed
+          schema:
+            type: string
+            default: 3be20e109528c20da2f756667d5a13e1c69c83a872ff82df835a44471efbe8ed
       responses:
         '200':
           description: ''
@@ -1061,26 +1274,7 @@ paths:
                         - user_avatar
                         - user_breathing_status
                         - user_take_me_status
-                      x-apidog-ignore-properties: []
-                      x-apidog-orders:
-                        - user_id
-                        - user_name
-                        - user_username
-                        - user_avatar
-                        - user_breathing_status
-                        - user_take_me_status
-                  x-apidog-ignore-properties: []
-                  x-apidog-orders:
-                    - user_friends_id
-                    - user_friends_status
-                    - user_friends_user_1
-                    - user_friends_user_2
-                    - user_friends_created_at
-                    - user_friends_is_official
-                    - rewilding_activity_status
-                    - user_friends_detail
           headers: {}
-          x-apidog-name: User Friends
         '204':
           description: ''
           content:
@@ -1089,12 +1283,8 @@ paths:
                 type: object
                 properties: {}
           headers: {}
-          x-apidog-name: No Content
       security:
         - bearer: []
-      x-apidog-folder: OOSA_USER_SERVICE/U > User Friends
-      x-apidog-status: released
-      x-run-in-apidog: https://apidog.com/web/project/607604/apis/api-8862660-run
     post:
       summary: Add User Friend
       deprecated: false
@@ -1103,12 +1293,27 @@ paths:
         friendship limit is 5000.
       operationId: createUserFriendById
       tags:
+        - OOSA_USER_SERVICE/U > User Friends
         - User - Friends
         - T4 世界 World
         - _O
         - 4.2e
         - 4.2d
-      parameters: []
+      parameters:
+        - name: CF-Access-Client-Id
+          in: header
+          description: ''
+          example: cf9f02c65c5130772ba392d9d22794a5.access
+          schema:
+            type: string
+            default: cf9f02c65c5130772ba392d9d22794a5.access
+        - name: CF-Access-Client-Secret
+          in: header
+          description: ''
+          example: 3be20e109528c20da2f756667d5a13e1c69c83a872ff82df835a44471efbe8ed
+          schema:
+            type: string
+            default: 3be20e109528c20da2f756667d5a13e1c69c83a872ff82df835a44471efbe8ed
       requestBody:
         content:
           application/json:
@@ -1158,14 +1363,6 @@ paths:
                       - user_avatar
                       - user_breathing_status
                       - user_take_me_status
-                    x-apidog-ignore-properties: []
-                    x-apidog-orders:
-                      - user_id
-                      - user_name
-                      - user_username
-                      - user_avatar
-                      - user_breathing_status
-                      - user_take_me_status
                 required:
                   - user_friends_id
                   - user_friends_status
@@ -1175,18 +1372,7 @@ paths:
                   - user_friends_is_official
                   - rewilding_activity_status
                   - user_friends_detail
-                x-apidog-ignore-properties: []
-                x-apidog-orders:
-                  - user_friends_id
-                  - user_friends_status
-                  - user_friends_user_1
-                  - user_friends_user_2
-                  - user_friends_created_at
-                  - user_friends_is_official
-                  - rewilding_activity_status
-                  - user_friends_detail
           headers: {}
-          x-apidog-name: OK
         '204':
           description: ''
           content:
@@ -1195,12 +1381,8 @@ paths:
                 type: object
                 properties: {}
           headers: {}
-          x-apidog-name: No Content
       security:
         - bearer: []
-      x-apidog-folder: OOSA_USER_SERVICE/U > User Friends
-      x-apidog-status: released
-      x-run-in-apidog: https://apidog.com/web/project/607604/apis/api-11114258-run
   /user/friends/recommended:
     get:
       summary: Retrieve Recommended Friends For User
@@ -1217,6 +1399,7 @@ paths:
         If no users meet the above conditions, do not display
       operationId: getRecommendedFriendsForUser
       tags:
+        - OOSA_USER_SERVICE/U > User Friends
         - OOSA_USER_SERVICE
         - User - Friends
         - T4 世界 World
@@ -1239,6 +1422,20 @@ paths:
           required: false
           schema:
             type: string
+        - name: CF-Access-Client-Id
+          in: header
+          description: ''
+          example: cf9f02c65c5130772ba392d9d22794a5.access
+          schema:
+            type: string
+            default: cf9f02c65c5130772ba392d9d22794a5.access
+        - name: CF-Access-Client-Secret
+          in: header
+          description: ''
+          example: 3be20e109528c20da2f756667d5a13e1c69c83a872ff82df835a44471efbe8ed
+          schema:
+            type: string
+            default: 3be20e109528c20da2f756667d5a13e1c69c83a872ff82df835a44471efbe8ed
       responses:
         '200':
           description: ''
@@ -1292,31 +1489,9 @@ paths:
                         - user_avatar
                         - user_breathing_status
                         - user_take_me_status
-                      x-apidog-orders:
-                        - user_id
-                        - user_name
-                        - user_username
-                        - user_avatar
-                        - user_breathing_status
-                        - user_take_me_status
-                      x-apidog-ignore-properties: []
-                  x-apidog-orders:
-                    - user_friends_id
-                    - user_friends_status
-                    - user_friends_user_1
-                    - user_friends_user_2
-                    - user_friends_created_at
-                    - user_friends_is_official
-                    - rewilding_activity_status
-                    - user_friends_detail
-                  x-apidog-ignore-properties: []
           headers: {}
-          x-apidog-name: OK
       security:
         - bearer: []
-      x-apidog-folder: OOSA_USER_SERVICE/U > User Friends
-      x-apidog-status: released
-      x-run-in-apidog: https://apidog.com/web/project/607604/apis/api-9799117-run
   /user/friends/{userFriendsId}:
     delete:
       summary: Cancel User Friend
@@ -1324,6 +1499,7 @@ paths:
       description: user_friend_status should be set to 2 upon successful API completion.
       operationId: deleteUserFriendById
       tags:
+        - OOSA_USER_SERVICE/U > User Friends
         - _O
         - User - Friends
         - _O1b
@@ -1340,9 +1516,23 @@ paths:
         - name: Notification_Id
           in: query
           description: ''
-          required: false
+          required: true
           schema:
             type: string
+        - name: CF-Access-Client-Id
+          in: header
+          description: ''
+          example: cf9f02c65c5130772ba392d9d22794a5.access
+          schema:
+            type: string
+            default: cf9f02c65c5130772ba392d9d22794a5.access
+        - name: CF-Access-Client-Secret
+          in: header
+          description: ''
+          example: 3be20e109528c20da2f756667d5a13e1c69c83a872ff82df835a44471efbe8ed
+          schema:
+            type: string
+            default: 3be20e109528c20da2f756667d5a13e1c69c83a872ff82df835a44471efbe8ed
       responses:
         '200':
           description: ''
@@ -1350,18 +1540,15 @@ paths:
             application/json:
               schema: *ref_2
           headers: {}
-          x-apidog-name: OK
       security:
         - bearer: []
-      x-apidog-folder: OOSA_USER_SERVICE/U > User Friends
-      x-apidog-status: released
-      x-run-in-apidog: https://apidog.com/web/project/607604/apis/api-11113821-run
     put:
       summary: 'Agree User Friend '
       deprecated: false
       description: user_friend_status should be set to 1 upon successful API completion.
       operationId: agreeUserFriendById
       tags:
+        - OOSA_USER_SERVICE/U > User Friends
         - User Notifications
         - _O
         - User - Friends
@@ -1376,9 +1563,23 @@ paths:
         - name: Notification_Id
           in: query
           description: ''
-          required: false
+          required: true
           schema:
             type: string
+        - name: CF-Access-Client-Id
+          in: header
+          description: ''
+          example: cf9f02c65c5130772ba392d9d22794a5.access
+          schema:
+            type: string
+            default: cf9f02c65c5130772ba392d9d22794a5.access
+        - name: CF-Access-Client-Secret
+          in: header
+          description: ''
+          example: 3be20e109528c20da2f756667d5a13e1c69c83a872ff82df835a44471efbe8ed
+          schema:
+            type: string
+            default: 3be20e109528c20da2f756667d5a13e1c69c83a872ff82df835a44471efbe8ed
       requestBody:
         content:
           multipart/form-data:
@@ -1392,12 +1593,8 @@ paths:
             application/json:
               schema: *ref_2
           headers: {}
-          x-apidog-name: OK
       security:
         - bearer: []
-      x-apidog-folder: OOSA_USER_SERVICE/U > User Friends
-      x-apidog-status: released
-      x-run-in-apidog: https://apidog.com/web/project/607604/apis/api-11114593-run
   /auth/friends:
     get:
       summary: My Friends
@@ -1407,6 +1604,7 @@ paths:
         Sort by breathing status first, then by name.
       operationId: getUserFriends
       tags:
+        - OOSA_USER_SERVICE/U > User Friends
         - OOSA_USER_SERVICE
         - User - Friends
       parameters:
@@ -1424,6 +1622,20 @@ paths:
           schema:
             type: string
             format: uuid
+        - name: CF-Access-Client-Id
+          in: header
+          description: ''
+          example: cf9f02c65c5130772ba392d9d22794a5.access
+          schema:
+            type: string
+            default: cf9f02c65c5130772ba392d9d22794a5.access
+        - name: CF-Access-Client-Secret
+          in: header
+          description: ''
+          example: 3be20e109528c20da2f756667d5a13e1c69c83a872ff82df835a44471efbe8ed
+          schema:
+            type: string
+            default: 3be20e109528c20da2f756667d5a13e1c69c83a872ff82df835a44471efbe8ed
       responses:
         '200':
           description: ''
@@ -1433,25 +1645,9 @@ paths:
                 type: array
                 items:
                   type: object
-                  x-apidog-refs:
-                    01JBE8W8W82814RG96JF716C6Q:
-                      x-apidog-overrides:
-                        user_friends_created_at: null
-                        user_friends_user_2: null
-                        user_friends_user_1: null
-                        user_friends_status: null
-                      type: object
-                      properties: {}
-                  x-apidog-orders:
-                    - 01JBE8W8W82814RG96JF716C6Q
                   properties: {}
-                  x-apidog-ignore-properties: []
           headers: {}
-          x-apidog-name: User friends
       security: []
-      x-apidog-folder: OOSA_USER_SERVICE/U > User Friends
-      x-apidog-status: deprecated
-      x-run-in-apidog: https://apidog.com/web/project/607604/apis/api-11267486-run
   /user/{userId}/friends:
     get:
       summary: Retrieve Other User Friends
@@ -1459,6 +1655,7 @@ paths:
       description: Retrieve an authenticated user events
       operationId: getOtherUserFriends
       tags:
+        - OOSA_USER_SERVICE/U > User Friends
         - OOSA_REWILD_SERVICE
         - User Event
         - _O1
@@ -1482,6 +1679,20 @@ paths:
           required: false
           schema:
             type: string
+        - name: CF-Access-Client-Id
+          in: header
+          description: ''
+          example: cf9f02c65c5130772ba392d9d22794a5.access
+          schema:
+            type: string
+            default: cf9f02c65c5130772ba392d9d22794a5.access
+        - name: CF-Access-Client-Secret
+          in: header
+          description: ''
+          example: 3be20e109528c20da2f756667d5a13e1c69c83a872ff82df835a44471efbe8ed
+          schema:
+            type: string
+            default: 3be20e109528c20da2f756667d5a13e1c69c83a872ff82df835a44471efbe8ed
       responses:
         '200':
           description: ''
@@ -1528,26 +1739,7 @@ paths:
                         - user_avatar
                         - user_breathing_status
                         - user_take_me_status
-                      x-apidog-ignore-properties: []
-                      x-apidog-orders:
-                        - user_id
-                        - user_name
-                        - user_username
-                        - user_avatar
-                        - user_breathing_status
-                        - user_take_me_status
-                  x-apidog-ignore-properties: []
-                  x-apidog-orders:
-                    - user_friends_id
-                    - user_friends_status
-                    - user_friends_user_1
-                    - user_friends_user_2
-                    - user_friends_created_at
-                    - user_friends_is_official
-                    - rewilding_activity_status
-                    - user_friends_detail
           headers: {}
-          x-apidog-name: OK
         '204':
           description: ''
           content:
@@ -1556,12 +1748,8 @@ paths:
                 type: object
                 properties: {}
           headers: {}
-          x-apidog-name: No Content
       security:
         - bearer: []
-      x-apidog-folder: OOSA_USER_SERVICE/U > User Friends
-      x-apidog-status: released
-      x-run-in-apidog: https://apidog.com/web/project/607604/apis/api-11302396-run
   /auth/notifications:
     get:
       summary: Retrieve User Notifications
@@ -1569,11 +1757,26 @@ paths:
       description: Retrieve notifications
       operationId: getUserNotifications
       tags:
+        - OOSA_USER_SERVICE/U > User Notifications
         - OOSA_USER_SERVICE
         - User Notifications
         - T5 個人 My
         - '5.1'
-      parameters: []
+      parameters:
+        - name: CF-Access-Client-Id
+          in: header
+          description: ''
+          example: cf9f02c65c5130772ba392d9d22794a5.access
+          schema:
+            type: string
+            default: cf9f02c65c5130772ba392d9d22794a5.access
+        - name: CF-Access-Client-Secret
+          in: header
+          description: ''
+          example: 3be20e109528c20da2f756667d5a13e1c69c83a872ff82df835a44471efbe8ed
+          schema:
+            type: string
+            default: 3be20e109528c20da2f756667d5a13e1c69c83a872ff82df835a44471efbe8ed
       responses:
         '200':
           description: ''
@@ -1584,19 +1787,16 @@ paths:
                 items:
                   $ref: '#/components/schemas/UserNotifications'
           headers: {}
-          x-apidog-name: Notifications
       security:
         - bearer: []
-      x-apidog-folder: OOSA_USER_SERVICE/U > User Notifications
-      x-apidog-status: released
-      x-run-in-apidog: https://apidog.com/web/project/607604/apis/api-8862661-run
   /auth/notifications/{notificationId}:
     put:
       summary: Read User Notification
       deprecated: true
       description: ''
       operationId: isReadNotificationById
-      tags: []
+      tags:
+        - OOSA_USER_SERVICE/U > User Notifications
       parameters:
         - name: notificationId
           in: path
@@ -1605,6 +1805,20 @@ paths:
           schema:
             type: string
             format: objectId
+        - name: CF-Access-Client-Id
+          in: header
+          description: ''
+          example: cf9f02c65c5130772ba392d9d22794a5.access
+          schema:
+            type: string
+            default: cf9f02c65c5130772ba392d9d22794a5.access
+        - name: CF-Access-Client-Secret
+          in: header
+          description: ''
+          example: 3be20e109528c20da2f756667d5a13e1c69c83a872ff82df835a44471efbe8ed
+          schema:
+            type: string
+            default: 3be20e109528c20da2f756667d5a13e1c69c83a872ff82df835a44471efbe8ed
       responses:
         '200':
           description: ''
@@ -1612,12 +1826,8 @@ paths:
             application/json:
               schema: *ref_2
           headers: {}
-          x-apidog-name: Success
       security:
         - bearer: []
-      x-apidog-folder: OOSA_USER_SERVICE/U > User Notifications
-      x-apidog-status: deprecated
-      x-run-in-apidog: https://apidog.com/web/project/607604/apis/api-11244731-run
   /users/statistics:
     get:
       summary: Statistics
@@ -1625,11 +1835,26 @@ paths:
       description: Retrieve an authenticated user events
       operationId: getUserStat
       tags:
+        - OOSA_USER_SERVICE/U > User Statistic
         - OOSA_REWILD_SERVICE
         - User Event
         - '5.4'
         - T5 個人 My
-      parameters: []
+      parameters:
+        - name: CF-Access-Client-Id
+          in: header
+          description: ''
+          example: cf9f02c65c5130772ba392d9d22794a5.access
+          schema:
+            type: string
+            default: cf9f02c65c5130772ba392d9d22794a5.access
+        - name: CF-Access-Client-Secret
+          in: header
+          description: ''
+          example: 3be20e109528c20da2f756667d5a13e1c69c83a872ff82df835a44471efbe8ed
+          schema:
+            type: string
+            default: 3be20e109528c20da2f756667d5a13e1c69c83a872ff82df835a44471efbe8ed
       responses:
         '200':
           description: ''
@@ -1653,19 +1878,11 @@ paths:
                           required:
                             - month
                             - year
-                          x-apidog-orders:
-                            - month
-                            - year
-                          x-apidog-ignore-properties: []
                         event_count:
                           type: integer
                       required:
                         - event_period
                         - event_count
-                      x-apidog-orders:
-                        - event_period
-                        - event_count
-                      x-apidog-ignore-properties: []
                   oosa_star_per_user:
                     type: array
                     items:
@@ -1681,10 +1898,6 @@ paths:
                           required:
                             - month
                             - year
-                          x-apidog-orders:
-                            - month
-                            - year
-                          x-apidog-ignore-properties: []
                         user_count:
                           type: integer
                         total_star:
@@ -1698,12 +1911,6 @@ paths:
                         - user_count
                         - total_star
                         - average_star
-                      x-apidog-orders:
-                        - user_period
-                        - user_count
-                        - total_star
-                        - average_star
-                      x-apidog-ignore-properties: []
                   stars_last_achieved_month:
                     type: integer
                   stars_months_last_achieved:
@@ -1723,11 +1930,6 @@ paths:
                         - event_type
                         - event_type_name
                         - event_count
-                      x-apidog-orders:
-                        - event_type
-                        - event_type_name
-                        - event_count
-                      x-apidog-ignore-properties: []
                   user_star_per_year:
                     type: integer
                 required:
@@ -1737,16 +1939,7 @@ paths:
                   - stars_months_last_achieved
                   - user_star_by_type
                   - user_star_per_year
-                x-apidog-orders:
-                  - oosa_star_current_user
-                  - oosa_star_per_user
-                  - stars_last_achieved_month
-                  - stars_months_last_achieved
-                  - user_star_by_type
-                  - user_star_per_year
-                x-apidog-ignore-properties: []
           headers: {}
-          x-apidog-name: OK
         '204':
           description: ''
           content:
@@ -1755,12 +1948,8 @@ paths:
                 type: object
                 properties: {}
           headers: {}
-          x-apidog-name: No Content
       security:
         - bearer: []
-      x-apidog-folder: OOSA_USER_SERVICE/U > User Statistic
-      x-apidog-status: released
-      x-run-in-apidog: https://apidog.com/web/project/607604/apis/api-10102390-run
   /auth/statistics:
     get:
       summary: Auth Statistics
@@ -1768,10 +1957,25 @@ paths:
       description: get my statistics
       operationId: getUserStatistics
       tags:
+        - OOSA_USER_SERVICE/U > User Statistic
         - OOSA_REWILD_SERVICE
         - User Event
         - '5.4'
-      parameters: []
+      parameters:
+        - name: CF-Access-Client-Id
+          in: header
+          description: ''
+          example: cf9f02c65c5130772ba392d9d22794a5.access
+          schema:
+            type: string
+            default: cf9f02c65c5130772ba392d9d22794a5.access
+        - name: CF-Access-Client-Secret
+          in: header
+          description: ''
+          example: 3be20e109528c20da2f756667d5a13e1c69c83a872ff82df835a44471efbe8ed
+          schema:
+            type: string
+            default: 3be20e109528c20da2f756667d5a13e1c69c83a872ff82df835a44471efbe8ed
       responses:
         '200':
           description: ''
@@ -1781,7 +1985,6 @@ paths:
                 type: object
                 properties: {}
           headers: {}
-          x-apidog-name: Array of EventReferenceLinks Object
         '204':
           description: ''
           content:
@@ -1790,11 +1993,7 @@ paths:
                 type: object
                 properties: {}
           headers: {}
-          x-apidog-name: No Content
       security: []
-      x-apidog-folder: OOSA_USER_SERVICE/U > User Statistic
-      x-apidog-status: deprecated
-      x-run-in-apidog: https://apidog.com/web/project/607604/apis/api-11267480-run
   /contact-us:
     post:
       summary: Create Contact Us
@@ -1802,6 +2001,7 @@ paths:
       description: Create contact us record
       operationId: createContactUs
       tags:
+        - OOSA_USER_SERVICE/U > Contact Us
         - OOSA_USER_SERVICE
         - Contact Us
         - T5 個人 My
@@ -1809,13 +2009,27 @@ paths:
         - 5.2.5a
         - 5.2.5b
         - 5.2.5.1
-      parameters: []
+      parameters:
+        - name: CF-Access-Client-Id
+          in: header
+          description: ''
+          example: cf9f02c65c5130772ba392d9d22794a5.access
+          schema:
+            type: string
+            default: cf9f02c65c5130772ba392d9d22794a5.access
+        - name: CF-Access-Client-Secret
+          in: header
+          description: ''
+          example: 3be20e109528c20da2f756667d5a13e1c69c83a872ff82df835a44471efbe8ed
+          schema:
+            type: string
+            default: 3be20e109528c20da2f756667d5a13e1c69c83a872ff82df835a44471efbe8ed
       requestBody:
         content:
           application/json:
             schema:
               $ref: '#/components/schemas/RequestContactUs'
-            example: ''
+            example: null
       responses:
         '200':
           description: ''
@@ -1823,18 +2037,13 @@ paths:
             application/json:
               schema: *ref_2
           headers: {}
-          x-apidog-name: User object
         '400':
           description: ''
           content:
             application/json:
               schema: *ref_1
           headers: {}
-          x-apidog-name: Validation Error
       security: []
-      x-apidog-folder: OOSA_USER_SERVICE/U > Contact Us
-      x-apidog-status: released
-      x-run-in-apidog: https://apidog.com/web/project/607604/apis/api-8862652-run
   /auth/setting:
     put:
       summary: Update User Setting
@@ -1842,18 +2051,33 @@ paths:
       description: Update settings<br/>1 - True (On)<br />0 - False (Off)
       operationId: updateUserSet
       tags:
+        - OOSA_USER_SERVICE/U > User Settings
         - OOSA_USER_SERVICE
         - Authentication
         - T5 個人 My
         - 5.2.2
         - 5.2.2a
-      parameters: []
+      parameters:
+        - name: CF-Access-Client-Id
+          in: header
+          description: ''
+          example: cf9f02c65c5130772ba392d9d22794a5.access
+          schema:
+            type: string
+            default: cf9f02c65c5130772ba392d9d22794a5.access
+        - name: CF-Access-Client-Secret
+          in: header
+          description: ''
+          example: 3be20e109528c20da2f756667d5a13e1c69c83a872ff82df835a44471efbe8ed
+          schema:
+            type: string
+            default: 3be20e109528c20da2f756667d5a13e1c69c83a872ff82df835a44471efbe8ed
       requestBody:
         content:
           application/json:
             schema:
               $ref: '#/components/schemas/RequestAuthUpdateSetting'
-            example: ''
+            example: null
       responses:
         '200':
           description: ''
@@ -1861,12 +2085,8 @@ paths:
             application/json:
               schema: *ref_3
           headers: {}
-          x-apidog-name: User object
       security:
         - bearer: []
-      x-apidog-folder: OOSA_USER_SERVICE/U > User Settings
-      x-apidog-status: released
-      x-run-in-apidog: https://apidog.com/web/project/607604/apis/api-8862651-run
   /auth/take-me:
     put:
       summary: Update User Take Me
@@ -1874,12 +2094,27 @@ paths:
       description: Update the authenticated user detail
       operationId: updateUser
       tags:
+        - OOSA_USER_SERVICE/U > User Settings
         - OOSA_USER_SERVICE
         - Authentication
         - T5 個人 My
         - '5.0'
         - 5.0a
-      parameters: []
+      parameters:
+        - name: CF-Access-Client-Id
+          in: header
+          description: ''
+          example: cf9f02c65c5130772ba392d9d22794a5.access
+          schema:
+            type: string
+            default: cf9f02c65c5130772ba392d9d22794a5.access
+        - name: CF-Access-Client-Secret
+          in: header
+          description: ''
+          example: 3be20e109528c20da2f756667d5a13e1c69c83a872ff82df835a44471efbe8ed
+          schema:
+            type: string
+            default: 3be20e109528c20da2f756667d5a13e1c69c83a872ff82df835a44471efbe8ed
       requestBody:
         content:
           application/json:
@@ -1889,12 +2124,9 @@ paths:
                 users_take_me_status:
                   type: integer
                   description: '1: Take Me, 0: Don''t take me'
-              x-apidog-orders:
-                - users_take_me_status
               required:
                 - users_take_me_status
-              x-apidog-ignore-properties: []
-            example: ''
+            example: null
       responses:
         '200':
           description: ''
@@ -1902,12 +2134,8 @@ paths:
             application/json:
               schema: *ref_3
           headers: {}
-          x-apidog-name: User object
       security:
         - bearer: []
-      x-apidog-folder: OOSA_USER_SERVICE/U > User Settings
-      x-apidog-status: released
-      x-run-in-apidog: https://apidog.com/web/project/607604/apis/api-12027427-run
   /user-following/{userFollowingId}:
     delete:
       summary: Delete User Following
@@ -1915,6 +2143,7 @@ paths:
       description: 'Delete user following '
       operationId: deleteUserFollowing
       tags:
+        - OOSA_USER_SERVICE/[TBC]  User Following
         - OOSA_USER_SERVICE
         - User Following
       parameters:
@@ -1926,6 +2155,20 @@ paths:
           schema:
             type: string
             format: objectId
+        - name: CF-Access-Client-Id
+          in: header
+          description: ''
+          example: cf9f02c65c5130772ba392d9d22794a5.access
+          schema:
+            type: string
+            default: cf9f02c65c5130772ba392d9d22794a5.access
+        - name: CF-Access-Client-Secret
+          in: header
+          description: ''
+          example: 3be20e109528c20da2f756667d5a13e1c69c83a872ff82df835a44471efbe8ed
+          schema:
+            type: string
+            default: 3be20e109528c20da2f756667d5a13e1c69c83a872ff82df835a44471efbe8ed
       responses:
         '200':
           description: ''
@@ -1933,17 +2176,14 @@ paths:
             application/json:
               schema: *ref_2
           headers: {}
-          x-apidog-name: OK
       security: []
-      x-apidog-folder: OOSA_USER_SERVICE/[TBC]  User Following
-      x-apidog-status: deprecated
-      x-run-in-apidog: https://apidog.com/web/project/607604/apis/api-8862655-run
     get:
       summary: Read User Following
       deprecated: true
       description: Get user following
       operationId: getUserFollowingId
       tags:
+        - OOSA_USER_SERVICE/[TBC]  User Following
         - OOSA_USER_SERVICE
         - User Following
       parameters:
@@ -1954,19 +2194,29 @@ paths:
           example: ''
           schema:
             type: string
+        - name: CF-Access-Client-Id
+          in: header
+          description: ''
+          example: cf9f02c65c5130772ba392d9d22794a5.access
+          schema:
+            type: string
+            default: cf9f02c65c5130772ba392d9d22794a5.access
+        - name: CF-Access-Client-Secret
+          in: header
+          description: ''
+          example: 3be20e109528c20da2f756667d5a13e1c69c83a872ff82df835a44471efbe8ed
+          schema:
+            type: string
+            default: 3be20e109528c20da2f756667d5a13e1c69c83a872ff82df835a44471efbe8ed
       responses:
         '200':
           description: ''
           content:
             application/json:
-              schema: &ref_6
+              schema: &ref_5
                 $ref: '#/components/schemas/UserFollowings'
           headers: {}
-          x-apidog-name: User following
       security: []
-      x-apidog-folder: OOSA_USER_SERVICE/[TBC]  User Following
-      x-apidog-status: deprecated
-      x-run-in-apidog: https://apidog.com/web/project/607604/apis/api-8862656-run
   /user-following:
     post:
       summary: Create User Following
@@ -1974,16 +2224,31 @@ paths:
       description: Create user following request testt
       operationId: createUserFollowing
       tags:
+        - OOSA_USER_SERVICE/[TBC]  User Following
         - OOSA_USER_SERVICE
         - User Following
         - T4 世界 World
-      parameters: []
+      parameters:
+        - name: CF-Access-Client-Id
+          in: header
+          description: ''
+          example: cf9f02c65c5130772ba392d9d22794a5.access
+          schema:
+            type: string
+            default: cf9f02c65c5130772ba392d9d22794a5.access
+        - name: CF-Access-Client-Secret
+          in: header
+          description: ''
+          example: 3be20e109528c20da2f756667d5a13e1c69c83a872ff82df835a44471efbe8ed
+          schema:
+            type: string
+            default: 3be20e109528c20da2f756667d5a13e1c69c83a872ff82df835a44471efbe8ed
       requestBody:
         content:
           application/json:
             schema:
               $ref: '#/components/schemas/RequestUserFollowing'
-            example: ''
+            example: null
       responses:
         '200':
           description: ''
@@ -1991,18 +2256,15 @@ paths:
             application/json:
               schema: *ref_2
           headers: {}
-          x-apidog-name: OK
       security:
         - bearer: []
-      x-apidog-folder: OOSA_USER_SERVICE/[TBC]  User Following
-      x-apidog-status: deprecated
-      x-run-in-apidog: https://apidog.com/web/project/607604/apis/api-8862662-run
     get:
       summary: Retrieve User Following
       deprecated: true
       description: Get other user following friends
       operationId: getUserFollowing
       tags:
+        - OOSA_USER_SERVICE/[TBC]  User Following
         - OOSA_USER_SERVICE
         - User Following
         - T4 世界 World
@@ -2013,6 +2275,20 @@ paths:
           required: false
           schema:
             type: string
+        - name: CF-Access-Client-Id
+          in: header
+          description: ''
+          example: cf9f02c65c5130772ba392d9d22794a5.access
+          schema:
+            type: string
+            default: cf9f02c65c5130772ba392d9d22794a5.access
+        - name: CF-Access-Client-Secret
+          in: header
+          description: ''
+          example: 3be20e109528c20da2f756667d5a13e1c69c83a872ff82df835a44471efbe8ed
+          schema:
+            type: string
+            default: 3be20e109528c20da2f756667d5a13e1c69c83a872ff82df835a44471efbe8ed
       responses:
         '200':
           description: ''
@@ -2020,13 +2296,9 @@ paths:
             application/json:
               schema:
                 type: array
-                items: *ref_6
+                items: *ref_5
           headers: {}
-          x-apidog-name: User following
       security: []
-      x-apidog-folder: OOSA_USER_SERVICE/[TBC]  User Following
-      x-apidog-status: deprecated
-      x-run-in-apidog: https://apidog.com/web/project/607604/apis/api-8862663-run
   /world/statistics:
     get:
       summary: Statistics
@@ -2034,12 +2306,27 @@ paths:
       description: Retrieve World Statistics
       operationId: getUserWorldStat
       tags:
+        - OOSA_USER_SERVICE/R > World Statistic
         - OOSA_REWILD_SERVICE
         - User Event
         - T4 世界 World
         - '4.0'
         - guest
-      parameters: []
+      parameters:
+        - name: CF-Access-Client-Id
+          in: header
+          description: ''
+          example: cf9f02c65c5130772ba392d9d22794a5.access
+          schema:
+            type: string
+            default: cf9f02c65c5130772ba392d9d22794a5.access
+        - name: CF-Access-Client-Secret
+          in: header
+          description: ''
+          example: 3be20e109528c20da2f756667d5a13e1c69c83a872ff82df835a44471efbe8ed
+          schema:
+            type: string
+            default: 3be20e109528c20da2f756667d5a13e1c69c83a872ff82df835a44471efbe8ed
       responses:
         '200':
           description: ''
@@ -2060,10 +2347,6 @@ paths:
                       required:
                         - events_country_code
                         - events_country_count
-                      x-apidog-ignore-properties: []
-                      x-apidog-orders:
-                        - events_country_code
-                        - events_country_count
                   world_rewilding_members:
                     type: integer
                   world_rewilding_polaroid:
@@ -2072,13 +2355,7 @@ paths:
                   - world_rewilding_country
                   - world_rewilding_members
                   - world_rewilding_polaroid
-                x-apidog-ignore-properties: []
-                x-apidog-orders:
-                  - world_rewilding_country
-                  - world_rewilding_members
-                  - world_rewilding_polaroid
           headers: {}
-          x-apidog-name: OK
         '204':
           description: ''
           content:
@@ -2087,11 +2364,7 @@ paths:
                 type: object
                 properties: {}
           headers: {}
-          x-apidog-name: No Content
       security: []
-      x-apidog-folder: OOSA_USER_SERVICE/R > World Statistic
-      x-apidog-status: released
-      x-run-in-apidog: https://apidog.com/web/project/607604/apis/api-10102449-run
   /world/ranking-feelings:
     get:
       summary: Ranking Feelings
@@ -2099,6 +2372,7 @@ paths:
       description: Retrieve an authenticated user events
       operationId: getRankFeel
       tags:
+        - OOSA_USER_SERVICE/R > World Statistic
         - OOSA_REWILD_SERVICE
         - User Event
         - T4 世界 World
@@ -2113,6 +2387,20 @@ paths:
           required: false
           schema:
             type: string
+        - name: CF-Access-Client-Id
+          in: header
+          description: ''
+          example: cf9f02c65c5130772ba392d9d22794a5.access
+          schema:
+            type: string
+            default: cf9f02c65c5130772ba392d9d22794a5.access
+        - name: CF-Access-Client-Secret
+          in: header
+          description: ''
+          example: 3be20e109528c20da2f756667d5a13e1c69c83a872ff82df835a44471efbe8ed
+          schema:
+            type: string
+            default: 3be20e109528c20da2f756667d5a13e1c69c83a872ff82df835a44471efbe8ed
       responses:
         '200':
           description: ''
@@ -2120,10 +2408,9 @@ paths:
             application/json:
               schema:
                 type: array
-                items: &ref_7
+                items: &ref_6
                   $ref: '#/components/schemas/RankingRewilding'
           headers: {}
-          x-apidog-name: Array of EventReferenceLinks Object
         '204':
           description: ''
           content:
@@ -2132,11 +2419,7 @@ paths:
                 type: object
                 properties: {}
           headers: {}
-          x-apidog-name: No Content
       security: []
-      x-apidog-folder: OOSA_USER_SERVICE/R > World Statistic
-      x-apidog-status: released
-      x-run-in-apidog: https://apidog.com/web/project/607604/apis/api-10123081-run
   /world/ranking-rewilding:
     get:
       summary: Ranking Rewilding
@@ -2144,12 +2427,27 @@ paths:
       description: Retrieve an authenticated user events
       operationId: getRankRewild
       tags:
+        - OOSA_USER_SERVICE/R > World Statistic
         - OOSA_REWILD_SERVICE
         - User Event
         - T4 世界 World
         - '4.3'
         - guest
-      parameters: []
+      parameters:
+        - name: CF-Access-Client-Id
+          in: header
+          description: ''
+          example: cf9f02c65c5130772ba392d9d22794a5.access
+          schema:
+            type: string
+            default: cf9f02c65c5130772ba392d9d22794a5.access
+        - name: CF-Access-Client-Secret
+          in: header
+          description: ''
+          example: 3be20e109528c20da2f756667d5a13e1c69c83a872ff82df835a44471efbe8ed
+          schema:
+            type: string
+            default: 3be20e109528c20da2f756667d5a13e1c69c83a872ff82df835a44471efbe8ed
       responses:
         '200':
           description: ''
@@ -2157,9 +2455,8 @@ paths:
             application/json:
               schema:
                 type: array
-                items: *ref_7
+                items: *ref_6
           headers: {}
-          x-apidog-name: Array of EventReferenceLinks Object
         '204':
           description: ''
           content:
@@ -2168,11 +2465,7 @@ paths:
                 type: object
                 properties: {}
           headers: {}
-          x-apidog-name: No Content
       security: []
-      x-apidog-folder: OOSA_USER_SERVICE/R > World Statistic
-      x-apidog-status: released
-      x-run-in-apidog: https://apidog.com/web/project/607604/apis/api-10208231-run
 components:
   schemas:
     UserBadgesDetail:
@@ -2187,19 +2480,8 @@ components:
         badges_name:
           type: string
           default: 1st. Rewild
-      x-apidog-orders:
-        - badges_code
-        - badges_id
-        - badges_name
-      x-apidog-ignore-properties: []
-      x-apidog-folder: Schemas
     UserAgg:
       type: object
-      x-apidog-orders:
-        - user_avatar
-        - user_email
-        - user_id
-        - user_name
       properties:
         user_avatar:
           type: string
@@ -2214,20 +2496,14 @@ components:
         - user_id
         - user_name
         - user_avatar
-      x-apidog-ignore-properties: []
-      x-apidog-folder: Schemas
     RequestUserFriend:
       type: object
       properties:
         user_id:
           type: string
           description: 對方用戶的 uuid
-      x-apidog-orders:
-        - user_id
       required:
         - user_id
-      x-apidog-ignore-properties: []
-      x-apidog-folder: Schemas
     RankingRewilding:
       type: object
       properties:
@@ -2243,18 +2519,11 @@ components:
           type:
             - integer
             - 'null'
-      x-apidog-orders:
-        - rewilding_id
-        - rewilding_name
-        - rewilding_type_list
-        - rewilding_participants_experience_count
       required:
         - rewilding_id
         - rewilding_name
         - rewilding_type_list
         - rewilding_participants_experience_count
-      x-apidog-ignore-properties: []
-      x-apidog-folder: Schemas
     UserOther:
       type: object
       properties:
@@ -2306,29 +2575,24 @@ components:
           type: integer
         users_follower_count:
           type: integer
-        users_followings: *ref_6
-      x-apidog-orders:
-        - users_avatar
-        - users_created_at
-        - users_email
-        - users_id
-        - users_is_business
-        - users_is_subscribed
-        - users_name
-        - users_object
-        - users_password
-        - users_setting_friend_auto_add
-        - users_setting_is_visible_friends
-        - users_setting_is_visible_statistics
-        - users_setting_language
-        - users_setting_visibility_activity_summary
-        - users_source
-        - users_source_id
-        - users_username
-        - users_breathing_points
-        - users_following_count
-        - users_follower_count
-        - users_followings
+        users_followings: *ref_5
+        users_friends_info:
+          type: object
+          properties:
+            status:
+              type: string
+              enum:
+                - stranger
+                - friend
+                - invited
+                - myself
+              description: 好友狀態(查看者與被查看者的關係)
+            count:
+              type: integer
+              description: 好友數
+          required:
+            - status
+            - count
       required:
         - users_avatar
         - users_created_at
@@ -2347,8 +2611,7 @@ components:
         - users_source_id
         - users_username
         - users_followings
-      x-apidog-ignore-properties: []
-      x-apidog-folder: Schemas
+        - users_friends_info
     UserFollowings:
       type: object
       properties:
@@ -2360,23 +2623,12 @@ components:
           type: string
         user_followings_user:
           type: string
-      x-apidog-orders:
-        - user_followings_created_at
-        - user_followings_following
-        - user_followings_id
-        - user_followings_user
-      x-apidog-ignore-properties: []
-      x-apidog-folder: Schemas
     RequestUserFollowing:
       type: object
       properties:
         user_followings_following:
           type: string
           default: 6613fae21977170d4fd608a6
-      x-apidog-orders:
-        - user_followings_following
-      x-apidog-ignore-properties: []
-      x-apidog-folder: Schemas
     UserNotifications:
       type: object
       properties:
@@ -2417,37 +2669,18 @@ components:
                     type: string
                   users_name:
                     type: string
-                x-apidog-orders:
-                  - badges_code
-                  - badges_id
-                  - badges_name
-                  - users_id
-                  - users_name
-                x-apidog-ignore-properties: []
-          x-apidog-orders:
-            - message
-            - data
           required:
             - message
             - data
-          x-apidog-ignore-properties: []
-        notifications_type:
+        notifications_state:
           type: string
           default: New
+          enum:
+            - new
+            - done
         notifications_user:
           type: string
           default: 65f6861102948c60bcb3cb1d
-      x-apidog-orders:
-        - notifications_code
-        - notifications_created_at
-        - notifications_created_by
-        - notifications_id
-        - notifications_identifier
-        - notifications_message
-        - notifications_type
-        - notifications_user
-      x-apidog-ignore-properties: []
-      x-apidog-folder: Schemas
     RequestForgetPasswordReset:
       type: object
       properties:
@@ -2457,17 +2690,8 @@ components:
         password:
           type: string
           default: 123456
-      x-apidog-orders:
-        - email
-        - password
-      x-apidog-ignore-properties: []
-      x-apidog-folder: Schemas
     RequestUsersUpdate:
       type: object
-      x-apidog-refs:
-        01JBK5MAJA4HTVF0N0NR77NBKK: *ref_3
-      x-apidog-orders:
-        - 01JBK5MAJA4HTVF0N0NR77NBKK
       properties:
         users_avatar:
           type: string
@@ -2534,28 +2758,6 @@ components:
         - users_source
         - users_source_id
         - users_username
-      x-apidog-ignore-properties:
-        - users_avatar
-        - users_created_at
-        - users_email
-        - users_id
-        - users_is_business
-        - users_is_subscribed
-        - users_name
-        - users_object
-        - users_password
-        - users_setting_friend_auto_add
-        - users_setting_is_visible_friends
-        - users_setting_is_visible_statistics
-        - users_setting_language
-        - users_setting_visibility_activity_summary
-        - users_source
-        - users_source_id
-        - users_username
-        - users_breathing_points
-        - users_following_count
-        - users_follower_count
-      x-apidog-folder: Schemas
     User:
       type: object
       properties:
@@ -2607,27 +2809,6 @@ components:
           type: integer
         users_follower_count:
           type: integer
-      x-apidog-orders:
-        - users_avatar
-        - users_created_at
-        - users_email
-        - users_id
-        - users_is_business
-        - users_is_subscribed
-        - users_name
-        - users_object
-        - users_password
-        - users_setting_friend_auto_add
-        - users_setting_is_visible_friends
-        - users_setting_is_visible_statistics
-        - users_setting_language
-        - users_setting_visibility_activity_summary
-        - users_source
-        - users_source_id
-        - users_username
-        - users_breathing_points
-        - users_following_count
-        - users_follower_count
       required:
         - users_avatar
         - users_created_at
@@ -2645,17 +2826,11 @@ components:
         - users_source
         - users_source_id
         - users_username
-      x-apidog-ignore-properties: []
-      x-apidog-folder: Schemas
     ResponseGeneralError:
       type: object
       properties:
         message:
           type: string
-      x-apidog-orders:
-        - message
-      x-apidog-ignore-properties: []
-      x-apidog-folder: Schemas
     RequestUserRegisterEmail:
       type: object
       properties:
@@ -2671,23 +2846,12 @@ components:
         password:
           type: string
           default: 123
-      x-apidog-orders:
-        - email
-        - is_business
-        - name
-        - password
-      x-apidog-ignore-properties: []
-      x-apidog-folder: Schemas
     RequestForgetPassword:
       type: object
       properties:
         email:
           type: string
           default: tommy@oosa.ar.tw
-      x-apidog-orders:
-        - email
-      x-apidog-ignore-properties: []
-      x-apidog-folder: Schemas
     RequestContactUs:
       type: object
       properties:
@@ -2695,11 +2859,6 @@ components:
           type: string
         message:
           type: string
-      x-apidog-orders:
-        - email
-        - message
-      x-apidog-ignore-properties: []
-      x-apidog-folder: Schemas
     RequestAuthUpdateSetting:
       type: object
       properties:
@@ -2715,22 +2874,11 @@ components:
         users_setting_visibility_activity_summary:
           type: number
           default: 1
-      x-apidog-orders:
-        - users_setting_friend_auto_add
-        - users_setting_is_visible_friends
-        - users_setting_is_visible_statistics
-        - users_setting_visibility_activity_summary
-      x-apidog-ignore-properties: []
-      x-apidog-folder: Schemas
     RequestGoogleAuth:
       type: object
       properties:
         credential:
           type: string
-      x-apidog-orders:
-        - credential
-      x-apidog-ignore-properties: []
-      x-apidog-folder: Schemas
     RequestUserLoginEmail:
       type: object
       properties:
@@ -2740,25 +2888,16 @@ components:
         password:
           type: string
           default: 123
-      x-apidog-orders:
-        - email
-        - password
       required:
         - email
         - password
-      x-apidog-ignore-properties: []
-      x-apidog-folder: Schemas
     ResponseGeneralSuccess:
       type: object
       properties:
         message:
           type: string
-      x-apidog-orders:
-        - message
       required:
         - message
-      x-apidog-ignore-properties: []
-      x-apidog-folder: Schemas
     RequestUsersUpdatePassword:
       type: object
       properties:
@@ -2768,15 +2907,10 @@ components:
         password:
           type: string
           default: 123456
-      x-apidog-orders:
-        - new_password
-        - password
-      x-apidog-ignore-properties: []
-      x-apidog-folder: Schemas
     UserBadges:
       type: object
       properties:
-        user_badges_detail: *ref_8
+        user_badges_detail: *ref_7
         user_badges_badge:
           type: string
           default: 6695534c1da4d6fee70fc3e4
@@ -2789,46 +2923,25 @@ components:
         user_badges_user:
           type: string
           default: 65f6861102948c60bcb3cb1d
-      x-apidog-orders:
-        - user_badges_detail
-        - user_badges_badge
-        - user_badges_created_at
-        - user_badges_id
-        - user_badges_user
-      x-apidog-ignore-properties: []
-      x-apidog-folder: Schemas
     RequestAuthUpdateAvatar:
       type: object
       properties:
         users_avatar:
           type: string
           default: AVATAR_1
-      x-apidog-orders:
-        - users_avatar
-      x-apidog-ignore-properties: []
-      x-apidog-folder: Schemas
     UserLogin:
       type: object
       properties:
         user: *ref_3
         token:
           type: string
-      x-apidog-orders:
-        - user
-        - token
       required:
         - token
-      x-apidog-ignore-properties: []
-      x-apidog-folder: Schemas
     ResponseValidationError:
       type: object
       properties:
         message:
           type: string
-      x-apidog-orders:
-        - message
-      x-apidog-ignore-properties: []
-      x-apidog-folder: Schemas
   securitySchemes:
     bearer:
       type: http

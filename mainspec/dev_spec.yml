@@ -4,7 +4,7 @@ info:
   description: This is OOSA's API
   version: "1.0.0"
 servers:
-  - url: http://oosa.docker.localhost/api
+  - url: http://app-dev.oosa.life/api
     description: OOSA's Dev API
 
 components:
