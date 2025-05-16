@@ -5060,13 +5060,71 @@ paths:
                 type: array
                 items: *ref_4
           headers: {}
+  /user/{userId}/collaborative-log:
+    get:
+      summary: User Event Collaborate
+      deprecated: false
+      description: 獲得該星星下的行程列表
+      operationId: getCollaborativeLogs
+      tags:
+        - OOSA_REWILD_SERVICE/R > User Collaborative Logs
+        - OOSA_REWILD_SERVICE
+        - ✅ Event Collaborate
+        - T3 野放成就 Achievement
+        - '3.1'
+        - 3.2a
+      parameters:
+        - name: userId
+          in: path
+          description: ''
+          required: true
+          schema:
+            type: string
+        - name: rewilding_id
+          in: query
+          description: ''
+          required: true
+          schema:
+            type: string
+        - name: CF-Access-Client-Id
+          in: header
+          description: ''
+          example: cf9f02c65c5130772ba392d9d22794a5.access
+          schema:
+            type: string
+            default: cf9f02c65c5130772ba392d9d22794a5.access
+        - name: CF-Access-Client-Secret
+          in: header
+          description: ''
+          example: 3be20e109528c20da2f756667d5a13e1c69c83a872ff82df835a44471efbe8ed
+          schema:
+            type: string
+            default: 3be20e109528c20da2f756667d5a13e1c69c83a872ff82df835a44471efbe8ed
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: array
+                items: &ref_0
+                  $ref: '#/components/schemas/Events_v2'
+          headers: {}
         '204':
           description: ''
           content:
-            '*/*':
+            application/json:
               schema:
                 type: object
                 properties: {}
+          headers: {}
+        '403':
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: array
+                items: *ref_0
           headers: {}
       security:
         - bearer: []
@@ -7526,6 +7584,177 @@ components:
           type: string
       required:
         - message
+    AchievementEvent_v2:
+      type: object
+      properties:
+        user_status:
+          type: string
+          enum:
+            - owner
+            - others
+            - stranger
+        achievements:
+          type: array
+          items:
+            type: object
+            properties:
+              achievement_released_id:
+                type: string
+              achievement_released_name:
+                type: string
+              achievement_released_lat:
+                type: number
+              achievement_released_lng:
+                type: number
+              achievement_released_count:
+                type: integer
+              achievement_star_status:
+                type: string
+                enum:
+                  - yellow
+                  - white
+              achievement_latest_can_upload_time:
+                type:
+                  - string
+                  - 'null'
+                description: 成就中最近的活動可上傳時間
+              achievement_shine:
+                type: boolean
+                description: 白色星星是否閃爍
+            required:
+              - achievement_released_id
+              - achievement_released_name
+              - achievement_released_lat
+              - achievement_released_lng
+              - achievement_released_count
+              - achievement_star_status
+              - achievement_latest_can_upload_time
+              - achievement_shine
+      required:
+        - user_status
+        - achievements
+    Events_v2:
+      type: object
+      properties:
+        events_created_by_user: &ref_1
+          $ref: '#/components/schemas/UserAgg'
+        events_city_id:
+          type: integer
+        events_created_at:
+          type: string
+        events_created_by:
+          type: string
+        events_date:
+          type: string
+        events_date_end:
+          type: string
+        events_deadline:
+          type: string
+        events_id:
+          type: string
+        events_lat:
+          type: number
+        events_lng:
+          type: number
+        events_meeting_point_lat:
+          type: number
+        events_meeting_point_lng:
+          type: number
+        events_meeting_point_name:
+          type: string
+        events_name:
+          type: string
+        events_participant_limit:
+          type: number
+        events_payment_fee:
+          type: number
+        events_payment_required:
+          type: integer
+        events_photo:
+          type: string
+        events_place:
+          type: string
+        events_questionnaire_link:
+          type: string
+        events_requires_approval:
+          type: integer
+        events_rewilding:
+          type: string
+        events_statistic_distance:
+          type: number
+        events_statistic_member_count:
+          type: number
+        events_statistic_time:
+          type: number
+        events_updated_at:
+          type: string
+        events_updated_by:
+          type: string
+        events_participants:
+          type: object
+          properties:
+            latest_tree_user:
+              type:
+                - array
+                - 'null'
+              items: *ref_1
+              description: 最近參加的三個人
+            remain_number:
+              type: integer
+              description: 總人數-3
+          required:
+            - latest_tree_user
+            - remain_number
+        events_rewilding_detail:
+          $ref: '#/components/schemas/RewildingDetail'
+        events_type:
+          type: string
+        events_invitation_template:
+          type: string
+        events_invitation_message:
+          type: string
+        events_invitation_no:
+          type: string
+        events_actions:
+          type: object
+          properties:
+            upload_polaroids:
+              type: boolean
+              description: 顯示上傳拍立得按鈕
+            can_view_details:
+              type: boolean
+              description: 可查看行程內容
+          required:
+            - upload_polaroids
+            - can_view_details
+      required:
+        - events_city_id
+        - events_date
+        - events_date_end
+        - events_deadline
+        - events_id
+        - events_invitation_message
+        - events_lat
+        - events_lng
+        - events_meeting_point_lat
+        - events_meeting_point_lng
+        - events_name
+        - events_participant_limit
+        - events_payment_fee
+        - events_payment_required
+        - events_statistic_time
+        - events_statistic_distance
+        - events_statistic_member_count
+        - events_rewilding
+        - events_requires_approval
+        - events_questionnaire_link
+        - events_photo
+        - events_place
+        - events_meeting_point_name
+        - events_type
+        - events_invitation_template
+        - events_invitation_no
+        - events_actions
   securitySchemes:
     bearer:
       type: http
